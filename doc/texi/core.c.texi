@@ -1,0 +1,233 @@
+@subheading shisa_enumerate_realms
+@anchor{shisa_enumerate_realms}
+@deftypefun {int} {shisa_enumerate_realms} (Shisa * @var{dbh}, char *** @var{realms}, size_t * @var{nrealms})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realms}: Pointer to newly allocated array of newly allocated
+zero-terminated UTF-8 strings indicating name of realm.
+
+@var{nrealms}: Pointer to number indicating number of allocated realm strings.
+
+Extract a list of all realm names in backend, as zero-terminated
+UTF-8 strings.  The caller must deallocate the strings.
+
+@strong{Return value:} Returns SHISA_OK on success, or error code.
+@end deftypefun
+
+@subheading shisa_enumerate_principals
+@anchor{shisa_enumerate_principals}
+@deftypefun {int} {shisa_enumerate_principals} (Shisa * @var{dbh}, const char * @var{realm}, char *** @var{principals}, size_t * @var{nprincipals})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm, as zero-terminated UTF-8 string.
+
+@var{nprincipals}: Pointer to number indicating number of allocated
+realm strings.
+
+Extract a list of all principal names in realm in backend, as
+zero-terminated UTF-8 strings.  The caller must deallocate the
+strings.
+
+@strong{Return value:} Returns SHISA_OK on success, SHISA_NO_REALM if the
+specified realm does not exist, or error code.
+@end deftypefun
+
+@subheading shisa_principal_find
+@anchor{shisa_principal_find}
+@deftypefun {int} {shisa_principal_find} (Shisa * @var{dbh}, const char * @var{realm}, const char * @var{principal}, Shisa_principal * @var{ph})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm the principal belongs in.
+
+@var{principal}: Name of principal to get information on.
+
+@var{ph}: Pointer to previously allocated principal structure to fill
+out with information about principal.
+
+Extract information about given PRINCIPAL@code{REALM}.
+
+@strong{Return value:} Returns @code{SHISA_OK} iff successful, @code{SHISA_NO_REALM} if
+the indicated realm does not exist, @code{SHISA_NO_PRINCIPAL} if the
+indicated principal does not exist, or an error code.
+@end deftypefun
+
+@subheading shisa_principal_update
+@anchor{shisa_principal_update}
+@deftypefun {int} {shisa_principal_update} (Shisa * @var{dbh}, const char * @var{realm}, const char * @var{principal}, const Shisa_principal * @var{ph})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm the principal belongs in.
+
+@var{principal}: Name of principal to get information on.
+
+@var{ph}: Pointer to principal structure with information to store in database.
+
+Modify information stored for given PRINCIPAL@code{REALM}.  Note that it
+is usually a good idea to only set the fields in @code{ph} that you
+actually want to update.  Specifically, first calling
+@code{shisa_principal_find()} to get the current information, then
+modifying one field, and calling @code{shisa_principal_update()} is not
+recommended in general, as this will 1) overwrite any modifications
+made to other fields between the two calls (by other processes) and
+2) will cause all values to be written again, which may generate
+more overhead.
+
+@strong{Return value:} Returns SHISA_OK if successful, @code{SHISA_NO_REALM} if
+the indicated realm does not exist, @code{SHISA_NO_PRINCIPAL} if the
+indicated principal does not exist, or an error code.
+@end deftypefun
+
+@subheading shisa_principal_add
+@anchor{shisa_principal_add}
+@deftypefun {int} {shisa_principal_add} (Shisa * @var{dbh}, const char * @var{realm}, const char * @var{principal}, const Shisa_principal * @var{ph}, const Shisa_key * @var{key})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm the principal belongs in.
+
+@var{principal}: Name of principal to add, may be @code{NULL} to indicate that
+the @code{realm} should be created, in which case @code{ph} and @code{key} are not used.
+
+@var{ph}: Pointer to principal structure with information to store in database.
+
+@var{key}: Pointer to key structure with information to store in database.
+
+Add given information to database as PRINCIPAL@code{REALM}.
+
+@strong{Return value:} Returns SHISA_OK iff successfully added, or an error code.
+@end deftypefun
+
+@subheading shisa_principal_remove
+@anchor{shisa_principal_remove}
+@deftypefun {int} {shisa_principal_remove} (Shisa * @var{dbh}, const char * @var{realm}, const char * @var{principal})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm the principal belongs in.
+
+@var{principal}: Name of principal to remove, may be @code{NULL} to indicate
+that the @code{realm} itself should be removed (requires that the realm
+to be empty).
+
+Remove all information stored in the database for given PRINCIPAL@code{REALM}.
+
+@strong{Return value:} Returns @code{SHISA_OK} if successful, or an error code.
+@end deftypefun
+
+@subheading shisa_keys_find
+@anchor{shisa_keys_find}
+@deftypefun {int} {shisa_keys_find} (Shisa * @var{dbh}, const char * @var{realm}, const char * @var{principal}, const Shisa_key * @var{hint}, Shisa_key *** @var{keys}, size_t * @var{nkeys})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm the principal belongs in.
+
+@var{principal}: Name of principal to add key for.
+
+@var{hint}: Pointer to Shisa key structure with hints on matching the key
+to modify, may be @code{NULL} to match all keys.
+
+@var{keys}: pointer to newly allocated array with Shisa key structures.
+
+@var{nkeys}: pointer to number of newly allocated Shisa key structures in @code{keys}.
+
+Iterate through keys for given PRINCIPAL@code{REALM} and extract any keys
+that match @code{hint}.  Not all elements of @code{hint} need to be filled out,
+only use the fields you are interested in.  For example, if you
+want to extract all keys with an etype of 3 (DES-CBC-MD5), set the
+@code{key}->etype field to 3, and set all other fields to 0.
+
+@strong{Return value:} Returns @code{SHISA_OK} iff successful, or an error code.
+@end deftypefun
+
+@subheading shisa_key_add
+@anchor{shisa_key_add}
+@deftypefun {int} {shisa_key_add} (Shisa * @var{dbh}, const char * @var{realm}, const char * @var{principal}, const Shisa_key * @var{key})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm the principal belongs in.
+
+@var{principal}: Name of principal to add key for.
+
+@var{key}: Pointer to Shisa key structure with key to add.
+
+Add key to database for given PRINCIPAL@code{REALM}.
+
+@strong{Return value:} Returns @code{SHISA_OK} iff successful, or an error code.
+@end deftypefun
+
+@subheading shisa_key_update
+@anchor{shisa_key_update}
+@deftypefun {int} {shisa_key_update} (Shisa * @var{dbh}, const char * @var{realm}, const char * @var{principal}, const Shisa_key * @var{oldkey}, const Shisa_key * @var{newkey})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm the principal belongs in.
+
+@var{principal}: Name of principal to remove key for.
+
+@var{oldkey}: Pointer to Shisa key structure with hints on matching the key
+to modify.
+
+@var{newkey}: Pointer to Shisa key structure with new values for the
+key, note that all fields are used (and not just the ones specified
+by @code{oldkey}).
+
+Modify data about a key in the database, for the given
+PRINCIPAL@code{REALM}.  First the @code{oldkey} is used to locate the key to
+update (similar to @code{shisa_keys_find()}), then that key is modified to
+contain whatever information is stored in @code{newkey}.  Not all
+elements of @code{oldkey} need to be filled out, only enough as to
+identify the key uniquely.  For example, if you want to modify the
+information stored for the only key with an etype of 3
+(DES-CBC-MD5), set the @code{key}->etype field to 3, and set all other
+fields to 0.
+
+@strong{Return value:} Returns @code{SHISA_OK} on success, @code{SHISA_NO_KEY} if no key
+could be identified, and @code{SHISA_MULTIPLE_KEY_MATCH} if more than one
+key matched the given criteria, or an error code.
+@end deftypefun
+
+@subheading shisa_key_remove
+@anchor{shisa_key_remove}
+@deftypefun {int} {shisa_key_remove} (Shisa * @var{dbh}, const char * @var{realm}, const char * @var{principal}, const Shisa_key * @var{key})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{realm}: Name of realm the principal belongs in.
+
+@var{principal}: Name of principal to remove key for.
+
+@var{key}: Pointer to Shisa key structure with hints on matching the key
+to remove.
+
+Remove a key, matching the hints in @code{key}, from the Shisa database
+for the user PRINCIPAL@code{REALM}.  Not all elements of @code{key} need to be
+filled out, only those you are interested in.  For example, if you
+want to remove the only key with an etype of 3 (DES-CBC-MD5), set
+the @code{key}->etype field to 3, and set all other fields to 0.
+
+@strong{Return value:} Returns @code{SHISA_OK} on success, @code{SHISA_NO_KEY} if no key
+could be identified, and @code{SHISA_MULTIPLE_KEY_MATCH} if more than one
+key matched the given criteria, or an error code.
+@end deftypefun
+
+@subheading shisa_key_free
+@anchor{shisa_key_free}
+@deftypefun {void} {shisa_key_free} (Shisa * @var{dbh}, Shisa_key * @var{key})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{key}: Pointer to Shisa key structure to deallocate.
+
+Deallocate the fields of a Shisa key structure, and the structure
+itself.
+@end deftypefun
+
+@subheading shisa_keys_free
+@anchor{shisa_keys_free}
+@deftypefun {void} {shisa_keys_free} (Shisa * @var{dbh}, Shisa_key ** @var{keys}, size_t @var{nkeys})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{keys}: Pointer to array with @code{nkeys} elements of keys.
+
+@var{nkeys}: Number of key elements in @code{keys} array.
+
+Deallocate each element of an array with Shisa database keys, using
+@code{shisa_key_free()}.
+@end deftypefun
+

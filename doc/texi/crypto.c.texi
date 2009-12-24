@@ -1,0 +1,777 @@
+@subheading shishi_cipher_supported_p
+@anchor{shishi_cipher_supported_p}
+@deftypefun {int} {shishi_cipher_supported_p} (int32_t @var{type})
+@var{type}: encryption type, see Shishi_etype.
+
+Find out if cipher is supported.
+
+@strong{Return value:} Return 0 iff cipher is unsupported.
+@end deftypefun
+
+@subheading shishi_cipher_name
+@anchor{shishi_cipher_name}
+@deftypefun {const char *} {shishi_cipher_name} (int32_t @var{type})
+@var{type}: encryption type, see Shishi_etype.
+
+Read humanly readable string for cipher.
+
+@strong{Return value:} Return name of encryption type,
+e.g. "des3-cbc-sha1-kd", as defined in the standards.
+@end deftypefun
+
+@subheading shishi_cipher_blocksize
+@anchor{shishi_cipher_blocksize}
+@deftypefun {int} {shishi_cipher_blocksize} (int32_t @var{type})
+@var{type}: encryption type, see Shishi_etype.
+
+Get block size for cipher.
+
+@strong{Return value:} Return block size for encryption type, as defined in
+the standards.
+@end deftypefun
+
+@subheading shishi_cipher_confoundersize
+@anchor{shishi_cipher_confoundersize}
+@deftypefun {int} {shishi_cipher_confoundersize} (int32_t @var{type})
+@var{type}: encryption type, see Shishi_etype.
+
+Get length of confounder for cipher.
+
+@strong{Return value:} Returns the size of the confounder (random data) for
+encryption type, as defined in the standards, or (size_t)-1 on
+error (e.g., unsupported encryption type).
+@end deftypefun
+
+@subheading shishi_cipher_keylen
+@anchor{shishi_cipher_keylen}
+@deftypefun {size_t} {shishi_cipher_keylen} (int32_t @var{type})
+@var{type}: encryption type, see Shishi_etype.
+
+Get key length for cipher.
+
+@strong{Return value:} Return length of key used for the encryption type, as
+defined in the standards.
+@end deftypefun
+
+@subheading shishi_cipher_randomlen
+@anchor{shishi_cipher_randomlen}
+@deftypefun {size_t} {shishi_cipher_randomlen} (int32_t @var{type})
+@var{type}: encryption type, see Shishi_etype.
+
+Get length of random data for cipher.
+
+@strong{Return value:} Return length of random used for the encryption type,
+as defined in the standards, or (size_t)-1 on error (e.g.,
+unsupported encryption type).
+@end deftypefun
+
+@subheading shishi_cipher_defaultcksumtype
+@anchor{shishi_cipher_defaultcksumtype}
+@deftypefun {int} {shishi_cipher_defaultcksumtype} (int32_t @var{type})
+@var{type}: encryption type, see Shishi_etype.
+
+Get the default checksum associated with cipher.
+
+@strong{Return value:} Return associated checksum mechanism for the
+encryption type, as defined in the standards.
+@end deftypefun
+
+@subheading shishi_cipher_parse
+@anchor{shishi_cipher_parse}
+@deftypefun {int} {shishi_cipher_parse} (const char * @var{cipher})
+@var{cipher}: name of encryption type, e.g. "des3-cbc-sha1-kd".
+
+Get cipher number by parsing string.
+
+@strong{Return value:} Return encryption type corresponding to a string.
+@end deftypefun
+
+@subheading shishi_checksum_supported_p
+@anchor{shishi_checksum_supported_p}
+@deftypefun {int} {shishi_checksum_supported_p} (int32_t @var{type})
+@var{type}: checksum type, see Shishi_cksumtype.
+
+Find out whether checksum is supported.
+
+@strong{Return value:} Return 0 iff checksum is unsupported.
+@end deftypefun
+
+@subheading shishi_checksum_name
+@anchor{shishi_checksum_name}
+@deftypefun {const char *} {shishi_checksum_name} (int32_t @var{type})
+@var{type}: checksum type, see Shishi_cksumtype.
+
+Get name of checksum.
+
+@strong{Return value:} Return name of checksum type,
+e.g. "hmac-sha1-96-aes256", as defined in the standards.
+@end deftypefun
+
+@subheading shishi_checksum_cksumlen
+@anchor{shishi_checksum_cksumlen}
+@deftypefun {size_t} {shishi_checksum_cksumlen} (int32_t @var{type})
+@var{type}: checksum type, see Shishi_cksumtype.
+
+Get length of checksum output.
+
+@strong{Return value:} Return length of checksum used for the checksum type,
+as defined in the standards.
+@end deftypefun
+
+@subheading shishi_checksum_parse
+@anchor{shishi_checksum_parse}
+@deftypefun {int} {shishi_checksum_parse} (const char * @var{checksum})
+@var{checksum}: name of checksum type, e.g. "hmac-sha1-96-aes256".
+
+Get checksum number by parsing a string.
+
+@strong{Return value:} Return checksum type, see Shishi_cksumtype,
+corresponding to a string.
+@end deftypefun
+
+@subheading shishi_string_to_key
+@anchor{shishi_string_to_key}
+@deftypefun {int} {shishi_string_to_key} (Shishi * @var{handle}, int32_t @var{keytype}, const char * @var{password}, size_t @var{passwordlen}, const char * @var{salt}, size_t @var{saltlen}, const char * @var{parameter}, Shishi_key * @var{outkey})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{keytype}: cryptographic encryption type, see Shishi_etype.
+
+@var{password}: input array with password.
+
+@var{passwordlen}: length of input array with password.
+
+@var{salt}: input array with salt.
+
+@var{saltlen}: length of input array with salt.
+
+@var{parameter}: input array with opaque encryption type specific information.
+
+@var{outkey}: allocated key handle that will contain new key.
+
+Derive key from a string (password) and salt (commonly
+concatenation of realm and principal) for specified key type, and
+set the type and value in the given key to the computed values.
+The parameter value is specific for each keytype, and can be set if
+the parameter information is not available.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_random_to_key
+@anchor{shishi_random_to_key}
+@deftypefun {int} {shishi_random_to_key} (Shishi * @var{handle}, int32_t @var{keytype}, const char * @var{rnd}, size_t @var{rndlen}, Shishi_key * @var{outkey})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{keytype}: cryptographic encryption type, see Shishi_etype.
+
+@var{rnd}: input array with random data.
+
+@var{rndlen}: length of input array with random data.
+
+@var{outkey}: allocated key handle that will contain new key.
+
+Derive key from random data for specified key type, and set the
+type and value in the given key to the computed values.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_checksum
+@anchor{shishi_checksum}
+@deftypefun {int} {shishi_checksum} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int @var{cksumtype}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to compute checksum with.
+
+@var{keyusage}: integer specifying what this key is used for.
+
+@var{cksumtype}: the checksum algorithm to use.
+
+@var{in}: input array with data to integrity protect.
+
+@var{inlen}: size of input array with data to integrity protect.
+
+@var{out}: output array with newly allocated integrity protected data.
+
+@var{outlen}: output variable with length of output array with checksum.
+
+Integrity protect data using key, possibly altered by supplied key
+usage.  If key usage is 0, no key derivation is used.  The OUT
+buffer must be deallocated by the caller.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_verify
+@anchor{shishi_verify}
+@deftypefun {int} {shishi_verify} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int @var{cksumtype}, const char * @var{in}, size_t @var{inlen}, const char * @var{cksum}, size_t @var{cksumlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to verify checksum with.
+
+@var{keyusage}: integer specifying what this key is used for.
+
+@var{cksumtype}: the checksum algorithm to use.
+
+@var{in}: input array with data that was integrity protected.
+
+@var{inlen}: size of input array with data that was integrity protected.
+
+@var{cksum}: input array with alleged checksum of data.
+
+@var{cksumlen}: size of input array with alleged checksum of data.
+
+Verify checksum of data using key, possibly altered by supplied key
+usage.  If key usage is 0, no key derivation is used.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_encrypt_ivupdate_etype
+@anchor{shishi_encrypt_ivupdate_etype}
+@deftypefun {int} {shishi_encrypt_ivupdate_etype} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int32_t @var{etype}, const char * @var{iv}, size_t @var{ivlen}, char ** @var{ivout}, size_t * @var{ivoutlen}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to encrypt with.
+
+@var{keyusage}: integer specifying what this key is encrypting.
+
+@var{etype}: integer specifying what cipher to use.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+@var{ivout}: output array with newly allocated updated initialization vector.
+
+@var{ivoutlen}: size of output array with updated initialization vector.
+
+@var{in}: input array with data to encrypt.
+
+@var{inlen}: size of input array with data to encrypt.
+
+@var{out}: output array with newly allocated encrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Encrypts data as per encryption method using specified
+initialization vector and key.  The key actually used is derived
+using the key usage.  If key usage is 0, no key derivation is used.
+The OUT buffer must be deallocated by the caller.  If IVOUT or
+IVOUTLEN is NULL, the updated IV is not saved anywhere.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_encrypt_iv_etype
+@anchor{shishi_encrypt_iv_etype}
+@deftypefun {int} {shishi_encrypt_iv_etype} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int32_t @var{etype}, const char * @var{iv}, size_t @var{ivlen}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to encrypt with.
+
+@var{keyusage}: integer specifying what this key is encrypting.
+
+@var{etype}: integer specifying what cipher to use.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+@var{in}: input array with data to encrypt.
+
+@var{inlen}: size of input array with data to encrypt.
+
+@var{out}: output array with newly allocated encrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Encrypts data as per encryption method using specified
+initialization vector and key.  The key actually used is derived
+using the key usage.  If key usage is 0, no key derivation is used.
+The OUT buffer must be deallocated by the caller.  The next IV is
+lost, see shishi_encrypt_ivupdate_etype if you need it.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_encrypt_etype
+@anchor{shishi_encrypt_etype}
+@deftypefun {int} {shishi_encrypt_etype} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int32_t @var{etype}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to encrypt with.
+
+@var{keyusage}: integer specifying what this key is encrypting.
+
+@var{etype}: integer specifying what cipher to use.
+
+@var{in}: input array with data to encrypt.
+
+@var{inlen}: size of input array with data to encrypt.
+
+@var{out}: output array with newly allocated encrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Encrypts data as per encryption method using specified
+initialization vector and key.  The key actually used is derived
+using the key usage.  If key usage is 0, no key derivation is used.
+The OUT buffer must be deallocated by the caller.  The default IV
+is used, see shishi_encrypt_iv_etype if you need to alter it. The
+next IV is lost, see shishi_encrypt_ivupdate_etype if you need it.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_encrypt_ivupdate
+@anchor{shishi_encrypt_ivupdate}
+@deftypefun {int} {shishi_encrypt_ivupdate} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, const char * @var{iv}, size_t @var{ivlen}, char ** @var{ivout}, size_t * @var{ivoutlen}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to encrypt with.
+
+@var{keyusage}: integer specifying what this key is encrypting.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+@var{ivout}: output array with newly allocated updated initialization vector.
+
+@var{ivoutlen}: size of output array with updated initialization vector.
+
+@var{in}: input array with data to encrypt.
+
+@var{inlen}: size of input array with data to encrypt.
+
+@var{out}: output array with newly allocated encrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Encrypts data using specified initialization vector and key.  The
+key actually used is derived using the key usage.  If key usage is
+0, no key derivation is used.  The OUT buffer must be deallocated
+by the caller.  If IVOUT or IVOUTLEN is NULL, the updated IV is not
+saved anywhere.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_encrypt_iv
+@anchor{shishi_encrypt_iv}
+@deftypefun {int} {shishi_encrypt_iv} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, const char * @var{iv}, size_t @var{ivlen}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to encrypt with.
+
+@var{keyusage}: integer specifying what this key is encrypting.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+@var{in}: input array with data to encrypt.
+
+@var{inlen}: size of input array with data to encrypt.
+
+@var{out}: output array with newly allocated encrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Encrypts data using specified initialization vector and key.  The
+key actually used is derived using the key usage.  If key usage is
+0, no key derivation is used.  The OUT buffer must be deallocated
+by the caller.  The next IV is lost, see shishi_encrypt_ivupdate if
+you need it.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_encrypt
+@anchor{shishi_encrypt}
+@deftypefun {int} {shishi_encrypt} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to encrypt with.
+
+@var{keyusage}: integer specifying what this key is encrypting.
+
+@var{in}: input array with data to encrypt.
+
+@var{inlen}: size of input array with data to encrypt.
+
+@var{out}: output array with newly allocated encrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Encrypts data using specified key.  The key actually used is
+derived using the key usage.  If key usage is 0, no key derivation
+is used.  The OUT buffer must be deallocated by the caller.  The
+default IV is used, see shishi_encrypt_iv if you need to alter it.
+The next IV is lost, see shishi_encrypt_ivupdate if you need it.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_decrypt_ivupdate_etype
+@anchor{shishi_decrypt_ivupdate_etype}
+@deftypefun {int} {shishi_decrypt_ivupdate_etype} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int32_t @var{etype}, const char * @var{iv}, size_t @var{ivlen}, char ** @var{ivout}, size_t * @var{ivoutlen}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to decrypt with.
+
+@var{keyusage}: integer specifying what this key is decrypting.
+
+@var{etype}: integer specifying what cipher to use.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+@var{ivout}: output array with newly allocated updated initialization vector.
+
+@var{ivoutlen}: size of output array with updated initialization vector.
+
+@var{in}: input array with data to decrypt.
+
+@var{inlen}: size of input array with data to decrypt.
+
+@var{out}: output array with newly allocated decrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Decrypts data as per encryption method using specified
+initialization vector and key.  The key actually used is derived
+using the key usage.  If key usage is 0, no key derivation is used.
+The OUT buffer must be deallocated by the caller.  If IVOUT or
+IVOUTLEN is NULL, the updated IV is not saved anywhere.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_decrypt_iv_etype
+@anchor{shishi_decrypt_iv_etype}
+@deftypefun {int} {shishi_decrypt_iv_etype} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int32_t @var{etype}, const char * @var{iv}, size_t @var{ivlen}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to decrypt with.
+
+@var{keyusage}: integer specifying what this key is decrypting.
+
+@var{etype}: integer specifying what cipher to use.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+@var{in}: input array with data to decrypt.
+
+@var{inlen}: size of input array with data to decrypt.
+
+@var{out}: output array with newly allocated decrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Decrypts data as per encryption method using specified
+initialization vector and key.  The key actually used is derived
+using the key usage.  If key usage is 0, no key derivation is used.
+The OUT buffer must be deallocated by the caller.  The next IV is
+lost, see shishi_decrypt_ivupdate_etype if you need it.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_decrypt_etype
+@anchor{shishi_decrypt_etype}
+@deftypefun {int} {shishi_decrypt_etype} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int32_t @var{etype}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to decrypt with.
+
+@var{keyusage}: integer specifying what this key is decrypting.
+
+@var{etype}: integer specifying what cipher to use.
+
+@var{in}: input array with data to decrypt.
+
+@var{inlen}: size of input array with data to decrypt.
+
+@var{out}: output array with newly allocated decrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Decrypts data as per encryption method using specified key.  The
+key actually used is derived using the key usage.  If key usage is
+0, no key derivation is used.  The OUT buffer must be deallocated
+by the caller.  The default IV is used, see shishi_decrypt_iv_etype
+if you need to alter it.  The next IV is lost, see
+shishi_decrypt_ivupdate_etype if you need it.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_decrypt_ivupdate
+@anchor{shishi_decrypt_ivupdate}
+@deftypefun {int} {shishi_decrypt_ivupdate} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, const char * @var{iv}, size_t @var{ivlen}, char ** @var{ivout}, size_t * @var{ivoutlen}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to decrypt with.
+
+@var{keyusage}: integer specifying what this key is decrypting.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+@var{ivout}: output array with newly allocated updated initialization vector.
+
+@var{ivoutlen}: size of output array with updated initialization vector.
+
+@var{in}: input array with data to decrypt.
+
+@var{inlen}: size of input array with data to decrypt.
+
+@var{out}: output array with newly allocated decrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Decrypts data using specified initialization vector and key.  The
+key actually used is derived using the key usage.  If key usage is
+0, no key derivation is used.  The OUT buffer must be deallocated
+by the caller.  If IVOUT or IVOUTLEN is NULL, the updated IV is not
+saved anywhere.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_decrypt_iv
+@anchor{shishi_decrypt_iv}
+@deftypefun {int} {shishi_decrypt_iv} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, const char * @var{iv}, size_t @var{ivlen}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to decrypt with.
+
+@var{keyusage}: integer specifying what this key is decrypting.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+@var{in}: input array with data to decrypt.
+
+@var{inlen}: size of input array with data to decrypt.
+
+@var{out}: output array with newly allocated decrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Decrypts data using specified initialization vector and key.  The
+key actually used is derived using the key usage.  If key usage is
+0, no key derivation is used.  The OUT buffer must be deallocated
+by the caller.  The next IV is lost, see
+shishi_decrypt_ivupdate_etype if you need it.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_decrypt
+@anchor{shishi_decrypt}
+@deftypefun {int} {shishi_decrypt} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to decrypt with.
+
+@var{keyusage}: integer specifying what this key is decrypting.
+
+@var{in}: input array with data to decrypt.
+
+@var{inlen}: size of input array with data to decrypt.
+
+@var{out}: output array with newly allocated decrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Decrypts data specified key.  The key actually used is derived
+using the key usage.  If key usage is 0, no key derivation is used.
+The OUT buffer must be deallocated by the caller.  The default IV
+is used, see shishi_decrypt_iv if you need to alter it.  The next
+IV is lost, see shishi_decrypt_ivupdate if you need it.
+
+Note that DECRYPT(ENCRYPT(data)) does not necessarily yield data
+exactly.  Some encryption types add pad to make the data fit into
+the block size of the encryption algorithm.  Furthermore, the pad
+is not guaranteed to look in any special way, although existing
+implementations often pad with the zero byte.  This means that you
+may have to "frame" data, so it is possible to infer the original
+length after decryption.  Compare ASN.1 DER which contains such
+information.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_n_fold
+@anchor{shishi_n_fold}
+@deftypefun {int} {shishi_n_fold} (Shishi * @var{handle}, const char * @var{in}, size_t @var{inlen}, char * @var{out}, size_t @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{in}: input array with data to decrypt.
+
+@var{inlen}: size of input array with data to decrypt ("M").
+
+@var{out}: output array with decrypted data.
+
+@var{outlen}: size of output array ("N").
+
+Fold data into a fixed length output array, with the intent to give
+each input bit approximately equal weight in determining the value
+of each output bit.
+
+The algorithm is from "A Better Key Schedule For DES-like Ciphers"
+by Uri Blumenthal and Steven M. Bellovin,
+http://www.research.att.com/~smb/papers/ides.pdf, although the
+sample vectors provided by the paper are incorrect.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_dr
+@anchor{shishi_dr}
+@deftypefun {int} {shishi_dr} (Shishi * @var{handle}, Shishi_key * @var{key}, const char * @var{prfconstant}, size_t @var{prfconstantlen}, char * @var{derivedrandom}, size_t @var{derivedrandomlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: input array with cryptographic key to use.
+
+@var{prfconstant}: input array with the constant string.
+
+@var{prfconstantlen}: size of input array with the constant string.
+
+@var{derivedrandom}: output array with derived random data.
+
+@var{derivedrandomlen}: size of output array with derived random data.
+
+Derive "random" data from a key and a constant thusly:
+DR(KEY, PRFCONSTANT) = TRUNCATE(DERIVEDRANDOMLEN,
+SHISHI_ENCRYPT(KEY, PRFCONSTANT)).
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_dk
+@anchor{shishi_dk}
+@deftypefun {int} {shishi_dk} (Shishi * @var{handle}, Shishi_key * @var{key}, const char * @var{prfconstant}, size_t @var{prfconstantlen}, Shishi_key * @var{derivedkey})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: input cryptographic key to use.
+
+@var{prfconstant}: input array with the constant string.
+
+@var{prfconstantlen}: size of input array with the constant string.
+
+@var{derivedkey}: pointer to derived key (allocated by caller).
+
+
+@strong{Derive a key from a key and a constant thusly:} DK(KEY, PRFCONSTANT) = SHISHI_RANDOM-TO-KEY(SHISHI_DR(KEY, PRFCONSTANT)).
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+

@@ -1,0 +1,85 @@
+@subheading shishi_crypto
+@anchor{shishi_crypto}
+@deftypefun {Shishi_crypto *} {shishi_crypto} (Shishi * @var{handle}, Shishi_key * @var{key}, int @var{keyusage}, int32_t @var{etype}, const char * @var{iv}, size_t @var{ivlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{key}: key to encrypt with.
+
+@var{keyusage}: integer specifying what this key will encrypt/decrypt.
+
+@var{etype}: integer specifying what cipher to use.
+
+@var{iv}: input array with initialization vector
+
+@var{ivlen}: size of input array with initialization vector.
+
+Initialize a crypto context.  This store a key, keyusage,
+encryption type and initialization vector in a "context", and the
+caller can then use this context to perform encryption via
+@code{shishi_crypto_encrypt()} and decryption via @code{shishi_crypto_encrypt()}
+without supplying all those details again.  The functions also
+takes care of propagating the IV between calls.
+
+When the application no longer need to use the context, it should
+deallocate resources associated with it by calling
+@code{shishi_crypto_done()}.
+
+@strong{Return value:} Return a newly allocated crypto context.
+@end deftypefun
+
+@subheading shishi_crypto_encrypt
+@anchor{shishi_crypto_encrypt}
+@deftypefun {int} {shishi_crypto_encrypt} (Shishi_crypto * @var{ctx}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{ctx}: crypto context as returned by @code{shishi_crypto()}.
+
+@var{in}: input array with data to encrypt.
+
+@var{inlen}: size of input array with data to encrypt.
+
+@var{out}: output array with newly allocated encrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Encrypt data, using information (e.g., key and initialization
+vector) from context.  The IV is updated inside the context after
+this call.
+
+When the application no longer need to use the context, it should
+deallocate resources associated with it by calling
+@code{shishi_crypto_done()}.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_crypto_decrypt
+@anchor{shishi_crypto_decrypt}
+@deftypefun {int} {shishi_crypto_decrypt} (Shishi_crypto * @var{ctx}, const char * @var{in}, size_t @var{inlen}, char ** @var{out}, size_t * @var{outlen})
+@var{ctx}: crypto context as returned by @code{shishi_crypto()}.
+
+@var{in}: input array with data to decrypt.
+
+@var{inlen}: size of input array with data to decrypt.
+
+@var{out}: output array with newly allocated decrypted data.
+
+@var{outlen}: output variable with size of newly allocated output array.
+
+Decrypt data, using information (e.g., key and initialization
+vector) from context.  The IV is updated inside the context after
+this call.
+
+When the application no longer need to use the context, it should
+deallocate resources associated with it by calling
+@code{shishi_crypto_done()}.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_crypto_close
+@anchor{shishi_crypto_close}
+@deftypefun {void} {shishi_crypto_close} (Shishi_crypto * @var{ctx})
+@var{ctx}: crypto context as returned by @code{shishi_crypto()}.
+
+Deallocate resources associated with the crypto context.
+@end deftypefun
+

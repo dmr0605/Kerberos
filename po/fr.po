@@ -1,0 +1,868 @@
+# French translations for shishi package.
+# Copyright (C) 2006 Free Software Foundation, Inc.
+# This file is distributed under the same license as the shishi package.
+# Daniel Dehennin <daniel.dehennin@baby-gnu.org>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: shishi 0.0.30\n"
+"Report-Msgid-Bugs-To: bug-shishi@gnu.org\n"
+"POT-Creation-Date: 2009-03-30 18:09+0200\n"
+"PO-Revision-Date: 2007-06-08 16:27+0200\n"
+"Last-Translator: Daniel Dehennin <daniel.dehennin@baby-gnu.org>\n"
+"Language-Team: French <traduc@traduc.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: lib/error.c:33
+msgid "Shishi success"
+msgstr "Shishi a réussi"
+
+#: lib/error.c:35
+msgid "Error in ASN.1 function (corrupt data?)"
+msgstr "Erreur dans la fonction ASN.1 (donnée corrompue ?)"
+
+#: lib/error.c:37
+msgid "Could not open file"
+msgstr "Ne peut pas ouvrir le fichier"
+
+#: lib/error.c:39
+msgid "File input/output error"
+msgstr "Erreur d'entrée/sortie sur le fichier"
+
+#: lib/error.c:41
+msgid "Memory allocation error in shishi library."
+msgstr "Erreur d'allocation mémoire dans la bibliothèque shishi."
+
+#: lib/error.c:43
+msgid "Base64 encoding or decoding failed. Data corrupt?"
+msgstr "L'encodage ou le décodage en base64 a échoué. Donnée corrompue ?"
+
+#: lib/error.c:45
+msgid "Client realm value differ between request and reply."
+msgstr "Le domaine du client diffère entre la requète et la réponse."
+
+#: lib/error.c:47
+msgid "Client name value differ between request and reply."
+msgstr "La valeur du nom du client diffère entre la requète et la réponse."
+
+#: lib/error.c:49
+msgid "Replay protection value (nonce) differ between request and reply."
+msgstr ""
+"La valeur de protection contre le rejeu (nonce) diffère entre la requète et "
+"la réponse."
+
+#: lib/error.c:51
+msgid ""
+"Keytype used to encrypt ticket doesn't match provided key. This usually "
+"indicates an internal application error."
+msgstr ""
+"Le type de clef utilisée pour chiffrer le ticket ne correspond pas à la clef "
+"fournie. Cela révèle généralement une erreur interne de l'application."
+
+#: lib/error.c:54
+msgid "Internal error in low-level crypto routines."
+msgstr "Erreur interne dans les routines cryptographiques de bas-niveau."
+
+#: lib/error.c:56
+msgid ""
+"Low-level cryptographic primitive failed.  This usually indicates bad "
+"password or data corruption."
+msgstr ""
+"Échec de la primitive cryptographique de bas-niveau. Cela révèle "
+"généralement un mauvais mot de passe ou une donnée corrompue."
+
+#: lib/error.c:59
+msgid ""
+"Timedout talking to KDC. This usually indicates a network or KDC address "
+"problem."
+msgstr ""
+"Délais d'attente de la demande dépassé lors de la communication avec le KDC. "
+"Cela révèle généralement un problème de réseau ou d'adresse de KDC."
+
+#: lib/error.c:62
+msgid "No KDC for realm known."
+msgstr "Auncun KDC pour le domaine n'est connu."
+
+#: lib/error.c:64
+msgid ""
+"The system call socket() failed.  This usually indicates that your system "
+"does not support the socket type."
+msgstr ""
+"L'appel système socket() a échoué. Cela révèle généralement le non support "
+"du type de socket par votre système."
+
+#: lib/error.c:67
+msgid ""
+"The system call bind() failed.  This usually indicates insufficient "
+"permissions."
+msgstr ""
+"L'appel système bind() a échoué. Cela révèle généralement des droits "
+"insuffisants."
+
+#: lib/error.c:70
+msgid "The system call sendto() failed."
+msgstr "L'appel système sendto() a échoué."
+
+#: lib/error.c:72
+msgid "The system call close() failed."
+msgstr "L'appel système close() a échoué."
+
+#: lib/error.c:74
+msgid "Server replied with an error message to request."
+msgstr "Le serveur a répondu avec un message d'erreur à la requète."
+
+#: lib/error.c:76
+msgid ""
+"Ticketset not initialized.  This usually indicates an internal application "
+"error."
+msgstr ""
+"Le cache de ticket n'est pas initialisé. Cela révèle généralement une erreur "
+"interne de l'application."
+
+#: lib/error.c:79
+msgid ""
+"Could not decrypt AP-REQ using provided key. This usually indicates an "
+"internal application error."
+msgstr ""
+"Ne peut pas déchiffrer AP-REQ avec la clef fournie. Cela révèle généralement "
+"une erreur interne de l'application."
+
+#: lib/error.c:82
+msgid ""
+"Could not decrypt Ticket using provided key. This usually indicates an "
+"internal application error."
+msgstr ""
+"Ne peut déchiffrer le Ticket avec la clef fournie. Cela révèle généralement "
+"une erreur interne de l'application."
+
+#: lib/error.c:85
+msgid "Failed to parse keytab file"
+msgstr "Échec de lecture du fichier keytab"
+
+#: lib/error.c:87
+msgid "Failed to parse credential cache file"
+msgstr "Échec de lecture du ficher de cache des mots de passe"
+
+#: lib/error.c:104
+msgid "Unknown error"
+msgstr "Erreur inconnue"
+
+#: lib/error.c:135 lib/krberror.c:1259
+msgid "No error"
+msgstr "Pas d'erreur"
+
+#: lib/error.c:265
+#, c-format
+msgid "libshishi: info: %s"
+msgstr "libshishi: info: %s"
+
+#: lib/error.c:269
+#, c-format
+msgid "libshishi: info: %s\n"
+msgstr "libshishi: info: %s\n"
+
+#: lib/error.c:303
+#, c-format
+msgid "libshishi: warning: %s"
+msgstr "libshishi: attention: %s"
+
+#: lib/error.c:307
+#, c-format
+msgid "libshishi: warning: %s\n"
+msgstr "libshishi: attention: %s\n"
+
+#: lib/krberror.c:137
+#, c-format
+msgid "Writing KRB-ERROR to %s...\n"
+msgstr "Écriture de KRB-ERROR sur %s...\n"
+
+#: lib/krberror.c:144
+#, c-format
+msgid "Writing KRB-ERROR in %s format...\n"
+msgstr "Écriture de KRB-ERROR dans le format %s...\n"
+
+#: lib/krberror.c:159
+#, c-format
+msgid "Writing KRB-ERROR to %s...done\n"
+msgstr "Écriture de KRB-ERROR sur %s... ok\n"
+
+#: lib/krberror.c:217
+#, c-format
+msgid "Reading KRB-ERROR from %s...\n"
+msgstr "Lecture de KRB-ERROR depuis %s...\n"
+
+#: lib/krberror.c:224
+#, c-format
+msgid "Reading KRB-ERROR in %s format...\n"
+msgstr "Lecture de KRB-ERROR dans le format %s...\n"
+
+#: lib/krberror.c:239
+#, c-format
+msgid "Reading KRB-ERROR from %s...done\n"
+msgstr "Lecture de KRB-ERROR depuis %s... ok\n"
+
+#: lib/krberror.c:1261
+msgid "Client's entry in database has expired"
+msgstr "L'entrée du client dans la base de donnée a expirée"
+
+#: lib/krberror.c:1263
+msgid "Server's entry in database has expired"
+msgstr "L'entrée du serveur dans la base de donnée a expirée"
+
+#: lib/krberror.c:1265
+msgid "Requested protocol version number not supported"
+msgstr "La version de protocole demandée n'est pas supportée"
+
+#: lib/krberror.c:1267
+msgid "Client's key encrypted in old master key"
+msgstr "Clef du client chiffrée avec l'ancienne clef maître"
+
+#: lib/krberror.c:1269
+msgid "Server's key encrypted in old master key"
+msgstr "Clef du serveur chiffrée avec l'ancienne clef maître"
+
+#: lib/krberror.c:1271
+msgid "Client not found in database"
+msgstr "Client non trouvé dans la base de données"
+
+#: lib/krberror.c:1273
+msgid "Server not found in database"
+msgstr "Serveur non trouvé dans la base de données"
+
+#: lib/krberror.c:1275
+msgid "Multiple principal entries in database"
+msgstr "Multiple entrées de principal dans la base de données"
+
+#: lib/krberror.c:1277
+msgid "The client or server has a null key"
+msgstr "Le client ou le serveur a une clef nulle"
+
+#: lib/krberror.c:1279
+msgid "Ticket not eligible for postdating"
+msgstr "Le ticket n'est pas éligible pour le post-datage"
+
+#: lib/krberror.c:1281
+msgid "Requested start time is later than end time"
+msgstr "La date de départ demandée est postérieure à la date de fin"
+
+#: lib/krberror.c:1283
+msgid "KDC policy rejects request"
+msgstr "La politique du KDC rejecte la requète"
+
+#: lib/krberror.c:1285
+msgid "KDC cannot accommodate requested option"
+msgstr "Le KDC ne peut pas adapter l'option demandée"
+
+#: lib/krberror.c:1287
+msgid "KDC has no support for encryption type"
+msgstr "Le KDC ne supporte pas le type de chiffrement"
+
+#: lib/krberror.c:1289
+msgid "KDC has no support for checksum type"
+msgstr "Le KDC ne supporte pas le type de somme de contôle"
+
+#: lib/krberror.c:1291
+msgid "KDC has no support for padata type"
+msgstr "Le KDC ne supporte pas le type padata"
+
+#: lib/krberror.c:1293
+msgid "KDC has no support for transited type"
+msgstr "KDC ne supporte pas le type transité"
+
+#: lib/krberror.c:1295
+msgid "Clients credentials have been revoked"
+msgstr "L'information d'authentification du client a été révoquée"
+
+#: lib/krberror.c:1297
+msgid "Credentials for server have been revoked"
+msgstr "L'information d'authentification pour le serveur a été révoquée"
+
+#: lib/krberror.c:1299
+msgid "TGT has been revoked"
+msgstr "Le TGT a été révoqué"
+
+#: lib/krberror.c:1301
+msgid "Client not yet valid - try again later"
+msgstr "Client encore invalide - essayez plus tard"
+
+#: lib/krberror.c:1303
+msgid "Server not yet valid - try again later"
+msgstr "Serveur encore invalide - essayez plus tard"
+
+#: lib/krberror.c:1305
+msgid "Password has expired "
+msgstr "Le mot de passe a expiré"
+
+#: lib/krberror.c:1307
+msgid "Pre-authentication information was invalid"
+msgstr "L'information de pré-authentification était invalide"
+
+#: lib/krberror.c:1309
+msgid "Additional pre-authentication required"
+msgstr "Pre-authentification supplémentaire requise"
+
+#: lib/krberror.c:1311
+msgid "Requested server and ticket don't match"
+msgstr "Le serveur et le ticket demandés ne correspondent pas"
+
+#: lib/krberror.c:1313
+msgid "Server principal valid for user2user only"
+msgstr "Identificant du serveur valide uniquement d'utilisateur à utilisateur"
+
+#: lib/krberror.c:1315
+msgid "KDC Policy rejects transited path"
+msgstr "La politique du KDC rejette les chemins transités"
+
+#: lib/krberror.c:1317
+msgid "A service is not available"
+msgstr "Un service n'est pas disponible"
+
+#: lib/krberror.c:1319
+msgid "Integrity check on decrypted field failed"
+msgstr "La vérification de l'intégrité d'un champ déchiffré a échouée"
+
+#: lib/krberror.c:1321
+msgid "Ticket expired"
+msgstr "Le ticket a expiré"
+
+#: lib/krberror.c:1323
+msgid "Ticket not yet valid"
+msgstr "Le ticket n'est pas encore valide"
+
+#: lib/krberror.c:1325
+msgid "Request is a replay"
+msgstr "La requète est un rejeu"
+
+#: lib/krberror.c:1327
+msgid "The ticket isn't for us"
+msgstr "Le ticket n'est pas pour nous"
+
+#: lib/krberror.c:1329
+msgid "Ticket and authenticator don't match"
+msgstr "Le ticket et l'authentifiant ne correspondent pas"
+
+#: lib/krberror.c:1331
+msgid "Clock skew too great"
+msgstr "Le décalage d'horloge est trop grand"
+
+#: lib/krberror.c:1333
+msgid "Incorrect net address"
+msgstr "Adresse réseau incorrecte"
+
+#: lib/krberror.c:1335
+msgid "Protocol version mismatch"
+msgstr "La version de protocole ne correspond pas"
+
+#: lib/krberror.c:1337
+msgid "Invalid msg type"
+msgstr "Type de message invalide"
+
+#: lib/krberror.c:1339
+msgid "Message stream modified"
+msgstr "Flux du message modifié"
+
+#: lib/krberror.c:1341
+msgid "Message out of order"
+msgstr "Message hors service"
+
+#: lib/krberror.c:1343
+msgid "Specified version of key is not available"
+msgstr "La version de clef spécifiée est indisponible"
+
+#: lib/krberror.c:1345
+msgid "Service key not available"
+msgstr "Le service de clef n'est pas disponible"
+
+#: lib/krberror.c:1347
+msgid "Mutual authentication failed"
+msgstr "L'authentification mutuelle a échoué"
+
+#: lib/krberror.c:1349
+msgid "Incorrect message direction"
+msgstr "Direction de message incorrecte"
+
+#: lib/krberror.c:1351
+msgid "Alternative authentication method required"
+msgstr "Méthode d'authentification alternative requise"
+
+#: lib/krberror.c:1353
+msgid "Incorrect sequence number in message"
+msgstr "Numéro de séquence incorrect dans le message"
+
+#: lib/krberror.c:1355
+msgid "Inappropriate type of checksum in message"
+msgstr "Type de somme de contrôle inapproprié dans le message"
+
+#: lib/krberror.c:1357
+msgid "Policy rejects transited path"
+msgstr "La politique rejette les chemins transités"
+
+#: lib/krberror.c:1359
+msgid "Response too big for UDP, retry with TCP"
+msgstr "Réponse trop grande pour UDP, réessayez avec TCP"
+
+#: lib/krberror.c:1361
+msgid "Generic error (description in e-text)"
+msgstr "Erreur générique (description dans e-text)"
+
+#: lib/krberror.c:1363
+msgid "Field is too long for this implementation"
+msgstr "Le champ est trop long pour cette implémentation"
+
+#: lib/krberror.c:1365 lib/krberror.c:1367 lib/krberror.c:1369
+#: lib/krberror.c:1371 lib/krberror.c:1373 lib/krberror.c:1381
+#: lib/krberror.c:1383 lib/krberror.c:1385 lib/krberror.c:1387
+#: lib/krberror.c:1389 lib/krberror.c:1391 lib/krberror.c:1393
+msgid "(pkinit)"
+msgstr "(pkinit)"
+
+#: lib/krberror.c:1375 lib/krberror.c:1377 lib/krberror.c:1379
+msgid "(user-to-user)"
+msgstr "(utilisateur-à-utilisateur)"
+
+#: lib/krberror.c:1420
+#, c-format
+msgid "Unknown KRB-ERROR error code %d."
+msgstr "Code d'erreur KRB-ERROR inconnu %d."
+
+#: db/err.c:33
+msgid "Shisa success"
+msgstr "Shisa a réussi"
+
+#: db/err.c:35
+msgid "Shisa could not be initialized."
+msgstr "Shisa n'a pas pu être initialisé."
+
+#: db/err.c:37
+msgid "The Shisa configuration file does not exist."
+msgstr "Le fichier de configuration de Shisa n'existe pas."
+
+#: db/err.c:39
+msgid "File I/O error for Shisa configuration file."
+msgstr "Erreur d'entrée/sortie sur le fichier de configuration de Shisa."
+
+#: db/err.c:41
+msgid "Syntax error in Shisa configuration token."
+msgstr "Erreur de syntaxe dans le paramètre de configuration de Shisa."
+
+#: db/err.c:43
+msgid "Shisa database could not be opened."
+msgstr "La base de données Shisa n'a pas pu être ouverte."
+
+#: db/err.c:45
+msgid "Error enumerating realms in database."
+msgstr "Erreur lors de l'énumération des domaines dans la base de données."
+
+#: db/err.c:47
+msgid "Error enumerating principals in database."
+msgstr "Erreur lors de l'énumération des identifiants dans la base de données."
+
+#: db/err.c:49
+msgid "Error enumerating keys in database."
+msgstr "Erreur lors de l'énumération des clefs dans la base de données."
+
+#: db/err.c:51
+msgid "Supplied realm does not exist."
+msgstr "Le domaine fourni n'existe pas."
+
+#: db/err.c:53
+msgid "Supplied principal does not exist."
+msgstr "L'identifiant fourni n'existe pas."
+
+#: db/err.c:55
+msgid "Principal is not associated with any matching key."
+msgstr "Le principal n'est associé avec aucune clef correspondante."
+
+#: db/err.c:57
+msgid "Error finding principal."
+msgstr "Erreur pour trouver l'identifiant."
+
+#: db/err.c:59
+msgid "Tried to add a realm that already exist."
+msgstr "Essai d'ajout d'un domaine déjà existant."
+
+#: db/err.c:61
+msgid "Error adding realm to database."
+msgstr "Erreur lors de l'ajout du domaine dans la base de données."
+
+#: db/err.c:63
+msgid "Tried to remove a non-empty realm."
+msgstr "Essai de suppression de domaine non vide."
+
+#: db/err.c:65
+msgid "Error removing realm from database."
+msgstr "Erreur lors de la suppression du domaine de la base de données."
+
+#: db/err.c:67
+msgid "Tried to add a principal that already exist."
+msgstr "Essai d'ajout d'un identifiant déjà existant."
+
+#: db/err.c:69
+msgid "Error adding principal to database."
+msgstr "Erreur lors de l'ajout de l'identifiant dans la base de données."
+
+#: db/err.c:71
+msgid "Error removing principal from database."
+msgstr "Erreur lors de la suppression de l'identifiant de la base de données."
+
+#: db/err.c:73
+msgid "Error adding key to principal."
+msgstr "Erreur lors de l'ajout de la clef à l'identifiant."
+
+#: db/err.c:75
+msgid "Error removing key from principal."
+msgstr "Erreur lors de la suppression de la clef de l'identifiant."
+
+#: db/err.c:77
+msgid "More than one key match given search criteria."
+msgstr "Plus d'une clef correspondent aux critères de recherche."
+
+#: db/err.c:98
+msgid "Unknown Shisa error"
+msgstr "Erreur de Shisa inconnue"
+
+#: db/err.c:118
+#, c-format
+msgid "shisa: %s\n"
+msgstr "shisa: %s\n"
+
+#: src/shisa.c:144
+msgid "Account is"
+msgstr "Le compte est"
+
+#: src/shisa.c:145
+msgid "DISABLED"
+msgstr "DÉSACTIVÉ"
+
+#: src/shisa.c:145
+msgid "enabled"
+msgstr "activé"
+
+#: src/shisa.c:146
+msgid "Current key version"
+msgstr "Version actuelle de clef"
+
+#: src/shisa.c:148
+msgid "Account not valid before"
+msgstr "Compte invalide avant"
+
+#: src/shisa.c:150
+msgid "Last initial TGT request at"
+msgstr "Dernière requète initiale TGT à"
+
+#: src/shisa.c:152
+msgid "Last initial request at"
+msgstr "Dernière requète initiale à"
+
+#: src/shisa.c:154
+msgid "Last TGT request at"
+msgstr "Dernière requète TGT à"
+
+#: src/shisa.c:156
+msgid "Last ticket renewal at"
+msgstr "Dernier renouvellement de ticket à"
+
+#: src/shisa.c:158
+msgid "Password expire on"
+msgstr "Le mot de passe expire à"
+
+#: src/shisa.c:160
+msgid "Account expire on"
+msgstr "Le compte expire à"
+
+#: src/shisa.c:173
+msgid "Key"
+msgstr "Clef"
+
+#: src/shisa.c:175
+msgid "\tEtype"
+msgstr "\tEtype"
+
+#: src/shisa.c:178
+msgid "\tPriority"
+msgstr "\tPriorité"
+
+#: src/shisa.c:182
+msgid "\tSalt"
+msgstr "\tSel"
+
+#: src/shisa.c:184
+msgid "\tS2K params"
+msgstr "\tParamètres S2K"
+
+#: src/shisa.c:187
+msgid "\tPassword"
+msgstr "\tMot de passe"
+
+#: src/shisa.c:190
+msgid "\tKey is"
+msgstr "\tLa clef est"
+
+#: src/shisa.c:190
+msgid "MISSING"
+msgstr "MANQUANTE"
+
+#: src/shisa.c:268
+#, c-format
+msgid "Adding realm `%s'...\n"
+msgstr "Ajout du domaine '%s'...\n"
+
+#: src/shisa.c:270
+#, c-format
+msgid "Adding principal `%s@%s'...\n"
+msgstr "Ajout de l'identifiant '%s@%s'...\n"
+
+#: src/shisa.c:281
+#, c-format
+msgid "Adding realm `%s'...done\n"
+msgstr "Ajout du domaine '%s'...ok\n"
+
+#: src/shisa.c:283
+#, c-format
+msgid "Adding principal `%s@%s'...done\n"
+msgstr "Ajout de l'identifiant '%s@%s'...ok\n"
+
+#: src/shisa.c:314
+#, c-format
+msgid "Removing realm `%s'...\n"
+msgstr "Suppression du domaine '%s'...\n"
+
+#: src/shisa.c:316
+#, c-format
+msgid "Removing principal `%s@%s'...\n"
+msgstr "Suppression de l'identifiant '%s@%s'...\n"
+
+#: src/shisa.c:324
+#, c-format
+msgid "Removing realm `%s'...done\n"
+msgstr "Suppression du domaine '%s'...ok\n"
+
+#: src/shisa.c:326
+#, c-format
+msgid "Removing principal `%s@%s'...done\n"
+msgstr "Suppression de l'identifiant '%s@%s'...ok\n"
+
+#: src/shisa.c:373
+#, c-format
+msgid "Password for `%s@%s': "
+msgstr "Mot de passe pour '%s@%s' : "
+
+#: src/shisa.c:376
+msgid "Password: "
+msgstr "Mot de passe : "
+
+#: src/shisa.c:378
+#, c-format
+msgid "Could not read password"
+msgstr "Ne peut lire le mot de passe"
+
+#: src/shisa.c:390
+#, c-format
+msgid ""
+"Could not create key (%d):\n"
+"%s"
+msgstr ""
+"Ne peut créer la clef (%d) :\n"
+"%s"
+
+#: src/shisa.c:425 src/shishi.c:60 src/shishid.c:493
+#, fuzzy, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Essayez '%s --help' pour plus d'informations."
+
+#. TRANSLATORS: The placeholder indicates the bug-reporting address
+#. for this package.  Please add _another line_ saying
+#. "Report translation bugs to <...>\n" with the address for translation
+#. bugs (typically your translation team's web or email address).
+#: src/shisa.c:434 src/shishi.c:69 src/shishid.c:502
+#, c-format
+msgid ""
+"\n"
+"Mandatory arguments to long options are mandatory for short options too.\n"
+"\n"
+"Report bugs to <%s>.\n"
+msgstr ""
+"\n"
+"Les arguments obligatoires au options longues sont aussi obligatoires pour\n"
+"les options courtes.\n"
+"\n"
+"Rapportez les anomalies à <%s>.\n"
+
+#: src/shisa.c:471 src/shishi.c:102
+#, c-format
+msgid "too many arguments"
+msgstr "Trop d'arguments"
+
+#: src/shisa.c:480
+#, c-format
+msgid ""
+"Initialization failed:\n"
+"%s"
+msgstr ""
+"L'initialisation a échoué :\n"
+"%s"
+
+#: src/shisa.c:485
+#, c-format
+msgid ""
+"Could not read library options `%s':\n"
+"%s"
+msgstr ""
+"Ne peut lire les options de bibliothèque '%s' :\n"
+"%s"
+
+#: src/shisa.c:490
+#, c-format
+msgid ""
+"Shishi initialization failed:\n"
+"%s"
+msgstr ""
+"L'initialisation de Shishi a échoué :\n"
+"%s"
+
+#: src/shisa.c:495
+#, c-format
+msgid ""
+"Could not set encryption type `%s':\n"
+"%s"
+msgstr ""
+"Ne peut définir le type de chiffrement '%s' :\n"
+"%s"
+
+#: src/shisa.c:503
+#, c-format
+msgid "too few arguments"
+msgstr "Trop peu d'arguments"
+
+#: src/shisa.c:534
+#, c-format
+msgid "Adding default realm `%s'...\n"
+msgstr "Ajout du domaine par défaut '%s'...\n"
+
+#: src/shisa.c:554
+#, c-format
+msgid "Modifying principal `%s@%s'...\n"
+msgstr "Modification de l'identifiant '%s@%s'...\n"
+
+#: src/shisa.c:561
+#, c-format
+msgid "Modifying principal `%s@%s'...done\n"
+msgstr "Modification de l'identifiant '%s@%s'...ok\n"
+
+#: src/shisa.c:565
+#, c-format
+msgid "Adding key to `%s@%s'...\n"
+msgstr "Ajout de la clef pour '%s@%s'...\n"
+
+#: src/shisa.c:575
+#, c-format
+msgid "Adding key to `%s@%s'...done\n"
+msgstr "Ajout de la clef pour '%s@%s'...ok\n"
+
+#: src/shisa.c:579
+#, c-format
+msgid "Removing key from `%s@%s'...\n"
+msgstr "Suppression de la clef pour '%s@%s'...\n"
+
+#: src/shisa.c:592
+#, c-format
+msgid "Removing key from `%s@%s'...done\n"
+msgstr "Suppression de la clef pour '%s@%s'...ok\n"
+
+#: src/shishi.c:113
+#, c-format
+msgid "Could not initialize libshishi."
+msgstr "Ne peut initialiser la libshishi."
+
+#: src/shishi.c:117
+#, c-format
+msgid "Could not set encryption types: %s"
+msgstr "Ne peut définir le type de chiffrement : %s"
+
+#: src/shishi.c:129
+#, c-format
+msgid "Could not parse client principal \"%s\": %s"
+msgstr "Ne peut lire l'identifiant du client \"%s\" : %s"
+
+#: src/shishi.c:142
+#, c-format
+msgid "Could not parse server principal \"%s\": %s"
+msgstr "Ne peut lire l'identifiant du serveur \"%s\" : %s"
+
+#: src/shishi.c:148
+#, c-format
+msgid "Could not read library options: %s"
+msgstr "Ne peut lire les options de bibliothèques : %s"
+
+#: src/shishi.c:166
+#, c-format
+msgid "Invalid --starttime date `%s'"
+msgstr "Date pour --starttime invalide '%s'"
+
+#: src/shishi.c:176
+#, c-format
+msgid "Invalid --endtime date `%s'"
+msgstr "Date pour --endtime invalide '%s'"
+
+#: src/shishi.c:186
+#, c-format
+msgid "Invalid --renew-till date `%s'"
+msgstr "Date pour --renew-till invalide '%s'"
+
+#: src/shishi.c:205
+#, c-format
+msgid "Tickets in `%s':\n"
+msgstr "Tickets dans '%s' :\n"
+
+#: src/shishi.c:210
+#, c-format
+msgid "Could not list tickets: %s"
+msgstr "Ne peut lister les tickets : %s"
+
+#: src/shishi.c:227
+#, c-format
+msgid "Removing ticket:\n"
+msgstr "Suppression du ticket :\n"
+
+#: src/shishi.c:234
+#, c-format
+msgid ""
+"Could not destroy ticket %d:\n"
+"%s"
+msgstr ""
+"Ne peut détruire le ticket %d :\n"
+"%s"
+
+#: src/shishi.c:244
+#, c-format
+msgid "No tickets removed.\n"
+msgstr "Aucun ticket supprimé.\n"
+
+#: src/shishi.c:246
+#, c-format
+msgid "%d ticket removed.\n"
+msgid_plural "%d tickets removed.\n"
+msgstr[0] "%d ticket supprimé.\n"
+msgstr[1] "%d tickets supprimés.\n"
+
+#: src/shishi.c:279
+#, c-format
+msgid "Could not get ticket as `%s' for `%s'."
+msgstr "Ne peut obtenir de ticket en tant que '%s' pour '%s'."
+
+#~ msgid ""
+#~ "\n"
+#~ "Mandatory arguments to long options are mandatory for short options too.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Les arguments obligatoires pour les options longues le sont aussi pour "
+#~ "les\n"
+#~ "options courtes.\n"
+#~ "\n"
+
+#~ msgid "Report bugs to <%s>.\n"
+#~ msgstr "Rapportez les bugs à <%s>.\n"

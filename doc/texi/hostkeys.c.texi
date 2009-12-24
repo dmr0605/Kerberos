@@ -1,0 +1,88 @@
+@subheading shishi_hostkeys_default_file
+@anchor{shishi_hostkeys_default_file}
+@deftypefun {const char *} {shishi_hostkeys_default_file} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Get file name of default host key file.
+
+@strong{Return value:} Returns the default host key filename used in the
+library.  (Not a copy of it, so don't modify or deallocate it.)
+@end deftypefun
+
+@subheading shishi_hostkeys_default_file_set
+@anchor{shishi_hostkeys_default_file_set}
+@deftypefun {void} {shishi_hostkeys_default_file_set} (Shishi * @var{handle}, const char * @var{hostkeysfile})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{hostkeysfile}: string with new default hostkeys file name, or
+NULL to reset to default.
+
+Set the default host key filename used in the library.  The
+string is copied into the library, so you can dispose of the
+variable immediately after calling this function.
+@end deftypefun
+
+@subheading shishi_hostkeys_for_server
+@anchor{shishi_hostkeys_for_server}
+@deftypefun {Shishi_key *} {shishi_hostkeys_for_server} (Shishi * @var{handle}, const char * @var{server})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{server}: server name to get key for
+
+Get host key for @code{server}.
+
+@strong{Return value:} Returns the key for specific server, read from the
+default host keys file (see @code{shishi_hostkeys_default_file()}), or
+NULL if no key could be found or an error encountered.
+@end deftypefun
+
+@subheading shishi_hostkeys_for_serverrealm
+@anchor{shishi_hostkeys_for_serverrealm}
+@deftypefun {Shishi_key *} {shishi_hostkeys_for_serverrealm} (Shishi * @var{handle}, const char * @var{server}, const char * @var{realm})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{server}: server name to get key for
+
+@var{realm}: realm of server to get key for.
+
+Get host key for @code{server} in @code{realm}.
+
+@strong{Return value:} Returns the key for specific server and realm, read
+from the default host keys file (see
+@code{shishi_hostkeys_default_file()}), or NULL if no key could be found
+or an error encountered.
+@end deftypefun
+
+@subheading shishi_hostkeys_for_localservicerealm
+@anchor{shishi_hostkeys_for_localservicerealm}
+@deftypefun {Shishi_key *} {shishi_hostkeys_for_localservicerealm} (Shishi * @var{handle}, const char * @var{service}, const char * @var{realm})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{service}: service to get key for.
+
+@var{realm}: realm of server to get key for, or NULL for default realm.
+
+Get host key for @code{service} on current host in @code{realm}.
+
+@strong{Return value:} Returns the key for the server
+"SERVICE/HOSTNAME@code{REALM}" (where HOSTNAME is the current system's
+hostname), read from the default host keys file (see
+@code{shishi_hostkeys_default_file()}), or NULL if no key could be found
+or an error encountered.
+@end deftypefun
+
+@subheading shishi_hostkeys_for_localservice
+@anchor{shishi_hostkeys_for_localservice}
+@deftypefun {Shishi_key *} {shishi_hostkeys_for_localservice} (Shishi * @var{handle}, const char * @var{service})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{service}: service to get key for.
+
+Get host key for @code{service} on current host in default realm.
+
+@strong{Return value:} Returns the key for the server "SERVICE/HOSTNAME"
+(where HOSTNAME is the current system's hostname), read from the
+default host keys file (see @code{shishi_hostkeys_default_file()}), or
+NULL if no key could be found or an error encountered.
+@end deftypefun
+

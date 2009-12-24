@@ -1,0 +1,41 @@
+## Process this file with gengetopt to produce shishid_cmd.*
+# Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Simon Josefsson.
+#
+# This file is part of Shishi.
+#
+# Shishi is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# Shishi is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Shishi; if not, see http://www.gnu.org/licenses or write
+# to the Free Software Foundation, Inc., 51 Franklin Street, Fifth
+# Floor, Boston, MA 02110-1301, USA.
+
+package "shishid"
+
+purpose "Shishi Key Distribution Center server."
+
+section "Commands"
+
+option "listen" l "Sockets to listen for queries on.  Family is `IPv4' or `IPv6', if absent the family is decided by gethostbyname(ADDR). An address of `*' indicates all addresses on the local host. The default is `IPv4:*:kerberos/udp, IPv4:*:kerberos/tcp, IPv6:*:kerberos/udp, IPv6:*:kerberos/tcp'." string typestr="[FAMILY:]ADDR:PORT/TYPE" no
+option "setuid" u "After binding socket, set user identity." string typestr="NAME" no
+
+section "TLS settings"
+
+option "x509cafile" - "X.509 certificate authorities used to verify client certificates, in PEM format." string typestr="FILE" no
+option "x509certfile" - "X.509 server certificate, in PEM format." string typestr="FILE" no
+option "x509crlfile" - "X.509 certificate revocation list to check for revoked client certificates, in PEM format." string typestr="FILE" no
+option "x509keyfile" - "X.509 server certificate key, in PEM format." string typestr="FILE" no
+option "resume-limit" - "Keep track of up to this many TLS sessions for resume purposes (0 to disable TLS resume)." short default="50" no
+section "Other options"
+
+option "configuration-file" c "Use specified configuration file." string typestr="FILE" no
+option "verbose" v "Produce verbose output.\nUse multiple times to increase amount of information." no multiple
+option "quiet" q "Don't produce any diagnostic output.\n" flag off

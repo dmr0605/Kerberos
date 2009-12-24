@@ -1,0 +1,2472 @@
+This is shishi.info, produced by makeinfo version 4.13 from shishi.texi.
+
+This manual is last updated 4 March 2009 for version 0.0.39 of Shishi.
+
+   Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Simon
+Josefsson.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled "GNU Free Documentation License".
+
+INFO-DIR-SECTION GNU utilities
+START-INFO-DIR-ENTRY
+* shishi: (shishi).		A Kerberos 5 implementation
+END-INFO-DIR-ENTRY
+
+INFO-DIR-SECTION GNU Libraries
+START-INFO-DIR-ENTRY
+* libshishi: (shishi).		Library implementing Kerberos 5.
+END-INFO-DIR-ENTRY
+
+
+File: shishi.info,  Node: GNU Free Documentation License,  Next: GNU GPL,  Up: Copying Information
+
+C.1 GNU Free Documentation License
+==================================
+
+                     Version 1.3, 3 November 2008
+
+     Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+     `http://fsf.org/'
+
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+
+  0. PREAMBLE
+
+     The purpose of this License is to make a manual, textbook, or other
+     functional and useful document "free" in the sense of freedom: to
+     assure everyone the effective freedom to copy and redistribute it,
+     with or without modifying it, either commercially or
+     noncommercially.  Secondarily, this License preserves for the
+     author and publisher a way to get credit for their work, while not
+     being considered responsible for modifications made by others.
+
+     This License is a kind of "copyleft", which means that derivative
+     works of the document must themselves be free in the same sense.
+     It complements the GNU General Public License, which is a copyleft
+     license designed for free software.
+
+     We have designed this License in order to use it for manuals for
+     free software, because free software needs free documentation: a
+     free program should come with manuals providing the same freedoms
+     that the software does.  But this License is not limited to
+     software manuals; it can be used for any textual work, regardless
+     of subject matter or whether it is published as a printed book.
+     We recommend this License principally for works whose purpose is
+     instruction or reference.
+
+  1. APPLICABILITY AND DEFINITIONS
+
+     This License applies to any manual or other work, in any medium,
+     that contains a notice placed by the copyright holder saying it
+     can be distributed under the terms of this License.  Such a notice
+     grants a world-wide, royalty-free license, unlimited in duration,
+     to use that work under the conditions stated herein.  The
+     "Document", below, refers to any such manual or work.  Any member
+     of the public is a licensee, and is addressed as "you".  You
+     accept the license if you copy, modify or distribute the work in a
+     way requiring permission under copyright law.
+
+     A "Modified Version" of the Document means any work containing the
+     Document or a portion of it, either copied verbatim, or with
+     modifications and/or translated into another language.
+
+     A "Secondary Section" is a named appendix or a front-matter section
+     of the Document that deals exclusively with the relationship of the
+     publishers or authors of the Document to the Document's overall
+     subject (or to related matters) and contains nothing that could
+     fall directly within that overall subject.  (Thus, if the Document
+     is in part a textbook of mathematics, a Secondary Section may not
+     explain any mathematics.)  The relationship could be a matter of
+     historical connection with the subject or with related matters, or
+     of legal, commercial, philosophical, ethical or political position
+     regarding them.
+
+     The "Invariant Sections" are certain Secondary Sections whose
+     titles are designated, as being those of Invariant Sections, in
+     the notice that says that the Document is released under this
+     License.  If a section does not fit the above definition of
+     Secondary then it is not allowed to be designated as Invariant.
+     The Document may contain zero Invariant Sections.  If the Document
+     does not identify any Invariant Sections then there are none.
+
+     The "Cover Texts" are certain short passages of text that are
+     listed, as Front-Cover Texts or Back-Cover Texts, in the notice
+     that says that the Document is released under this License.  A
+     Front-Cover Text may be at most 5 words, and a Back-Cover Text may
+     be at most 25 words.
+
+     A "Transparent" copy of the Document means a machine-readable copy,
+     represented in a format whose specification is available to the
+     general public, that is suitable for revising the document
+     straightforwardly with generic text editors or (for images
+     composed of pixels) generic paint programs or (for drawings) some
+     widely available drawing editor, and that is suitable for input to
+     text formatters or for automatic translation to a variety of
+     formats suitable for input to text formatters.  A copy made in an
+     otherwise Transparent file format whose markup, or absence of
+     markup, has been arranged to thwart or discourage subsequent
+     modification by readers is not Transparent.  An image format is
+     not Transparent if used for any substantial amount of text.  A
+     copy that is not "Transparent" is called "Opaque".
+
+     Examples of suitable formats for Transparent copies include plain
+     ASCII without markup, Texinfo input format, LaTeX input format,
+     SGML or XML using a publicly available DTD, and
+     standard-conforming simple HTML, PostScript or PDF designed for
+     human modification.  Examples of transparent image formats include
+     PNG, XCF and JPG.  Opaque formats include proprietary formats that
+     can be read and edited only by proprietary word processors, SGML or
+     XML for which the DTD and/or processing tools are not generally
+     available, and the machine-generated HTML, PostScript or PDF
+     produced by some word processors for output purposes only.
+
+     The "Title Page" means, for a printed book, the title page itself,
+     plus such following pages as are needed to hold, legibly, the
+     material this License requires to appear in the title page.  For
+     works in formats which do not have any title page as such, "Title
+     Page" means the text near the most prominent appearance of the
+     work's title, preceding the beginning of the body of the text.
+
+     The "publisher" means any person or entity that distributes copies
+     of the Document to the public.
+
+     A section "Entitled XYZ" means a named subunit of the Document
+     whose title either is precisely XYZ or contains XYZ in parentheses
+     following text that translates XYZ in another language.  (Here XYZ
+     stands for a specific section name mentioned below, such as
+     "Acknowledgements", "Dedications", "Endorsements", or "History".)
+     To "Preserve the Title" of such a section when you modify the
+     Document means that it remains a section "Entitled XYZ" according
+     to this definition.
+
+     The Document may include Warranty Disclaimers next to the notice
+     which states that this License applies to the Document.  These
+     Warranty Disclaimers are considered to be included by reference in
+     this License, but only as regards disclaiming warranties: any other
+     implication that these Warranty Disclaimers may have is void and
+     has no effect on the meaning of this License.
+
+  2. VERBATIM COPYING
+
+     You may copy and distribute the Document in any medium, either
+     commercially or noncommercially, provided that this License, the
+     copyright notices, and the license notice saying this License
+     applies to the Document are reproduced in all copies, and that you
+     add no other conditions whatsoever to those of this License.  You
+     may not use technical measures to obstruct or control the reading
+     or further copying of the copies you make or distribute.  However,
+     you may accept compensation in exchange for copies.  If you
+     distribute a large enough number of copies you must also follow
+     the conditions in section 3.
+
+     You may also lend copies, under the same conditions stated above,
+     and you may publicly display copies.
+
+  3. COPYING IN QUANTITY
+
+     If you publish printed copies (or copies in media that commonly
+     have printed covers) of the Document, numbering more than 100, and
+     the Document's license notice requires Cover Texts, you must
+     enclose the copies in covers that carry, clearly and legibly, all
+     these Cover Texts: Front-Cover Texts on the front cover, and
+     Back-Cover Texts on the back cover.  Both covers must also clearly
+     and legibly identify you as the publisher of these copies.  The
+     front cover must present the full title with all words of the
+     title equally prominent and visible.  You may add other material
+     on the covers in addition.  Copying with changes limited to the
+     covers, as long as they preserve the title of the Document and
+     satisfy these conditions, can be treated as verbatim copying in
+     other respects.
+
+     If the required texts for either cover are too voluminous to fit
+     legibly, you should put the first ones listed (as many as fit
+     reasonably) on the actual cover, and continue the rest onto
+     adjacent pages.
+
+     If you publish or distribute Opaque copies of the Document
+     numbering more than 100, you must either include a
+     machine-readable Transparent copy along with each Opaque copy, or
+     state in or with each Opaque copy a computer-network location from
+     which the general network-using public has access to download
+     using public-standard network protocols a complete Transparent
+     copy of the Document, free of added material.  If you use the
+     latter option, you must take reasonably prudent steps, when you
+     begin distribution of Opaque copies in quantity, to ensure that
+     this Transparent copy will remain thus accessible at the stated
+     location until at least one year after the last time you
+     distribute an Opaque copy (directly or through your agents or
+     retailers) of that edition to the public.
+
+     It is requested, but not required, that you contact the authors of
+     the Document well before redistributing any large number of
+     copies, to give them a chance to provide you with an updated
+     version of the Document.
+
+  4. MODIFICATIONS
+
+     You may copy and distribute a Modified Version of the Document
+     under the conditions of sections 2 and 3 above, provided that you
+     release the Modified Version under precisely this License, with
+     the Modified Version filling the role of the Document, thus
+     licensing distribution and modification of the Modified Version to
+     whoever possesses a copy of it.  In addition, you must do these
+     things in the Modified Version:
+
+       A. Use in the Title Page (and on the covers, if any) a title
+          distinct from that of the Document, and from those of
+          previous versions (which should, if there were any, be listed
+          in the History section of the Document).  You may use the
+          same title as a previous version if the original publisher of
+          that version gives permission.
+
+       B. List on the Title Page, as authors, one or more persons or
+          entities responsible for authorship of the modifications in
+          the Modified Version, together with at least five of the
+          principal authors of the Document (all of its principal
+          authors, if it has fewer than five), unless they release you
+          from this requirement.
+
+       C. State on the Title page the name of the publisher of the
+          Modified Version, as the publisher.
+
+       D. Preserve all the copyright notices of the Document.
+
+       E. Add an appropriate copyright notice for your modifications
+          adjacent to the other copyright notices.
+
+       F. Include, immediately after the copyright notices, a license
+          notice giving the public permission to use the Modified
+          Version under the terms of this License, in the form shown in
+          the Addendum below.
+
+       G. Preserve in that license notice the full lists of Invariant
+          Sections and required Cover Texts given in the Document's
+          license notice.
+
+       H. Include an unaltered copy of this License.
+
+       I. Preserve the section Entitled "History", Preserve its Title,
+          and add to it an item stating at least the title, year, new
+          authors, and publisher of the Modified Version as given on
+          the Title Page.  If there is no section Entitled "History" in
+          the Document, create one stating the title, year, authors,
+          and publisher of the Document as given on its Title Page,
+          then add an item describing the Modified Version as stated in
+          the previous sentence.
+
+       J. Preserve the network location, if any, given in the Document
+          for public access to a Transparent copy of the Document, and
+          likewise the network locations given in the Document for
+          previous versions it was based on.  These may be placed in
+          the "History" section.  You may omit a network location for a
+          work that was published at least four years before the
+          Document itself, or if the original publisher of the version
+          it refers to gives permission.
+
+       K. For any section Entitled "Acknowledgements" or "Dedications",
+          Preserve the Title of the section, and preserve in the
+          section all the substance and tone of each of the contributor
+          acknowledgements and/or dedications given therein.
+
+       L. Preserve all the Invariant Sections of the Document,
+          unaltered in their text and in their titles.  Section numbers
+          or the equivalent are not considered part of the section
+          titles.
+
+       M. Delete any section Entitled "Endorsements".  Such a section
+          may not be included in the Modified Version.
+
+       N. Do not retitle any existing section to be Entitled
+          "Endorsements" or to conflict in title with any Invariant
+          Section.
+
+       O. Preserve any Warranty Disclaimers.
+
+     If the Modified Version includes new front-matter sections or
+     appendices that qualify as Secondary Sections and contain no
+     material copied from the Document, you may at your option
+     designate some or all of these sections as invariant.  To do this,
+     add their titles to the list of Invariant Sections in the Modified
+     Version's license notice.  These titles must be distinct from any
+     other section titles.
+
+     You may add a section Entitled "Endorsements", provided it contains
+     nothing but endorsements of your Modified Version by various
+     parties--for example, statements of peer review or that the text
+     has been approved by an organization as the authoritative
+     definition of a standard.
+
+     You may add a passage of up to five words as a Front-Cover Text,
+     and a passage of up to 25 words as a Back-Cover Text, to the end
+     of the list of Cover Texts in the Modified Version.  Only one
+     passage of Front-Cover Text and one of Back-Cover Text may be
+     added by (or through arrangements made by) any one entity.  If the
+     Document already includes a cover text for the same cover,
+     previously added by you or by arrangement made by the same entity
+     you are acting on behalf of, you may not add another; but you may
+     replace the old one, on explicit permission from the previous
+     publisher that added the old one.
+
+     The author(s) and publisher(s) of the Document do not by this
+     License give permission to use their names for publicity for or to
+     assert or imply endorsement of any Modified Version.
+
+  5. COMBINING DOCUMENTS
+
+     You may combine the Document with other documents released under
+     this License, under the terms defined in section 4 above for
+     modified versions, provided that you include in the combination
+     all of the Invariant Sections of all of the original documents,
+     unmodified, and list them all as Invariant Sections of your
+     combined work in its license notice, and that you preserve all
+     their Warranty Disclaimers.
+
+     The combined work need only contain one copy of this License, and
+     multiple identical Invariant Sections may be replaced with a single
+     copy.  If there are multiple Invariant Sections with the same name
+     but different contents, make the title of each such section unique
+     by adding at the end of it, in parentheses, the name of the
+     original author or publisher of that section if known, or else a
+     unique number.  Make the same adjustment to the section titles in
+     the list of Invariant Sections in the license notice of the
+     combined work.
+
+     In the combination, you must combine any sections Entitled
+     "History" in the various original documents, forming one section
+     Entitled "History"; likewise combine any sections Entitled
+     "Acknowledgements", and any sections Entitled "Dedications".  You
+     must delete all sections Entitled "Endorsements."
+
+  6. COLLECTIONS OF DOCUMENTS
+
+     You may make a collection consisting of the Document and other
+     documents released under this License, and replace the individual
+     copies of this License in the various documents with a single copy
+     that is included in the collection, provided that you follow the
+     rules of this License for verbatim copying of each of the
+     documents in all other respects.
+
+     You may extract a single document from such a collection, and
+     distribute it individually under this License, provided you insert
+     a copy of this License into the extracted document, and follow
+     this License in all other respects regarding verbatim copying of
+     that document.
+
+  7. AGGREGATION WITH INDEPENDENT WORKS
+
+     A compilation of the Document or its derivatives with other
+     separate and independent documents or works, in or on a volume of
+     a storage or distribution medium, is called an "aggregate" if the
+     copyright resulting from the compilation is not used to limit the
+     legal rights of the compilation's users beyond what the individual
+     works permit.  When the Document is included in an aggregate, this
+     License does not apply to the other works in the aggregate which
+     are not themselves derivative works of the Document.
+
+     If the Cover Text requirement of section 3 is applicable to these
+     copies of the Document, then if the Document is less than one half
+     of the entire aggregate, the Document's Cover Texts may be placed
+     on covers that bracket the Document within the aggregate, or the
+     electronic equivalent of covers if the Document is in electronic
+     form.  Otherwise they must appear on printed covers that bracket
+     the whole aggregate.
+
+  8. TRANSLATION
+
+     Translation is considered a kind of modification, so you may
+     distribute translations of the Document under the terms of section
+     4.  Replacing Invariant Sections with translations requires special
+     permission from their copyright holders, but you may include
+     translations of some or all Invariant Sections in addition to the
+     original versions of these Invariant Sections.  You may include a
+     translation of this License, and all the license notices in the
+     Document, and any Warranty Disclaimers, provided that you also
+     include the original English version of this License and the
+     original versions of those notices and disclaimers.  In case of a
+     disagreement between the translation and the original version of
+     this License or a notice or disclaimer, the original version will
+     prevail.
+
+     If a section in the Document is Entitled "Acknowledgements",
+     "Dedications", or "History", the requirement (section 4) to
+     Preserve its Title (section 1) will typically require changing the
+     actual title.
+
+  9. TERMINATION
+
+     You may not copy, modify, sublicense, or distribute the Document
+     except as expressly provided under this License.  Any attempt
+     otherwise to copy, modify, sublicense, or distribute it is void,
+     and will automatically terminate your rights under this License.
+
+     However, if you cease all violation of this License, then your
+     license from a particular copyright holder is reinstated (a)
+     provisionally, unless and until the copyright holder explicitly
+     and finally terminates your license, and (b) permanently, if the
+     copyright holder fails to notify you of the violation by some
+     reasonable means prior to 60 days after the cessation.
+
+     Moreover, your license from a particular copyright holder is
+     reinstated permanently if the copyright holder notifies you of the
+     violation by some reasonable means, this is the first time you have
+     received notice of violation of this License (for any work) from
+     that copyright holder, and you cure the violation prior to 30 days
+     after your receipt of the notice.
+
+     Termination of your rights under this section does not terminate
+     the licenses of parties who have received copies or rights from
+     you under this License.  If your rights have been terminated and
+     not permanently reinstated, receipt of a copy of some or all of
+     the same material does not give you any rights to use it.
+
+ 10. FUTURE REVISIONS OF THIS LICENSE
+
+     The Free Software Foundation may publish new, revised versions of
+     the GNU Free Documentation License from time to time.  Such new
+     versions will be similar in spirit to the present version, but may
+     differ in detail to address new problems or concerns.  See
+     `http://www.gnu.org/copyleft/'.
+
+     Each version of the License is given a distinguishing version
+     number.  If the Document specifies that a particular numbered
+     version of this License "or any later version" applies to it, you
+     have the option of following the terms and conditions either of
+     that specified version or of any later version that has been
+     published (not as a draft) by the Free Software Foundation.  If
+     the Document does not specify a version number of this License,
+     you may choose any version ever published (not as a draft) by the
+     Free Software Foundation.  If the Document specifies that a proxy
+     can decide which future versions of this License can be used, that
+     proxy's public statement of acceptance of a version permanently
+     authorizes you to choose that version for the Document.
+
+ 11. RELICENSING
+
+     "Massive Multiauthor Collaboration Site" (or "MMC Site") means any
+     World Wide Web server that publishes copyrightable works and also
+     provides prominent facilities for anybody to edit those works.  A
+     public wiki that anybody can edit is an example of such a server.
+     A "Massive Multiauthor Collaboration" (or "MMC") contained in the
+     site means any set of copyrightable works thus published on the MMC
+     site.
+
+     "CC-BY-SA" means the Creative Commons Attribution-Share Alike 3.0
+     license published by Creative Commons Corporation, a not-for-profit
+     corporation with a principal place of business in San Francisco,
+     California, as well as future copyleft versions of that license
+     published by that same organization.
+
+     "Incorporate" means to publish or republish a Document, in whole or
+     in part, as part of another Document.
+
+     An MMC is "eligible for relicensing" if it is licensed under this
+     License, and if all works that were first published under this
+     License somewhere other than this MMC, and subsequently
+     incorporated in whole or in part into the MMC, (1) had no cover
+     texts or invariant sections, and (2) were thus incorporated prior
+     to November 1, 2008.
+
+     The operator of an MMC Site may republish an MMC contained in the
+     site under CC-BY-SA on the same site at any time before August 1,
+     2009, provided the MMC is eligible for relicensing.
+
+
+ADDENDUM: How to use this License for your documents
+====================================================
+
+To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and license
+notices just after the title page:
+
+       Copyright (C)  YEAR  YOUR NAME.
+       Permission is granted to copy, distribute and/or modify this document
+       under the terms of the GNU Free Documentation License, Version 1.3
+       or any later version published by the Free Software Foundation;
+       with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+       Texts.  A copy of the license is included in the section entitled ``GNU
+       Free Documentation License''.
+
+   If you have Invariant Sections, Front-Cover Texts and Back-Cover
+Texts, replace the "with...Texts." line with this:
+
+         with the Invariant Sections being LIST THEIR TITLES, with
+         the Front-Cover Texts being LIST, and with the Back-Cover Texts
+         being LIST.
+
+   If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+   If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License, to
+permit their use in free software.
+
+
+File: shishi.info,  Node: GNU GPL,  Prev: GNU Free Documentation License,  Up: Copying Information
+
+C.2 GNU General Public License
+==============================
+
+                        Version 3, 29 June 2007
+
+     Copyright (C) 2007 Free Software Foundation, Inc. `http://fsf.org/'
+
+     Everyone is permitted to copy and distribute verbatim copies of this
+     license document, but changing it is not allowed.
+
+Preamble
+========
+
+The GNU General Public License is a free, copyleft license for software
+and other kinds of works.
+
+   The licenses for most software and other practical works are designed
+to take away your freedom to share and change the works.  By contrast,
+the GNU General Public License is intended to guarantee your freedom to
+share and change all versions of a program--to make sure it remains
+free software for all its users.  We, the Free Software Foundation, use
+the GNU General Public License for most of our software; it applies
+also to any other work released this way by its authors.  You can apply
+it to your programs, too.
+
+   When we speak of free software, we are referring to freedom, not
+price.  Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+them if you wish), that you receive source code or can get it if you
+want it, that you can change the software or use pieces of it in new
+free programs, and that you know you can do these things.
+
+   To protect your rights, we need to prevent others from denying you
+these rights or asking you to surrender the rights.  Therefore, you
+have certain responsibilities if you distribute copies of the software,
+or if you modify it: responsibilities to respect the freedom of others.
+
+   For example, if you distribute copies of such a program, whether
+gratis or for a fee, you must pass on to the recipients the same
+freedoms that you received.  You must make sure that they, too, receive
+or can get the source code.  And you must show them these terms so they
+know their rights.
+
+   Developers that use the GNU GPL protect your rights with two steps:
+(1) assert copyright on the software, and (2) offer you this License
+giving you legal permission to copy, distribute and/or modify it.
+
+   For the developers' and authors' protection, the GPL clearly explains
+that there is no warranty for this free software.  For both users' and
+authors' sake, the GPL requires that modified versions be marked as
+changed, so that their problems will not be attributed erroneously to
+authors of previous versions.
+
+   Some devices are designed to deny users access to install or run
+modified versions of the software inside them, although the
+manufacturer can do so.  This is fundamentally incompatible with the
+aim of protecting users' freedom to change the software.  The
+systematic pattern of such abuse occurs in the area of products for
+individuals to use, which is precisely where it is most unacceptable.
+Therefore, we have designed this version of the GPL to prohibit the
+practice for those products.  If such problems arise substantially in
+other domains, we stand ready to extend this provision to those domains
+in future versions of the GPL, as needed to protect the freedom of
+users.
+
+   Finally, every program is threatened constantly by software patents.
+States should not allow patents to restrict development and use of
+software on general-purpose computers, but in those that do, we wish to
+avoid the special danger that patents applied to a free program could
+make it effectively proprietary.  To prevent this, the GPL assures that
+patents cannot be used to render the program non-free.
+
+   The precise terms and conditions for copying, distribution and
+modification follow.
+
+TERMS AND CONDITIONS
+====================
+
+  0. Definitions.
+
+     "This License" refers to version 3 of the GNU General Public
+     License.
+
+     "Copyright" also means copyright-like laws that apply to other
+     kinds of works, such as semiconductor masks.
+
+     "The Program" refers to any copyrightable work licensed under this
+     License.  Each licensee is addressed as "you".  "Licensees" and
+     "recipients" may be individuals or organizations.
+
+     To "modify" a work means to copy from or adapt all or part of the
+     work in a fashion requiring copyright permission, other than the
+     making of an exact copy.  The resulting work is called a "modified
+     version" of the earlier work or a work "based on" the earlier work.
+
+     A "covered work" means either the unmodified Program or a work
+     based on the Program.
+
+     To "propagate" a work means to do anything with it that, without
+     permission, would make you directly or secondarily liable for
+     infringement under applicable copyright law, except executing it
+     on a computer or modifying a private copy.  Propagation includes
+     copying, distribution (with or without modification), making
+     available to the public, and in some countries other activities as
+     well.
+
+     To "convey" a work means any kind of propagation that enables other
+     parties to make or receive copies.  Mere interaction with a user
+     through a computer network, with no transfer of a copy, is not
+     conveying.
+
+     An interactive user interface displays "Appropriate Legal Notices"
+     to the extent that it includes a convenient and prominently visible
+     feature that (1) displays an appropriate copyright notice, and (2)
+     tells the user that there is no warranty for the work (except to
+     the extent that warranties are provided), that licensees may
+     convey the work under this License, and how to view a copy of this
+     License.  If the interface presents a list of user commands or
+     options, such as a menu, a prominent item in the list meets this
+     criterion.
+
+  1. Source Code.
+
+     The "source code" for a work means the preferred form of the work
+     for making modifications to it.  "Object code" means any
+     non-source form of a work.
+
+     A "Standard Interface" means an interface that either is an
+     official standard defined by a recognized standards body, or, in
+     the case of interfaces specified for a particular programming
+     language, one that is widely used among developers working in that
+     language.
+
+     The "System Libraries" of an executable work include anything,
+     other than the work as a whole, that (a) is included in the normal
+     form of packaging a Major Component, but which is not part of that
+     Major Component, and (b) serves only to enable use of the work
+     with that Major Component, or to implement a Standard Interface
+     for which an implementation is available to the public in source
+     code form.  A "Major Component", in this context, means a major
+     essential component (kernel, window system, and so on) of the
+     specific operating system (if any) on which the executable work
+     runs, or a compiler used to produce the work, or an object code
+     interpreter used to run it.
+
+     The "Corresponding Source" for a work in object code form means all
+     the source code needed to generate, install, and (for an executable
+     work) run the object code and to modify the work, including
+     scripts to control those activities.  However, it does not include
+     the work's System Libraries, or general-purpose tools or generally
+     available free programs which are used unmodified in performing
+     those activities but which are not part of the work.  For example,
+     Corresponding Source includes interface definition files
+     associated with source files for the work, and the source code for
+     shared libraries and dynamically linked subprograms that the work
+     is specifically designed to require, such as by intimate data
+     communication or control flow between those subprograms and other
+     parts of the work.
+
+     The Corresponding Source need not include anything that users can
+     regenerate automatically from other parts of the Corresponding
+     Source.
+
+     The Corresponding Source for a work in source code form is that
+     same work.
+
+  2. Basic Permissions.
+
+     All rights granted under this License are granted for the term of
+     copyright on the Program, and are irrevocable provided the stated
+     conditions are met.  This License explicitly affirms your unlimited
+     permission to run the unmodified Program.  The output from running
+     a covered work is covered by this License only if the output,
+     given its content, constitutes a covered work.  This License
+     acknowledges your rights of fair use or other equivalent, as
+     provided by copyright law.
+
+     You may make, run and propagate covered works that you do not
+     convey, without conditions so long as your license otherwise
+     remains in force.  You may convey covered works to others for the
+     sole purpose of having them make modifications exclusively for
+     you, or provide you with facilities for running those works,
+     provided that you comply with the terms of this License in
+     conveying all material for which you do not control copyright.
+     Those thus making or running the covered works for you must do so
+     exclusively on your behalf, under your direction and control, on
+     terms that prohibit them from making any copies of your
+     copyrighted material outside their relationship with you.
+
+     Conveying under any other circumstances is permitted solely under
+     the conditions stated below.  Sublicensing is not allowed; section
+     10 makes it unnecessary.
+
+  3. Protecting Users' Legal Rights From Anti-Circumvention Law.
+
+     No covered work shall be deemed part of an effective technological
+     measure under any applicable law fulfilling obligations under
+     article 11 of the WIPO copyright treaty adopted on 20 December
+     1996, or similar laws prohibiting or restricting circumvention of
+     such measures.
+
+     When you convey a covered work, you waive any legal power to forbid
+     circumvention of technological measures to the extent such
+     circumvention is effected by exercising rights under this License
+     with respect to the covered work, and you disclaim any intention
+     to limit operation or modification of the work as a means of
+     enforcing, against the work's users, your or third parties' legal
+     rights to forbid circumvention of technological measures.
+
+  4. Conveying Verbatim Copies.
+
+     You may convey verbatim copies of the Program's source code as you
+     receive it, in any medium, provided that you conspicuously and
+     appropriately publish on each copy an appropriate copyright notice;
+     keep intact all notices stating that this License and any
+     non-permissive terms added in accord with section 7 apply to the
+     code; keep intact all notices of the absence of any warranty; and
+     give all recipients a copy of this License along with the Program.
+
+     You may charge any price or no price for each copy that you convey,
+     and you may offer support or warranty protection for a fee.
+
+  5. Conveying Modified Source Versions.
+
+     You may convey a work based on the Program, or the modifications to
+     produce it from the Program, in the form of source code under the
+     terms of section 4, provided that you also meet all of these
+     conditions:
+
+       a. The work must carry prominent notices stating that you
+          modified it, and giving a relevant date.
+
+       b. The work must carry prominent notices stating that it is
+          released under this License and any conditions added under
+          section 7.  This requirement modifies the requirement in
+          section 4 to "keep intact all notices".
+
+       c. You must license the entire work, as a whole, under this
+          License to anyone who comes into possession of a copy.  This
+          License will therefore apply, along with any applicable
+          section 7 additional terms, to the whole of the work, and all
+          its parts, regardless of how they are packaged.  This License
+          gives no permission to license the work in any other way, but
+          it does not invalidate such permission if you have separately
+          received it.
+
+       d. If the work has interactive user interfaces, each must display
+          Appropriate Legal Notices; however, if the Program has
+          interactive interfaces that do not display Appropriate Legal
+          Notices, your work need not make them do so.
+
+     A compilation of a covered work with other separate and independent
+     works, which are not by their nature extensions of the covered
+     work, and which are not combined with it such as to form a larger
+     program, in or on a volume of a storage or distribution medium, is
+     called an "aggregate" if the compilation and its resulting
+     copyright are not used to limit the access or legal rights of the
+     compilation's users beyond what the individual works permit.
+     Inclusion of a covered work in an aggregate does not cause this
+     License to apply to the other parts of the aggregate.
+
+  6. Conveying Non-Source Forms.
+
+     You may convey a covered work in object code form under the terms
+     of sections 4 and 5, provided that you also convey the
+     machine-readable Corresponding Source under the terms of this
+     License, in one of these ways:
+
+       a. Convey the object code in, or embodied in, a physical product
+          (including a physical distribution medium), accompanied by the
+          Corresponding Source fixed on a durable physical medium
+          customarily used for software interchange.
+
+       b. Convey the object code in, or embodied in, a physical product
+          (including a physical distribution medium), accompanied by a
+          written offer, valid for at least three years and valid for
+          as long as you offer spare parts or customer support for that
+          product model, to give anyone who possesses the object code
+          either (1) a copy of the Corresponding Source for all the
+          software in the product that is covered by this License, on a
+          durable physical medium customarily used for software
+          interchange, for a price no more than your reasonable cost of
+          physically performing this conveying of source, or (2) access
+          to copy the Corresponding Source from a network server at no
+          charge.
+
+       c. Convey individual copies of the object code with a copy of
+          the written offer to provide the Corresponding Source.  This
+          alternative is allowed only occasionally and noncommercially,
+          and only if you received the object code with such an offer,
+          in accord with subsection 6b.
+
+       d. Convey the object code by offering access from a designated
+          place (gratis or for a charge), and offer equivalent access
+          to the Corresponding Source in the same way through the same
+          place at no further charge.  You need not require recipients
+          to copy the Corresponding Source along with the object code.
+          If the place to copy the object code is a network server, the
+          Corresponding Source may be on a different server (operated
+          by you or a third party) that supports equivalent copying
+          facilities, provided you maintain clear directions next to
+          the object code saying where to find the Corresponding Source.
+          Regardless of what server hosts the Corresponding Source, you
+          remain obligated to ensure that it is available for as long
+          as needed to satisfy these requirements.
+
+       e. Convey the object code using peer-to-peer transmission,
+          provided you inform other peers where the object code and
+          Corresponding Source of the work are being offered to the
+          general public at no charge under subsection 6d.
+
+
+     A separable portion of the object code, whose source code is
+     excluded from the Corresponding Source as a System Library, need
+     not be included in conveying the object code work.
+
+     A "User Product" is either (1) a "consumer product", which means
+     any tangible personal property which is normally used for personal,
+     family, or household purposes, or (2) anything designed or sold for
+     incorporation into a dwelling.  In determining whether a product
+     is a consumer product, doubtful cases shall be resolved in favor of
+     coverage.  For a particular product received by a particular user,
+     "normally used" refers to a typical or common use of that class of
+     product, regardless of the status of the particular user or of the
+     way in which the particular user actually uses, or expects or is
+     expected to use, the product.  A product is a consumer product
+     regardless of whether the product has substantial commercial,
+     industrial or non-consumer uses, unless such uses represent the
+     only significant mode of use of the product.
+
+     "Installation Information" for a User Product means any methods,
+     procedures, authorization keys, or other information required to
+     install and execute modified versions of a covered work in that
+     User Product from a modified version of its Corresponding Source.
+     The information must suffice to ensure that the continued
+     functioning of the modified object code is in no case prevented or
+     interfered with solely because modification has been made.
+
+     If you convey an object code work under this section in, or with,
+     or specifically for use in, a User Product, and the conveying
+     occurs as part of a transaction in which the right of possession
+     and use of the User Product is transferred to the recipient in
+     perpetuity or for a fixed term (regardless of how the transaction
+     is characterized), the Corresponding Source conveyed under this
+     section must be accompanied by the Installation Information.  But
+     this requirement does not apply if neither you nor any third party
+     retains the ability to install modified object code on the User
+     Product (for example, the work has been installed in ROM).
+
+     The requirement to provide Installation Information does not
+     include a requirement to continue to provide support service,
+     warranty, or updates for a work that has been modified or
+     installed by the recipient, or for the User Product in which it
+     has been modified or installed.  Access to a network may be denied
+     when the modification itself materially and adversely affects the
+     operation of the network or violates the rules and protocols for
+     communication across the network.
+
+     Corresponding Source conveyed, and Installation Information
+     provided, in accord with this section must be in a format that is
+     publicly documented (and with an implementation available to the
+     public in source code form), and must require no special password
+     or key for unpacking, reading or copying.
+
+  7. Additional Terms.
+
+     "Additional permissions" are terms that supplement the terms of
+     this License by making exceptions from one or more of its
+     conditions.  Additional permissions that are applicable to the
+     entire Program shall be treated as though they were included in
+     this License, to the extent that they are valid under applicable
+     law.  If additional permissions apply only to part of the Program,
+     that part may be used separately under those permissions, but the
+     entire Program remains governed by this License without regard to
+     the additional permissions.
+
+     When you convey a copy of a covered work, you may at your option
+     remove any additional permissions from that copy, or from any part
+     of it.  (Additional permissions may be written to require their own
+     removal in certain cases when you modify the work.)  You may place
+     additional permissions on material, added by you to a covered work,
+     for which you have or can give appropriate copyright permission.
+
+     Notwithstanding any other provision of this License, for material
+     you add to a covered work, you may (if authorized by the copyright
+     holders of that material) supplement the terms of this License
+     with terms:
+
+       a. Disclaiming warranty or limiting liability differently from
+          the terms of sections 15 and 16 of this License; or
+
+       b. Requiring preservation of specified reasonable legal notices
+          or author attributions in that material or in the Appropriate
+          Legal Notices displayed by works containing it; or
+
+       c. Prohibiting misrepresentation of the origin of that material,
+          or requiring that modified versions of such material be
+          marked in reasonable ways as different from the original
+          version; or
+
+       d. Limiting the use for publicity purposes of names of licensors
+          or authors of the material; or
+
+       e. Declining to grant rights under trademark law for use of some
+          trade names, trademarks, or service marks; or
+
+       f. Requiring indemnification of licensors and authors of that
+          material by anyone who conveys the material (or modified
+          versions of it) with contractual assumptions of liability to
+          the recipient, for any liability that these contractual
+          assumptions directly impose on those licensors and authors.
+
+     All other non-permissive additional terms are considered "further
+     restrictions" within the meaning of section 10.  If the Program as
+     you received it, or any part of it, contains a notice stating that
+     it is governed by this License along with a term that is a further
+     restriction, you may remove that term.  If a license document
+     contains a further restriction but permits relicensing or
+     conveying under this License, you may add to a covered work
+     material governed by the terms of that license document, provided
+     that the further restriction does not survive such relicensing or
+     conveying.
+
+     If you add terms to a covered work in accord with this section, you
+     must place, in the relevant source files, a statement of the
+     additional terms that apply to those files, or a notice indicating
+     where to find the applicable terms.
+
+     Additional terms, permissive or non-permissive, may be stated in
+     the form of a separately written license, or stated as exceptions;
+     the above requirements apply either way.
+
+  8. Termination.
+
+     You may not propagate or modify a covered work except as expressly
+     provided under this License.  Any attempt otherwise to propagate or
+     modify it is void, and will automatically terminate your rights
+     under this License (including any patent licenses granted under
+     the third paragraph of section 11).
+
+     However, if you cease all violation of this License, then your
+     license from a particular copyright holder is reinstated (a)
+     provisionally, unless and until the copyright holder explicitly
+     and finally terminates your license, and (b) permanently, if the
+     copyright holder fails to notify you of the violation by some
+     reasonable means prior to 60 days after the cessation.
+
+     Moreover, your license from a particular copyright holder is
+     reinstated permanently if the copyright holder notifies you of the
+     violation by some reasonable means, this is the first time you have
+     received notice of violation of this License (for any work) from
+     that copyright holder, and you cure the violation prior to 30 days
+     after your receipt of the notice.
+
+     Termination of your rights under this section does not terminate
+     the licenses of parties who have received copies or rights from
+     you under this License.  If your rights have been terminated and
+     not permanently reinstated, you do not qualify to receive new
+     licenses for the same material under section 10.
+
+  9. Acceptance Not Required for Having Copies.
+
+     You are not required to accept this License in order to receive or
+     run a copy of the Program.  Ancillary propagation of a covered work
+     occurring solely as a consequence of using peer-to-peer
+     transmission to receive a copy likewise does not require
+     acceptance.  However, nothing other than this License grants you
+     permission to propagate or modify any covered work.  These actions
+     infringe copyright if you do not accept this License.  Therefore,
+     by modifying or propagating a covered work, you indicate your
+     acceptance of this License to do so.
+
+ 10. Automatic Licensing of Downstream Recipients.
+
+     Each time you convey a covered work, the recipient automatically
+     receives a license from the original licensors, to run, modify and
+     propagate that work, subject to this License.  You are not
+     responsible for enforcing compliance by third parties with this
+     License.
+
+     An "entity transaction" is a transaction transferring control of an
+     organization, or substantially all assets of one, or subdividing an
+     organization, or merging organizations.  If propagation of a
+     covered work results from an entity transaction, each party to that
+     transaction who receives a copy of the work also receives whatever
+     licenses to the work the party's predecessor in interest had or
+     could give under the previous paragraph, plus a right to
+     possession of the Corresponding Source of the work from the
+     predecessor in interest, if the predecessor has it or can get it
+     with reasonable efforts.
+
+     You may not impose any further restrictions on the exercise of the
+     rights granted or affirmed under this License.  For example, you
+     may not impose a license fee, royalty, or other charge for
+     exercise of rights granted under this License, and you may not
+     initiate litigation (including a cross-claim or counterclaim in a
+     lawsuit) alleging that any patent claim is infringed by making,
+     using, selling, offering for sale, or importing the Program or any
+     portion of it.
+
+ 11. Patents.
+
+     A "contributor" is a copyright holder who authorizes use under this
+     License of the Program or a work on which the Program is based.
+     The work thus licensed is called the contributor's "contributor
+     version".
+
+     A contributor's "essential patent claims" are all patent claims
+     owned or controlled by the contributor, whether already acquired or
+     hereafter acquired, that would be infringed by some manner,
+     permitted by this License, of making, using, or selling its
+     contributor version, but do not include claims that would be
+     infringed only as a consequence of further modification of the
+     contributor version.  For purposes of this definition, "control"
+     includes the right to grant patent sublicenses in a manner
+     consistent with the requirements of this License.
+
+     Each contributor grants you a non-exclusive, worldwide,
+     royalty-free patent license under the contributor's essential
+     patent claims, to make, use, sell, offer for sale, import and
+     otherwise run, modify and propagate the contents of its
+     contributor version.
+
+     In the following three paragraphs, a "patent license" is any
+     express agreement or commitment, however denominated, not to
+     enforce a patent (such as an express permission to practice a
+     patent or covenant not to sue for patent infringement).  To
+     "grant" such a patent license to a party means to make such an
+     agreement or commitment not to enforce a patent against the party.
+
+     If you convey a covered work, knowingly relying on a patent
+     license, and the Corresponding Source of the work is not available
+     for anyone to copy, free of charge and under the terms of this
+     License, through a publicly available network server or other
+     readily accessible means, then you must either (1) cause the
+     Corresponding Source to be so available, or (2) arrange to deprive
+     yourself of the benefit of the patent license for this particular
+     work, or (3) arrange, in a manner consistent with the requirements
+     of this License, to extend the patent license to downstream
+     recipients.  "Knowingly relying" means you have actual knowledge
+     that, but for the patent license, your conveying the covered work
+     in a country, or your recipient's use of the covered work in a
+     country, would infringe one or more identifiable patents in that
+     country that you have reason to believe are valid.
+
+     If, pursuant to or in connection with a single transaction or
+     arrangement, you convey, or propagate by procuring conveyance of, a
+     covered work, and grant a patent license to some of the parties
+     receiving the covered work authorizing them to use, propagate,
+     modify or convey a specific copy of the covered work, then the
+     patent license you grant is automatically extended to all
+     recipients of the covered work and works based on it.
+
+     A patent license is "discriminatory" if it does not include within
+     the scope of its coverage, prohibits the exercise of, or is
+     conditioned on the non-exercise of one or more of the rights that
+     are specifically granted under this License.  You may not convey a
+     covered work if you are a party to an arrangement with a third
+     party that is in the business of distributing software, under
+     which you make payment to the third party based on the extent of
+     your activity of conveying the work, and under which the third
+     party grants, to any of the parties who would receive the covered
+     work from you, a discriminatory patent license (a) in connection
+     with copies of the covered work conveyed by you (or copies made
+     from those copies), or (b) primarily for and in connection with
+     specific products or compilations that contain the covered work,
+     unless you entered into that arrangement, or that patent license
+     was granted, prior to 28 March 2007.
+
+     Nothing in this License shall be construed as excluding or limiting
+     any implied license or other defenses to infringement that may
+     otherwise be available to you under applicable patent law.
+
+ 12. No Surrender of Others' Freedom.
+
+     If conditions are imposed on you (whether by court order,
+     agreement or otherwise) that contradict the conditions of this
+     License, they do not excuse you from the conditions of this
+     License.  If you cannot convey a covered work so as to satisfy
+     simultaneously your obligations under this License and any other
+     pertinent obligations, then as a consequence you may not convey it
+     at all.  For example, if you agree to terms that obligate you to
+     collect a royalty for further conveying from those to whom you
+     convey the Program, the only way you could satisfy both those
+     terms and this License would be to refrain entirely from conveying
+     the Program.
+
+ 13. Use with the GNU Affero General Public License.
+
+     Notwithstanding any other provision of this License, you have
+     permission to link or combine any covered work with a work licensed
+     under version 3 of the GNU Affero General Public License into a
+     single combined work, and to convey the resulting work.  The terms
+     of this License will continue to apply to the part which is the
+     covered work, but the special requirements of the GNU Affero
+     General Public License, section 13, concerning interaction through
+     a network will apply to the combination as such.
+
+ 14. Revised Versions of this License.
+
+     The Free Software Foundation may publish revised and/or new
+     versions of the GNU General Public License from time to time.
+     Such new versions will be similar in spirit to the present
+     version, but may differ in detail to address new problems or
+     concerns.
+
+     Each version is given a distinguishing version number.  If the
+     Program specifies that a certain numbered version of the GNU
+     General Public License "or any later version" applies to it, you
+     have the option of following the terms and conditions either of
+     that numbered version or of any later version published by the
+     Free Software Foundation.  If the Program does not specify a
+     version number of the GNU General Public License, you may choose
+     any version ever published by the Free Software Foundation.
+
+     If the Program specifies that a proxy can decide which future
+     versions of the GNU General Public License can be used, that
+     proxy's public statement of acceptance of a version permanently
+     authorizes you to choose that version for the Program.
+
+     Later license versions may give you additional or different
+     permissions.  However, no additional obligations are imposed on any
+     author or copyright holder as a result of your choosing to follow a
+     later version.
+
+ 15. Disclaimer of Warranty.
+
+     THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+     APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE
+     COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS"
+     WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,
+     INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE
+     RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.
+     SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
+     NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+ 16. Limitation of Liability.
+
+     IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN
+     WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES
+     AND/OR CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU
+     FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR
+     CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
+     THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA
+     BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+     PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
+     PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF
+     THE POSSIBILITY OF SUCH DAMAGES.
+
+ 17. Interpretation of Sections 15 and 16.
+
+     If the disclaimer of warranty and limitation of liability provided
+     above cannot be given local legal effect according to their terms,
+     reviewing courts shall apply local law that most closely
+     approximates an absolute waiver of all civil liability in
+     connection with the Program, unless a warranty or assumption of
+     liability accompanies a copy of the Program in return for a fee.
+
+
+END OF TERMS AND CONDITIONS
+===========================
+
+How to Apply These Terms to Your New Programs
+=============================================
+
+If you develop a new program, and you want it to be of the greatest
+possible use to the public, the best way to achieve this is to make it
+free software which everyone can redistribute and change under these
+terms.
+
+   To do so, attach the following notices to the program.  It is safest
+to attach them to the start of each source file to most effectively
+state the exclusion of warranty; and each file should have at least the
+"copyright" line and a pointer to where the full notice is found.
+
+     ONE LINE TO GIVE THE PROGRAM'S NAME AND A BRIEF IDEA OF WHAT IT DOES.
+     Copyright (C) YEAR NAME OF AUTHOR
+
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or (at
+     your option) any later version.
+
+     This program is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+     General Public License for more details.
+
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see `http://www.gnu.org/licenses/'.
+
+   Also add information on how to contact you by electronic and paper
+mail.
+
+   If the program does terminal interaction, make it output a short
+notice like this when it starts in an interactive mode:
+
+     PROGRAM Copyright (C) YEAR NAME OF AUTHOR
+     This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+     This is free software, and you are welcome to redistribute it
+     under certain conditions; type `show c' for details.
+
+   The hypothetical commands `show w' and `show c' should show the
+appropriate parts of the General Public License.  Of course, your
+program's commands might be different; for a GUI interface, you would
+use an "about box".
+
+   You should also get your employer (if you work as a programmer) or
+school, if any, to sign a "copyright disclaimer" for the program, if
+necessary.  For more information on this, and how to apply and follow
+the GNU GPL, see `http://www.gnu.org/licenses/'.
+
+   The GNU General Public License does not permit incorporating your
+program into proprietary programs.  If your program is a subroutine
+library, you may consider it more useful to permit linking proprietary
+applications with the library.  If this is what you want to do, use the
+GNU Lesser General Public License instead of this License.  But first,
+please read `http://www.gnu.org/philosophy/why-not-lgpl.html'.
+
+
+File: shishi.info,  Node: Function and Data Index,  Next: Concept Index,  Prev: Copying Information,  Up: Top
+
+Function and Data Index
+***********************
+
+ [index ]
+* Menu:
+
+* ago in date strings:                   Relative items in date strings.
+                                                             (line   23)
+* am in date strings:                    Time of day items.  (line   22)
+* day in date strings:                   Relative items in date strings.
+                                                             (line   15)
+* first in date strings:                 General date syntax.
+                                                             (line   26)
+* fortnight in date strings:             Relative items in date strings.
+                                                             (line   15)
+* get_date:                              Date input formats. (line    6)
+* hour in date strings:                  Relative items in date strings.
+                                                             (line   15)
+* last DAY:                              Day of week items.  (line   15)
+* last in date strings:                  General date syntax.
+                                                             (line   26)
+* midnight in date strings:              Time of day items.  (line   22)
+* minute in date strings:                Relative items in date strings.
+                                                             (line   15)
+* month in date strings:                 Relative items in date strings.
+                                                             (line   15)
+* next DAY:                              Day of week items.  (line   15)
+* next in date strings:                  General date syntax.
+                                                             (line   26)
+* noon in date strings:                  Time of day items.  (line   22)
+* now in date strings:                   Relative items in date strings.
+                                                             (line   33)
+* pm in date strings:                    Time of day items.  (line   22)
+* shisa:                                 Kerberos Database Functions.
+                                                             (line   69)
+* shisa_cfg:                             Kerberos Database Functions.
+                                                             (line  143)
+* shisa_cfg_db:                          Kerberos Database Functions.
+                                                             (line  126)
+* shisa_cfg_default_systemfile:          Kerberos Database Functions.
+                                                             (line  167)
+* shisa_cfg_from_file:                   Kerberos Database Functions.
+                                                             (line  155)
+* shisa_done:                            Kerberos Database Functions.
+                                                             (line   78)
+* shisa_enumerate_principals:            Kerberos Database Functions.
+                                                             (line  202)
+* shisa_enumerate_realms:                Kerberos Database Functions.
+                                                             (line  184)
+* shisa_info:                            Kerberos Database Functions.
+                                                             (line  457)
+* shisa_init:                            Kerberos Database Functions.
+                                                             (line   85)
+* shisa_init_with_paths:                 Kerberos Database Functions.
+                                                             (line  103)
+* shisa_key_add:                         Kerberos Database Functions.
+                                                             (line  343)
+* shisa_key_free:                        Kerberos Database Functions.
+                                                             (line  417)
+* shisa_key_remove:                      Kerberos Database Functions.
+                                                             (line  394)
+* shisa_key_update:                      Kerberos Database Functions.
+                                                             (line  362)
+* shisa_keys_find:                       Kerberos Database Functions.
+                                                             (line  314)
+* shisa_keys_free:                       Kerberos Database Functions.
+                                                             (line  429)
+* shisa_principal_add:                   Kerberos Database Functions.
+                                                             (line  271)
+* shisa_principal_find:                  Kerberos Database Functions.
+                                                             (line  221)
+* shisa_principal_remove:                Kerberos Database Functions.
+                                                             (line  295)
+* shisa_principal_update:                Kerberos Database Functions.
+                                                             (line  242)
+* shisa_strerror:                        Kerberos Database Functions.
+                                                             (line  447)
+* shishi:                                Initialization Functions.
+                                                             (line   10)
+* shishi_3des:                           Cryptographic Functions.
+                                                             (line 1721)
+* shishi_aes_cts:                        Cryptographic Functions.
+                                                             (line 1742)
+* shishi_ap:                             AP-REQ and AP-REP Functions.
+                                                             (line   40)
+* shishi_ap_authenticator:               AP-REQ and AP-REP Functions.
+                                                             (line  429)
+* shishi_ap_authenticator_cksumdata:     AP-REQ and AP-REP Functions.
+                                                             (line  351)
+* shishi_ap_authenticator_cksumdata_set: AP-REQ and AP-REP Functions.
+                                                             (line  370)
+* shishi_ap_authenticator_cksumraw_set:  AP-REQ and AP-REP Functions.
+                                                             (line  389)
+* shishi_ap_authenticator_cksumtype:     AP-REQ and AP-REP Functions.
+                                                             (line  408)
+* shishi_ap_authenticator_cksumtype_set: AP-REQ and AP-REP Functions.
+                                                             (line  419)
+* shishi_ap_authenticator_set:           AP-REQ and AP-REP Functions.
+                                                             (line  441)
+* shishi_ap_done:                        AP-REQ and AP-REP Functions.
+                                                             (line   88)
+* shishi_ap_encapreppart:                AP-REQ and AP-REP Functions.
+                                                             (line  709)
+* shishi_ap_encapreppart_set:            AP-REQ and AP-REP Functions.
+                                                             (line  721)
+* shishi_ap_etype:                       AP-REQ and AP-REP Functions.
+                                                             (line   59)
+* shishi_ap_etype_tktoptionsdata:        AP-REQ and AP-REP Functions.
+                                                             (line  269)
+* shishi_ap_key:                         AP-REQ and AP-REP Functions.
+                                                             (line  576)
+* shishi_ap_nosubkey:                    AP-REQ and AP-REP Functions.
+                                                             (line   75)
+* shishi_ap_option2string:               AP-REQ and AP-REP Functions.
+                                                             (line  732)
+* shishi_ap_rep:                         AP-REQ and AP-REP Functions.
+                                                             (line  587)
+* shishi_ap_rep_asn1:                    AP-REQ and AP-REP Functions.
+                                                             (line  653)
+* shishi_ap_rep_build:                   AP-REQ and AP-REP Functions.
+                                                             (line  641)
+* shishi_ap_rep_der:                     AP-REQ and AP-REP Functions.
+                                                             (line  609)
+* shishi_ap_rep_der_set:                 AP-REQ and AP-REP Functions.
+                                                             (line  626)
+* shishi_ap_rep_set:                     AP-REQ and AP-REP Functions.
+                                                             (line  598)
+* shishi_ap_rep_verify:                  AP-REQ and AP-REP Functions.
+                                                             (line  665)
+* shishi_ap_rep_verify_asn1:             AP-REQ and AP-REP Functions.
+                                                             (line  695)
+* shishi_ap_rep_verify_der:              AP-REQ and AP-REP Functions.
+                                                             (line  677)
+* shishi_ap_req:                         AP-REQ and AP-REP Functions.
+                                                             (line  451)
+* shishi_ap_req_asn1:                    AP-REQ and AP-REP Functions.
+                                                             (line  564)
+* shishi_ap_req_build:                   AP-REQ and AP-REP Functions.
+                                                             (line  506)
+* shishi_ap_req_decode:                  AP-REQ and AP-REP Functions.
+                                                             (line  517)
+* shishi_ap_req_der:                     AP-REQ and AP-REP Functions.
+                                                             (line  473)
+* shishi_ap_req_der_set:                 AP-REQ and AP-REP Functions.
+                                                             (line  491)
+* shishi_ap_req_process:                 AP-REQ and AP-REP Functions.
+                                                             (line  549)
+* shishi_ap_req_process_keyusage:        AP-REQ and AP-REP Functions.
+                                                             (line  529)
+* shishi_ap_req_set:                     AP-REQ and AP-REP Functions.
+                                                             (line  462)
+* shishi_ap_set_tktoptions:              AP-REQ and AP-REP Functions.
+                                                             (line   99)
+* shishi_ap_set_tktoptionsasn1usage:     AP-REQ and AP-REP Functions.
+                                                             (line  164)
+* shishi_ap_set_tktoptionsdata:          AP-REQ and AP-REP Functions.
+                                                             (line  115)
+* shishi_ap_set_tktoptionsraw:           AP-REQ and AP-REP Functions.
+                                                             (line  137)
+* shishi_ap_string2option:               AP-REQ and AP-REP Functions.
+                                                             (line  747)
+* shishi_ap_tkt:                         AP-REQ and AP-REP Functions.
+                                                             (line  329)
+* shishi_ap_tkt_set:                     AP-REQ and AP-REP Functions.
+                                                             (line  340)
+* shishi_ap_tktoptions:                  AP-REQ and AP-REP Functions.
+                                                             (line  191)
+* shishi_ap_tktoptionsasn1usage:         AP-REQ and AP-REP Functions.
+                                                             (line  298)
+* shishi_ap_tktoptionsdata:              AP-REQ and AP-REP Functions.
+                                                             (line  213)
+* shishi_ap_tktoptionsraw:               AP-REQ and AP-REP Functions.
+                                                             (line  239)
+* shishi_aprep:                          AP-REQ and AP-REP Functions.
+                                                             (line 1049)
+* shishi_aprep_from_file:                AP-REQ and AP-REP Functions.
+                                                             (line 1141)
+* shishi_aprep_get_enc_part_etype:       AP-REQ and AP-REP Functions.
+                                                             (line 1159)
+* shishi_aprep_parse:                    AP-REQ and AP-REP Functions.
+                                                             (line 1110)
+* shishi_aprep_print:                    AP-REQ and AP-REP Functions.
+                                                             (line 1061)
+* shishi_aprep_read:                     AP-REQ and AP-REP Functions.
+                                                             (line 1126)
+* shishi_aprep_save:                     AP-REQ and AP-REP Functions.
+                                                             (line 1076)
+* shishi_aprep_to_file:                  AP-REQ and AP-REP Functions.
+                                                             (line 1091)
+* shishi_apreq:                          AP-REQ and AP-REP Functions.
+                                                             (line  759)
+* shishi_apreq_add_authenticator:        AP-REQ and AP-REP Functions.
+                                                             (line  896)
+* shishi_apreq_from_file:                AP-REQ and AP-REP Functions.
+                                                             (line  851)
+* shishi_apreq_get_authenticator_etype:  AP-REQ and AP-REP Functions.
+                                                             (line 1020)
+* shishi_apreq_get_ticket:               AP-REQ and AP-REP Functions.
+                                                             (line 1035)
+* shishi_apreq_mutual_required_p:        AP-REQ and AP-REP Functions.
+                                                             (line  960)
+* shishi_apreq_options:                  AP-REQ and AP-REP Functions.
+                                                             (line  932)
+* shishi_apreq_options_add:              AP-REQ and AP-REP Functions.
+                                                             (line  988)
+* shishi_apreq_options_remove:           AP-REQ and AP-REP Functions.
+                                                             (line 1004)
+* shishi_apreq_options_set:              AP-REQ and AP-REP Functions.
+                                                             (line  973)
+* shishi_apreq_parse:                    AP-REQ and AP-REP Functions.
+                                                             (line  820)
+* shishi_apreq_print:                    AP-REQ and AP-REP Functions.
+                                                             (line  771)
+* shishi_apreq_read:                     AP-REQ and AP-REP Functions.
+                                                             (line  836)
+* shishi_apreq_save:                     AP-REQ and AP-REP Functions.
+                                                             (line  786)
+* shishi_apreq_set_authenticator:        AP-REQ and AP-REP Functions.
+                                                             (line  870)
+* shishi_apreq_set_ticket:               AP-REQ and AP-REP Functions.
+                                                             (line  917)
+* shishi_apreq_to_file:                  AP-REQ and AP-REP Functions.
+                                                             (line  801)
+* shishi_apreq_use_session_key_p:        AP-REQ and AP-REP Functions.
+                                                             (line  947)
+* shishi_arcfour:                        Cryptographic Functions.
+                                                             (line 1670)
+* shishi_as:                             AS Functions.       (line   81)
+* shishi_as_check_cname:                 AS/TGS Functions.   (line  167)
+* shishi_as_check_crealm:                AS/TGS Functions.   (line  134)
+* shishi_as_derive_salt:                 AS/TGS Functions.   (line   96)
+* shishi_as_done:                        AS Functions.       (line   93)
+* shishi_as_krberror:                    AS Functions.       (line  248)
+* shishi_as_krberror_der:                AS Functions.       (line  260)
+* shishi_as_krberror_set:                AS Functions.       (line  276)
+* shishi_as_process:                     AS/TGS Functions.   (line  249)
+* shishi_as_rep:                         AS Functions.       (line  166)
+* shishi_as_rep_build:                   AS Functions.       (line  194)
+* shishi_as_rep_der:                     AS Functions.       (line  207)
+* shishi_as_rep_der_set:                 AS Functions.       (line  233)
+* shishi_as_rep_process:                 AS Functions.       (line  178)
+* shishi_as_rep_set:                     AS Functions.       (line  222)
+* shishi_as_req:                         AS Functions.       (line  103)
+* shishi_as_req_build:                   AS Functions.       (line  114)
+* shishi_as_req_der:                     AS Functions.       (line  135)
+* shishi_as_req_der_set:                 AS Functions.       (line  151)
+* shishi_as_req_set:                     AS Functions.       (line  124)
+* shishi_as_sendrecv:                    AS Functions.       (line  324)
+* shishi_as_sendrecv_hint:               AS Functions.       (line  308)
+* shishi_as_tkt:                         AS Functions.       (line  286)
+* shishi_as_tkt_set:                     AS Functions.       (line  297)
+* shishi_asn1_aprep:                     ASN.1 Functions.    (line  210)
+* shishi_asn1_apreq:                     ASN.1 Functions.    (line  200)
+* shishi_asn1_asrep:                     ASN.1 Functions.    (line  170)
+* shishi_asn1_asreq:                     ASN.1 Functions.    (line  160)
+* shishi_asn1_authenticator:             ASN.1 Functions.    (line  250)
+* shishi_asn1_done:                      ASN.1 Functions.    (line   89)
+* shishi_asn1_encapreppart:              ASN.1 Functions.    (line  220)
+* shishi_asn1_encasreppart:              ASN.1 Functions.    (line  270)
+* shishi_asn1_enckdcreppart:             ASN.1 Functions.    (line  260)
+* shishi_asn1_encprivpart:               ASN.1 Functions.    (line  310)
+* shishi_asn1_encrypteddata:             ASN.1 Functions.    (line  110)
+* shishi_asn1_encticketpart:             ASN.1 Functions.    (line  240)
+* shishi_asn1_etype_info:                ASN.1 Functions.    (line  140)
+* shishi_asn1_etype_info2:               ASN.1 Functions.    (line  150)
+* shishi_asn1_krberror:                  ASN.1 Functions.    (line  280)
+* shishi_asn1_krbsafe:                   ASN.1 Functions.    (line  290)
+* shishi_asn1_methoddata:                ASN.1 Functions.    (line  130)
+* shishi_asn1_msgtype:                   ASN.1 Functions.    (line  363)
+* shishi_asn1_pa_enc_ts_enc:             ASN.1 Functions.    (line  100)
+* shishi_asn1_padata:                    ASN.1 Functions.    (line  120)
+* shishi_asn1_print:                     ASN.1 Functions.    (line  755)
+* shishi_asn1_priv:                      ASN.1 Functions.    (line  300)
+* shishi_asn1_read:                      ASN.1 Functions.    (line   38)
+* shishi_asn1_read_inline:               ASN.1 Functions.    (line   11)
+* shishi_asn1_read_optional:             ASN.1 Functions.    (line   64)
+* shishi_asn1_tgsrep:                    ASN.1 Functions.    (line  190)
+* shishi_asn1_tgsreq:                    ASN.1 Functions.    (line  180)
+* shishi_asn1_ticket:                    ASN.1 Functions.    (line  230)
+* shishi_asn1_to_der:                    ASN.1 Functions.    (line  344)
+* shishi_asn1_to_der_field:              ASN.1 Functions.    (line  322)
+* shishi_asrep:                          AS/TGS Functions.   (line 1060)
+* shishi_asreq:                          AS/TGS Functions.   (line  306)
+* shishi_asreq_clientrealm:              AS/TGS Functions.   (line  483)
+* shishi_authenticator:                  Authenticator Functions.
+                                                             (line   28)
+* shishi_authenticator_add_authorizationdata: Authenticator Functions.
+                                                             (line  481)
+* shishi_authenticator_add_cksum:        Authenticator Functions.
+                                                             (line  419)
+* shishi_authenticator_add_cksum_type:   Authenticator Functions.
+                                                             (line  442)
+* shishi_authenticator_add_random_subkey: Authenticator Functions.
+                                                             (line  582)
+* shishi_authenticator_add_random_subkey_etype: Authenticator Functions.
+                                                             (line  597)
+* shishi_authenticator_add_subkey:       Authenticator Functions.
+                                                             (line  614)
+* shishi_authenticator_authorizationdata: Authenticator Functions.
+                                                             (line  502)
+* shishi_authenticator_cksum:            Authenticator Functions.
+                                                             (line  369)
+* shishi_authenticator_clear_authorizationdata: Authenticator Functions.
+                                                             (line  466)
+* shishi_authenticator_client:           Authenticator Functions.
+                                                             (line  320)
+* shishi_authenticator_client_set:       Authenticator Functions.
+                                                             (line  192)
+* shishi_authenticator_clientrealm:      Authenticator Functions.
+                                                             (line  343)
+* shishi_authenticator_ctime:            Authenticator Functions.
+                                                             (line  208)
+* shishi_authenticator_ctime_set:        Authenticator Functions.
+                                                             (line  225)
+* shishi_authenticator_cusec_get:        Authenticator Functions.
+                                                             (line  241)
+* shishi_authenticator_cusec_set:        Authenticator Functions.
+                                                             (line  257)
+* shishi_authenticator_from_file:        Authenticator Functions.
+                                                             (line  138)
+* shishi_authenticator_get_subkey:       Authenticator Functions.
+                                                             (line  540)
+* shishi_authenticator_parse:            Authenticator Functions.
+                                                             (line  105)
+* shishi_authenticator_print:            Authenticator Functions.
+                                                             (line   53)
+* shishi_authenticator_read:             Authenticator Functions.
+                                                             (line  121)
+* shishi_authenticator_remove_subkey:    Authenticator Functions.
+                                                             (line  526)
+* shishi_authenticator_save:             Authenticator Functions.
+                                                             (line   69)
+* shishi_authenticator_seqnumber_get:    Authenticator Functions.
+                                                             (line  273)
+* shishi_authenticator_seqnumber_remove: Authenticator Functions.
+                                                             (line  289)
+* shishi_authenticator_seqnumber_set:    Authenticator Functions.
+                                                             (line  303)
+* shishi_authenticator_set_cksum:        Authenticator Functions.
+                                                             (line  393)
+* shishi_authenticator_set_cname:        Authenticator Functions.
+                                                             (line  173)
+* shishi_authenticator_set_crealm:       Authenticator Functions.
+                                                             (line  156)
+* shishi_authenticator_set_subkey:       Authenticator Functions.
+                                                             (line  558)
+* shishi_authenticator_subkey:           Authenticator Functions.
+                                                             (line   40)
+* shishi_authenticator_to_file:          Authenticator Functions.
+                                                             (line   86)
+* shishi_authorization_parse:            Utility Functions.  (line  303)
+* shishi_authorized_p:                   Utility Functions.  (line  315)
+* shishi_cfg:                            Initialization Functions.
+                                                             (line  132)
+* shishi_cfg_authorizationtype_set:      Initialization Functions.
+                                                             (line  265)
+* shishi_cfg_clientkdcetype:             Initialization Functions.
+                                                             (line  225)
+* shishi_cfg_clientkdcetype_fast:        Initialization Functions.
+                                                             (line  238)
+* shishi_cfg_clientkdcetype_set:         Initialization Functions.
+                                                             (line  249)
+* shishi_cfg_default_systemfile:         Initialization Functions.
+                                                             (line  170)
+* shishi_cfg_default_userdirectory:      Initialization Functions.
+                                                             (line  182)
+* shishi_cfg_default_userfile:           Initialization Functions.
+                                                             (line  213)
+* shishi_cfg_from_file:                  Initialization Functions.
+                                                             (line  145)
+* shishi_cfg_print:                      Initialization Functions.
+                                                             (line  157)
+* shishi_cfg_userdirectory_file:         Initialization Functions.
+                                                             (line  197)
+* shishi_check_version:                  Version Check.      (line   17)
+* shishi_checksum:                       Cryptographic Functions.
+                                                             (line  797)
+* shishi_checksum_cksumlen:              Cryptographic Functions.
+                                                             (line  721)
+* shishi_checksum_name:                  Cryptographic Functions.
+                                                             (line  710)
+* shishi_checksum_parse:                 Cryptographic Functions.
+                                                             (line  732)
+* shishi_checksum_supported_p:           Cryptographic Functions.
+                                                             (line  700)
+* shishi_cipher_blocksize:               Cryptographic Functions.
+                                                             (line  633)
+* shishi_cipher_confoundersize:          Cryptographic Functions.
+                                                             (line  644)
+* shishi_cipher_defaultcksumtype:        Cryptographic Functions.
+                                                             (line  679)
+* shishi_cipher_keylen:                  Cryptographic Functions.
+                                                             (line  656)
+* shishi_cipher_name:                    Cryptographic Functions.
+                                                             (line  622)
+* shishi_cipher_parse:                   Cryptographic Functions.
+                                                             (line  690)
+* shishi_cipher_randomlen:               Cryptographic Functions.
+                                                             (line  667)
+* shishi_cipher_supported_p:             Cryptographic Functions.
+                                                             (line  612)
+* shishi_crc:                            Cryptographic Functions.
+                                                             (line 1558)
+* shishi_crypto:                         Cryptographic Functions.
+                                                             (line 1445)
+* shishi_crypto_close:                   Cryptographic Functions.
+                                                             (line 1525)
+* shishi_crypto_decrypt:                 Cryptographic Functions.
+                                                             (line 1501)
+* shishi_crypto_encrypt:                 Cryptographic Functions.
+                                                             (line 1476)
+* shishi_ctime:                          Utility Functions.  (line  390)
+* shishi_decrypt:                        Cryptographic Functions.
+                                                             (line 1331)
+* shishi_decrypt_etype:                  Cryptographic Functions.
+                                                             (line 1203)
+* shishi_decrypt_iv:                     Cryptographic Functions.
+                                                             (line 1290)
+* shishi_decrypt_iv_etype:               Cryptographic Functions.
+                                                             (line 1160)
+* shishi_decrypt_ivupdate:               Cryptographic Functions.
+                                                             (line 1244)
+* shishi_decrypt_ivupdate_etype:         Cryptographic Functions.
+                                                             (line 1111)
+* shishi_der2asn1:                       ASN.1 Functions.    (line  393)
+* shishi_der2asn1_aprep:                 ASN.1 Functions.    (line  709)
+* shishi_der2asn1_apreq:                 ASN.1 Functions.    (line  694)
+* shishi_der2asn1_asrep:                 ASN.1 Functions.    (line  529)
+* shishi_der2asn1_asreq:                 ASN.1 Functions.    (line  499)
+* shishi_der2asn1_authenticator:         ASN.1 Functions.    (line  619)
+* shishi_der2asn1_encapreppart:          ASN.1 Functions.    (line  724)
+* shishi_der2asn1_encasreppart:          ASN.1 Functions.    (line  574)
+* shishi_der2asn1_enckdcreppart:         ASN.1 Functions.    (line  604)
+* shishi_der2asn1_encprivpart:           ASN.1 Functions.    (line  679)
+* shishi_der2asn1_enctgsreppart:         ASN.1 Functions.    (line  589)
+* shishi_der2asn1_encticketpart:         ASN.1 Functions.    (line  484)
+* shishi_der2asn1_etype_info:            ASN.1 Functions.    (line  439)
+* shishi_der2asn1_etype_info2:           ASN.1 Functions.    (line  454)
+* shishi_der2asn1_kdcrep:                ASN.1 Functions.    (line  559)
+* shishi_der2asn1_kdcreq:                ASN.1 Functions.    (line  739)
+* shishi_der2asn1_krberror:              ASN.1 Functions.    (line  634)
+* shishi_der2asn1_krbsafe:               ASN.1 Functions.    (line  649)
+* shishi_der2asn1_methoddata:            ASN.1 Functions.    (line  424)
+* shishi_der2asn1_padata:                ASN.1 Functions.    (line  409)
+* shishi_der2asn1_priv:                  ASN.1 Functions.    (line  664)
+* shishi_der2asn1_tgsrep:                ASN.1 Functions.    (line  544)
+* shishi_der2asn1_tgsreq:                ASN.1 Functions.    (line  514)
+* shishi_der2asn1_ticket:                ASN.1 Functions.    (line  469)
+* shishi_der_msgtype:                    ASN.1 Functions.    (line  378)
+* shishi_derive_default_salt:            Utility Functions.  (line  271)
+* shishi_des:                            Cryptographic Functions.
+                                                             (line 1700)
+* shishi_des_cbc_mac:                    Cryptographic Functions.
+                                                             (line 1653)
+* shishi_dk:                             Cryptographic Functions.
+                                                             (line 1418)
+* shishi_done:                           Initialization Functions.
+                                                             (line   32)
+* shishi_dr:                             Cryptographic Functions.
+                                                             (line 1394)
+* shishi_encapreppart:                   AP-REQ and AP-REP Functions.
+                                                             (line 1173)
+* shishi_encapreppart_ctime:             AP-REQ and AP-REP Functions.
+                                                             (line 1301)
+* shishi_encapreppart_ctime_set:         AP-REQ and AP-REP Functions.
+                                                             (line 1317)
+* shishi_encapreppart_cusec_get:         AP-REQ and AP-REP Functions.
+                                                             (line 1332)
+* shishi_encapreppart_cusec_set:         AP-REQ and AP-REP Functions.
+                                                             (line 1347)
+* shishi_encapreppart_from_file:         AP-REQ and AP-REP Functions.
+                                                             (line 1268)
+* shishi_encapreppart_get_key:           AP-REQ and AP-REP Functions.
+                                                             (line 1286)
+* shishi_encapreppart_parse:             AP-REQ and AP-REP Functions.
+                                                             (line 1235)
+* shishi_encapreppart_print:             AP-REQ and AP-REP Functions.
+                                                             (line 1186)
+* shishi_encapreppart_read:              AP-REQ and AP-REP Functions.
+                                                             (line 1251)
+* shishi_encapreppart_save:              AP-REQ and AP-REP Functions.
+                                                             (line 1201)
+* shishi_encapreppart_seqnumber_get:     AP-REQ and AP-REP Functions.
+                                                             (line 1362)
+* shishi_encapreppart_seqnumber_remove:  AP-REQ and AP-REP Functions.
+                                                             (line 1377)
+* shishi_encapreppart_seqnumber_set:     AP-REQ and AP-REP Functions.
+                                                             (line 1390)
+* shishi_encapreppart_time_copy:         AP-REQ and AP-REP Functions.
+                                                             (line 1406)
+* shishi_encapreppart_to_file:           AP-REQ and AP-REP Functions.
+                                                             (line 1216)
+* shishi_enckdcreppart_authtime_set:     AS/TGS Functions.   (line 1399)
+* shishi_enckdcreppart_endtime_set:      AS/TGS Functions.   (line 1430)
+* shishi_enckdcreppart_flags_set:        AS/TGS Functions.   (line 1384)
+* shishi_enckdcreppart_get_key:          AS/TGS Functions.   (line 1337)
+* shishi_enckdcreppart_key_set:          AS/TGS Functions.   (line 1353)
+* shishi_enckdcreppart_nonce_set:        AS/TGS Functions.   (line 1369)
+* shishi_enckdcreppart_populate_encticketpart: AS/TGS Functions.
+                                                             (line 1495)
+* shishi_enckdcreppart_renew_till_set:   AS/TGS Functions.   (line 1445)
+* shishi_enckdcreppart_sname_set:        AS/TGS Functions.   (line 1477)
+* shishi_enckdcreppart_srealm_set:       AS/TGS Functions.   (line 1461)
+* shishi_enckdcreppart_starttime_set:    AS/TGS Functions.   (line 1414)
+* shishi_encprivpart_set_user_data:      SAFE and PRIV Functions.
+                                                             (line  680)
+* shishi_encprivpart_user_data:          SAFE and PRIV Functions.
+                                                             (line  659)
+* shishi_encrypt:                        Cryptographic Functions.
+                                                             (line 1073)
+* shishi_encrypt_etype:                  Cryptographic Functions.
+                                                             (line  945)
+* shishi_encrypt_iv:                     Cryptographic Functions.
+                                                             (line 1032)
+* shishi_encrypt_iv_etype:               Cryptographic Functions.
+                                                             (line  902)
+* shishi_encrypt_ivupdate:               Cryptographic Functions.
+                                                             (line  986)
+* shishi_encrypt_ivupdate_etype:         Cryptographic Functions.
+                                                             (line  853)
+* shishi_encticketpart_authtime_set:     Ticket (ASN.1) Functions.
+                                                             (line  281)
+* shishi_encticketpart_client:           Ticket (ASN.1) Functions.
+                                                             (line  311)
+* shishi_encticketpart_clientrealm:      Ticket (ASN.1) Functions.
+                                                             (line  334)
+* shishi_encticketpart_cname_set:        Ticket (ASN.1) Functions.
+                                                             (line  242)
+* shishi_encticketpart_crealm_set:       Ticket (ASN.1) Functions.
+                                                             (line  226)
+* shishi_encticketpart_endtime_set:      Ticket (ASN.1) Functions.
+                                                             (line  296)
+* shishi_encticketpart_flags_set:        Ticket (ASN.1) Functions.
+                                                             (line  211)
+* shishi_encticketpart_get_key:          Ticket (ASN.1) Functions.
+                                                             (line  180)
+* shishi_encticketpart_key_set:          Ticket (ASN.1) Functions.
+                                                             (line  195)
+* shishi_encticketpart_transited_set:    Ticket (ASN.1) Functions.
+                                                             (line  261)
+* shishi_error:                          Error Functions.    (line   22)
+* shishi_error_clear:                    Error Functions.    (line   35)
+* shishi_error_outputtype:               Error Functions.    (line   79)
+* shishi_error_printf:                   Error Functions.    (line   66)
+* shishi_error_set:                      Error Functions.    (line   49)
+* shishi_error_set_outputtype:           Error Functions.    (line   91)
+* shishi_generalize_ctime:               Utility Functions.  (line  360)
+* shishi_generalize_now:                 Utility Functions.  (line  347)
+* shishi_generalize_time:                Utility Functions.  (line  333)
+* shishi_hmac_md5:                       Cryptographic Functions.
+                                                             (line 1611)
+* shishi_hmac_sha1:                      Cryptographic Functions.
+                                                             (line 1632)
+* shishi_hostkeys_default_file:          Cryptographic Functions.
+                                                             (line  515)
+* shishi_hostkeys_default_file_set:      Cryptographic Functions.
+                                                             (line  527)
+* shishi_hostkeys_for_localservice:      Cryptographic Functions.
+                                                             (line  593)
+* shishi_hostkeys_for_localservicerealm: Cryptographic Functions.
+                                                             (line  574)
+* shishi_hostkeys_for_server:            Cryptographic Functions.
+                                                             (line  541)
+* shishi_hostkeys_for_serverrealm:       Cryptographic Functions.
+                                                             (line  556)
+* shishi_info:                           Error Functions.    (line  103)
+* shishi_init:                           Initialization Functions.
+                                                             (line   47)
+* shishi_init_server:                    Initialization Functions.
+                                                             (line   96)
+* shishi_init_server_with_paths:         Initialization Functions.
+                                                             (line  114)
+* shishi_init_with_paths:                Initialization Functions.
+                                                             (line   69)
+* shishi_kdc_check_nonce:                AS/TGS Functions.   (line  200)
+* shishi_kdc_copy_cname:                 AS/TGS Functions.   (line  152)
+* shishi_kdc_copy_crealm:                AS/TGS Functions.   (line  119)
+* shishi_kdc_copy_nonce:                 AS/TGS Functions.   (line  185)
+* shishi_kdc_process:                    AS/TGS Functions.   (line  273)
+* shishi_kdcrep_add_enc_part:            AS/TGS Functions.   (line 1302)
+* shishi_kdcrep_clear_padata:            AS/TGS Functions.   (line 1324)
+* shishi_kdcrep_client_set:              AS/TGS Functions.   (line 1214)
+* shishi_kdcrep_cname_set:               AS/TGS Functions.   (line 1196)
+* shishi_kdcrep_crealm_set:              AS/TGS Functions.   (line 1181)
+* shishi_kdcrep_from_file:               AS/TGS Functions.   (line 1163)
+* shishi_kdcrep_get_enc_part_etype:      AS/TGS Functions.   (line 1230)
+* shishi_kdcrep_get_ticket:              AS/TGS Functions.   (line 1245)
+* shishi_kdcrep_parse:                   AS/TGS Functions.   (line 1132)
+* shishi_kdcrep_print:                   AS/TGS Functions.   (line 1083)
+* shishi_kdcrep_read:                    AS/TGS Functions.   (line 1148)
+* shishi_kdcrep_save:                    AS/TGS Functions.   (line 1098)
+* shishi_kdcrep_set_enc_part:            AS/TGS Functions.   (line 1276)
+* shishi_kdcrep_set_ticket:              AS/TGS Functions.   (line 1260)
+* shishi_kdcrep_to_file:                 AS/TGS Functions.   (line 1113)
+* shishi_kdcreq_add_padata:              AS/TGS Functions.   (line 1005)
+* shishi_kdcreq_add_padata_preauth:      AS/TGS Functions.   (line 1046)
+* shishi_kdcreq_add_padata_tgs:          AS/TGS Functions.   (line 1028)
+* shishi_kdcreq_allow_postdate_p:        AS/TGS Functions.   (line  749)
+* shishi_kdcreq_clear_padata:            AS/TGS Functions.   (line  950)
+* shishi_kdcreq_client:                  AS/TGS Functions.   (line  460)
+* shishi_kdcreq_disable_transited_check_p: AS/TGS Functions. (line  808)
+* shishi_kdcreq_enc_tkt_in_skey_p:       AS/TGS Functions.   (line  857)
+* shishi_kdcreq_etype:                   AS/TGS Functions.   (line  622)
+* shishi_kdcreq_forwardable_p:           AS/TGS Functions.   (line  673)
+* shishi_kdcreq_forwarded_p:             AS/TGS Functions.   (line  692)
+* shishi_kdcreq_from_file:               AS/TGS Functions.   (line  409)
+* shishi_kdcreq_get_padata:              AS/TGS Functions.   (line  964)
+* shishi_kdcreq_get_padata_tgs:          AS/TGS Functions.   (line  986)
+* shishi_kdcreq_nonce_set:               AS/TGS Functions.   (line  427)
+* shishi_kdcreq_options:                 AS/TGS Functions.   (line  658)
+* shishi_kdcreq_options_add:             AS/TGS Functions.   (line  935)
+* shishi_kdcreq_options_set:             AS/TGS Functions.   (line  919)
+* shishi_kdcreq_parse:                   AS/TGS Functions.   (line  378)
+* shishi_kdcreq_postdated_p:             AS/TGS Functions.   (line  768)
+* shishi_kdcreq_print:                   AS/TGS Functions.   (line  329)
+* shishi_kdcreq_proxiable_p:             AS/TGS Functions.   (line  712)
+* shishi_kdcreq_proxy_p:                 AS/TGS Functions.   (line  730)
+* shishi_kdcreq_read:                    AS/TGS Functions.   (line  394)
+* shishi_kdcreq_realm:                   AS/TGS Functions.   (line  506)
+* shishi_kdcreq_renew_p:                 AS/TGS Functions.   (line  876)
+* shishi_kdcreq_renewable_ok_p:          AS/TGS Functions.   (line  835)
+* shishi_kdcreq_renewable_p:             AS/TGS Functions.   (line  788)
+* shishi_kdcreq_save:                    AS/TGS Functions.   (line  344)
+* shishi_kdcreq_server:                  AS/TGS Functions.   (line  543)
+* shishi_kdcreq_set_cname:               AS/TGS Functions.   (line  442)
+* shishi_kdcreq_set_etype:               AS/TGS Functions.   (line  640)
+* shishi_kdcreq_set_realm:               AS/TGS Functions.   (line  528)
+* shishi_kdcreq_set_sname:               AS/TGS Functions.   (line  566)
+* shishi_kdcreq_till:                    AS/TGS Functions.   (line  584)
+* shishi_kdcreq_tillc:                   AS/TGS Functions.   (line  608)
+* shishi_kdcreq_to_file:                 AS/TGS Functions.   (line  359)
+* shishi_kdcreq_validate_p:              AS/TGS Functions.   (line  897)
+* shishi_key:                            Cryptographic Functions.
+                                                             (line  167)
+* shishi_key_copy:                       Cryptographic Functions.
+                                                             (line  189)
+* shishi_key_done:                       Cryptographic Functions.
+                                                             (line  180)
+* shishi_key_from_base64:                Cryptographic Functions.
+                                                             (line  220)
+* shishi_key_from_name:                  Cryptographic Functions.
+                                                             (line  313)
+* shishi_key_from_random:                Cryptographic Functions.
+                                                             (line  259)
+* shishi_key_from_string:                Cryptographic Functions.
+                                                             (line  283)
+* shishi_key_from_value:                 Cryptographic Functions.
+                                                             (line  200)
+* shishi_key_length:                     Cryptographic Functions.
+                                                             (line  157)
+* shishi_key_name:                       Cryptographic Functions.
+                                                             (line  147)
+* shishi_key_principal:                  Cryptographic Functions.
+                                                             (line   29)
+* shishi_key_principal_set:              Cryptographic Functions.
+                                                             (line   42)
+* shishi_key_random:                     Cryptographic Functions.
+                                                             (line  241)
+* shishi_key_realm:                      Cryptographic Functions.
+                                                             (line   54)
+* shishi_key_realm_set:                  Cryptographic Functions.
+                                                             (line   66)
+* shishi_key_type:                       Cryptographic Functions.
+                                                             (line   78)
+* shishi_key_type_set:                   Cryptographic Functions.
+                                                             (line   89)
+* shishi_key_value:                      Cryptographic Functions.
+                                                             (line   99)
+* shishi_key_value_set:                  Cryptographic Functions.
+                                                             (line  111)
+* shishi_key_version:                    Cryptographic Functions.
+                                                             (line  124)
+* shishi_key_version_set:                Cryptographic Functions.
+                                                             (line  136)
+* shishi_keys:                           Cryptographic Functions.
+                                                             (line  347)
+* shishi_keys_add:                       Cryptographic Functions.
+                                                             (line  405)
+* shishi_keys_done:                      Cryptographic Functions.
+                                                             (line  359)
+* shishi_keys_for_localservicerealm_in_file: Cryptographic Functions.
+                                                             (line  488)
+* shishi_keys_for_server_in_file:        Cryptographic Functions.
+                                                             (line  470)
+* shishi_keys_for_serverrealm_in_file:   Cryptographic Functions.
+                                                             (line  450)
+* shishi_keys_nth:                       Cryptographic Functions.
+                                                             (line  380)
+* shishi_keys_print:                     Cryptographic Functions.
+                                                             (line  419)
+* shishi_keys_remove:                    Cryptographic Functions.
+                                                             (line  394)
+* shishi_keys_size:                      Cryptographic Functions.
+                                                             (line  369)
+* shishi_keys_to_file:                   Cryptographic Functions.
+                                                             (line  432)
+* shishi_krberror:                       KRB-ERROR Functions.
+                                                             (line   33)
+* shishi_krberror_build:                 KRB-ERROR Functions.
+                                                             (line  143)
+* shishi_krberror_client:                KRB-ERROR Functions.
+                                                             (line  220)
+* shishi_krberror_client_set:            KRB-ERROR Functions.
+                                                             (line  272)
+* shishi_krberror_crealm:                KRB-ERROR Functions.
+                                                             (line  174)
+* shishi_krberror_ctime:                 KRB-ERROR Functions.
+                                                             (line  391)
+* shishi_krberror_ctime_set:             KRB-ERROR Functions.
+                                                             (line  406)
+* shishi_krberror_cusec:                 KRB-ERROR Functions.
+                                                             (line  434)
+* shishi_krberror_cusec_set:             KRB-ERROR Functions.
+                                                             (line  449)
+* shishi_krberror_der:                   KRB-ERROR Functions.
+                                                             (line  157)
+* shishi_krberror_edata:                 KRB-ERROR Functions.
+                                                             (line  626)
+* shishi_krberror_errorcode:             KRB-ERROR Functions.
+                                                             (line  537)
+* shishi_krberror_errorcode_fast:        KRB-ERROR Functions.
+                                                             (line  552)
+* shishi_krberror_errorcode_message:     KRB-ERROR Functions.
+                                                             (line  704)
+* shishi_krberror_errorcode_set:         KRB-ERROR Functions.
+                                                             (line  566)
+* shishi_krberror_etext:                 KRB-ERROR Functions.
+                                                             (line  581)
+* shishi_krberror_from_file:             KRB-ERROR Functions.
+                                                             (line  125)
+* shishi_krberror_message:               KRB-ERROR Functions.
+                                                             (line  719)
+* shishi_krberror_methoddata:            KRB-ERROR Functions.
+                                                             (line  643)
+* shishi_krberror_parse:                 KRB-ERROR Functions.
+                                                             (line   94)
+* shishi_krberror_pretty_print:          KRB-ERROR Functions.
+                                                             (line  688)
+* shishi_krberror_print:                 KRB-ERROR Functions.
+                                                             (line   45)
+* shishi_krberror_read:                  KRB-ERROR Functions.
+                                                             (line  110)
+* shishi_krberror_realm:                 KRB-ERROR Functions.
+                                                             (line  288)
+* shishi_krberror_remove_cname:          KRB-ERROR Functions.
+                                                             (line  259)
+* shishi_krberror_remove_crealm:         KRB-ERROR Functions.
+                                                             (line  192)
+* shishi_krberror_remove_ctime:          KRB-ERROR Functions.
+                                                             (line  421)
+* shishi_krberror_remove_cusec:          KRB-ERROR Functions.
+                                                             (line  464)
+* shishi_krberror_remove_edata:          KRB-ERROR Functions.
+                                                             (line  675)
+* shishi_krberror_remove_etext:          KRB-ERROR Functions.
+                                                             (line  613)
+* shishi_krberror_remove_sname:          KRB-ERROR Functions.
+                                                             (line  341)
+* shishi_krberror_save:                  KRB-ERROR Functions.
+                                                             (line   60)
+* shishi_krberror_server:                KRB-ERROR Functions.
+                                                             (line  321)
+* shishi_krberror_server_set:            KRB-ERROR Functions.
+                                                             (line  375)
+* shishi_krberror_set_cname:             KRB-ERROR Functions.
+                                                             (line  241)
+* shishi_krberror_set_crealm:            KRB-ERROR Functions.
+                                                             (line  205)
+* shishi_krberror_set_edata:             KRB-ERROR Functions.
+                                                             (line  660)
+* shishi_krberror_set_etext:             KRB-ERROR Functions.
+                                                             (line  598)
+* shishi_krberror_set_realm:             KRB-ERROR Functions.
+                                                             (line  306)
+* shishi_krberror_set_sname:             KRB-ERROR Functions.
+                                                             (line  357)
+* shishi_krberror_stime:                 KRB-ERROR Functions.
+                                                             (line  477)
+* shishi_krberror_stime_set:             KRB-ERROR Functions.
+                                                             (line  492)
+* shishi_krberror_susec:                 KRB-ERROR Functions.
+                                                             (line  507)
+* shishi_krberror_susec_set:             KRB-ERROR Functions.
+                                                             (line  522)
+* shishi_krberror_to_file:               KRB-ERROR Functions.
+                                                             (line   75)
+* shishi_md4:                            Cryptographic Functions.
+                                                             (line 1578)
+* shishi_md5:                            Cryptographic Functions.
+                                                             (line 1594)
+* shishi_n_fold:                         Cryptographic Functions.
+                                                             (line 1367)
+* shishi_parse_name:                     Utility Functions.  (line  154)
+* shishi_pbkdf2_sha1:                    Cryptographic Functions.
+                                                             (line 1769)
+* shishi_principal_default:              Utility Functions.  (line  126)
+* shishi_principal_default_guess:        Utility Functions.  (line  115)
+* shishi_principal_default_set:          Utility Functions.  (line  140)
+* shishi_principal_name:                 Utility Functions.  (line  177)
+* shishi_principal_name_realm:           Utility Functions.  (line  203)
+* shishi_principal_name_set:             Utility Functions.  (line  234)
+* shishi_principal_set:                  Utility Functions.  (line  254)
+* shishi_priv:                           SAFE and PRIV Functions.
+                                                             (line  364)
+* shishi_priv_build:                     SAFE and PRIV Functions.
+                                                             (line  697)
+* shishi_priv_done:                      SAFE and PRIV Functions.
+                                                             (line  377)
+* shishi_priv_enc_part_etype:            SAFE and PRIV Functions.
+                                                             (line  619)
+* shishi_priv_encprivpart:               SAFE and PRIV Functions.
+                                                             (line  464)
+* shishi_priv_encprivpart_der:           SAFE and PRIV Functions.
+                                                             (line  487)
+* shishi_priv_encprivpart_der_set:       SAFE and PRIV Functions.
+                                                             (line  505)
+* shishi_priv_encprivpart_set:           SAFE and PRIV Functions.
+                                                             (line  476)
+* shishi_priv_from_file:                 SAFE and PRIV Functions.
+                                                             (line  601)
+* shishi_priv_key:                       SAFE and PRIV Functions.
+                                                             (line  387)
+* shishi_priv_key_set:                   SAFE and PRIV Functions.
+                                                             (line  399)
+* shishi_priv_parse:                     SAFE and PRIV Functions.
+                                                             (line  570)
+* shishi_priv_print:                     SAFE and PRIV Functions.
+                                                             (line  521)
+* shishi_priv_priv:                      SAFE and PRIV Functions.
+                                                             (line  409)
+* shishi_priv_priv_der:                  SAFE and PRIV Functions.
+                                                             (line  432)
+* shishi_priv_priv_der_set:              SAFE and PRIV Functions.
+                                                             (line  449)
+* shishi_priv_priv_set:                  SAFE and PRIV Functions.
+                                                             (line  421)
+* shishi_priv_process:                   SAFE and PRIV Functions.
+                                                             (line  712)
+* shishi_priv_read:                      SAFE and PRIV Functions.
+                                                             (line  586)
+* shishi_priv_save:                      SAFE and PRIV Functions.
+                                                             (line  536)
+* shishi_priv_set_enc_part:              SAFE and PRIV Functions.
+                                                             (line  635)
+* shishi_priv_to_file:                   SAFE and PRIV Functions.
+                                                             (line  551)
+* shishi_prompt_password:                Utility Functions.  (line  447)
+* shishi_prompt_password_callback_get:   Utility Functions.  (line  434)
+* shishi_prompt_password_callback_set:   Utility Functions.  (line  410)
+* shishi_random_to_key:                  Cryptographic Functions.
+                                                             (line  776)
+* shishi_randomize:                      Cryptographic Functions.
+                                                             (line 1539)
+* shishi_realm_default:                  Utility Functions.  (line   24)
+* shishi_realm_default_guess:            Utility Functions.  (line   10)
+* shishi_realm_default_set:              Utility Functions.  (line   36)
+* shishi_realm_for_server:               Utility Functions.  (line  100)
+* shishi_realm_for_server_dns:           Utility Functions.  (line   63)
+* shishi_realm_for_server_file:          Utility Functions.  (line   50)
+* shishi_resolv:                         Utility Functions.  (line  466)
+* shishi_resolv_free:                    Utility Functions.  (line  480)
+* shishi_safe:                           SAFE and PRIV Functions.
+                                                             (line   32)
+* shishi_safe_build:                     SAFE and PRIV Functions.
+                                                             (line  311)
+* shishi_safe_cksum:                     SAFE and PRIV Functions.
+                                                             (line  231)
+* shishi_safe_done:                      SAFE and PRIV Functions.
+                                                             (line   45)
+* shishi_safe_from_file:                 SAFE and PRIV Functions.
+                                                             (line  213)
+* shishi_safe_key:                       SAFE and PRIV Functions.
+                                                             (line   55)
+* shishi_safe_key_set:                   SAFE and PRIV Functions.
+                                                             (line   67)
+* shishi_safe_parse:                     SAFE and PRIV Functions.
+                                                             (line  182)
+* shishi_safe_print:                     SAFE and PRIV Functions.
+                                                             (line  133)
+* shishi_safe_read:                      SAFE and PRIV Functions.
+                                                             (line  198)
+* shishi_safe_safe:                      SAFE and PRIV Functions.
+                                                             (line   77)
+* shishi_safe_safe_der:                  SAFE and PRIV Functions.
+                                                             (line  100)
+* shishi_safe_safe_der_set:              SAFE and PRIV Functions.
+                                                             (line  117)
+* shishi_safe_safe_set:                  SAFE and PRIV Functions.
+                                                             (line   89)
+* shishi_safe_save:                      SAFE and PRIV Functions.
+                                                             (line  148)
+* shishi_safe_set_cksum:                 SAFE and PRIV Functions.
+                                                             (line  251)
+* shishi_safe_set_user_data:             SAFE and PRIV Functions.
+                                                             (line  294)
+* shishi_safe_to_file:                   SAFE and PRIV Functions.
+                                                             (line  163)
+* shishi_safe_user_data:                 SAFE and PRIV Functions.
+                                                             (line  274)
+* shishi_safe_verify:                    SAFE and PRIV Functions.
+                                                             (line  326)
+* shishi_server:                         Initialization Functions.
+                                                             (line   21)
+* shishi_server_for_local_service:       Utility Functions.  (line  287)
+* shishi_strerror:                       Error Functions.    (line   10)
+* shishi_string_to_key:                  Cryptographic Functions.
+                                                             (line  746)
+* shishi_tgs:                            TGS Functions.      (line   83)
+* shishi_tgs_ap:                         TGS Functions.      (line  127)
+* shishi_tgs_done:                       TGS Functions.      (line   95)
+* shishi_tgs_krberror:                   TGS Functions.      (line  267)
+* shishi_tgs_krberror_der:               TGS Functions.      (line  279)
+* shishi_tgs_krberror_set:               TGS Functions.      (line  295)
+* shishi_tgs_process:                    AS/TGS Functions.   (line  221)
+* shishi_tgs_rep:                        TGS Functions.      (line  214)
+* shishi_tgs_rep_build:                  TGS Functions.      (line  253)
+* shishi_tgs_rep_der:                    TGS Functions.      (line  226)
+* shishi_tgs_rep_process:                TGS Functions.      (line  241)
+* shishi_tgs_req:                        TGS Functions.      (line  138)
+* shishi_tgs_req_build:                  TGS Functions.      (line  203)
+* shishi_tgs_req_der:                    TGS Functions.      (line  161)
+* shishi_tgs_req_der_set:                TGS Functions.      (line  177)
+* shishi_tgs_req_process:                TGS Functions.      (line  192)
+* shishi_tgs_req_set:                    TGS Functions.      (line  150)
+* shishi_tgs_sendrecv:                   TGS Functions.      (line  344)
+* shishi_tgs_sendrecv_hint:              TGS Functions.      (line  328)
+* shishi_tgs_set_realm:                  TGS Functions.      (line  369)
+* shishi_tgs_set_realmserver:            TGS Functions.      (line  382)
+* shishi_tgs_set_server:                 TGS Functions.      (line  356)
+* shishi_tgs_tgtkt:                      TGS Functions.      (line  105)
+* shishi_tgs_tgtkt_set:                  TGS Functions.      (line  117)
+* shishi_tgs_tkt:                        TGS Functions.      (line  305)
+* shishi_tgs_tkt_set:                    TGS Functions.      (line  317)
+* shishi_tgsrep:                         AS/TGS Functions.   (line 1071)
+* shishi_tgsreq:                         AS/TGS Functions.   (line  317)
+* shishi_ticket:                         Ticket (ASN.1) Functions.
+                                                             (line   35)
+* shishi_ticket_add_enc_part:            Ticket (ASN.1) Functions.
+                                                             (line  162)
+* shishi_ticket_get_enc_part_etype:      Ticket (ASN.1) Functions.
+                                                             (line  120)
+* shishi_ticket_realm_get:               Ticket (ASN.1) Functions.
+                                                             (line   47)
+* shishi_ticket_realm_set:               Ticket (ASN.1) Functions.
+                                                             (line   64)
+* shishi_ticket_server:                  Ticket (ASN.1) Functions.
+                                                             (line   79)
+* shishi_ticket_set_enc_part:            Ticket (ASN.1) Functions.
+                                                             (line  136)
+* shishi_ticket_sname_set:               Ticket (ASN.1) Functions.
+                                                             (line  102)
+* shishi_time:                           Utility Functions.  (line  373)
+* shishi_tkt:                            Ticket Functions.   (line   17)
+* shishi_tkt2:                           Ticket Functions.   (line   30)
+* shishi_tkt_authctime:                  Ticket Functions.   (line  634)
+* shishi_tkt_client:                     Ticket Functions.   (line  155)
+* shishi_tkt_client_p:                   Ticket Functions.   (line  177)
+* shishi_tkt_clientrealm:                Ticket Functions.   (line  190)
+* shishi_tkt_clientrealm_p:              Ticket Functions.   (line  211)
+* shishi_tkt_done:                       Ticket Functions.   (line   46)
+* shishi_tkt_enckdcreppart:              Ticket Functions.   (line   76)
+* shishi_tkt_enckdcreppart_set:          Ticket Functions.   (line   87)
+* shishi_tkt_encticketpart:              Ticket Functions.   (line  107)
+* shishi_tkt_encticketpart_set:          Ticket Functions.   (line  118)
+* shishi_tkt_endctime:                   Ticket Functions.   (line  660)
+* shishi_tkt_expired_p:                  Ticket Functions.   (line  709)
+* shishi_tkt_flags:                      Ticket Functions.   (line  274)
+* shishi_tkt_flags_add:                  Ticket Functions.   (line  300)
+* shishi_tkt_flags_set:                  Ticket Functions.   (line  287)
+* shishi_tkt_forwardable_p:              Ticket Functions.   (line  313)
+* shishi_tkt_forwarded_p:                Ticket Functions.   (line  333)
+* shishi_tkt_hw_authent_p:               Ticket Functions.   (line  502)
+* shishi_tkt_initial_p:                  Ticket Functions.   (line  466)
+* shishi_tkt_invalid_p:                  Ticket Functions.   (line  430)
+* shishi_tkt_kdcrep:                     Ticket Functions.   (line   97)
+* shishi_tkt_key:                        Ticket Functions.   (line  128)
+* shishi_tkt_key_set:                    Ticket Functions.   (line  142)
+* shishi_tkt_keytype:                    Ticket Functions.   (line  581)
+* shishi_tkt_keytype_fast:               Ticket Functions.   (line  593)
+* shishi_tkt_keytype_p:                  Ticket Functions.   (line  604)
+* shishi_tkt_lastreq_pretty_print:       Ticket Functions.   (line  720)
+* shishi_tkt_lastreqc:                   Ticket Functions.   (line  619)
+* shishi_tkt_match_p:                    Ticket Set Functions.
+                                                             (line  256)
+* shishi_tkt_may_postdate_p:             Ticket Functions.   (line  385)
+* shishi_tkt_ok_as_delegate_p:           Ticket Functions.   (line  558)
+* shishi_tkt_postdated_p:                Ticket Functions.   (line  411)
+* shishi_tkt_pre_authent_p:              Ticket Functions.   (line  484)
+* shishi_tkt_pretty_print:               Ticket Functions.   (line  731)
+* shishi_tkt_proxiable_p:                Ticket Functions.   (line  351)
+* shishi_tkt_proxy_p:                    Ticket Functions.   (line  370)
+* shishi_tkt_realm:                      Ticket Functions.   (line  225)
+* shishi_tkt_renew_tillc:                Ticket Functions.   (line  672)
+* shishi_tkt_renewable_p:                Ticket Functions.   (line  450)
+* shishi_tkt_server:                     Ticket Functions.   (line  241)
+* shishi_tkt_server_p:                   Ticket Functions.   (line  262)
+* shishi_tkt_startctime:                 Ticket Functions.   (line  647)
+* shishi_tkt_ticket:                     Ticket Functions.   (line   55)
+* shishi_tkt_ticket_set:                 Ticket Functions.   (line   66)
+* shishi_tkt_transited_policy_checked_p: Ticket Functions.   (line  520)
+* shishi_tkt_valid_at_time_p:            Ticket Functions.   (line  685)
+* shishi_tkt_valid_now_p:                Ticket Functions.   (line  698)
+* shishi_tkts:                           Ticket Set Functions.
+                                                             (line   70)
+* shishi_tkts_add:                       Ticket Set Functions.
+                                                             (line  132)
+* shishi_tkts_default:                   Ticket Set Functions.
+                                                             (line   60)
+* shishi_tkts_default_file:              Ticket Set Functions.
+                                                             (line   34)
+* shishi_tkts_default_file_guess:        Ticket Set Functions.
+                                                             (line   22)
+* shishi_tkts_default_file_set:          Ticket Set Functions.
+                                                             (line   47)
+* shishi_tkts_done:                      Ticket Set Functions.
+                                                             (line   82)
+* shishi_tkts_expire:                    Ticket Set Functions.
+                                                             (line  204)
+* shishi_tkts_find:                      Ticket Set Functions.
+                                                             (line  269)
+* shishi_tkts_find_for_clientserver:     Ticket Set Functions.
+                                                             (line  310)
+* shishi_tkts_find_for_server:           Ticket Set Functions.
+                                                             (line  326)
+* shishi_tkts_from_file:                 Ticket Set Functions.
+                                                             (line  180)
+* shishi_tkts_get:                       Ticket Set Functions.
+                                                             (line  383)
+* shishi_tkts_get_for_clientserver:      Ticket Set Functions.
+                                                             (line  403)
+* shishi_tkts_get_for_server:            Ticket Set Functions.
+                                                             (line  419)
+* shishi_tkts_get_tgs:                   Ticket Set Functions.
+                                                             (line  363)
+* shishi_tkts_get_tgt:                   Ticket Set Functions.
+                                                             (line  341)
+* shishi_tkts_new:                       Ticket Set Functions.
+                                                             (line  147)
+* shishi_tkts_nth:                       Ticket Set Functions.
+                                                             (line  103)
+* shishi_tkts_print:                     Ticket Set Functions.
+                                                             (line  243)
+* shishi_tkts_print_for_service:         Ticket Set Functions.
+                                                             (line  228)
+* shishi_tkts_read:                      Ticket Set Functions.
+                                                             (line  167)
+* shishi_tkts_remove:                    Ticket Set Functions.
+                                                             (line  118)
+* shishi_tkts_size:                      Ticket Set Functions.
+                                                             (line   92)
+* shishi_tkts_to_file:                   Ticket Set Functions.
+                                                             (line  215)
+* shishi_tkts_write:                     Ticket Set Functions.
+                                                             (line  192)
+* shishi_verbose:                        Error Functions.    (line  125)
+* shishi_verify:                         Cryptographic Functions.
+                                                             (line  825)
+* shishi_warn:                           Error Functions.    (line  114)
+* shishi_x509ca_default_file:            X.509 Functions.    (line   41)
+* shishi_x509ca_default_file_guess:      X.509 Functions.    (line   13)
+* shishi_x509ca_default_file_set:        X.509 Functions.    (line   26)
+* shishi_x509cert_default_file:          X.509 Functions.    (line   84)
+* shishi_x509cert_default_file_guess:    X.509 Functions.    (line   55)
+* shishi_x509cert_default_file_set:      X.509 Functions.    (line   68)
+* shishi_x509key_default_file:           X.509 Functions.    (line  124)
+* shishi_x509key_default_file_guess:     X.509 Functions.    (line   97)
+* shishi_x509key_default_file_set:       X.509 Functions.    (line  110)
+* this in date strings:                  Relative items in date strings.
+                                                             (line   33)
+* today in date strings:                 Relative items in date strings.
+                                                             (line   33)
+* tomorrow in date strings:              Relative items in date strings.
+                                                             (line   29)
+* week in date strings:                  Relative items in date strings.
+                                                             (line   15)
+* year in date strings:                  Relative items in date strings.
+                                                             (line   15)
+* yesterday in date strings:             Relative items in date strings.
+                                                             (line   29)
+
+
+File: shishi.info,  Node: Concept Index,  Prev: Function and Data Index,  Up: Top
+
+Concept Index
+*************
+
+ [index ]
+* Menu:
+
+* 3DES:                                  Cryptographic Overview.
+                                                              (line  21)
+* abbreviations for months:              Calendar date items. (line  38)
+* AES:                                   Cryptographic Overview.
+                                                              (line  21)
+* AIX:                                   Supported Platforms. (line  70)
+* anonymous tls:                         Kerberos via TLS.    (line  41)
+* Application Programming Interface (API): Programming Manual.
+                                                              (line   6)
+* ARCFOUR:                               Cryptographic Overview.
+                                                              (line  21)
+* authenticated tls:                     Kerberos via TLS.    (line  97)
+* Authentication:                        Glossary of terms.   (line   7)
+* Authentication header:                 Glossary of terms.   (line  10)
+* Authentication path:                   Glossary of terms.   (line  14)
+* Authenticator:                         Glossary of terms.   (line  18)
+* Authorization:                         Glossary of terms.   (line  23)
+* authors of get_date:                   Authors of get_date. (line   6)
+* Autoconf tests:                        Autoconf tests.      (line   6)
+* beginning of time, for POSIX:          Seconds since the Epoch.
+                                                              (line  13)
+* Bellovin, Steven M.:                   Authors of get_date. (line   6)
+* Berets, Jim:                           Authors of get_date. (line   6)
+* Berry, K.:                             Authors of get_date. (line  14)
+* calendar date item:                    Calendar date items. (line   6)
+* Capability:                            Glossary of terms.   (line  28)
+* case, ignored in dates:                General date syntax. (line  64)
+* certificate authority (CA):            Kerberos via TLS.    (line  97)
+* Ciphertext:                            Glossary of terms.   (line  35)
+* Client:                                Glossary of terms.   (line  39)
+* client authentication:                 Kerberos via TLS.    (line  97)
+* comments, in dates:                    General date syntax. (line  64)
+* Compiling your application:            Building the source. (line   6)
+* concurrent writers:                    Multiple servers.    (line  24)
+* configuration file:                    Shishi Configuration.
+                                                              (line   6)
+* Configure tests:                       Autoconf tests.      (line   6)
+* Contributing:                          Contributing.        (line   7)
+* Credentials:                           Glossary of terms.   (line  45)
+* database definition:                   Shisa Configuration. (line   6)
+* Database interface:                    Kerberos Database Functions.
+                                                              (line   6)
+* date format, ISO 8601:                 Calendar date items. (line  30)
+* date input formats:                    Date input formats.  (line   6)
+* day of week item:                      Day of week items.   (line   6)
+* Debian:                                Supported Platforms. (line  10)
+* DES:                                   Cryptographic Overview.
+                                                              (line  21)
+* Diffie Hellman key exchange:           Kerberos via TLS.    (line  41)
+* displacement of dates:                 Relative items in date strings.
+                                                              (line   6)
+* Download:                              Downloading and Installing.
+                                                              (line   6)
+* Eggert, Paul:                          Authors of get_date. (line   6)
+* Encryption Type (etype):               Glossary of terms.   (line  49)
+* End-user Shishi usage:                 User Manual.         (line   6)
+* epoch, for POSIX:                      Seconds since the Epoch.
+                                                              (line  13)
+* Error Handling:                        Error Handling.      (line   6)
+* Examples:                              Examples.            (line   6)
+* fail over:                             Multiple servers.    (line  82)
+* FDL, GNU Free Documentation License:   GNU Free Documentation License.
+                                                              (line   6)
+* FreeBSD:                               Supported Platforms. (line  93)
+* general date syntax:                   General date syntax. (line   6)
+* Generic Security Service:              Generic Security Service.
+                                                              (line   6)
+* GNUTLS:                                Kerberos via TLS.    (line   6)
+* GPL, GNU General Public License:       GNU GPL.             (line   6)
+* GSS-API:                               Generic Security Service.
+                                                              (line   6)
+* GSSLib:                                Generic Security Service.
+                                                              (line   6)
+* Hacking:                               Contributing.        (line   7)
+* High Availability:                     Multiple servers.    (line  64)
+* HP-UX:                                 Supported Platforms. (line  74)
+* Installation:                          Downloading and Installing.
+                                                              (line   6)
+* IPSEC:                                 Multiple servers.    (line   6)
+* IRIX:                                  Supported Platforms. (line  66)
+* ISO 8601 date format:                  Calendar date items. (line  30)
+* items in date strings:                 General date syntax. (line   6)
+* KDC:                                   Glossary of terms.   (line  59)
+* Kerberos:                              Glossary of terms.   (line  68)
+* Kerberos Ticket:                       Glossary of terms.   (line 125)
+* Key Version Number (kvno):             Glossary of terms.   (line  74)
+* language, in dates:                    General date syntax. (line  40)
+* LDAP:                                  Multiple servers.    (line   6)
+* License, GNU GPL:                      GNU GPL.             (line   6)
+* MacKenzie, David:                      Authors of get_date. (line   6)
+* MacOS X:                               Supported Platforms. (line  99)
+* Mandrake:                              Supported Platforms. (line  62)
+* master server:                         Multiple servers.    (line  13)
+* Meyering, Jim:                         Authors of get_date. (line   6)
+* minutes, time zone correction by:      Time of day items.   (line  30)
+* month names in date strings:           Calendar date items. (line  38)
+* months, written-out:                   General date syntax. (line  36)
+* Motorola Coldfire:                     Supported Platforms. (line 103)
+* NetBSD:                                Supported Platforms. (line  83)
+* NFS:                                   Multiple servers.    (line   6)
+* numbers, written-out:                  General date syntax. (line  26)
+* OpenBSD:                               Supported Platforms. (line  88)
+* ordinal numbers:                       General date syntax. (line  26)
+* Pinard, F.:                            Authors of get_date. (line  14)
+* Plaintext:                             Glossary of terms.   (line  81)
+* Principal:                             Glossary of terms.   (line  85)
+* Principal identifier:                  Glossary of terms.   (line  89)
+* pure numbers in date strings:          Pure numbers in date strings.
+                                                              (line   6)
+* RedHat:                                Supported Platforms. (line  45)
+* RedHat Advanced Server:                Supported Platforms. (line  54)
+* relative items in date strings:        Relative items in date strings.
+                                                              (line   6)
+* remote databases:                      Multiple servers.    (line   6)
+* Reporting Bugs:                        Bug Reports.         (line   6)
+* rsync:                                 Multiple servers.    (line   6)
+* Salz, Rich:                            Authors of get_date. (line   6)
+* Seal:                                  Glossary of terms.   (line  93)
+* secondary server:                      Multiple servers.    (line  13)
+* Secret key:                            Glossary of terms.   (line  98)
+* Server:                                Glossary of terms.   (line 104)
+* server authentication:                 Kerberos via TLS.    (line  97)
+* Service:                               Glossary of terms.   (line 109)
+* Session key:                           Glossary of terms.   (line 113)
+* Shisa API:                             Kerberos Database Functions.
+                                                              (line   6)
+* Solaris:                               Supported Platforms. (line  79)
+* specifying user database:              Shisa Configuration. (line   6)
+* SQL:                                   Multiple servers.    (line   6)
+* STARTTLS:                              Kerberos via TLS.    (line   6)
+* Sub-session key:                       Glossary of terms.   (line 119)
+* SuSE:                                  Supported Platforms. (line  31)
+* SuSE Linux:                            Supported Platforms. (line  36)
+* Ticket:                                Glossary of terms.   (line 125)
+* time of day item:                      Time of day items.   (line   6)
+* time zone correction:                  Time of day items.   (line  30)
+* time zone item <1>:                    Time zone items.     (line   6)
+* time zone item:                        General date syntax. (line  44)
+* TLS:                                   Kerberos via TLS.    (line   6)
+* tls resume:                            Kerberos via TLS.    (line  18)
+* Tru64:                                 Supported Platforms. (line  26)
+* uClibc:                                Supported Platforms. (line 103)
+* uClinux:                               Supported Platforms. (line 103)
+* user database definition:              Shisa Configuration. (line   6)
+* X.509 authentication:                  Kerberos via TLS.    (line  97)
+
+

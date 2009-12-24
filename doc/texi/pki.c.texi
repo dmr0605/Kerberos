@@ -1,0 +1,119 @@
+@subheading shishi_x509ca_default_file_guess
+@anchor{shishi_x509ca_default_file_guess}
+@deftypefun {char *} {shishi_x509ca_default_file_guess} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Guesses the default X.509 CA certificate filename; it is
+$HOME/.shishi/client.ca.
+
+@strong{Return value:} Returns default X.509 client certificate filename as
+a string that has to be deallocated with @code{free()} by the caller.
+@end deftypefun
+
+@subheading shishi_x509ca_default_file_set
+@anchor{shishi_x509ca_default_file_set}
+@deftypefun {void} {shishi_x509ca_default_file_set} (Shishi * @var{handle}, const char * @var{x509cafile})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{x509cafile}: string with new default x509 client certificate file name,
+or NULL to reset to default.
+
+Set the default X.509 CA certificate filename used in the library.
+The certificate is used during TLS connections with the KDC to
+authenticate the KDC.  The string is copied into the library, so
+you can dispose of the variable immediately after calling this
+function.
+@end deftypefun
+
+@subheading shishi_x509ca_default_file
+@anchor{shishi_x509ca_default_file}
+@deftypefun {const char *} {shishi_x509ca_default_file} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Get filename for default X.509 CA certificate.
+
+@strong{Return value:} Returns the default X.509 CA certificate filename
+used in the library.  The certificate is used during TLS
+connections with the KDC to authenticate the KDC.  The string is
+not a copy, so don't modify or deallocate it.
+@end deftypefun
+
+@subheading shishi_x509cert_default_file_guess
+@anchor{shishi_x509cert_default_file_guess}
+@deftypefun {char *} {shishi_x509cert_default_file_guess} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Guesses the default X.509 client certificate filename; it is
+$HOME/.shishi/client.certs.
+
+@strong{Return value:} Returns default X.509 client certificate filename as
+a string that has to be deallocated with @code{free()} by the caller.
+@end deftypefun
+
+@subheading shishi_x509cert_default_file_set
+@anchor{shishi_x509cert_default_file_set}
+@deftypefun {void} {shishi_x509cert_default_file_set} (Shishi * @var{handle}, const char * @var{x509certfile})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{x509certfile}: string with new default x509 client certificate file name,
+or NULL to reset to default.
+
+Set the default X.509 client certificate filename used in the
+library.  The certificate is used during TLS connections with the
+KDC to authenticate the client.  The string is copied into the
+library, so you can dispose of the variable immediately after
+calling this function.
+@end deftypefun
+
+@subheading shishi_x509cert_default_file
+@anchor{shishi_x509cert_default_file}
+@deftypefun {const char *} {shishi_x509cert_default_file} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Get filename for default X.509 certificate.
+
+@strong{Return value:} Returns the default X.509 client certificate filename
+used in the library.  The certificate is used during TLS
+connections with the KDC to authenticate the client.  The string is
+not a copy, so don't modify or deallocate it.
+@end deftypefun
+
+@subheading shishi_x509key_default_file_guess
+@anchor{shishi_x509key_default_file_guess}
+@deftypefun {char *} {shishi_x509key_default_file_guess} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Guesses the default X.509 client key filename; it is
+$HOME/.shishi/client.key.
+
+@strong{Return value:} Returns default X.509 client key filename as
+a string that has to be deallocated with @code{free()} by the caller.
+@end deftypefun
+
+@subheading shishi_x509key_default_file_set
+@anchor{shishi_x509key_default_file_set}
+@deftypefun {void} {shishi_x509key_default_file_set} (Shishi * @var{handle}, const char * @var{x509keyfile})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{x509keyfile}: string with new default x509 client key file name, or
+NULL to reset to default.
+
+Set the default X.509 client key filename used in the library.  The
+key is used during TLS connections with the KDC to authenticate the
+client.  The string is copied into the library, so you can dispose
+of the variable immediately after calling this function.
+@end deftypefun
+
+@subheading shishi_x509key_default_file
+@anchor{shishi_x509key_default_file}
+@deftypefun {const char *} {shishi_x509key_default_file} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Get filename for default X.509 key.
+
+@strong{Return value:} Returns the default X.509 client key filename
+used in the library.  The key is used during TLS
+connections with the KDC to authenticate the client.  The string is
+not a copy, so don't modify or deallocate it.
+@end deftypefun
+

@@ -1,0 +1,22 @@
+@subheading shishi_resolv
+@anchor{shishi_resolv}
+@deftypefun {Shishi_dns} {shishi_resolv} (const char * @var{zone}, uint16_t @var{querytype})
+@var{zone}: owner name of data, e.g. "EXAMPLE.ORG"
+
+@var{querytype}: type of data to query for, e.g., SHISHI_DNS_TXT.
+
+Query DNS resolver for data of type @code{querytype} at owner name @code{zone}.
+Currently TXT and SRV types are supported.
+
+@strong{Return value:} Returns linked list of DNS records, or NULL if query
+failed.
+@end deftypefun
+
+@subheading shishi_resolv_free
+@anchor{shishi_resolv_free}
+@deftypefun {void} {shishi_resolv_free} (Shishi_dns @var{rrs})
+@var{rrs}: list of DNS RR as returned by @code{shishi_resolv()}.
+
+Deallocate list of DNS RR as returned by @code{shishi_resolv()}.
+@end deftypefun
+

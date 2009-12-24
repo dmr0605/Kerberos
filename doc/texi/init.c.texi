@@ -1,0 +1,119 @@
+@subheading shishi
+@anchor{shishi}
+@deftypefun {Shishi *} {shishi} ( @var{void})
+
+Initializes the Shishi library, and set up, using
+@code{shishi_error_set_outputtype()}, the library so that future warnings
+and informational messages are printed to stderr.  If this function
+fails, it may print diagnostic errors to stderr.
+
+@strong{Return value:} Returns Shishi library handle, or @code{NULL} on error.
+@end deftypefun
+
+@subheading shishi_server
+@anchor{shishi_server}
+@deftypefun {Shishi *} {shishi_server} ( @var{void})
+
+Initializes the Shishi library, and set up, using
+@code{shishi_error_set_outputtype()}, the library so that future warnings
+and informational messages are printed to the syslog.  If this
+function fails, it may print diagnostic errors to the syslog.
+
+@strong{Return value:} Returns Shishi library handle, or @code{NULL} on error.
+@end deftypefun
+
+@subheading shishi_done
+@anchor{shishi_done}
+@deftypefun {void} {shishi_done} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Deallocates the shishi library handle.  The handle must not be used
+in any calls to shishi functions after this.
+
+If there is a default tkts, it is written to the default tkts file
+(call @code{shishi_tkts_default_file_set()} to change the default tkts
+file). If you do not wish to write the default tkts file, close the
+default tkts with shishi_tkts_done(handle, NULL) before calling
+this function.
+@end deftypefun
+
+@subheading shishi_init
+@anchor{shishi_init}
+@deftypefun {int} {shishi_init} (Shishi ** @var{handle})
+@var{handle}: pointer to handle to be created.
+
+Create a Shishi library handle, using @code{shishi()}, and read the system
+configuration file, user configuration file and user tickets from
+their default locations.  The paths to the system configuration
+file is decided at compile time, and is $sysconfdir/shishi.conf.
+The user configuration file is $HOME/.shishi/config, and the user
+ticket file is $HOME/.shishi/ticket.
+
+The handle is allocated regardless of return values, except for
+SHISHI_HANDLE_ERROR which indicates a problem allocating the
+handle.  (The other error conditions comes from reading the files.)
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_init_with_paths
+@anchor{shishi_init_with_paths}
+@deftypefun {int} {shishi_init_with_paths} (Shishi ** @var{handle}, const char * @var{tktsfile}, const char * @var{systemcfgfile}, const char * @var{usercfgfile})
+@var{handle}: pointer to handle to be created.
+
+@var{tktsfile}: Filename of ticket file, or NULL.
+
+@var{systemcfgfile}: Filename of system configuration, or NULL.
+
+@var{usercfgfile}: Filename of user configuration, or NULL.
+
+Create a Shishi library handle, using @code{shishi()}, and read the system
+configuration file, user configuration file, and user tickets from
+the specified locations.  If any of @code{usercfgfile} or @code{systemcfgfile}
+is NULL, the file is read from its default location, which for the
+system configuration file is decided at compile time, and is
+$sysconfdir/shishi.conf, and for the user configuration file is
+$HOME/.shishi/config.  If the ticket file is NULL, a ticket file is
+not read at all.
+
+The handle is allocated regardless of return values, except for
+SHISHI_HANDLE_ERROR which indicates a problem allocating the
+handle.  (The other error conditions comes from reading the files.)
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_init_server
+@anchor{shishi_init_server}
+@deftypefun {int} {shishi_init_server} (Shishi ** @var{handle})
+@var{handle}: pointer to handle to be created.
+
+Create a Shishi library handle, using @code{shishi_server()}, and read the
+system configuration file.  The paths to the system configuration
+file is decided at compile time, and is $sysconfdir/shishi.conf.
+
+The handle is allocated regardless of return values, except for
+SHISHI_HANDLE_ERROR which indicates a problem allocating the
+handle.  (The other error conditions comes from reading the file.)
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_init_server_with_paths
+@anchor{shishi_init_server_with_paths}
+@deftypefun {int} {shishi_init_server_with_paths} (Shishi ** @var{handle}, const char * @var{systemcfgfile})
+@var{handle}: pointer to handle to be created.
+
+@var{systemcfgfile}: Filename of system configuration, or NULL.
+
+Create a Shishi library handle, using @code{shishi_server()}, and read the
+system configuration file from specified location.  The paths to
+the system configuration file is decided at compile time, and is
+$sysconfdir/shishi.conf.  The handle is allocated regardless of
+return values, except for SHISHI_HANDLE_ERROR which indicates a
+problem allocating the handle.  (The other error conditions comes
+from reading the file.)
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

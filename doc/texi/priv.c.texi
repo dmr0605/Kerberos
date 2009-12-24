@@ -1,0 +1,338 @@
+@subheading shishi_priv
+@anchor{shishi_priv}
+@deftypefun {int} {shishi_priv} (Shishi * @var{handle}, Shishi_priv ** @var{priv})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{priv}: pointer to new structure that holds information about PRIV exchange
+
+Create a new PRIV exchange.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_done
+@anchor{shishi_priv_done}
+@deftypefun {void} {shishi_priv_done} (Shishi_priv * @var{priv})
+@var{priv}: structure that holds information about PRIV exchange
+
+Deallocate resources associated with PRIV exchange.  This should be
+called by the application when it no longer need to utilize the
+PRIV exchange handle.
+@end deftypefun
+
+@subheading shishi_priv_key
+@anchor{shishi_priv_key}
+@deftypefun {Shishi_key *} {shishi_priv_key} (Shishi_priv * @var{priv})
+@var{priv}: structure that holds information about PRIV exchange
+
+Get key from PRIV exchange.
+
+@strong{Return value:} Returns the key used in the PRIV exchange, or NULL if
+not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_priv_key_set
+@anchor{shishi_priv_key_set}
+@deftypefun {void} {shishi_priv_key_set} (Shishi_priv * @var{priv}, Shishi_key * @var{key})
+@var{priv}: structure that holds information about PRIV exchange
+
+@var{key}: key to store in PRIV.
+
+Set the Key in the PRIV exchange.
+@end deftypefun
+
+@subheading shishi_priv_priv
+@anchor{shishi_priv_priv}
+@deftypefun {Shishi_asn1} {shishi_priv_priv} (Shishi_priv * @var{priv})
+@var{priv}: structure that holds information about PRIV exchange
+
+Get ASN.1 PRIV structure in PRIV exchange.
+
+@strong{Return value:} Returns the ASN.1 priv in the PRIV exchange, or NULL if
+not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_priv_priv_set
+@anchor{shishi_priv_priv_set}
+@deftypefun {void} {shishi_priv_priv_set} (Shishi_priv * @var{priv}, Shishi_asn1 @var{asn1priv})
+@var{priv}: structure that holds information about PRIV exchange
+
+@var{asn1priv}: KRB-PRIV to store in PRIV exchange.
+
+Set the KRB-PRIV in the PRIV exchange.
+@end deftypefun
+
+@subheading shishi_priv_priv_der
+@anchor{shishi_priv_priv_der}
+@deftypefun {int} {shishi_priv_priv_der} (Shishi_priv * @var{priv}, char ** @var{out}, size_t * @var{outlen})
+@var{priv}: priv as allocated by @code{shishi_priv()}.
+
+@var{out}: output array with newly allocated DER encoding of PRIV.
+
+@var{outlen}: length of output array with DER encoding of PRIV.
+
+DER encode PRIV structure.  Typically @code{shishi_priv_build()} is used
+to build the PRIV structure first.  @code{out} is allocated by this
+function, and it is the responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_priv_der_set
+@anchor{shishi_priv_priv_der_set}
+@deftypefun {int} {shishi_priv_priv_der_set} (Shishi_priv * @var{priv}, char * @var{der}, size_t @var{derlen})
+@var{priv}: priv as allocated by @code{shishi_priv()}.
+
+@var{der}: input array with DER encoded KRB-PRIV.
+
+@var{derlen}: length of input array with DER encoded KRB-PRIV.
+
+DER decode KRB-PRIV and set it PRIV exchange.  If decoding fails, the
+KRB-PRIV in the PRIV exchange remains.
+
+@strong{Return value:} Returns SHISHI_OK.
+@end deftypefun
+
+@subheading shishi_priv_encprivpart
+@anchor{shishi_priv_encprivpart}
+@deftypefun {Shishi_asn1} {shishi_priv_encprivpart} (Shishi_priv * @var{priv})
+@var{priv}: structure that holds information about PRIV exchange
+
+Get ASN.1 EncPrivPart structure from PRIV exchange.
+
+@strong{Return value:} Returns the ASN.1 encprivpart in the PRIV exchange, or NULL if
+not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_priv_encprivpart_set
+@anchor{shishi_priv_encprivpart_set}
+@deftypefun {void} {shishi_priv_encprivpart_set} (Shishi_priv * @var{priv}, Shishi_asn1 @var{asn1encprivpart})
+@var{priv}: structure that holds information about PRIV exchange
+
+@var{asn1encprivpart}: ENCPRIVPART to store in PRIV exchange.
+
+Set the ENCPRIVPART in the PRIV exchange.
+@end deftypefun
+
+@subheading shishi_priv_encprivpart_der
+@anchor{shishi_priv_encprivpart_der}
+@deftypefun {int} {shishi_priv_encprivpart_der} (Shishi_priv * @var{priv}, char ** @var{out}, size_t * @var{outlen})
+@var{priv}: priv as allocated by @code{shishi_priv()}.
+
+@var{out}: output array with newly allocated DER encoding of ENCPRIVPART.
+
+@var{outlen}: length of output array with DER encoding of ENCPRIVPART.
+
+DER encode ENCPRIVPART structure.  Typically
+@code{shishi_encprivpart_build()} is used to build the ENCPRIVPART
+structure first.  @code{out} is allocated by this function, and it is the
+responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_encprivpart_der_set
+@anchor{shishi_priv_encprivpart_der_set}
+@deftypefun {int} {shishi_priv_encprivpart_der_set} (Shishi_priv * @var{priv}, char * @var{der}, size_t @var{derlen})
+@var{priv}: priv as allocated by @code{shishi_priv()}.
+
+@var{der}: input array with DER encoded ENCPRIVPART.
+
+@var{derlen}: length of input array with DER encoded ENCPRIVPART.
+
+DER decode ENCPRIVPART and set it PRIV exchange.  If decoding
+fails, the ENCPRIVPART in the PRIV exchange remains.
+
+@strong{Return value:} Returns SHISHI_OK.
+@end deftypefun
+
+@subheading shishi_priv_print
+@anchor{shishi_priv_print}
+@deftypefun {int} {shishi_priv_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{priv})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{priv}: PRIV to print.
+
+Print ASCII armored DER encoding of PRIV to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_save
+@anchor{shishi_priv_save}
+@deftypefun {int} {shishi_priv_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{priv})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{priv}: PRIV to save.
+
+Save DER encoding of PRIV to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_to_file
+@anchor{shishi_priv_to_file}
+@deftypefun {int} {shishi_priv_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{priv}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{priv}: PRIV to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write PRIV to file in specified TYPE.  The file will be
+truncated if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_parse
+@anchor{shishi_priv_parse}
+@deftypefun {int} {shishi_priv_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{priv})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{priv}: output variable with newly allocated PRIV.
+
+Read ASCII armored DER encoded PRIV from file and populate given
+variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_read
+@anchor{shishi_priv_read}
+@deftypefun {int} {shishi_priv_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{priv})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{priv}: output variable with newly allocated PRIV.
+
+Read DER encoded PRIV from file and populate given variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_from_file
+@anchor{shishi_priv_from_file}
+@deftypefun {int} {shishi_priv_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{priv}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{priv}: output variable with newly allocated PRIV.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read PRIV from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_enc_part_etype
+@anchor{shishi_priv_enc_part_etype}
+@deftypefun {int} {shishi_priv_enc_part_etype} (Shishi * @var{handle}, Shishi_asn1 @var{priv}, int32_t * @var{etype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{priv}: PRIV variable to get value from.
+
+@var{etype}: output variable that holds the value.
+
+Extract PRIV.enc-part.etype.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_set_enc_part
+@anchor{shishi_priv_set_enc_part}
+@deftypefun {int} {shishi_priv_set_enc_part} (Shishi * @var{handle}, Shishi_asn1 @var{priv}, int32_t @var{etype}, const char * @var{encpart}, size_t @var{encpartlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{priv}: priv as allocated by @code{shishi_priv()}.
+
+@var{etype}: input encryption type to store in PRIV.
+
+@var{encpart}: input encrypted data to store in PRIV.
+
+@var{encpartlen}: size of input encrypted data to store in PRIV.
+
+Store encrypted data in PRIV.  The encrypted data is usually
+created by calling @code{shishi_encrypt()} on some application specific
+data using the key from the ticket that is being used.  To save
+time, you may want to use @code{shishi_priv_build()} instead, which
+encryptes the data and calls this function in one step.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encprivpart_user_data
+@anchor{shishi_encprivpart_user_data}
+@deftypefun {int} {shishi_encprivpart_user_data} (Shishi * @var{handle}, Shishi_asn1 @var{encprivpart}, char ** @var{userdata}, size_t * @var{userdatalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encprivpart}: encprivpart as allocated by @code{shishi_priv()}.
+
+@var{userdata}: output array with newly allocated user data from KRB-PRIV.
+
+@var{userdatalen}: output size of output user data buffer.
+
+Read user data value from KRB-PRIV.  @code{userdata} is allocated by this
+function, and it is the responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encprivpart_set_user_data
+@anchor{shishi_encprivpart_set_user_data}
+@deftypefun {int} {shishi_encprivpart_set_user_data} (Shishi * @var{handle}, Shishi_asn1 @var{encprivpart}, const char * @var{userdata}, size_t @var{userdatalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encprivpart}: encprivpart as allocated by @code{shishi_priv()}.
+
+@var{userdata}: input user application to store in PRIV.
+
+@var{userdatalen}: size of input user application to store in PRIV.
+
+Set the application data in PRIV.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_build
+@anchor{shishi_priv_build}
+@deftypefun {int} {shishi_priv_build} (Shishi_priv * @var{priv}, Shishi_key * @var{key})
+@var{priv}: priv as allocated by @code{shishi_priv()}.
+
+@var{key}: key for session, used to encrypt data.
+
+Build checksum and set it in KRB-PRIV.  Note that this follows RFC
+1510bis and is incompatible with RFC 1510, although presumably few
+implementations use the RFC1510 algorithm.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_priv_process
+@anchor{shishi_priv_process}
+@deftypefun {int} {shishi_priv_process} (Shishi_priv * @var{priv}, Shishi_key * @var{key})
+@var{priv}: priv as allocated by @code{shishi_priv()}.
+
+@var{key}: key to use to decrypt EncPrivPart.
+
+Decrypt encrypted data in KRB-PRIV and set the EncPrivPart in the
+PRIV exchange.
+
+@strong{Return value:} Returns SHISHI_OK iff successful,
+SHISHI_PRIV_BAD_KEYTYPE if an incompatible key type is used, or
+SHISHI_CRYPTO_ERROR if the actual decryption failed.
+@end deftypefun
+

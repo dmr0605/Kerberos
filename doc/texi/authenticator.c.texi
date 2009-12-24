@@ -1,0 +1,530 @@
+@subheading shishi_authenticator
+@anchor{shishi_authenticator}
+@deftypefun {Shishi_asn1} {shishi_authenticator} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new Authenticator, populated with some
+default values.  It uses the current time as returned by the system
+for the ctime and cusec fields.
+
+@strong{Return value:} Returns the authenticator or NULL on
+failure.
+@end deftypefun
+
+@subheading shishi_authenticator_subkey
+@anchor{shishi_authenticator_subkey}
+@deftypefun {Shishi_asn1} {shishi_authenticator_subkey} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new Authenticator, populated with some
+default values.  It uses the current time as returned by the system
+for the ctime and cusec fields. It adds a random subkey.
+
+@strong{Return value:} Returns the authenticator or NULL on
+failure.
+@end deftypefun
+
+@subheading shishi_authenticator_print
+@anchor{shishi_authenticator_print}
+@deftypefun {int} {shishi_authenticator_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+Print ASCII armored DER encoding of authenticator to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_save
+@anchor{shishi_authenticator_save}
+@deftypefun {int} {shishi_authenticator_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+Save DER encoding of authenticator to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_to_file
+@anchor{shishi_authenticator_to_file}
+@deftypefun {int} {shishi_authenticator_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: Authenticator to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write Authenticator to file in specified TYPE.  The file will be
+truncated if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_parse
+@anchor{shishi_authenticator_parse}
+@deftypefun {int} {shishi_authenticator_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{authenticator}: output variable with newly allocated authenticator.
+
+Read ASCII armored DER encoded authenticator from file and populate
+given authenticator variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_read
+@anchor{shishi_authenticator_read}
+@deftypefun {int} {shishi_authenticator_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{authenticator}: output variable with newly allocated authenticator.
+
+Read DER encoded authenticator from file and populate given
+authenticator variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_from_file
+@anchor{shishi_authenticator_from_file}
+@deftypefun {int} {shishi_authenticator_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{authenticator}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: output variable with newly allocated Authenticator.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read Authenticator from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_set_crealm
+@anchor{shishi_authenticator_set_crealm}
+@deftypefun {int} {shishi_authenticator_set_crealm} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, const char * @var{crealm})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{crealm}: input array with realm.
+
+Set realm field in authenticator to specified value.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_set_cname
+@anchor{shishi_authenticator_set_cname}
+@deftypefun {int} {shishi_authenticator_set_cname} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, Shishi_name_type @var{name_type}, const char * [] @var{cname})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{cname}: input array with principal name.
+
+Set principal field in authenticator to specified value.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_client_set
+@anchor{shishi_authenticator_client_set}
+@deftypefun {int} {shishi_authenticator_client_set} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, const char * @var{client})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: Authenticator to set client name field in.
+
+@var{client}: zero-terminated string with principal name on RFC 1964 form.
+
+Set the client name field in the Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_ctime
+@anchor{shishi_authenticator_ctime}
+@deftypefun {int} {shishi_authenticator_ctime} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, char ** @var{t})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: Authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{t}: newly allocated zero-terminated character array with client time.
+
+Extract client time from Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_ctime_set
+@anchor{shishi_authenticator_ctime_set}
+@deftypefun {int} {shishi_authenticator_ctime_set} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, const char * @var{t})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: Authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{t}: string with generalized time value to store in Authenticator.
+
+Store client time in Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_cusec_get
+@anchor{shishi_authenticator_cusec_get}
+@deftypefun {int} {shishi_authenticator_cusec_get} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, uint32_t * @var{cusec})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: Authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{cusec}: output integer with client microseconds field.
+
+Extract client microseconds field from Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_cusec_set
+@anchor{shishi_authenticator_cusec_set}
+@deftypefun {int} {shishi_authenticator_cusec_set} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, uint32_t @var{cusec})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{cusec}: client microseconds to set in authenticator, 0-999999.
+
+Set the cusec field in the Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_seqnumber_get
+@anchor{shishi_authenticator_seqnumber_get}
+@deftypefun {int} {shishi_authenticator_seqnumber_get} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, uint32_t * @var{seqnumber})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{seqnumber}: output integer with sequence number field.
+
+Extract sequence number field from Authenticator.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_seqnumber_remove
+@anchor{shishi_authenticator_seqnumber_remove}
+@deftypefun {int} {shishi_authenticator_seqnumber_remove} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+Remove sequence number field in Authenticator.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_seqnumber_set
+@anchor{shishi_authenticator_seqnumber_set}
+@deftypefun {int} {shishi_authenticator_seqnumber_set} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, uint32_t @var{seqnumber})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{seqnumber}: integer with sequence number field to store in Authenticator.
+
+Store sequence number field in Authenticator.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_client
+@anchor{shishi_authenticator_client}
+@deftypefun {int} {shishi_authenticator_client} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, char ** @var{client}, size_t * @var{clientlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{authenticator}: Authenticator variable to get client name from.
+
+@var{client}: pointer to newly allocated zero terminated string containing
+principal name.  May be @code{NULL} (to only populate @code{clientlen}).
+
+@var{clientlen}: pointer to length of @code{client} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{client}).
+
+Represent client principal name in Authenticator as zero-terminated
+string.  The string is allocate by this function, and it is the
+responsibility of the caller to deallocate it.  Note that the
+output length @code{clientlen} does not include the terminating zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_clientrealm
+@anchor{shishi_authenticator_clientrealm}
+@deftypefun {int} {shishi_authenticator_clientrealm} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, char ** @var{client}, size_t * @var{clientlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{authenticator}: Authenticator variable to get client name and realm from.
+
+@var{client}: pointer to newly allocated zero terminated string containing
+principal name and realm.  May be @code{NULL} (to only populate @code{clientlen}).
+
+@var{clientlen}: pointer to length of @code{client} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{client}).
+
+Convert cname and realm fields from Authenticator to printable
+principal name format.  The string is allocate by this function,
+and it is the responsibility of the caller to deallocate it.  Note
+that the output length @code{clientlen} does not include the terminating
+zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_cksum
+@anchor{shishi_authenticator_cksum}
+@deftypefun {int} {shishi_authenticator_cksum} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, int32_t * @var{cksumtype}, char ** @var{cksum}, size_t * @var{cksumlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{cksumtype}: output checksum type.
+
+@var{cksum}: newly allocated output checksum data from authenticator.
+
+@var{cksumlen}: on output, actual size of allocated output checksum data buffer.
+
+Read checksum value from authenticator.  @code{cksum} is allocated by
+this function, and it is the responsibility of caller to deallocate
+it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_set_cksum
+@anchor{shishi_authenticator_set_cksum}
+@deftypefun {int} {shishi_authenticator_set_cksum} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, int32_t @var{cksumtype}, char * @var{cksum}, size_t @var{cksumlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{cksumtype}: input checksum type to store in authenticator.
+
+@var{cksum}: input checksum data to store in authenticator.
+
+@var{cksumlen}: size of input checksum data to store in authenticator.
+
+Store checksum value in authenticator.  A checksum is usually created
+by calling @code{shishi_checksum()} on some application specific data using
+the key from the ticket that is being used.  To save time, you may
+want to use @code{shishi_authenticator_add_cksum()} instead, which calculates
+the checksum and calls this function in one step.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_add_cksum
+@anchor{shishi_authenticator_add_cksum}
+@deftypefun {int} {shishi_authenticator_add_cksum} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, Shishi_key * @var{key}, int @var{keyusage}, char * @var{data}, size_t @var{datalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{key}: key to to use for encryption.
+
+@var{keyusage}: cryptographic key usage value to use in encryption.
+
+@var{data}: input array with data to calculate checksum on.
+
+@var{datalen}: size of input array with data to calculate checksum on.
+
+Calculate checksum for data and store it in the authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_add_cksum_type
+@anchor{shishi_authenticator_add_cksum_type}
+@deftypefun {int} {shishi_authenticator_add_cksum_type} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, Shishi_key * @var{key}, int @var{keyusage}, int @var{cksumtype}, char * @var{data}, size_t @var{datalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{key}: key to to use for encryption.
+
+@var{keyusage}: cryptographic key usage value to use in encryption.
+
+@var{cksumtype}: checksum to type to calculate checksum.
+
+@var{data}: input array with data to calculate checksum on.
+
+@var{datalen}: size of input array with data to calculate checksum on.
+
+Calculate checksum for data and store it in the authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_clear_authorizationdata
+@anchor{shishi_authenticator_clear_authorizationdata}
+@deftypefun {int} {shishi_authenticator_clear_authorizationdata} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: Authenticator as allocated by @code{shishi_authenticator()}.
+
+Remove the authorization-data field from Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_add_authorizationdata
+@anchor{shishi_authenticator_add_authorizationdata}
+@deftypefun {int} {shishi_authenticator_add_authorizationdata} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, int32_t @var{adtype}, const char * @var{addata}, size_t @var{addatalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{adtype}: input authorization data type to add.
+
+@var{addata}: input authorization data to add.
+
+@var{addatalen}: size of input authorization data to add.
+
+Add authorization data to authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_authorizationdata
+@anchor{shishi_authenticator_authorizationdata}
+@deftypefun {int} {shishi_authenticator_authorizationdata} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, int32_t * @var{adtype}, char ** @var{addata}, size_t * @var{addatalen}, size_t @var{nth})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{adtype}: output authorization data type.
+
+@var{addata}: newly allocated output authorization data.
+
+@var{addatalen}: on output, actual size of newly allocated authorization data.
+
+@var{nth}: element number of authorization-data to extract.
+
+
+@strong{Extract n:} th authorization data from authenticator.  The first
+field is 1.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_remove_subkey
+@anchor{shishi_authenticator_remove_subkey}
+@deftypefun {int} {shishi_authenticator_remove_subkey} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+Remove subkey from the authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_get_subkey
+@anchor{shishi_authenticator_get_subkey}
+@deftypefun {int} {shishi_authenticator_get_subkey} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, Shishi_key ** @var{subkey})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{subkey}: output newly allocated subkey from authenticator.
+
+Read subkey value from authenticator.
+
+@strong{Return value:} Returns SHISHI_OK if successful or SHISHI_ASN1_NO_ELEMENT
+if subkey is not present.
+@end deftypefun
+
+@subheading shishi_authenticator_set_subkey
+@anchor{shishi_authenticator_set_subkey}
+@deftypefun {int} {shishi_authenticator_set_subkey} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, int32_t @var{subkeytype}, const char * @var{subkey}, size_t @var{subkeylen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{subkeytype}: input subkey type to store in authenticator.
+
+@var{subkey}: input subkey data to store in authenticator.
+
+@var{subkeylen}: size of input subkey data to store in authenticator.
+
+Store subkey value in authenticator.  A subkey is usually created
+by calling @code{shishi_key_random()} using the default encryption type of
+the key from the ticket that is being used.  To save time, you may
+want to use @code{shishi_authenticator_add_subkey()} instead, which calculates
+the subkey and calls this function in one step.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_add_random_subkey
+@anchor{shishi_authenticator_add_random_subkey}
+@deftypefun {int} {shishi_authenticator_add_random_subkey} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+Generate random subkey, of the default encryption type from
+configuration, and store it in the authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_add_random_subkey_etype
+@anchor{shishi_authenticator_add_random_subkey_etype}
+@deftypefun {int} {shishi_authenticator_add_random_subkey_etype} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, int @var{etype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{etype}: encryption type of random key to generate.
+
+Generate random subkey of indicated encryption type, and store it
+in the authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_authenticator_add_subkey
+@anchor{shishi_authenticator_add_subkey}
+@deftypefun {int} {shishi_authenticator_add_subkey} (Shishi * @var{handle}, Shishi_asn1 @var{authenticator}, Shishi_key * @var{subkey})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+@var{subkey}: subkey to add to authenticator.
+
+Store subkey in the authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

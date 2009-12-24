@@ -1,0 +1,680 @@
+Shishi NEWS -- History of user-visible changes.                 -*- outline -*-
+Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Simon Josefsson
+See the end for copying conditions.
+
+* Version 0.0.39 (released 2009-03-30)
+
+** libshishi: The linker version script lists APIs explicitly.
+This will reduce the chance that a symbol is exported accidentally.
+
+** libshisa: Use a LD version script on platforms where it is supported.
+Currently only GNU LD and the Solaris linker supports it.  This helps
+Debian package tools to produce better dependencies.  Before we used
+Libtool -export-symbols-regex that created an anonymous version tag.
+We still fall back on -export-symbols-regex if the system does not
+support LD version scripts, although on most platforms this will just
+affect symbol visibility.
+
+** API and ABI modifications:
+No changes since last version.
+
+* Version 0.0.38 (released 2009-02-26)
+
+** libshisa: Use libtool -export-symbols-regex to fix exported namespace.
+
+** doc: Change license on the manual to GFDLv1.3+.
+
+** minitasn1: Internal copy updated to libtasn1 v1.8.
+
+** More compiler warnings enabled, and many warnings fixed.
+
+** API and ABI modifications:
+No changes since last version.
+
+* Version 0.0.37 (released 2008-06-24)
+
+** libshishi: New functions to set a password prompt callback.
+You register the callback using shishi_prompt_password_callback_set
+and can retrieve the current callback using
+shishi_prompt_password_callback_get.  The callback function should
+follow the shishi_prompt_password_func function prototype.  The
+shishi_prompt_password function has been updated to call the
+callbacks, if registered.  Inspired by discussion with Graham Shaw
+<gdshaw@riscpkg.org>.
+
+** libshishi: New ticketset hint flag SHISHI_TKTSHINTFLAGS_NON_INTERACTIVE.
+When this flag is passed to ticketset functions, it will never query
+the user for a password.  Inspired by discussion with Graham Shaw
+<gdshaw@riscpkg.org>.
+
+** libshishi: When doing pre-authentication with a pre-seeded password,
+** don't ask for a new password.
+Reported by Graham Shaw <gdshaw@riscpkg.org> in
+<http://permalink.gmane.org/gmane.comp.gnu.shishi.general/494>.
+
+** libshishi: add new function to debug print ASN.1 structures.
+shishi_asn1_print: ADD.
+
+** libshishi: Cleanup type declaration of Shishi_asn1.
+Now it is mapped to ASN1_TYPE if you included libtasn1.h, otherwise to
+'void*'.
+
+** Update examples for new API.
+Now the examples are also built by default, so we notice any build
+failures for them.
+
+** Translations files not stored directly in git to avoid merge conflicts.
+This allows us to avoid use of --no-location which makes the
+translation teams happier.
+
+** Dist gdoc-error to avoid build failures when building modified sources.
+Reported by Graham Shaw <gdshaw@riscpkg.org> in
+<http://permalink.gmane.org/gmane.comp.gnu.shishi.general/497>.
+
+** Internal copy of libtasn1 updated to version 1.4.
+
+** Update gnulib files.
+
+** New APIs to deal with password queries.
+SHISHI_TKTSHINTFLAGS_NON_INTERACTIVE
+shishi_prompt_password_callback_set
+shishi_prompt_password_callback_get
+shishi_prompt_password_func
+
+* Version 0.0.36 (released 2008-02-14)
+
+** Fix warnings in generated man pages (silence lintian).
+
+** Update gnulib files.
+
+* Version 0.0.35 (released 2008-02-07)
+
+** Warnings about missing configuration files are only printed once.
+
+** Fix debug message printing.
+
+** Fix non-portable use of brace expansion in makefiles.
+
+* Version 0.0.34 (released 2008-01-16)
+
+** Several code fixes for MinGW.
+A mingw build now compiles and passes the self-tests under Wine.
+
+** When built under MinGW, generate a libshishi-XX.def using -Wl,--output-def.
+Useful when developing applications with Visual Studio.
+
+** Use gettext 0.17.
+
+** Update and re-factor gnulib files.
+There is now a new gnulib directory src/gl/ and db/gl/ for those
+modules that aren't needed by libshishi, but used by the command-line
+tools and libshisa, respectively.
+
+** If syslog is not available, shishid is not built.
+Implementing an alternative logging mechanism is needed in order to
+re-enable building shishid on platforms that lack syslog.
+
+** New types for DNS classes:
+SHISHI_DNS_IN: New #define.
+
+* Version 0.0.33 (released 2007-09-14)
+
+** libpam_shishi: Don't echo password when reading it from console.
+Reported by Jack Bates <ms419@freezone.co.uk>.
+
+** libpam_shishi: Save read password in PAM library for other modules.
+Reported by Jack Bates <ms419@freezone.co.uk>.
+
+** Update translations.
+
+* Version 0.0.32 (released 2007-06-29)
+
+** Shishi is now licensed under the GPL version 3 or later.
+
+** Remove extra/inetutils.diff since the patch has been merged into InetUtils.
+
+** Update gnulib files.
+
+* Version 0.0.31 (released 2007-06-11)
+
+** Shishi is now developed using Git instead of CVS.
+A public git mirror is available from
+<http://repo.or.cz/w/shishi.git>.
+
+** Verify the KDC's certificate against a CA certificate in the client.
+The CA is by default stored in ~/.shishi/client.ca in PEM format.
+Suggested by Alberto Fondi <alberto.fondi@lnf.infn.it>.
+
+** Update gnulib files.
+
+* Version 0.0.30 (released 2006-11-01)
+
+** Update STARTTLS extension to match latest drafts.
+Shishi now implements draft-josefsson-krb-tcp-expansion-02.txt and
+draft-josefsson-kerberos5-starttls-02.txt.
+
+** Fix failure when reading large integers from ASN.1 structure.
+This can manifest itself by giving error messages such as 'Replay
+protection value (nonce) differ between request and reply.'.  Added a
+new self test "nonce" to detect errors in these routines.  Reported by
+Alberto Fondi.
+
+* Version 0.0.29 (released 2006-11-01)
+
+** Add man page for ccache2shishi.
+
+* Version 0.0.28 (released 2006-11-01)
+
+** New command line tool "ccache2shishi".
+The tool will read tickets from /tmp/krb5cc_UID (by default) and will
+write them to ~/.shishi/tickets.
+
+** A description of the ccache file format were added in doc/ccache.txt.
+
+** A self-contained standalone parser of the ccache format added.
+See lib/ccache.h and lib/ccache.c.  The intention is that they should
+be usable outside of Shishi, and it doesn't use any Shishi specific
+header files or functions.  It also avoids heap memory handling.
+
+** New APIs to read MIT ccache files.
+shishi_tkts_add_ccache_mem
+shishi_tkts_add_ccache_file
+shishi_tkts_from_ccache_mem
+shishi_tkts_from_ccache_file
+
+** New APIs to support ccache reading.
+shishi_enckdcreppart_authtime_set
+shishi_enckdcreppart_starttime_set
+shishi_enckdcreppart_renew_till_set
+shishi_tkts_default_ccache_guess
+shishi_tkts_default_ccache
+shishi_tkts_default_ccache_set
+
+** Fix build errors for missing arcfour_stream when using --with-libgcrypt.
+Reported by abhijit mitra <abhijit_kly@yahoo.co.in>.
+
+* Version 0.0.27 (released 2006-09-15)
+
+** New command line tool "keytab2shishi".
+The tool will read host keys from /etc/krb5.keytab (by default) and
+will write them to $(prefix)/etc/shishi.keys.
+
+** New APIs to read MIT keytab files.
+Thanks to Michael B Allen who reverse-engineered the format and
+published a freely licensed description, available from
+<http://www.ioplex.com/utilities/keytab.txt>.  The APIs are
+shishi_keys_add_keytab_mem, shishi_keys_add_keytab_file,
+shishi_keys_from_keytab_mem, and shishi_keys_from_keytab_file.
+
+** New APIs to manage set of keys.
+shishi_keys
+shishi_keys_done
+shishi_keys_size
+shishi_keys_nth
+shishi_keys_remove
+shishi_keys_add
+shishi_keys_print
+shishi_keys_to_file
+
+** Libtasn1 updated to 0.3.6.
+This fixes a bug that caused self-test failures in Shishi on 64-bit
+platforms.
+
+** Remove path from syslog messages for shishid.
+
+** Update of gnulib files.
+
+** Some minor code cleanups.
+
+* Version 0.0.26 (released 2006-05-15)
+
+** Requests for service tickets (TGS) are now sent without a sub-session key.
+This solves interop problems with Windows 2003 and Heimdal, thanks to
+Elrond for debugging.
+
+** Fix buggy MD4 implementation on 64-bit platforms.
+
+** The Shishi PAM module in extra/pam-shishi/ is now built by default.
+The installation path has also been changed to $prefix/lib/security,
+but you can change it with `configure --with-pam-dir=/somewhere/else'
+or `make install PAMDIR=/somewhere/else'.
+
+** Fix mem leaks.
+
+** Self-tests are now run under valgrind, if it is installed.
+
+** Updated Polish translation, thanks to Jakub Bogusz.
+
+* Version 0.0.25 (released 2006-04-27)
+
+** Fix bug in code to get service tickets.
+The problem was in the libtasn1 DER encoder which include ASN.1 tags
+for SEQUENCE members when calling asn1_der_coding() on a SEQUENCE
+element, thanks to Elrond for debugging.
+
+** Improved handling of key versions.
+Shishi should not send kvno for a session keys in TGS requests any
+more.  Internally, the UINT32_MAX kvno is now used to denote a
+"kvno"-less (i.e., non-permenant) key, earlier 0 was used which
+collided with the perfectly valid real kvno of 0.
+
+** Improved translation of messages in shishi.
+
+** Doc fixes.
+
+* Version 0.0.24 (released 2006-04-22)
+
+** Fix bug in shishid which caused it to listen on standard input and crash.
+
+** Pre-authentication support.
+Only the PA-ENC-TIMESTAMP, ETYPE-INFO and ETYPE-INFO2 mechanisms are
+supported.  Tested againt MIT, Heimdal, and Windows 2003 KDCs.
+
+** Clarified the copyright on lib/kerberos5.asn1.
+
+** Updated gnulib compatibility files.
+
+** Fix some memory leaks and crashes.
+
+* Version 0.0.23 (released 2006-03-25)
+
+** Debian packages are available from http://josefsson.org/shishi/debian/
+Thanks to Russ Allbery, Yvan Bassuel and Elrond for help on the Debian
+packaging.
+
+** Added shishi_derive_default_salt and shishi_key_from_name APIs.
+Used to create a key from principal and password.  Suggested by Elrond
+<elrond@samba-tng.org>.
+
+** Replace internal crypto code with modules from gnulib.
+
+** Added shared library versioning script, suggested by Steve Langasek.
+
+** Improved libidn detection code.
+
+** The manual doesn't have any invariant sections.
+
+** Updated gnulib compatibility files.
+
+** Updated libtasn1.
+
+** Minor bugfixes and improvements.
+
+* Version 0.0.22 (released 2005-08-10)
+
+** Fix build error when STARTTLS support is enabled.
+
+** The help-shishi@gnu.org mailing list is now mentioned in documentation.
+
+** Should now build with objdir != srcdir on systems that lack stdbool.h.
+
+** The license template in files were updated with the new FSF address.
+
+** The internal libtasn1 copy was updated to version 0.2.14.
+
+** Gnulib files updated, and uses within the library updated.
+
+* Version 0.0.21 (released 2004-12-17)
+
+** Libtasn1 updated to 0.2.13.
+
+** Gnulib files updated, and uses within the library updated.
+
+** Fix srcdir != objdir building, reported by Mike Castle.
+
+* Version 0.0.20 (released 2004-11-21)
+
+** Fix formatting of man pages, based on warnings from Doclifter.
+
+** Updated gnulib compatibility files.
+
+* Version 0.0.19 (released 2004-11-12)
+
+** Documentation improvements.
+For example, you can now browse the Shishi API manual using DevHelp.
+
+** Updated gnulib compatibility files.
+
+* Version 0.0.18 (released 2004-10-15)
+
+** When generating an AP-REP, the generated EncAPRepPart is now remembered.
+
+** Fix some memory leaks.
+
+** Revamp of autogenerated documentation.
+
+** Documentation improvements.
+
+** Included libtasn1 updated to 0.2.11.
+
+** ASN.1 API cleanup:
+shishi_new_a2d: RENAMED to shishi_asn1_to_der.
+shishi_a2d_new_field: RENAMED to shishi_asn1_to_der_field.
+shishi_a2d, shishi_a2d_field: REMOVED.
+shishi_asn1_read: RENAMED to shishi_asn1_read_inline.
+shishi_asn1_read2: RENAMED to shishi_asn1_read.
+shishi_asn1_read2_optional: RENAMED to shishi_asn1_read_optional.
+shishi_asn1_read_optional: MODIFIED, now allocate output.
+
+** Various other API fixes.
+Functions that take fixed size buffers have been replaced by functions
+that allocate dynamically sized buffer of the correct length.
+
+* Version 0.0.17 (released 2004-08-08)
+
+** Revamp of gnulib compatibility files.
+
+** Fix warnings.
+
+* Version 0.0.16 (released 2004-08-01)
+
+** New environment variables to override defaults in Shishi library.
+SHISHI_USER specifies default client username, SHISHI_HOME specifies
+user Shishi home directory (for configuration file, ticket cache,
+etc), SHISHI_TICKETS the ticket cache file, SHISHI_CONFIG for the
+system configuration file, SHISHI_KEYS for system wide host keys.
+
+** Experimental KDC now handle non-default ticket life time.
+
+** Nettle is now preferred over Libgcrypt, even if Libgcrypt is available.
+Use configure parameter --with-libgcrypt to override.  Nettle is the
+minimalistic crypto library included with Shishi.
+
+** The pkg-config script no longer use the linker parameter -R.
+
+** Libtasn1 updated to 0.2.10.
+
+** Many gnulib compatibility files were updated.
+
+** Cross compile builds should work.
+It should work for any sane cross compile target, but the only tested
+platform is uClibc/uClinux on Motorola Coldfire.
+
+* Version 0.0.15 (released 2004-04-18)
+
+** Sequence numbers in Authenticator and EncAPRepPart are now randomized.
+
+** Low-level fixes of AES Cipher Text Stealing mode.
+Also added more AES/CTS self tests.
+
+** Configuration tokens spelled correctly ("verbose-noice" -> "verbose-noise").
+
+** Polish translation added, by Jakub Bogusz.
+
+** Various bugfixes and cleanups.
+
+* Version 0.0.14 (released 2004-01-22)
+
+** High-level AP interface now support setting raw checksum field values.
+This is needed for certain applications that, like GSS-API, put
+non-standard data in the checksum field of the Authenticator in a
+AP-REQ.
+
+** Various minor bugfixes.
+
+* Version 0.0.13 (released 2004-01-15)
+
+** Fixed salt calculation in shisa.
+The earlier salt computed was incorrect, so existing keys in your
+Shisa database, that were derived from passwords, are incorrect, and
+should be changed.
+
+** Fixed shisa key file parser to handle keys with leading whitespace.
+The parser used fscanf, which skip whitespace.  If your cryptographic
+key (not passwords), in binary format, had leading whitespace, it
+would fail to read the correct key.
+
+** Fix shishid crash on startup when sockets can't be opened.
+
+** Various minor bugfixes.
+
+* Version 0.0.12 (released 2004-01-02)
+
+** The user database library Shisa has been improved.
+Shisa now support multiple keys for users, and you can now selectively
+add and remove keys via the command line interface.
+
+** The Shishi client and Shishid KDC now support TLS resumption.
+This improve TLS handshake speed, in particular for the normal AS plus
+TGS combination.  Currently the TLS resume database is only stored in
+memory, so if either the client or server process is restarted, the
+TLS resume information is lost.  This add --resume-limit to Shishid,
+which can be used to specify the size of the TLS resume database (or
+to disable it).
+
+** The KDC has been cleaned up and the error handling is more robust.
+
+** The Shisa programming API is documented in the manual.
+
+* Version 0.0.11 (released 2003-12-21)
+
+** The Shishi library now support X.509 authenticated KDC connections via TLS.
+The client currently do not check server authentication, however this
+is no worse than existing UDP/TCP connections.  If client certificates
+are available, the X.509 client certificate is simply sent (via TLS
+handshake) to the KDC for possible pre-authentication purposes.
+
+** The KDC now support X.509 authentication.
+If server certificates are available, X.509 authenticated TLS may be
+negotiated.  The KDC currently only use the client certificate details
+for logging purposes.  However, it do verify client certificate
+against CA certificates, if those are available.
+
+** The KDC has been cleaned up and the error handling is more robust.
+
+* Version 0.0.10 (released 2003-12-16)
+
+** The TLS support in Shishid now works.
+
+** All command line interfaces now uses getopt instead of argp.
+
+* Version 0.0.9 (released 2003-12-12)
+
+** An information storage system added, called Shisa.
+Shisa is used by KDCs (e.g., Shishid) to find information about
+principals.  Shisa can be extended to support various backends, such
+as LDAP and SQL databases, but currently only a file system based
+database is supported.  Shisa consists of two parts, a library
+(libshisa, see db/) and a command line tool (shisa, see src/).  Shisa
+is designed to be concurrent write safe, i.e., multiple writers to the
+same database is permitted.  This is very much work in progress.
+
+** A new tool 'shisa' added to add/remove/list/modify the Shisa database.
+
+** The Administration and Reference Manual has been (re)written.
+There is now a step-by-step walk-through on creating the database for
+a new realm, adding a few principals, starting the server and testing
+it by getting tickets.
+
+** Shishid (the KDC server) now read keys via the Shisa database.
+The old hostkeys-alike file based "database" is no longer supported.
+
+** A sample Shisa database and host keys are created during installation.
+The default realm name (typically your hostname) is used, which might
+not be what you prefer, but should get you started.
+
+** Improve behaviour with poorly synchronized clocks.
+Earlier newly acquired tickets were discarded if they were not yet
+valid when you acquire them.  Now tickets are only discarded when
+their end time is in the past.
+
+** Support for DES and 3DES without integrity checking re-added.
+Those encryption algorithms are needed by GSS Wrap/Unwrap, but was
+accidently removed from Shishi during an earlier cleanup.
+
+** When Libgcrypt is used, ARCFOUR now handle streamed operations.
+This is needed for, e.g., rsh in the Shishi patched version of GNU
+InetUtils.
+
+** Paths to configurations files and host keys changed.
+The configuration files and host keys are now stored (by default, but
+see next entry) in $prefix/etc/shishi/, instead of, as it was before,
+in $prefix/etc (for configuration and host keys) and
+$prefix/share/shishi (for user configuration file template).
+
+** Paths to configurations, host keys and the database root now configurable.
+The configure parameters --with-conf-dir, --with-skel-dir,
+--with-key-dir, and --with-db-dir can be used to specify the location
+of shishi.conf and shisa.conf (system configuration files),
+shishi.skel (user configuration file template), shishi.keys (host
+specific keys) and the Shisa database root, respectively.
+
+** IANA allocated Telnet Encrypt command 12 for the AES-CCM mode.
+
+** Autoconf 2.59, Automake 1.8, and Libtool from CVS is used.
+
+** Some more self tests were added.
+
+* Version 0.0.8 (released 2003-10-16)
+
+** Passwords are processed with SASLprep instead of KRBprep.
+
+** Authorization improvements.
+
+** Documentation additions.
+Protocol descriptions for STARTTLS, AES-CCM encrypted telnet, and
+Shishi rsh/rlogin.
+
+** Support for upgrading TCP connections to KDC to TLS supported (STARTTLS).
+STARTTLS support will be compiled in automatically, if you have GNUTLS
+installed, but can be disabled unconditionally by configuring with
+--disable-tls.  Use the 'realm-kdc' configuration token to specify
+which KDCs the client should use it against, e.g.,
+'realm-kdc=MYREALM.ORG,kdc.myrealm.org/tls'.
+
+* Version 0.0.7 (released 2003-09-21)
+
+** Encryption types can now be referred to using shorter aliases.
+E.g., you can write "aes" instead of "aes256-cts-hmac-sha1-96".
+
+** ARCFOUR encryption support according to draft-brezak-win2k-krb-rc4-hmac-04.
+
+** DES-CBC-CRC now works.
+
+* Version 0.0.6 (released 2003-09-14)
+
+** Proxiable, proxy, forwardable and forwarded tickets supported.
+See the User Manual for discussion and examples.
+
+** Man pages for all public functions are included.
+
+** Installed versions of Libgcrypt and libtasn1 used where possible.
+Shishi need Libgcrypt 1.1.44 or later, and libtasn1 0.2.5 or later.
+If a usable version is not found, the internal Nettle (crypto/) and/or
+libminitasn1 (asn1/) libraries are used instead.
+
+** It is possible to enable and disable part of the system at compile time.
+See --disable-des, --disable-3des, --disable-aes, --disable-md,
+--disable-null, and --enable-arcfour.
+
+** The internal crypto interface now fully modularized.
+If you wish to add support for a new low-level cryptographic library,
+to, e.g., utilize specialized hardware, it is now easy to do so.  Two
+wrappers for Nettle (lib/nettle.c) and Libgcrypt (lib/libgcrypt.c) are
+included.
+
+** Logging destination for warnings and informational messages can be changed.
+By default, message are sent to stderr for clients, and syslog for
+servers.  See the new API functions shishi_outputtype and
+shishi_set_outputtype for more information.
+
+* Version 0.0.5 (released 2003-09-07)
+
+** Server host name to realm mapping via DNS supported.
+
+** SAFE functions improved.
+Example code of a client using integrity protected application data
+exchanges is in examples/client-safe.c and examples/server.c.
+
+** PRIV functions added.
+Example code of a client using privacy protected application data
+exchanges is in examples/client-priv.c.
+
+** Documentation improvements.
+E.g., a reference manual was added, that document the configuration
+file, and the shishi and shishid parameters.
+
+** Various API changes.
+
+* Version 0.0.4 (released 2003-08-31)
+
+** The rsh/rlogin client 'rsh-redone' ported to Shishi, by Nicolas Pouvesle.
+The client is located in extra/rsh-redone/.  It supports
+authentication and encryption.  It interoperate with other
+implementations.
+
+** Authenticator subkeys are supported, and is used by default in AP/TGS.
+Some KDCs does not understand subkeys in TGS requests, and use the
+session key instead.  Shishi detect and work around this problem but
+prints a warning.
+
+** Simplistic key distribution center (KDC) is working.
+See the Administration Manual for a walk through on how to get it up
+and running.
+
+** Various API changes.
+
+* Version 0.0.3 (released 2003-08-22)
+
+** Documentation fixes.
+
+** Cleanups.
+
+* Version 0.0.2 (released 2003-08-17)
+
+** Command line handling of the 'shishi' application rewritten.
+See the (updated) user manual and --help output for the new story.
+
+** It is possible to acquire renewable tickets.
+
+** Example client and server included.
+Application data protection is not supported, but authentication is
+demonstrated.  The files are in src/client.c and src/server.c.
+
+** New configuration verbs: 'ticket-life' and 'renew-life'.
+
+** AES ciphers didn't work when nettle was used.
+
+** Cleanups, bug fixes and improved portability.
+
+* Version 0.0.1 (released 2003-08-10)
+
+** InetUtils copy removed.
+The patches (also found in extra/inetutils.diff) are forwarded upstream.
+
+** Libidn copy removed.
+Libidn is optional, but recommended.  It is used automatically if
+present on your system.
+
+** Gettext not included.
+Due to some conflicts between libtool and gettext, if you want i18n on
+platforms that does not already have a useful gettext implementation,
+you can install GNU gettext before building this package.  If you
+don't care about i18n, this package should work fine (except for i18n,
+of course).
+
+** Low-level crypto uses nettle if libgcrypt is not installed.
+Libgcrypt is not shipped with Shishi any more, instead a more
+streamlined crypto implementation based on nettle is included.
+Specify --with-libgcrypt to use libgcrypt.
+
+** Libtasn1 updated and replaced by "minitasn1" from gnutls.
+Specify --with-system-libtasn1 to link with the installed libtasn1, if
+you have it.
+
+** KDC addresses are now found via DNS SRV RRs as a last resort.
+This is only enabled if libresolv and resolv.h is found on your
+system.
+
+** Argp and other compatibility files replaced by gl/ directory.
+
+** Cleanups, bug fixes and various improvements.
+
+* Version 0.0.0 (released 2003-06-02)
+
+** Initial release
+
+----------------------------------------------------------------------
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.

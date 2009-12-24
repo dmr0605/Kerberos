@@ -1,0 +1,163 @@
+@subheading shishi_encticketpart_get_key
+@anchor{shishi_encticketpart_get_key}
+@deftypefun {int} {shishi_encticketpart_get_key} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, Shishi_key ** @var{key})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+@var{key}: newly allocated key.
+
+Extract the session key in the Ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_encticketpart_key_set
+@anchor{shishi_encticketpart_key_set}
+@deftypefun {int} {shishi_encticketpart_key_set} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, Shishi_key * @var{key})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+@var{key}: key handle with information to store in encticketpart.
+
+Set the EncTicketPart.key field to key type and value of supplied
+key.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_encticketpart_flags_set
+@anchor{shishi_encticketpart_flags_set}
+@deftypefun {int} {shishi_encticketpart_flags_set} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, int @var{flags})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+@var{flags}: flags to set in encticketpart.
+
+Set the EncTicketPart.flags to supplied value.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_encticketpart_crealm_set
+@anchor{shishi_encticketpart_crealm_set}
+@deftypefun {int} {shishi_encticketpart_crealm_set} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, const char * @var{realm})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+@var{realm}: input array with name of realm.
+
+Set the realm field in the KDC-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encticketpart_cname_set
+@anchor{shishi_encticketpart_cname_set}
+@deftypefun {int} {shishi_encticketpart_cname_set} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, Shishi_name_type @var{name_type}, const char * @var{principal})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{principal}: input array with principal name.
+
+Set the client name field in the EncTicketPart.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encticketpart_transited_set
+@anchor{shishi_encticketpart_transited_set}
+@deftypefun {int} {shishi_encticketpart_transited_set} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, int32_t @var{trtype}, const char * @var{trdata}, size_t @var{trdatalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+@var{trtype}: transitedencoding type, e.g. SHISHI_TR_DOMAIN_X500_COMPRESS.
+
+@var{trdata}: actual transited realm data.
+
+@var{trdatalen}: length of actual transited realm data.
+
+Set the EncTicketPart.transited field to supplied value.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_encticketpart_authtime_set
+@anchor{shishi_encticketpart_authtime_set}
+@deftypefun {int} {shishi_encticketpart_authtime_set} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, const char * @var{authtime})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+@var{authtime}: character buffer containing a generalized time string.
+
+Set the EncTicketPart.authtime to supplied value.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_encticketpart_endtime_set
+@anchor{shishi_encticketpart_endtime_set}
+@deftypefun {int} {shishi_encticketpart_endtime_set} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, const char * @var{endtime})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+@var{endtime}: character buffer containing a generalized time string.
+
+Set the EncTicketPart.endtime to supplied value.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_encticketpart_client
+@anchor{shishi_encticketpart_client}
+@deftypefun {int} {shishi_encticketpart_client} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, char ** @var{client}, size_t * @var{clientlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{encticketpart}: EncTicketPart variable to get client name from.
+
+@var{client}: pointer to newly allocated zero terminated string containing
+principal name.  May be @code{NULL} (to only populate @code{clientlen}).
+
+@var{clientlen}: pointer to length of @code{client} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{client}).
+
+Represent client principal name in EncTicketPart as zero-terminated
+string.  The string is allocate by this function, and it is the
+responsibility of the caller to deallocate it.  Note that the
+output length @code{clientlen} does not include the terminating zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encticketpart_clientrealm
+@anchor{shishi_encticketpart_clientrealm}
+@deftypefun {int} {shishi_encticketpart_clientrealm} (Shishi * @var{handle}, Shishi_asn1 @var{encticketpart}, char ** @var{client}, size_t * @var{clientlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{encticketpart}: EncTicketPart variable to get client name and realm from.
+
+@var{client}: pointer to newly allocated zero terminated string containing
+principal name and realm.  May be @code{NULL} (to only populate @code{clientlen}).
+
+@var{clientlen}: pointer to length of @code{client} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{client}).
+
+Convert cname and realm fields from EncTicketPart to printable
+principal name format.  The string is allocate by this function,
+and it is the responsibility of the caller to deallocate it.  Note
+that the output length @code{clientlen} does not include the terminating
+zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

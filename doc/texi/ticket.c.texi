@@ -1,0 +1,134 @@
+@subheading shishi_ticket
+@anchor{shishi_ticket}
+@deftypefun {Shishi_asn1} {shishi_ticket} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new ASN.1 Ticket, populated with some
+default values.
+
+@strong{Return value:} Returns the ticket or NULL on failure.
+@end deftypefun
+
+@subheading shishi_ticket_realm_get
+@anchor{shishi_ticket_realm_get}
+@deftypefun {int} {shishi_ticket_realm_get} (Shishi * @var{handle}, Shishi_asn1 @var{ticket}, char ** @var{realm}, size_t * @var{realmlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ticket}: input variable with ticket info.
+
+@var{realm}: output array with newly allocated name of realm in ticket.
+
+@var{realmlen}: size of output array.
+
+Extract realm from ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ticket_realm_set
+@anchor{shishi_ticket_realm_set}
+@deftypefun {int} {shishi_ticket_realm_set} (Shishi * @var{handle}, Shishi_asn1 @var{ticket}, const char * @var{realm})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ticket}: input variable with ticket info.
+
+@var{realm}: input array with name of realm.
+
+Set the realm field in the Ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ticket_server
+@anchor{shishi_ticket_server}
+@deftypefun {int} {shishi_ticket_server} (Shishi * @var{handle}, Shishi_asn1 @var{ticket}, char ** @var{server}, size_t * @var{serverlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{ticket}: ASN.1 Ticket variable to get server name from.
+
+@var{server}: pointer to newly allocated zero terminated string containing
+principal name.  May be @code{NULL} (to only populate @code{serverlen}).
+
+@var{serverlen}: pointer to length of @code{server} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{server}).
+
+Represent server principal name in Ticket as zero-terminated
+string.  The string is allocate by this function, and it is the
+responsibility of the caller to deallocate it.  Note that the
+output length @code{serverlen} does not include the terminating zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ticket_sname_set
+@anchor{shishi_ticket_sname_set}
+@deftypefun {int} {shishi_ticket_sname_set} (Shishi * @var{handle}, Shishi_asn1 @var{ticket}, Shishi_name_type @var{name_type}, char * [] @var{sname})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ticket}: Ticket variable to set server name field in.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{sname}: input array with principal name.
+
+Set the server name field in the Ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ticket_get_enc_part_etype
+@anchor{shishi_ticket_get_enc_part_etype}
+@deftypefun {int} {shishi_ticket_get_enc_part_etype} (Shishi * @var{handle}, Shishi_asn1 @var{ticket}, int32_t * @var{etype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ticket}: Ticket variable to get value from.
+
+@var{etype}: output variable that holds the value.
+
+Extract Ticket.enc-part.etype.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ticket_set_enc_part
+@anchor{shishi_ticket_set_enc_part}
+@deftypefun {int} {shishi_ticket_set_enc_part} (Shishi * @var{handle}, Shishi_asn1 @var{ticket}, int32_t @var{etype}, uint32_t @var{kvno}, const char * @var{buf}, size_t @var{buflen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ticket}: Ticket to add enc-part field to.
+
+@var{etype}: encryption type used to encrypt enc-part.
+
+@var{kvno}: key version number.
+
+@var{buf}: input array with encrypted enc-part.
+
+@var{buflen}: size of input array with encrypted enc-part.
+
+Set the encrypted enc-part field in the Ticket.  The encrypted data
+is usually created by calling @code{shishi_encrypt()} on the DER encoded
+enc-part.  To save time, you may want to use
+@code{shishi_ticket_add_enc_part()} instead, which calculates the
+encrypted data and calls this function in one step.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ticket_add_enc_part
+@anchor{shishi_ticket_add_enc_part}
+@deftypefun {int} {shishi_ticket_add_enc_part} (Shishi * @var{handle}, Shishi_asn1 @var{ticket}, Shishi_key * @var{key}, Shishi_asn1 @var{encticketpart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ticket}: Ticket to add enc-part field to.
+
+@var{key}: key used to encrypt enc-part.
+
+@var{encticketpart}: EncTicketPart to add.
+
+Encrypts DER encoded EncTicketPart using key and stores it in the
+Ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

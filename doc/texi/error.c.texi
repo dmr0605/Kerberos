@@ -1,0 +1,123 @@
+@subheading shishi_strerror
+@anchor{shishi_strerror}
+@deftypefun {const char *} {shishi_strerror} (int @var{err})
+@var{err}: shishi error code.
+
+Convert return code to human readable string.
+
+@strong{Return value:} Returns a pointer to a statically allocated string
+containing a description of the error with the error value @code{err}.
+This string can be used to output a diagnostic message to the user.
+@end deftypefun
+
+@subheading shishi_error
+@anchor{shishi_error}
+@deftypefun {const char *} {shishi_error} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Extract detailed error information string.  Note that the memory is
+managed by the Shishi library, so you must not deallocate the
+string.
+
+@strong{Return value:} Returns pointer to error information string, that must
+not be deallocate by caller.
+@end deftypefun
+
+@subheading shishi_error_clear
+@anchor{shishi_error_clear}
+@deftypefun {void} {shishi_error_clear} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Clear the detailed error information string.  See @code{shishi_error()}
+for how to access the error string, and @code{shishi_error_set()} and
+@code{shishi_error_printf()} for how to set the error string.  This
+function is mostly for Shishi internal use, but if you develop an
+extension of Shishi, it may be useful to use the same error
+handling infrastructure.
+@end deftypefun
+
+@subheading shishi_error_set
+@anchor{shishi_error_set}
+@deftypefun {void} {shishi_error_set} (Shishi * @var{handle}, const char * @var{errstr})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{errstr}: Zero terminated character array containing error description,
+or NULL to clear the error description string.
+
+Set the detailed error information string to specified string.  The
+string is copied into the Shishi internal structure, so you can
+deallocate the string passed to this function after the call.  This
+function is mostly for Shishi internal use, but if you develop an
+extension of Shishi, it may be useful to use the same error
+handling infrastructure.
+@end deftypefun
+
+@subheading shishi_error_printf
+@anchor{shishi_error_printf}
+@deftypefun {void} {shishi_error_printf} (Shishi * @var{handle}, const char * @var{format},  @var{...})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{format}: printf style format string.
+@...: print style arguments.
+
+Set the detailed error information string to a printf formatted
+string.  This function is mostly for Shishi internal use, but if
+you develop an extension of Shishi, it may be useful to use the
+same error handling infrastructure.
+@end deftypefun
+
+@subheading shishi_error_outputtype
+@anchor{shishi_error_outputtype}
+@deftypefun {int} {shishi_error_outputtype} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Get the current output type for logging messages.
+
+@strong{Return value:} Return output type (NULL, stderr or syslog) for
+informational and warning messages.
+@end deftypefun
+
+@subheading shishi_error_set_outputtype
+@anchor{shishi_error_set_outputtype}
+@deftypefun {void} {shishi_error_set_outputtype} (Shishi * @var{handle}, int @var{type})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{type}: output type.
+
+Set output type (NULL, stderr or syslog) for informational
+and warning messages.
+@end deftypefun
+
+@subheading shishi_info
+@anchor{shishi_info}
+@deftypefun {void} {shishi_info} (Shishi * @var{handle}, const char * @var{format},  @var{...})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{format}: printf style format string.
+@...: print style arguments.
+
+Print informational message to output as defined in handle.
+@end deftypefun
+
+@subheading shishi_warn
+@anchor{shishi_warn}
+@deftypefun {void} {shishi_warn} (Shishi * @var{handle}, const char * @var{format},  @var{...})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{format}: printf style format string.
+@...: print style arguments.
+
+Print a warning to output as defined in handle.
+@end deftypefun
+
+@subheading shishi_verbose
+@anchor{shishi_verbose}
+@deftypefun {void} {shishi_verbose} (Shishi * @var{handle}, const char * @var{format},  @var{...})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{format}: printf style format string.
+@...: print style arguments.
+
+Print a diagnostic message to output as defined in handle.
+@end deftypefun
+

@@ -1,0 +1,649 @@
+@subheading shishi_krberror
+@anchor{shishi_krberror}
+@deftypefun {Shishi_asn1} {shishi_krberror} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new KRB-ERROR, populated with some default
+values.
+
+@strong{Return value:} Returns the KRB-ERROR or NULL on failure.
+@end deftypefun
+
+@subheading shishi_krberror_print
+@anchor{shishi_krberror_print}
+@deftypefun {int} {shishi_krberror_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{krberror}: KRB-ERROR to print.
+
+Print ASCII armored DER encoding of KRB-ERROR to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_save
+@anchor{shishi_krberror_save}
+@deftypefun {int} {shishi_krberror_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{krberror}: KRB-ERROR to save.
+
+Save DER encoding of KRB-ERROR to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_to_file
+@anchor{shishi_krberror_to_file}
+@deftypefun {int} {shishi_krberror_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: KRB-ERROR to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write KRB-ERROR to file in specified TYPE.  The file will be
+truncated if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_parse
+@anchor{shishi_krberror_parse}
+@deftypefun {int} {shishi_krberror_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{krberror}: output variable with newly allocated KRB-ERROR.
+
+Read ASCII armored DER encoded KRB-ERROR from file and populate given
+variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_read
+@anchor{shishi_krberror_read}
+@deftypefun {int} {shishi_krberror_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{krberror}: output variable with newly allocated KRB-ERROR.
+
+Read DER encoded KRB-ERROR from file and populate given variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_from_file
+@anchor{shishi_krberror_from_file}
+@deftypefun {int} {shishi_krberror_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{krberror}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: output variable with newly allocated KRB-ERROR.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read KRB-ERROR from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_build
+@anchor{shishi_krberror_build}
+@deftypefun {int} {shishi_krberror_build} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+Finish KRB-ERROR, called before e.g. shishi_krberror_der.  This
+function removes empty but OPTIONAL fields (such as cname), and
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_der
+@anchor{shishi_krberror_der}
+@deftypefun {int} {shishi_krberror_der} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{out}: output array with newly allocated DER encoding of KRB-ERROR.
+
+@var{outlen}: length of output array with DER encoding of KRB-ERROR.
+
+DER encode KRB-ERROR.  The caller must deallocate the OUT buffer.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_crealm
+@anchor{shishi_krberror_crealm}
+@deftypefun {int} {shishi_krberror_crealm} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{realm}, size_t * @var{realmlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{realm}: output array with newly allocated name of realm in KRB-ERROR.
+
+@var{realmlen}: size of output array.
+
+Extract client realm from KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_remove_crealm
+@anchor{shishi_krberror_remove_crealm}
+@deftypefun {int} {shishi_krberror_remove_crealm} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+Remove client realm field in KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_set_crealm
+@anchor{shishi_krberror_set_crealm}
+@deftypefun {int} {shishi_krberror_set_crealm} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, const char * @var{crealm})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{crealm}: input array with realm.
+
+Set realm field in krberror to specified value.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_client
+@anchor{shishi_krberror_client}
+@deftypefun {int} {shishi_krberror_client} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{client}, size_t * @var{clientlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{client}: pointer to newly allocated zero terminated string containing
+principal name.  May be @code{NULL} (to only populate @code{clientlen}).
+
+@var{clientlen}: pointer to length of @code{client} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{client}).
+
+Return client principal name in KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_set_cname
+@anchor{shishi_krberror_set_cname}
+@deftypefun {int} {shishi_krberror_set_cname} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, Shishi_name_type @var{name_type}, const char * [] @var{cname})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{cname}: input array with principal name.
+
+Set principal field in krberror to specified value.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_remove_cname
+@anchor{shishi_krberror_remove_cname}
+@deftypefun {int} {shishi_krberror_remove_cname} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+Remove client realm field in KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_client_set
+@anchor{shishi_krberror_client_set}
+@deftypefun {int} {shishi_krberror_client_set} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, const char * @var{client})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror to set client name field in.
+
+@var{client}: zero-terminated string with principal name on RFC 1964 form.
+
+Set the client name field in the Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_realm
+@anchor{shishi_krberror_realm}
+@deftypefun {int} {shishi_krberror_realm} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{realm}, size_t * @var{realmlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{realm}: output array with newly allocated name of realm in KRB-ERROR.
+
+@var{realmlen}: size of output array.
+
+Extract (server) realm from KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_set_realm
+@anchor{shishi_krberror_set_realm}
+@deftypefun {int} {shishi_krberror_set_realm} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, const char * @var{realm})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{realm}: input array with (server) realm.
+
+Set (server) realm field in krberror to specified value.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_server
+@anchor{shishi_krberror_server}
+@deftypefun {int} {shishi_krberror_server} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{server}, size_t * @var{serverlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{server}: pointer to newly allocated zero terminated string containing
+server name.  May be @code{NULL} (to only populate @code{serverlen}).
+
+@var{serverlen}: pointer to length of @code{server} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{server}).
+
+Return server principal name in KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_remove_sname
+@anchor{shishi_krberror_remove_sname}
+@deftypefun {int} {shishi_krberror_remove_sname} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror to set server name field in.
+
+Remove server name field in KRB-ERROR.  (Since it is not marked
+OPTIONAL in the ASN.1 profile, what is done is to set the name-type
+to UNKNOWN and make sure the name-string sequence is empty.)
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_set_sname
+@anchor{shishi_krberror_set_sname}
+@deftypefun {int} {shishi_krberror_set_sname} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, Shishi_name_type @var{name_type}, const char * [] @var{sname})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{sname}: input array with principal name.
+
+Set principal field in krberror to specified value.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_server_set
+@anchor{shishi_krberror_server_set}
+@deftypefun {int} {shishi_krberror_server_set} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, const char * @var{server})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror to set server name field in.
+
+@var{server}: zero-terminated string with principal name on RFC 1964 form.
+
+Set the server name field in the Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_ctime
+@anchor{shishi_krberror_ctime}
+@deftypefun {int} {shishi_krberror_ctime} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{t})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror to set client name field in.
+
+@var{t}: newly allocated zero-terminated output array with client time.
+
+Extract client time from KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_ctime_set
+@anchor{shishi_krberror_ctime_set}
+@deftypefun {int} {shishi_krberror_ctime_set} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, const char * @var{t})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror as allocated by @code{shishi_krberror()}.
+
+@var{t}: string with generalized time value to store in Krberror.
+
+Store client time in Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_remove_ctime
+@anchor{shishi_krberror_remove_ctime}
+@deftypefun {int} {shishi_krberror_remove_ctime} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror as allocated by @code{shishi_krberror()}.
+
+Remove client time field in Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_cusec
+@anchor{shishi_krberror_cusec}
+@deftypefun {int} {shishi_krberror_cusec} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, uint32_t * @var{cusec})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror as allocated by @code{shishi_krberror()}.
+
+@var{cusec}: output integer with client microseconds field.
+
+Extract client microseconds field from Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_cusec_set
+@anchor{shishi_krberror_cusec_set}
+@deftypefun {int} {shishi_krberror_cusec_set} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, uint32_t @var{cusec})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{cusec}: client microseconds to set in krberror, 0-999999.
+
+Set the cusec field in the Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_remove_cusec
+@anchor{shishi_krberror_remove_cusec}
+@deftypefun {int} {shishi_krberror_remove_cusec} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror as allocated by @code{shishi_krberror()}.
+
+Remove client usec field in Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_stime
+@anchor{shishi_krberror_stime}
+@deftypefun {int} {shishi_krberror_stime} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{t})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror to set client name field in.
+
+@var{t}: newly allocated zero-terminated output array with server time.
+
+Extract server time from KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_stime_set
+@anchor{shishi_krberror_stime_set}
+@deftypefun {int} {shishi_krberror_stime_set} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, const char * @var{t})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror as allocated by @code{shishi_krberror()}.
+
+@var{t}: string with generalized time value to store in Krberror.
+
+Store server time in Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_susec
+@anchor{shishi_krberror_susec}
+@deftypefun {int} {shishi_krberror_susec} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, uint32_t * @var{susec})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: Krberror as allocated by @code{shishi_krberror()}.
+
+@var{susec}: output integer with server microseconds field.
+
+Extract server microseconds field from Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_susec_set
+@anchor{shishi_krberror_susec_set}
+@deftypefun {int} {shishi_krberror_susec_set} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, uint32_t @var{susec})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{susec}: server microseconds to set in krberror, 0-999999.
+
+Set the susec field in the Krberror.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_errorcode
+@anchor{shishi_krberror_errorcode}
+@deftypefun {int} {shishi_krberror_errorcode} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, int32_t * @var{errorcode})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: KRB-ERROR structure with error code.
+
+@var{errorcode}: output integer KRB-ERROR error code.
+
+Extract error code from KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_errorcode_fast
+@anchor{shishi_krberror_errorcode_fast}
+@deftypefun {int} {shishi_krberror_errorcode_fast} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: KRB-ERROR structure with error code.
+
+Get error code from KRB-ERROR, without error checking.
+
+@strong{Return value:} Return error code (see @code{shishi_krberror_errorcode()})
+directly, or -1 on error.
+@end deftypefun
+
+@subheading shishi_krberror_errorcode_set
+@anchor{shishi_krberror_errorcode_set}
+@deftypefun {int} {shishi_krberror_errorcode_set} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, int @var{errorcode})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: KRB-ERROR structure with error code to set.
+
+@var{errorcode}: new error code to set in krberror.
+
+Set the error-code field to a new error code.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_etext
+@anchor{shishi_krberror_etext}
+@deftypefun {int} {shishi_krberror_etext} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{etext}, size_t * @var{etextlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: KRB-ERROR structure with error code.
+
+@var{etext}: output array with newly allocated error text.
+
+@var{etextlen}: output length of error text.
+
+Extract additional error text from server (possibly empty).
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_set_etext
+@anchor{shishi_krberror_set_etext}
+@deftypefun {int} {shishi_krberror_set_etext} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, const char * @var{etext})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{etext}: input array with error text to set.
+
+Set error text (e-text) field in KRB-ERROR to specified value.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_remove_etext
+@anchor{shishi_krberror_remove_etext}
+@deftypefun {int} {shishi_krberror_remove_etext} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+Remove error text (e-text) field in KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_edata
+@anchor{shishi_krberror_edata}
+@deftypefun {int} {shishi_krberror_edata} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, char ** @var{edata}, size_t * @var{edatalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: KRB-ERROR structure with error code.
+
+@var{edata}: output array with newly allocated error data.
+
+@var{edatalen}: output length of error data.
+
+Extract additional error data from server (possibly empty).
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_methoddata
+@anchor{shishi_krberror_methoddata}
+@deftypefun {int} {shishi_krberror_methoddata} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, Shishi_asn1 * @var{methoddata})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: KRB-ERROR structure with error code.
+
+@var{methoddata}: output ASN.1 METHOD-DATA.
+
+Extract METHOD-DATA ASN.1 object from the e-data field.  The e-data
+field will only contain a METHOD-DATA if the krberror error code is
+@code{SHISHI_KDC_ERR_PREAUTH_REQUIRED}.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_set_edata
+@anchor{shishi_krberror_set_edata}
+@deftypefun {int} {shishi_krberror_set_edata} (Shishi * @var{handle}, Shishi_asn1 @var{krberror}, const char * @var{edata})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+@var{edata}: input array with error text to set.
+
+Set error text (e-data) field in KRB-ERROR to specified value.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_remove_edata
+@anchor{shishi_krberror_remove_edata}
+@deftypefun {int} {shishi_krberror_remove_edata} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: krberror as allocated by @code{shishi_krberror()}.
+
+Remove error text (e-data) field in KRB-ERROR.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_pretty_print
+@anchor{shishi_krberror_pretty_print}
+@deftypefun {int} {shishi_krberror_pretty_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle opened for writing.
+
+@var{krberror}: KRB-ERROR structure with error code.
+
+Print KRB-ERROR error condition and some explanatory text to file
+descriptor.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_krberror_errorcode_message
+@anchor{shishi_krberror_errorcode_message}
+@deftypefun {const char *} {shishi_krberror_errorcode_message} (Shishi * @var{handle}, int @var{errorcode})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{errorcode}: integer KRB-ERROR error code.
+
+Get human readable string describing KRB-ERROR code.
+
+@strong{Return value:} Return a string describing error code.  This function
+will always return a string even if the error code
+isn't known.
+@end deftypefun
+
+@subheading shishi_krberror_message
+@anchor{shishi_krberror_message}
+@deftypefun {const char *} {shishi_krberror_message} (Shishi * @var{handle}, Shishi_asn1 @var{krberror})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{krberror}: KRB-ERROR structure with error code.
+
+Extract error code (see @code{shishi_krberror_errorcode_fast()}) and
+return error message (see @code{shishi_krberror_errorcode_message()}).
+
+@strong{Return value:} Return a string describing error code.  This function
+will always return a string even if the error code
+isn't known.
+@end deftypefun
+

@@ -1,0 +1,155 @@
+@subheading shishi_keys
+@anchor{shishi_keys}
+@deftypefun {int} {shishi_keys} (Shishi * @var{handle}, Shishi_keys ** @var{keys})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{keys}: output pointer to newly allocated keys handle.
+
+Get a new key set handle.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_keys_done
+@anchor{shishi_keys_done}
+@deftypefun {void} {shishi_keys_done} (Shishi_keys ** @var{keys})
+@var{keys}: key set handle as allocated by @code{shishi_keys()}.
+
+Deallocates all resources associated with key set.  The key set
+handle must not be used in calls to other shishi_keys_*() functions
+after this.
+@end deftypefun
+
+@subheading shishi_keys_size
+@anchor{shishi_keys_size}
+@deftypefun {int} {shishi_keys_size} (Shishi_keys * @var{keys})
+@var{keys}: key set handle as allocated by @code{shishi_keys()}.
+
+Get size of key set.
+
+@strong{Return value:} Returns number of keys stored in key set.
+@end deftypefun
+
+@subheading shishi_keys_nth
+@anchor{shishi_keys_nth}
+@deftypefun {const Shishi_key *} {shishi_keys_nth} (Shishi_keys * @var{keys}, int @var{keyno})
+@var{keys}: key set handle as allocated by @code{shishi_keys()}.
+
+@var{keyno}: integer indicating requested key in key set.
+
+
+@strong{Get the n:} th ticket in key set.
+
+@strong{Return value:} Returns a key handle to the keyno:th key in the key
+set, or NULL if @code{keys} is invalid or @code{keyno} is out of bounds.  The
+first key is @code{keyno} 0, the second key @code{keyno} 1, and so on.
+@end deftypefun
+
+@subheading shishi_keys_remove
+@anchor{shishi_keys_remove}
+@deftypefun {void} {shishi_keys_remove} (Shishi_keys * @var{keys}, int @var{keyno})
+@var{keys}: key set handle as allocated by @code{shishi_keys()}.
+
+@var{keyno}: key number of key in the set to remove.  The first
+key is key number 0.
+
+Remove a key, indexed by @code{keyno}, in given key set.
+@end deftypefun
+
+@subheading shishi_keys_add
+@anchor{shishi_keys_add}
+@deftypefun {int} {shishi_keys_add} (Shishi_keys * @var{keys}, Shishi_key * @var{key})
+@var{keys}: key set handle as allocated by @code{shishi_keys()}.
+
+@var{key}: key to be added to key set.
+
+Add a key to the key set.  A deep copy of the key is stored, so
+changing @code{key}, or deallocating it, will not modify the value stored
+in the key set.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_keys_print
+@anchor{shishi_keys_print}
+@deftypefun {int} {shishi_keys_print} (Shishi_keys * @var{keys}, FILE * @var{fh})
+@var{keys}: key set to print.
+
+@var{fh}: file handle, open for writing, to print keys to.
+
+Print all keys in set using shishi_key_print.
+
+@strong{Returns:} Returns @code{SHISHI_OK} on success.
+@end deftypefun
+
+@subheading shishi_keys_to_file
+@anchor{shishi_keys_to_file}
+@deftypefun {int} {shishi_keys_to_file} (Shishi * @var{handle}, const char * @var{filename}, Shishi_keys * @var{keys})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{filename}: filename to append key to.
+
+@var{keys}: set of keys to print.
+
+Print an ASCII representation of a key structure to a file, for
+each key in the key set.  The file is appended to if it exists.
+See @code{shishi_key_print()} for the format of the output.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_keys_for_serverrealm_in_file
+@anchor{shishi_keys_for_serverrealm_in_file}
+@deftypefun {Shishi_key *} {shishi_keys_for_serverrealm_in_file} (Shishi * @var{handle}, const char * @var{filename}, const char * @var{server}, const char * @var{realm})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{filename}: file to read keys from.
+
+@var{server}: server name to get key for.
+
+@var{realm}: realm of server to get key for.
+
+Get keys that match specified @code{server} and @code{realm} from the key set
+file @code{filename}.
+
+@strong{Return value:} Returns the key for specific server and realm, read
+from the indicated file, or NULL if no key could be found or an
+error encountered.
+@end deftypefun
+
+@subheading shishi_keys_for_server_in_file
+@anchor{shishi_keys_for_server_in_file}
+@deftypefun {Shishi_key *} {shishi_keys_for_server_in_file} (Shishi * @var{handle}, const char * @var{filename}, const char * @var{server})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{filename}: file to read keys from.
+
+@var{server}: server name to get key for.
+
+Get key for specified @code{server} from @code{filename}.
+
+@strong{Return value:} Returns the key for specific server, read from the
+indicated file, or NULL if no key could be found or an error
+encountered.
+@end deftypefun
+
+@subheading shishi_keys_for_localservicerealm_in_file
+@anchor{shishi_keys_for_localservicerealm_in_file}
+@deftypefun {Shishi_key *} {shishi_keys_for_localservicerealm_in_file} (Shishi * @var{handle}, const char * @var{filename}, const char * @var{service}, const char * @var{realm})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{filename}: file to read keys from.
+
+@var{service}: service to get key for.
+
+@var{realm}: realm of server to get key for, or NULL for default realm.
+
+Get key for specified @code{service} and @code{realm} from @code{filename}.
+
+@strong{Return value:} Returns the key for the server
+"SERVICE/HOSTNAME@code{REALM}" (where HOSTNAME is the current system's
+hostname), read from the default host keys file (see
+@code{shishi_hostkeys_default_file()}), or NULL if no key could be found
+or an error encountered.
+@end deftypefun
+

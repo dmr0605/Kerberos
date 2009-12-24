@@ -1,0 +1,31 @@
+Shishi THANKS -- Acknowledgements.
+Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Simon Josefsson
+See the end for copying conditions.
+
+Shishi uses Libtasn1 by Fabio Fiorina, Libgcrypt and Libgpg-error by
+Werner Koch, Libidn by Simon Josefsson, and gdoc by Michael Zucchi.
+
+Several GNU packages simplified development considerably, those
+packages include Autoconf, Automake, Libtool, Gnulib, Gettext, Indent,
+Texinfo, Help2man and Emacs.  Historically we have used CVS, but today
+Git is used.
+
+Bug reports, patches and/or suggestions were also received from:
+
+Nicolas Pouvesle
+Jakub Bogusz
+Adrian Bunk
+Mike Castle
+Dave Love
+Yvan Bassuel
+Elrond
+Russ Allbery
+Abhijit Mitra
+Alberto Fondi
+Jack Bates
+Graham Shaw
+
+----------------------------------------------------------------------
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.

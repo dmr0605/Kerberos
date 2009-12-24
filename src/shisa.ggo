@@ -1,0 +1,54 @@
+## Process this file with gengetopt to produce shisa_cmd.*
+# Copyright (C) 2002, 2003, 2004, 2005, 2007 Simon Josefsson.
+#
+# This file is part of Shishi.
+#
+# Shishi is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# Shishi is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Shishi; if not, see http://www.gnu.org/licenses or write
+# to the Free Software Foundation, Inc., 51 Franklin Street, Fifth
+# Floor, Boston, MA 02110-1301, USA.
+
+package "shisa"
+
+purpose "Manipulate information stored in the Shisa user database."
+
+section "Operations"
+option "add" a "Add realm or principal to database." no
+option "dump" d "Dump entries in database." no
+option "key-add" n "Add new key to a principal in database." no
+option "key-remove" - "Remove a key from a principal in database." no
+option "list" l "List entries in database." no
+option "modify" m "Modify principal entry in database." no
+option "remove" r "Remove realm or principal from database." no
+
+section "Parameters"
+option "force" f "Allow removal of non-empty realms.\n" flag off
+option "enabled" - "Only dump or list enabled principals.\n" flag off
+option "disabled" - "Only dump or list disabled principals.\n" flag off
+option "keys" - "Print cryptographic key and password in hostkey format." flag off
+
+section "Values"
+option "encryption-type" E "Override default key encryption type.  Valid values include 'aes128', 'aes256', 'aes' (same as 'aes256'), '3des', 'des-md5', 'des-md4', 'des-crc', 'des' (same as 'des-md5'), and 'arcfour'." string no
+option "key-version" - "Version of key." long typestr="NUMBER" no
+option "password" - "Derive key from this password." string no argoptional
+option "priority" - "Specify key priority, used to differentiate between keys when multiple keys are eligible for use.  Higher value means higher priority.  (default is 0, which mean a random key of the best etype is chosen)" long typestr="NUMBER" no
+option "random" - "Use a random key.  (default)" no
+option "salt" - "Use specified salt for deriving key.  Defaults to concatenation of realm and (unwrapped) principal name." string no
+option "string-to-key-parameter" - "Encryption algorithm specific parameter for password derivation.  Currently only the AES algorithm can utilize this, where it is interpreted as the iteration count of the PKCS#5 PBKDF2 key deriver." string typestr="HEX" no
+
+section "Other options"
+option "configuration-file" c "Use specified configuration file." string typestr="FILE" no
+option "library-options" o "Parse string as configuration file statement." string typestr="STRING" no
+
+option "verbose" v "Produce verbose output.\n" flag off
+option "quiet" q "Don't produce any diagnostic output.\n" flag off

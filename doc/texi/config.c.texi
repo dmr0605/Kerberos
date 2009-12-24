@@ -1,0 +1,50 @@
+@subheading shisa_cfg_db
+@anchor{shisa_cfg_db}
+@deftypefun {int} {shisa_cfg_db} (Shisa * @var{dbh}, const char * @var{value})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{value}: string with database definition.
+
+Setup and open a new database.  The syntax of the @code{value} parameter
+is "TYPE[ LOCATION[ PARAMETER]]", where TYPE is one of the
+supported database types (e.g., "file") and LOCATION and PARAMETER
+are optional strings passed to the database during initialization.
+Neither TYPE nor LOCATION can contain " " (SPC), but PARAMETER may.
+
+@strong{Return Value:} Returns @code{SHISA_OK} if database was parsed and open
+successfully.
+@end deftypefun
+
+@subheading shisa_cfg
+@anchor{shisa_cfg}
+@deftypefun {int} {shisa_cfg} (Shisa * @var{dbh}, const char * @var{option})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{option}: string with shisa library option.
+
+Configure shisa library with given option.
+
+@strong{Return Value:} Returns SHISA_OK if option was valid.
+@end deftypefun
+
+@subheading shisa_cfg_from_file
+@anchor{shisa_cfg_from_file}
+@deftypefun {int} {shisa_cfg_from_file} (Shisa * @var{dbh}, const char * @var{cfg})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{cfg}: filename to read configuration from.
+
+Configure shisa library using configuration file.
+
+@strong{Return Value:} Returns @code{SHISA_OK} iff succesful.
+@end deftypefun
+
+@subheading shisa_cfg_default_systemfile
+@anchor{shisa_cfg_default_systemfile}
+@deftypefun {const char *} {shisa_cfg_default_systemfile} (Shisa * @var{dbh})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+
+@strong{Return value:} Return system configuration filename.
+@end deftypefun
+

@@ -1,0 +1,708 @@
+@subheading shishi_asreq
+@anchor{shishi_asreq}
+@deftypefun {Shishi_asn1} {shishi_asreq} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new AS-REQ, populated with some default
+values.
+
+@strong{Return value:} Returns the AS-REQ or NULL on failure.
+@end deftypefun
+
+@subheading shishi_tgsreq
+@anchor{shishi_tgsreq}
+@deftypefun {Shishi_asn1} {shishi_tgsreq} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new TGS-REQ, populated with some default
+values.
+
+@strong{Return value:} Returns the TGS-REQ or NULL on failure.
+@end deftypefun
+
+@subheading shishi_kdcreq_print
+@anchor{shishi_kdcreq_print}
+@deftypefun {int} {shishi_kdcreq_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{kdcreq}: KDC-REQ to print.
+
+Print ASCII armored DER encoding of KDC-REQ to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_save
+@anchor{shishi_kdcreq_save}
+@deftypefun {int} {shishi_kdcreq_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{kdcreq}: KDC-REQ to save.
+
+Print DER encoding of KDC-REQ to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_to_file
+@anchor{shishi_kdcreq_to_file}
+@deftypefun {int} {shishi_kdcreq_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write KDC-REQ to file in specified TYPE.  The file will be truncated
+if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_parse
+@anchor{shishi_kdcreq_parse}
+@deftypefun {int} {shishi_kdcreq_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{kdcreq}: output variable with newly allocated KDC-REQ.
+
+Read ASCII armored DER encoded KDC-REQ from file and populate given
+variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_read
+@anchor{shishi_kdcreq_read}
+@deftypefun {int} {shishi_kdcreq_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{kdcreq}: output variable with newly allocated KDC-REQ.
+
+Read DER encoded KDC-REQ from file and populate given variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_from_file
+@anchor{shishi_kdcreq_from_file}
+@deftypefun {int} {shishi_kdcreq_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{kdcreq}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: output variable with newly allocated KDC-REQ.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read KDC-REQ from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_nonce_set
+@anchor{shishi_kdcreq_nonce_set}
+@deftypefun {int} {shishi_kdcreq_nonce_set} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, uint32_t @var{nonce})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to set client name field in.
+
+@var{nonce}: integer nonce to store in KDC-REQ.
+
+Store nonce number field in KDC-REQ.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_set_cname
+@anchor{shishi_kdcreq_set_cname}
+@deftypefun {int} {shishi_kdcreq_set_cname} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_name_type @var{name_type}, const char * @var{principal})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to set client name field in.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{principal}: input array with principal name.
+
+Set the client name field in the KDC-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_client
+@anchor{shishi_kdcreq_client}
+@deftypefun {int} {shishi_kdcreq_client} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, char ** @var{client}, size_t * @var{clientlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get client name from.
+
+@var{client}: pointer to newly allocated zero terminated string containing
+principal name.  May be @code{NULL} (to only populate @code{clientlen}).
+
+@var{clientlen}: pointer to length of @code{client} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{client}).
+
+Represent client principal name in KDC-REQ as zero-terminated
+string.  The string is allocate by this function, and it is the
+responsibility of the caller to deallocate it.  Note that the
+output length @code{clientlen} does not include the terminating zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_asreq_clientrealm
+@anchor{shishi_asreq_clientrealm}
+@deftypefun {int} {shishi_asreq_clientrealm} (Shishi * @var{handle}, Shishi_asn1 @var{asreq}, char ** @var{client}, size_t * @var{clientlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{asreq}: AS-REQ variable to get client name and realm from.
+
+@var{client}: pointer to newly allocated zero terminated string containing
+principal name and realm.  May be @code{NULL} (to only populate @code{clientlen}).
+
+@var{clientlen}: pointer to length of @code{client} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{client}).
+
+Convert cname and realm fields from AS-REQ to printable principal
+name format.  The string is allocate by this function, and it is
+the responsibility of the caller to deallocate it.  Note that the
+output length @code{clientlen} does not include the terminating zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_realm
+@anchor{shishi_kdcreq_realm}
+@deftypefun {int} {shishi_kdcreq_realm} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, char ** @var{realm}, size_t * @var{realmlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get client name from.
+
+@var{realm}: pointer to newly allocated zero terminated string containing
+realm.  May be @code{NULL} (to only populate @code{realmlen}).
+
+@var{realmlen}: pointer to length of @code{realm} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{realmlen}).
+
+Get realm field in KDC-REQ as zero-terminated string.  The string
+is allocate by this function, and it is the responsibility of the
+caller to deallocate it.  Note that the output length @code{realmlen}
+does not include the terminating zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_set_realm
+@anchor{shishi_kdcreq_set_realm}
+@deftypefun {int} {shishi_kdcreq_set_realm} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, const char * @var{realm})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to set realm field in.
+
+@var{realm}: input array with name of realm.
+
+Set the realm field in the KDC-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_server
+@anchor{shishi_kdcreq_server}
+@deftypefun {int} {shishi_kdcreq_server} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, char ** @var{server}, size_t * @var{serverlen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get server name from.
+
+@var{server}: pointer to newly allocated zero terminated string containing
+principal name.  May be @code{NULL} (to only populate @code{serverlen}).
+
+@var{serverlen}: pointer to length of @code{server} on output, excluding terminating
+zero.  May be @code{NULL} (to only populate @code{server}).
+
+Represent server principal name in KDC-REQ as zero-terminated
+string.  The string is allocate by this function, and it is the
+responsibility of the caller to deallocate it.  Note that the
+output length @code{serverlen} does not include the terminating zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_set_sname
+@anchor{shishi_kdcreq_set_sname}
+@deftypefun {int} {shishi_kdcreq_set_sname} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_name_type @var{name_type}, const char * [] @var{sname})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to set server name field in.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{sname}: input array with principal name.
+
+Set the server name field in the KDC-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_till
+@anchor{shishi_kdcreq_till}
+@deftypefun {int} {shishi_kdcreq_till} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, char ** @var{till}, size_t * @var{tilllen})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get client name from.
+
+@var{till}: pointer to newly allocated zero terminated string containing
+"till" field with generalized time.  May be @code{NULL} (to only
+populate @code{realmlen}).
+
+@var{tilllen}: pointer to length of @code{till} on output, excluding
+terminating zero.  May be @code{NULL} (to only populate @code{tilllen}).
+
+Get "till" field (i.e. "endtime") in KDC-REQ, as zero-terminated
+string.  The string is typically 15 characters long.  The string is
+allocated by this function, and it is the responsibility of the
+caller to deallocate it.  Note that the output length @code{realmlen}
+does not include the terminating zero.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_tillc
+@anchor{shishi_kdcreq_tillc}
+@deftypefun {time_t} {shishi_kdcreq_tillc} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get till field from.
+
+Extract C time corresponding to the "till" field.
+
+@strong{Return value:} Returns C time interpretation of the "till" field in
+KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_etype
+@anchor{shishi_kdcreq_etype}
+@deftypefun {int} {shishi_kdcreq_etype} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, int32_t * @var{etype}, int @var{netype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get etype field from.
+
+@var{etype}: output encryption type.
+
+@var{netype}: element number to return.
+
+
+@strong{Return the netype:} th encryption type from KDC-REQ.  The first etype
+is number 1.
+
+@strong{Return value:} Returns SHISHI_OK iff etype successful set.
+@end deftypefun
+
+@subheading shishi_kdcreq_set_etype
+@anchor{shishi_kdcreq_set_etype}
+@deftypefun {int} {shishi_kdcreq_set_etype} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, int32_t * @var{etype}, int @var{netype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to set etype field in.
+
+@var{etype}: input array with encryption types.
+
+@var{netype}: number of elements in input array with encryption types.
+
+Set the list of supported or wanted encryption types in the
+request.  The list should be sorted in priority order.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_options
+@anchor{shishi_kdcreq_options}
+@deftypefun {int} {shishi_kdcreq_options} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, uint32_t * @var{flags})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+@var{flags}: pointer to output integer with flags.
+
+Extract KDC-Options from KDC-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_forwardable_p
+@anchor{shishi_kdcreq_forwardable_p}
+@deftypefun {int} {shishi_kdcreq_forwardable_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option forwardable flag is set.
+
+The FORWARDABLE option indicates that the ticket to be issued is to
+have its forwardable flag set. It may only be set on the initial
+request, or in a subsequent request if the ticket-granting ticket
+on which it is based is also forwardable.
+
+@strong{Return value:} Returns non-0 iff forwardable flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_forwarded_p
+@anchor{shishi_kdcreq_forwarded_p}
+@deftypefun {int} {shishi_kdcreq_forwarded_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option forwarded flag is set.
+
+The FORWARDED option is only specified in a request to the
+ticket-granting server and will only be honored if the
+ticket-granting ticket in the request has its FORWARDABLE bit
+set. This option indicates that this is a request for
+forwarding. The address(es) of the host from which the resulting
+ticket is to be valid are included in the addresses field of the
+request.
+
+@strong{Return value:} Returns non-0 iff forwarded flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_proxiable_p
+@anchor{shishi_kdcreq_proxiable_p}
+@deftypefun {int} {shishi_kdcreq_proxiable_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option proxiable flag is set.
+
+The PROXIABLE option indicates that the ticket to be issued is to
+have its proxiable flag set. It may only be set on the initial
+request, or in a subsequent request if the ticket-granting ticket
+on which it is based is also proxiable.
+
+@strong{Return value:} Returns non-0 iff proxiable flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_proxy_p
+@anchor{shishi_kdcreq_proxy_p}
+@deftypefun {int} {shishi_kdcreq_proxy_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option proxy flag is set.
+
+The PROXY option indicates that this is a request for a proxy. This
+option will only be honored if the ticket-granting ticket in the
+request has its PROXIABLE bit set.  The address(es) of the host
+from which the resulting ticket is to be valid are included in the
+addresses field of the request.
+
+@strong{Return value:} Returns non-0 iff proxy flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_allow_postdate_p
+@anchor{shishi_kdcreq_allow_postdate_p}
+@deftypefun {int} {shishi_kdcreq_allow_postdate_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option allow-postdate flag is set.
+
+The ALLOW-POSTDATE option indicates that the ticket to be issued is
+to have its MAY-POSTDATE flag set. It may only be set on the
+initial request, or in a subsequent request if the ticket-granting
+ticket on which it is based also has its MAY-POSTDATE flag set.
+
+@strong{Return value:} Returns non-0 iff allow-postdate flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_postdated_p
+@anchor{shishi_kdcreq_postdated_p}
+@deftypefun {int} {shishi_kdcreq_postdated_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option postdated flag is set.
+
+The POSTDATED option indicates that this is a request for a
+postdated ticket. This option will only be honored if the
+ticket-granting ticket on which it is based has its MAY-POSTDATE
+flag set. The resulting ticket will also have its INVALID flag set,
+and that flag may be reset by a subsequent request to the KDC after
+the starttime in the ticket has been reached.
+
+@strong{Return value:} Returns non-0 iff postdated flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_renewable_p
+@anchor{shishi_kdcreq_renewable_p}
+@deftypefun {int} {shishi_kdcreq_renewable_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option renewable flag is set.
+
+The RENEWABLE option indicates that the ticket to be issued is to
+have its RENEWABLE flag set. It may only be set on the initial
+request, or when the ticket-granting ticket on which the request is
+based is also renewable. If this option is requested, then the
+rtime field in the request contains the desired absolute expiration
+time for the ticket.
+
+@strong{Return value:} Returns non-0 iff renewable flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_disable_transited_check_p
+@anchor{shishi_kdcreq_disable_transited_check_p}
+@deftypefun {int} {shishi_kdcreq_disable_transited_check_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option disable-transited-check flag is set.
+
+By default the KDC will check the transited field of a
+ticket-granting-ticket against the policy of the local realm before
+it will issue derivative tickets based on the ticket-granting
+ticket. If this flag is set in the request, checking of the
+transited field is disabled. Tickets issued without the performance
+of this check will be noted by the reset (0) value of the
+TRANSITED-POLICY-CHECKED flag, indicating to the application server
+that the tranisted field must be checked locally. KDCs are
+encouraged but not required to honor the DISABLE-TRANSITED-CHECK
+option.
+
+This flag is new since RFC 1510
+
+@strong{Return value:} Returns non-0 iff disable-transited-check flag is set
+in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_renewable_ok_p
+@anchor{shishi_kdcreq_renewable_ok_p}
+@deftypefun {int} {shishi_kdcreq_renewable_ok_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option renewable-ok flag is set.
+
+The RENEWABLE-OK option indicates that a renewable ticket will be
+acceptable if a ticket with the requested life cannot otherwise be
+provided. If a ticket with the requested life cannot be provided,
+then a renewable ticket may be issued with a renew-till equal to
+the requested endtime. The value of the renew-till field may still
+be limited by local limits, or limits selected by the individual
+principal or server.
+
+@strong{Return value:} Returns non-0 iff renewable-ok flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_enc_tkt_in_skey_p
+@anchor{shishi_kdcreq_enc_tkt_in_skey_p}
+@deftypefun {int} {shishi_kdcreq_enc_tkt_in_skey_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option enc-tkt-in-skey flag is set.
+
+This option is used only by the ticket-granting service. The
+ENC-TKT-IN-SKEY option indicates that the ticket for the end server
+is to be encrypted in the session key from the additional
+ticket-granting ticket provided.
+
+@strong{Return value:} Returns non-0 iff enc-tkt-in-skey flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_renew_p
+@anchor{shishi_kdcreq_renew_p}
+@deftypefun {int} {shishi_kdcreq_renew_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option renew flag is set.
+
+This option is used only by the ticket-granting service. The RENEW
+option indicates that the present request is for a renewal. The
+ticket provided is encrypted in the secret key for the server on
+which it is valid. This option will only be honored if the ticket
+to be renewed has its RENEWABLE flag set and if the time in its
+renew-till field has not passed. The ticket to be renewed is passed
+in the padata field as part of the authentication header.
+
+@strong{Return value:} Returns non-0 iff renew flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_validate_p
+@anchor{shishi_kdcreq_validate_p}
+@deftypefun {int} {shishi_kdcreq_validate_p} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to get kdc-options field from.
+
+Determine if KDC-Option validate flag is set.
+
+This option is used only by the ticket-granting service. The
+VALIDATE option indicates that the request is to validate a
+postdated ticket. It will only be honored if the ticket presented
+is postdated, presently has its INVALID flag set, and would be
+otherwise usable at this time. A ticket cannot be validated before
+its starttime. The ticket presented for validation is encrypted in
+the key of the server for which it is valid and is passed in the
+padata field as part of the authentication header.
+
+@strong{Return value:} Returns non-0 iff validate flag is set in KDC-REQ.
+@end deftypefun
+
+@subheading shishi_kdcreq_options_set
+@anchor{shishi_kdcreq_options_set}
+@deftypefun {int} {shishi_kdcreq_options_set} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, uint32_t @var{options})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to set etype field in.
+
+@var{options}: integer with flags to store in KDC-REQ.
+
+Set options in KDC-REQ.  Note that this reset any already existing
+flags.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_options_add
+@anchor{shishi_kdcreq_options_add}
+@deftypefun {int} {shishi_kdcreq_options_add} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, uint32_t @var{option})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ variable to set etype field in.
+
+@var{option}: integer with options to add in KDC-REQ.
+
+Add KDC-Option to KDC-REQ.  This preserves all existing options.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_clear_padata
+@anchor{shishi_kdcreq_clear_padata}
+@deftypefun {int} {shishi_kdcreq_clear_padata} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to remove PA-DATA from.
+
+Remove the padata field from KDC-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_get_padata
+@anchor{shishi_kdcreq_get_padata}
+@deftypefun {int} {shishi_kdcreq_get_padata} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_padata_type @var{padatatype}, char ** @var{out}, size_t * @var{outlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to get PA-DATA from.
+
+@var{padatatype}: type of PA-DATA, see Shishi_padata_type.
+
+@var{out}: output array with newly allocated PA-DATA value.
+
+@var{outlen}: size of output array with PA-DATA value.
+
+Get pre authentication data (PA-DATA) from KDC-REQ.  Pre
+authentication data is used to pass various information to KDC,
+such as in case of a SHISHI_PA_TGS_REQ padatatype the AP-REQ that
+authenticates the user to get the ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_get_padata_tgs
+@anchor{shishi_kdcreq_get_padata_tgs}
+@deftypefun {int} {shishi_kdcreq_get_padata_tgs} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_asn1 * @var{apreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to get PA-TGS-REQ from.
+
+@var{apreq}: Output variable with newly allocated AP-REQ.
+
+Extract TGS pre-authentication data from KDC-REQ.  The data is an
+AP-REQ that authenticates the request.  This function call
+@code{shishi_kdcreq_get_padata()} with a SHISHI_PA_TGS_REQ padatatype and
+DER decode the result (if any).
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_add_padata
+@anchor{shishi_kdcreq_add_padata}
+@deftypefun {int} {shishi_kdcreq_add_padata} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, int @var{padatatype}, const char * @var{data}, size_t @var{datalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to add PA-DATA to.
+
+@var{padatatype}: type of PA-DATA, see Shishi_padata_type.
+
+@var{data}: input array with PA-DATA value.
+
+@var{datalen}: size of input array with PA-DATA value.
+
+Add new pre authentication data (PA-DATA) to KDC-REQ.  This is used
+to pass various information to KDC, such as in case of a
+SHISHI_PA_TGS_REQ padatatype the AP-REQ that authenticates the user
+to get the ticket.  (But also see @code{shishi_kdcreq_add_padata_tgs()}
+which takes an AP-REQ directly.)
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_add_padata_tgs
+@anchor{shishi_kdcreq_add_padata_tgs}
+@deftypefun {int} {shishi_kdcreq_add_padata_tgs} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_asn1 @var{apreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to add PA-DATA to.
+
+@var{apreq}: AP-REQ to add as PA-DATA.
+
+Add TGS pre-authentication data to KDC-REQ.  The data is an AP-REQ
+that authenticates the request.  This functions simply DER encodes
+the AP-REQ and calls @code{shishi_kdcreq_add_padata()} with a
+SHISHI_PA_TGS_REQ padatatype.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcreq_add_padata_preauth
+@anchor{shishi_kdcreq_add_padata_preauth}
+@deftypefun {int} {shishi_kdcreq_add_padata_preauth} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_key * @var{key})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to add pre-authentication data to.
+
+@var{key}: Key used to encrypt pre-auth data.
+
+Add pre-authentication data to KDC-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

@@ -1,0 +1,397 @@
+@subheading shishi_tkts_default_file_guess
+@anchor{shishi_tkts_default_file_guess}
+@deftypefun {char *} {shishi_tkts_default_file_guess} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Guesses the default ticket filename; it is $SHISHI_TICKETS,
+$SHISHI_HOME/tickets, or $HOME/.shishi/tickets.
+
+@strong{Return value:} Returns default tkts filename as a string that
+has to be deallocated with @code{free()} by the caller.
+@end deftypefun
+
+@subheading shishi_tkts_default_file
+@anchor{shishi_tkts_default_file}
+@deftypefun {const char *} {shishi_tkts_default_file} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Get filename of default ticket set.
+
+@strong{Return value:} Returns the default ticket set filename used in the
+library.  The string is not a copy, so don't modify or deallocate
+it.
+@end deftypefun
+
+@subheading shishi_tkts_default_file_set
+@anchor{shishi_tkts_default_file_set}
+@deftypefun {void} {shishi_tkts_default_file_set} (Shishi * @var{handle}, const char * @var{tktsfile})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{tktsfile}: string with new default tkts file name, or
+NULL to reset to default.
+
+Set the default ticket set filename used in the library.  The
+string is copied into the library, so you can dispose of the
+variable immediately after calling this function.
+@end deftypefun
+
+@subheading shishi_tkts_default
+@anchor{shishi_tkts_default}
+@deftypefun {Shishi_tkts *} {shishi_tkts_default} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Get the default ticket set for library handle.
+
+@strong{Return value:} Return the handle global ticket set.
+@end deftypefun
+
+@subheading shishi_tkts
+@anchor{shishi_tkts}
+@deftypefun {int} {shishi_tkts} (Shishi * @var{handle}, Shishi_tkts ** @var{tkts})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{tkts}: output pointer to newly allocated tkts handle.
+
+Get a new ticket set handle.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_tkts_done
+@anchor{shishi_tkts_done}
+@deftypefun {void} {shishi_tkts_done} (Shishi_tkts ** @var{tkts})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+Deallocates all resources associated with ticket set.  The ticket
+set handle must not be used in calls to other shishi_tkts_*()
+functions after this.
+@end deftypefun
+
+@subheading shishi_tkts_size
+@anchor{shishi_tkts_size}
+@deftypefun {int} {shishi_tkts_size} (Shishi_tkts * @var{tkts})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+Get size of ticket set.
+
+@strong{Return value:} Returns number of tickets stored in ticket set.
+@end deftypefun
+
+@subheading shishi_tkts_nth
+@anchor{shishi_tkts_nth}
+@deftypefun {Shishi_tkt *} {shishi_tkts_nth} (Shishi_tkts * @var{tkts}, int @var{ticketno})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{ticketno}: integer indicating requested ticket in ticket set.
+
+
+@strong{Get the n:} th ticket in ticket set.
+
+@strong{Return value:} Returns a ticket handle to the ticketno:th ticket in
+the ticket set, or NULL if ticket set is invalid or ticketno is
+out of bounds.  The first ticket is ticketno 0, the second
+ticketno 1, and so on.
+@end deftypefun
+
+@subheading shishi_tkts_remove
+@anchor{shishi_tkts_remove}
+@deftypefun {int} {shishi_tkts_remove} (Shishi_tkts * @var{tkts}, int @var{ticketno})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{ticketno}: ticket number of ticket in the set to remove.  The first
+ticket is ticket number 0.
+
+Remove a ticket, indexed by @code{ticketno}, in ticket set.
+
+@strong{Return value:} Returns SHISHI_OK if succesful or if ticketno larger
+than size of ticket set.
+@end deftypefun
+
+@subheading shishi_tkts_add
+@anchor{shishi_tkts_add}
+@deftypefun {int} {shishi_tkts_add} (Shishi_tkts * @var{tkts}, Shishi_tkt * @var{tkt})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{tkt}: ticket to be added to ticket set.
+
+Add a ticket to the ticket set.  Only the pointer is stored, so if
+you modify @code{tkt}, the ticket in the ticket set will also be
+modified.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkts_new
+@anchor{shishi_tkts_new}
+@deftypefun {int} {shishi_tkts_new} (Shishi_tkts * @var{tkts}, Shishi_asn1 @var{ticket}, Shishi_asn1 @var{enckdcreppart}, Shishi_asn1 @var{kdcrep})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{ticket}: input ticket variable.
+
+@var{enckdcreppart}: input ticket detail variable.
+
+@var{kdcrep}: input KDC-REP variable.
+
+Allocate a new ticket and add it to the ticket set.
+
+Note that @code{ticket}, @code{enckdcreppart} and @code{kdcrep} are stored by
+reference, so you must not de-allocate them before the ticket is
+removed from the ticket set and de-allocated.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkts_read
+@anchor{shishi_tkts_read}
+@deftypefun {int} {shishi_tkts_read} (Shishi_tkts * @var{tkts}, FILE * @var{fh})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{fh}: file descriptor to read from.
+
+Read tickets from file descriptor and add them to the ticket set.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkts_from_file
+@anchor{shishi_tkts_from_file}
+@deftypefun {int} {shishi_tkts_from_file} (Shishi_tkts * @var{tkts}, const char * @var{filename})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{filename}: filename to read tickets from.
+
+Read tickets from file and add them to the ticket set.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkts_write
+@anchor{shishi_tkts_write}
+@deftypefun {int} {shishi_tkts_write} (Shishi_tkts * @var{tkts}, FILE * @var{fh})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{fh}: file descriptor to write tickets to.
+
+Write tickets in set to file descriptor.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkts_expire
+@anchor{shishi_tkts_expire}
+@deftypefun {int} {shishi_tkts_expire} (Shishi_tkts * @var{tkts})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+Remove expired tickets from ticket set.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkts_to_file
+@anchor{shishi_tkts_to_file}
+@deftypefun {int} {shishi_tkts_to_file} (Shishi_tkts * @var{tkts}, const char * @var{filename})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{filename}: filename to write tickets to.
+
+Write tickets in set to file.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkts_print_for_service
+@anchor{shishi_tkts_print_for_service}
+@deftypefun {int} {shishi_tkts_print_for_service} (Shishi_tkts * @var{tkts}, FILE * @var{fh}, const char * @var{service})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{fh}: file descriptor to print to.
+
+@var{service}: service to limit tickets printed to, or NULL.
+
+Print description of tickets for specified service to file
+descriptor.  If service is NULL, all tickets are printed.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkts_print
+@anchor{shishi_tkts_print}
+@deftypefun {int} {shishi_tkts_print} (Shishi_tkts * @var{tkts}, FILE * @var{fh})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{fh}: file descriptor to print to.
+
+Print description of all tickets to file descriptor.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_tkt_match_p
+@anchor{shishi_tkt_match_p}
+@deftypefun {int} {shishi_tkt_match_p} (Shishi_tkt * @var{tkt}, Shishi_tkts_hint * @var{hint})
+@var{tkt}: ticket to test hints on.
+
+@var{hint}: structure with characteristics of ticket to be found.
+
+Test if a ticket matches specified hints.
+
+@strong{Return value:} Returns 0 iff ticket fails to match given criteria.
+@end deftypefun
+
+@subheading shishi_tkts_find
+@anchor{shishi_tkts_find}
+@deftypefun {Shishi_tkt *} {shishi_tkts_find} (Shishi_tkts * @var{tkts}, Shishi_tkts_hint * @var{hint})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{hint}: structure with characteristics of ticket to be found.
+
+Search the ticketset sequentially (from ticket number 0 through all
+tickets in the set) for a ticket that fits the given
+characteristics.  If a ticket is found, the hint->startpos field is
+updated to point to the next ticket in the set, so this function
+can be called repeatedly with the same hint argument in order to
+find all tickets matching a certain criterium.  Note that if
+tickets are added to, or removed from, the ticketset during a query
+with the same hint argument, the hint->startpos field must be
+updated appropriately.
+
+@strong{Here is how you would typically use this function:} 
+Shishi_tkts_hint  hint;
+
+Shishi_tkt  tkt;
+
+
+memset(&hint, 0, sizeof(hint));
+
+hint.server = "imap/mail.example.org";
+
+tkt = shishi_tkts_find (shishi_tkts_default(handle), &hint);
+
+if (!tkt)
+
+printf("No ticket found...\n");
+
+else
+
+do_something_with_ticket (tkt);
+
+@strong{Return value:} Returns a ticket if found, or NULL if no further
+matching tickets could be found.
+@end deftypefun
+
+@subheading shishi_tkts_find_for_clientserver
+@anchor{shishi_tkts_find_for_clientserver}
+@deftypefun {Shishi_tkt *} {shishi_tkts_find_for_clientserver} (Shishi_tkts * @var{tkts}, const char * @var{client}, const char * @var{server})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{client}: client name to find ticket for.
+
+@var{server}: server name to find ticket for.
+
+Short-hand function for searching the ticket set for a ticket for
+the given client and server.  See @code{shishi_tkts_find()}.
+
+@strong{Return value:} Returns a ticket if found, or NULL.
+@end deftypefun
+
+@subheading shishi_tkts_find_for_server
+@anchor{shishi_tkts_find_for_server}
+@deftypefun {Shishi_tkt *} {shishi_tkts_find_for_server} (Shishi_tkts * @var{tkts}, const char * @var{server})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{server}: server name to find ticket for.
+
+Short-hand function for searching the ticket set for a ticket for
+the given server using the default client principal.  See
+@code{shishi_tkts_find_for_clientserver()} and @code{shishi_tkts_find()}.
+
+@strong{Return value:} Returns a ticket if found, or NULL.
+@end deftypefun
+
+@subheading shishi_tkts_get_tgt
+@anchor{shishi_tkts_get_tgt}
+@deftypefun {Shishi_tkt *} {shishi_tkts_get_tgt} (Shishi_tkts * @var{tkts}, Shishi_tkts_hint * @var{hint})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{hint}: structure with characteristics of ticket to begot.
+
+Get a ticket granting ticket (TGT) suitable for acquiring ticket
+matching the hint.  I.e., get a TGT for the server realm in the
+hint structure (hint->serverrealm), or the default realm if the
+serverrealm field is NULL.  Can result in AS exchange.
+
+Currently this function do not implement cross realm logic.
+
+This function is used by @code{shishi_tkts_get()}, which is probably what
+you really want to use unless you have special needs.
+
+@strong{Return value:} Returns a ticket granting ticket if successful, or
+NULL if this function is unable to acquire on.
+@end deftypefun
+
+@subheading shishi_tkts_get_tgs
+@anchor{shishi_tkts_get_tgs}
+@deftypefun {Shishi_tkt *} {shishi_tkts_get_tgs} (Shishi_tkts * @var{tkts}, Shishi_tkts_hint * @var{hint}, Shishi_tkt * @var{tgt})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{hint}: structure with characteristics of ticket to begot.
+
+@var{tgt}: ticket granting ticket to use.
+
+Get a ticket via TGS exchange using specified ticket granting
+ticket.
+
+This function is used by @code{shishi_tkts_get()}, which is probably what
+you really want to use unless you have special needs.
+
+@strong{Return value:} Returns a ticket if successful, or NULL if this
+function is unable to acquire on.
+@end deftypefun
+
+@subheading shishi_tkts_get
+@anchor{shishi_tkts_get}
+@deftypefun {Shishi_tkt *} {shishi_tkts_get} (Shishi_tkts * @var{tkts}, Shishi_tkts_hint * @var{hint})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{hint}: structure with characteristics of ticket to begot.
+
+Get a ticket matching given characteristics.  This function first
+looks in the ticket set for the ticket, then tries to find a
+suitable TGT, possibly via an AS exchange, using
+@code{shishi_tkts_get_tgt()}, and then use that TGT in a TGS exchange to
+get the ticket.
+
+Currently this function do not implement cross realm logic.
+
+@strong{Return value:} Returns a ticket if found, or NULL if this function
+is unable to get the ticket.
+@end deftypefun
+
+@subheading shishi_tkts_get_for_clientserver
+@anchor{shishi_tkts_get_for_clientserver}
+@deftypefun {Shishi_tkt *} {shishi_tkts_get_for_clientserver} (Shishi_tkts * @var{tkts}, const char * @var{client}, const char * @var{server})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{client}: client name to get ticket for.
+
+@var{server}: server name to get ticket for.
+
+Short-hand function for getting a ticket for the given client and
+server.  See @code{shishi_tkts_get()}.
+
+@strong{Return value:} Returns a ticket if found, or NULL.
+@end deftypefun
+
+@subheading shishi_tkts_get_for_server
+@anchor{shishi_tkts_get_for_server}
+@deftypefun {Shishi_tkt *} {shishi_tkts_get_for_server} (Shishi_tkts * @var{tkts}, const char * @var{server})
+@var{tkts}: ticket set handle as allocated by @code{shishi_tkts()}.
+
+@var{server}: server name to get ticket for.
+
+Short-hand function for getting a ticket for the given server and
+the default principal client.  See @code{shishi_tkts_get()}.
+
+@strong{Return value:} Returns a ticket if found, or NULL.
+@end deftypefun
+

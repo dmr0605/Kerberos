@@ -1,0 +1,228 @@
+@subheading shishi_encapreppart
+@anchor{shishi_encapreppart}
+@deftypefun {Shishi_asn1} {shishi_encapreppart} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new EncAPRepPart, populated with some
+default values.  It uses the current time as returned by the system
+for the ctime and cusec fields.
+
+@strong{Return value:} Returns the encapreppart or NULL on failure.
+@end deftypefun
+
+@subheading shishi_encapreppart_print
+@anchor{shishi_encapreppart_print}
+@deftypefun {int} {shishi_encapreppart_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{encapreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{encapreppart}: EncAPRepPart to print.
+
+Print ASCII armored DER encoding of EncAPRepPart to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_save
+@anchor{shishi_encapreppart_save}
+@deftypefun {int} {shishi_encapreppart_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{encapreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{encapreppart}: EncAPRepPart to save.
+
+Save DER encoding of EncAPRepPart to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_to_file
+@anchor{shishi_encapreppart_to_file}
+@deftypefun {int} {shishi_encapreppart_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: EncAPRepPart to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write EncAPRepPart to file in specified TYPE.  The file will be
+truncated if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_parse
+@anchor{shishi_encapreppart_parse}
+@deftypefun {int} {shishi_encapreppart_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{encapreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{encapreppart}: output variable with newly allocated EncAPRepPart.
+
+Read ASCII armored DER encoded EncAPRepPart from file and populate given
+variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_read
+@anchor{shishi_encapreppart_read}
+@deftypefun {int} {shishi_encapreppart_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{encapreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{encapreppart}: output variable with newly allocated EncAPRepPart.
+
+Read DER encoded EncAPRepPart from file and populate given variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_from_file
+@anchor{shishi_encapreppart_from_file}
+@deftypefun {int} {shishi_encapreppart_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{encapreppart}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: output variable with newly allocated EncAPRepPart.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read EncAPRepPart from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_get_key
+@anchor{shishi_encapreppart_get_key}
+@deftypefun {int} {shishi_encapreppart_get_key} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, Shishi_key ** @var{key})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: input EncAPRepPart variable.
+
+@var{key}: newly allocated key.
+
+Extract the subkey from the encrypted AP-REP part.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_encapreppart_ctime
+@anchor{shishi_encapreppart_ctime}
+@deftypefun {int} {shishi_encapreppart_ctime} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, char ** @var{t})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: EncAPRepPart as allocated by @code{shishi_encapreppart()}.
+
+@var{t}: newly allocated zero-terminated character array with client time.
+
+Extract client time from EncAPRepPart.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_ctime_set
+@anchor{shishi_encapreppart_ctime_set}
+@deftypefun {int} {shishi_encapreppart_ctime_set} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, const char * @var{t})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: EncAPRepPart as allocated by @code{shishi_encapreppart()}.
+
+@var{t}: string with generalized time value to store in EncAPRepPart.
+
+Store client time in EncAPRepPart.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_cusec_get
+@anchor{shishi_encapreppart_cusec_get}
+@deftypefun {int} {shishi_encapreppart_cusec_get} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, uint32_t * @var{cusec})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: EncAPRepPart as allocated by @code{shishi_encapreppart()}.
+
+@var{cusec}: output integer with client microseconds field.
+
+Extract client microseconds field from EncAPRepPart.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_cusec_set
+@anchor{shishi_encapreppart_cusec_set}
+@deftypefun {int} {shishi_encapreppart_cusec_set} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, uint32_t @var{cusec})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: EncAPRepPart as allocated by @code{shishi_encapreppart()}.
+
+@var{cusec}: client microseconds to set in authenticator, 0-999999.
+
+Set the cusec field in the Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_seqnumber_get
+@anchor{shishi_encapreppart_seqnumber_get}
+@deftypefun {int} {shishi_encapreppart_seqnumber_get} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, uint32_t * @var{seqnumber})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: EncAPRepPart as allocated by @code{shishi_encapreppart()}.
+
+@var{seqnumber}: output integer with sequence number field.
+
+Extract sequence number field from EncAPRepPart.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_seqnumber_remove
+@anchor{shishi_encapreppart_seqnumber_remove}
+@deftypefun {int} {shishi_encapreppart_seqnumber_remove} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: encapreppart as allocated by @code{shishi_encapreppart()}.
+
+Remove sequence number field in EncAPRepPart.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_seqnumber_set
+@anchor{shishi_encapreppart_seqnumber_set}
+@deftypefun {int} {shishi_encapreppart_seqnumber_set} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, uint32_t @var{seqnumber})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: encapreppart as allocated by @code{shishi_encapreppart()}.
+
+@var{seqnumber}: integer with sequence number field to store in encapreppart.
+
+Store sequence number field in EncAPRepPart.
+
+@strong{Return value:} Returns @code{SHISHI_OK} iff successful.
+@end deftypefun
+
+@subheading shishi_encapreppart_time_copy
+@anchor{shishi_encapreppart_time_copy}
+@deftypefun {int} {shishi_encapreppart_time_copy} (Shishi * @var{handle}, Shishi_asn1 @var{encapreppart}, Shishi_asn1 @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{encapreppart}: EncAPRepPart as allocated by @code{shishi_encapreppart()}.
+
+@var{authenticator}: Authenticator to copy time fields from.
+
+Copy time fields from Authenticator into EncAPRepPart.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

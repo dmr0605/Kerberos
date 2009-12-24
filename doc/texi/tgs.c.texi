@@ -1,0 +1,300 @@
+@subheading shishi_tgs
+@anchor{shishi_tgs}
+@deftypefun {int} {shishi_tgs} (Shishi * @var{handle}, Shishi_tgs ** @var{tgs})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{tgs}: holds pointer to newly allocate Shishi_tgs structure.
+
+Allocate a new TGS exchange variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_done
+@anchor{shishi_tgs_done}
+@deftypefun {void} {shishi_tgs_done} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about AS exchange
+
+Deallocate resources associated with TGS exchange.  This should be
+called by the application when it no longer need to utilize the TGS
+exchange handle.
+@end deftypefun
+
+@subheading shishi_tgs_tgtkt
+@anchor{shishi_tgs_tgtkt}
+@deftypefun {Shishi_tkt *} {shishi_tgs_tgtkt} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Get Ticket-granting-ticket from TGS exchange.
+
+@strong{Return value:} Returns the ticket-granting-ticket used in the TGS
+exchange, or NULL if not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_tgs_tgtkt_set
+@anchor{shishi_tgs_tgtkt_set}
+@deftypefun {void} {shishi_tgs_tgtkt_set} (Shishi_tgs * @var{tgs}, Shishi_tkt * @var{tgtkt})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{tgtkt}: ticket granting ticket to store in TGS.
+
+Set the Ticket in the TGS exchange.
+@end deftypefun
+
+@subheading shishi_tgs_ap
+@anchor{shishi_tgs_ap}
+@deftypefun {Shishi_ap *} {shishi_tgs_ap} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Get the AP from TGS exchange.
+
+@strong{Return value:} Returns the AP exchange (part of TGS-REQ) from the
+TGS exchange, or NULL if not yet set or an error
+occured.
+@end deftypefun
+
+@subheading shishi_tgs_req
+@anchor{shishi_tgs_req}
+@deftypefun {Shishi_asn1} {shishi_tgs_req} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Get the TGS-REQ from TGS exchange.
+
+@strong{Return value:} Returns the generated TGS-REQ from the TGS exchange,
+or NULL if not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_tgs_req_set
+@anchor{shishi_tgs_req_set}
+@deftypefun {void} {shishi_tgs_req_set} (Shishi_tgs * @var{tgs}, Shishi_asn1 @var{tgsreq})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{tgsreq}: tgsreq to store in TGS.
+
+Set the TGS-REQ in the TGS exchange.
+@end deftypefun
+
+@subheading shishi_tgs_req_der
+@anchor{shishi_tgs_req_der}
+@deftypefun {int} {shishi_tgs_req_der} (Shishi_tgs * @var{tgs}, char ** @var{out}, size_t * @var{outlen})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{out}: output array with newly allocated DER encoding of TGS-REQ.
+
+@var{outlen}: length of output array with DER encoding of TGS-REQ.
+
+DER encode TGS-REQ. @code{out} is allocated by this function, and it is
+the responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_req_der_set
+@anchor{shishi_tgs_req_der_set}
+@deftypefun {int} {shishi_tgs_req_der_set} (Shishi_tgs * @var{tgs}, char * @var{der}, size_t @var{derlen})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{der}: input array with DER encoded AP-REQ.
+
+@var{derlen}: length of input array with DER encoded AP-REQ.
+
+DER decode TGS-REQ and set it TGS exchange.  If decoding fails, the
+TGS-REQ in the TGS exchange remains.
+
+@strong{Return value:} Returns SHISHI_OK.
+@end deftypefun
+
+@subheading shishi_tgs_req_process
+@anchor{shishi_tgs_req_process}
+@deftypefun {int} {shishi_tgs_req_process} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Process new TGS-REQ and set ticket.  The key to decrypt the TGS-REQ
+is taken from the EncKDCReqPart of the TGS tgticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_req_build
+@anchor{shishi_tgs_req_build}
+@deftypefun {int} {shishi_tgs_req_build} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Checksum data in authenticator and add ticket and authenticator to
+TGS-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_rep
+@anchor{shishi_tgs_rep}
+@deftypefun {Shishi_asn1} {shishi_tgs_rep} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Get TGS-REP from TGS exchange.
+
+@strong{Return value:} Returns the received TGS-REP from the TGS exchange,
+or NULL if not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_tgs_rep_der
+@anchor{shishi_tgs_rep_der}
+@deftypefun {int} {shishi_tgs_rep_der} (Shishi_tgs * @var{tgs}, char ** @var{out}, size_t * @var{outlen})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{out}: output array with newly allocated DER encoding of TGS-REP.
+
+@var{outlen}: length of output array with DER encoding of TGS-REP.
+
+DER encode TGS-REP. @code{out} is allocated by this function, and it is
+the responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_rep_process
+@anchor{shishi_tgs_rep_process}
+@deftypefun {int} {shishi_tgs_rep_process} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Process new TGS-REP and set ticket.  The key to decrypt the TGS-REP
+is taken from the EncKDCRepPart of the TGS tgticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_rep_build
+@anchor{shishi_tgs_rep_build}
+@deftypefun {int} {shishi_tgs_rep_build} (Shishi_tgs * @var{tgs}, int @var{keyusage}, Shishi_key * @var{key})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{keyusage}: keyusage integer.
+
+@var{key}: user's key, used to encrypt the encrypted part of the TGS-REP.
+
+Build TGS-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_krberror
+@anchor{shishi_tgs_krberror}
+@deftypefun {Shishi_asn1} {shishi_tgs_krberror} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Get KRB-ERROR from TGS exchange.
+
+@strong{Return value:} Returns the received TGS-REP from the TGS exchange,
+or NULL if not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_tgs_krberror_der
+@anchor{shishi_tgs_krberror_der}
+@deftypefun {int} {shishi_tgs_krberror_der} (Shishi_tgs * @var{tgs}, char ** @var{out}, size_t * @var{outlen})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{out}: output array with newly allocated DER encoding of KRB-ERROR.
+
+@var{outlen}: length of output array with DER encoding of KRB-ERROR.
+
+DER encode KRB-ERROR.  @code{out} is allocated by this function, and it is
+the responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_krberror_set
+@anchor{shishi_tgs_krberror_set}
+@deftypefun {void} {shishi_tgs_krberror_set} (Shishi_tgs * @var{tgs}, Shishi_asn1 @var{krberror})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{krberror}: krberror to store in TGS.
+
+Set the KRB-ERROR in the TGS exchange.
+@end deftypefun
+
+@subheading shishi_tgs_tkt
+@anchor{shishi_tgs_tkt}
+@deftypefun {Shishi_tkt *} {shishi_tgs_tkt} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Get Ticket from TGS exchange.
+
+@strong{Return value:} Returns the newly aquired ticket from the TGS
+exchange, or NULL if not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_tgs_tkt_set
+@anchor{shishi_tgs_tkt_set}
+@deftypefun {void} {shishi_tgs_tkt_set} (Shishi_tgs * @var{tgs}, Shishi_tkt * @var{tkt})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{tkt}: ticket to store in TGS.
+
+Set the Ticket in the TGS exchange.
+@end deftypefun
+
+@subheading shishi_tgs_sendrecv_hint
+@anchor{shishi_tgs_sendrecv_hint}
+@deftypefun {int} {shishi_tgs_sendrecv_hint} (Shishi_tgs * @var{tgs}, Shishi_tkts_hint * @var{hint})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{hint}: additional parameters that modify connection behaviour, or @code{NULL}.
+
+Send TGS-REQ and receive TGS-REP or KRB-ERROR.  This is the
+subsequent authentication, usually used to acquire server tickets.
+The @code{hint} structure can be used to set, e.g., parameters for TLS
+authentication.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_sendrecv
+@anchor{shishi_tgs_sendrecv}
+@deftypefun {int} {shishi_tgs_sendrecv} (Shishi_tgs * @var{tgs})
+@var{tgs}: structure that holds information about TGS exchange
+
+Send TGS-REQ and receive TGS-REP or KRB-ERROR.  This is the
+subsequent authentication, usually used to acquire server tickets.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_set_server
+@anchor{shishi_tgs_set_server}
+@deftypefun {int} {shishi_tgs_set_server} (Shishi_tgs * @var{tgs}, const char * @var{server})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{server}: indicates the server to acquire ticket for.
+
+Set the server in the TGS-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_set_realm
+@anchor{shishi_tgs_set_realm}
+@deftypefun {int} {shishi_tgs_set_realm} (Shishi_tgs * @var{tgs}, const char * @var{realm})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{realm}: indicates the realm to acquire ticket for.
+
+Set the server in the TGS-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_tgs_set_realmserver
+@anchor{shishi_tgs_set_realmserver}
+@deftypefun {int} {shishi_tgs_set_realmserver} (Shishi_tgs * @var{tgs}, const char * @var{realm}, const char * @var{server})
+@var{tgs}: structure that holds information about TGS exchange
+
+@var{realm}: indicates the realm to acquire ticket for.
+
+@var{server}: indicates the server to acquire ticket for.
+
+Set the realm and server in the TGS-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

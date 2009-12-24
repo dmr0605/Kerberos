@@ -1,0 +1,130 @@
+@subheading shishi_tkts_default_ccache_guess
+@anchor{shishi_tkts_default_ccache_guess}
+@deftypefun {char *} {shishi_tkts_default_ccache_guess} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Guesses the default ccache ticket filename; it is the contents of
+the environment variable KRB5CCNAME or /tmp/krb5cc_UID where UID is
+the user's identity in decimal, as returned by @code{getuid()}.
+
+@strong{Return value:} Returns default ccache filename as a string that has
+to be deallocated with @code{free()} by the caller.
+@end deftypefun
+
+@subheading shishi_tkts_default_ccache
+@anchor{shishi_tkts_default_ccache}
+@deftypefun {const char *} {shishi_tkts_default_ccache} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Get filename of default ccache filename.
+
+@strong{Return value:} Returns the default ccache filename used in the
+library.  The string is not a copy, so don't modify or deallocate
+it.
+@end deftypefun
+
+@subheading shishi_tkts_default_ccache_set
+@anchor{shishi_tkts_default_ccache_set}
+@deftypefun {void} {shishi_tkts_default_ccache_set} (Shishi * @var{handle}, const char * @var{ccache})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{ccache}: string with new default ccache filename, or
+NULL to reset to default.
+
+Set the default ccache filename used in the library.  The string is
+copied into the library, so you can dispose of the variable
+immediately after calling this function.
+@end deftypefun
+
+@subheading shishi_tkts_add_ccache_mem
+@anchor{shishi_tkts_add_ccache_mem}
+@deftypefun {int} {shishi_tkts_add_ccache_mem} (Shishi * @var{handle}, const char * @var{data}, size_t @var{len}, Shishi_tkts * @var{tkts})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{data}: constant memory buffer with ccache of @code{len} size.
+
+@var{len}: size of memory buffer with ccache data.
+
+@var{tkts}: allocated key set to store tickets in.
+
+Read tickets from a ccache data structure, and add them to the
+ticket set.
+
+The ccache format is proprietary, and this function support (at
+least) the 0x0504 format.  See the section The Credential Cache
+Binary File Format in the Shishi manual for a description of the
+file format.
+
+@strong{Returns:} Returns @code{SHISHI_CCACHE_ERROR} if the data does not
+represent a valid ccache structure, and @code{SHISHI_OK} on success.
+@end deftypefun
+
+@subheading shishi_tkts_add_ccache_file
+@anchor{shishi_tkts_add_ccache_file}
+@deftypefun {int} {shishi_tkts_add_ccache_file} (Shishi * @var{handle}, const char * @var{filename}, Shishi_tkts * @var{tkts})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{filename}: name of file to read.
+
+@var{tkts}: allocated ticket set to store tickets in.
+
+Read tickets from a ccache data structure, and add them to the
+ticket set.
+
+The ccache format is proprietary, and this function support (at
+least) the 0x0504 format.  See the section The Credential Cache
+Binary File Format in the Shishi manual for a description of the
+file format.
+
+@strong{Returns:} Returns @code{SHISHI_IO_ERROR} if the file cannot be read,
+@code{SHISHI_CCACHE_ERROR} if the data cannot be parsed as a valid ccache
+structure, and @code{SHISHI_OK} on success.
+@end deftypefun
+
+@subheading shishi_tkts_from_ccache_mem
+@anchor{shishi_tkts_from_ccache_mem}
+@deftypefun {int} {shishi_tkts_from_ccache_mem} (Shishi * @var{handle}, const char * @var{data}, size_t @var{len}, Shishi_tkts ** @var{outtkts})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{data}: constant memory buffer with ccache of @code{len} size.
+
+@var{len}: size of memory buffer with ccache data.
+
+@var{outtkts}: pointer to ticket set that will be allocated and populated,
+must be deallocated by caller on succes.
+
+Read tickets from a ccache data structure, and add them to the
+ticket set.
+
+The ccache format is proprietary, and this function support (at
+least) the 0x0504 format.  See the section The Credential Cache
+Binary File Format in the Shishi manual for a description of the
+file format.
+
+@strong{Returns:} Returns @code{SHISHI_CCACHE_ERROR} if the data does not
+represent a valid ccache structure, and @code{SHISHI_OK} on success.
+@end deftypefun
+
+@subheading shishi_tkts_from_ccache_file
+@anchor{shishi_tkts_from_ccache_file}
+@deftypefun {int} {shishi_tkts_from_ccache_file} (Shishi * @var{handle}, const char * @var{filename}, Shishi_tkts ** @var{outtkts})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{filename}: name of file to read.
+
+@var{outtkts}: pointer to ticket set that will be allocated and populated,
+must be deallocated by caller on succes.
+
+Read tickets from a ccache data structure, and add them to the
+ticket set.
+
+The ccache format is proprietary, and this function support (at
+least) the 0x0504 format.  See the section The Credential Cache
+Binary File Format in the Shishi manual for a description of the
+file format.
+
+@strong{Returns:} Returns @code{SHISHI_IO_ERROR} if the file cannot be read,
+@code{SHISHI_CCACHE_ERROR} if the data cannot be parsed as a valid ccache
+structure, and @code{SHISHI_OK} on success.
+@end deftypefun
+

@@ -1,0 +1,664 @@
+@subheading shishi_ap
+@anchor{shishi_ap}
+@deftypefun {int} {shishi_ap} (Shishi * @var{handle}, Shishi_ap ** @var{ap})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ap}: pointer to new structure that holds information about AP exchange
+
+Create a new AP exchange with a random subkey of the default
+encryption type from configuration.  Note that there is no
+guarantee that the receiver will understand that key type, you
+should probably use @code{shishi_ap_etype()} or @code{shishi_ap_nosubkey()}
+instead.  In the future, this function will likely behave as
+@code{shishi_ap_nosubkey()} and @code{shishi_ap_nosubkey()} will be removed.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_etype
+@anchor{shishi_ap_etype}
+@deftypefun {int} {shishi_ap_etype} (Shishi * @var{handle}, Shishi_ap ** @var{ap}, int @var{etype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ap}: pointer to new structure that holds information about AP exchange
+
+@var{etype}: encryption type of newly generated random subkey.
+
+Create a new AP exchange with a random subkey of indicated
+encryption type.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_nosubkey
+@anchor{shishi_ap_nosubkey}
+@deftypefun {int} {shishi_ap_nosubkey} (Shishi * @var{handle}, Shishi_ap ** @var{ap})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ap}: pointer to new structure that holds information about AP exchange
+
+Create a new AP exchange without subkey in authenticator.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_done
+@anchor{shishi_ap_done}
+@deftypefun {void} {shishi_ap_done} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Deallocate resources associated with AP exchange.  This should be
+called by the application when it no longer need to utilize the AP
+exchange handle.
+@end deftypefun
+
+@subheading shishi_ap_set_tktoptions
+@anchor{shishi_ap_set_tktoptions}
+@deftypefun {int} {shishi_ap_set_tktoptions} (Shishi_ap * @var{ap}, Shishi_tkt * @var{tkt}, int @var{options})
+@var{ap}: structure that holds information about AP exchange
+
+@var{tkt}: ticket to set in AP.
+
+@var{options}: AP-REQ options to set in AP.
+
+Set the ticket (see @code{shishi_ap_tkt_set()}) and set the AP-REQ
+apoptions (see @code{shishi_apreq_options_set()}).
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_set_tktoptionsdata
+@anchor{shishi_ap_set_tktoptionsdata}
+@deftypefun {int} {shishi_ap_set_tktoptionsdata} (Shishi_ap * @var{ap}, Shishi_tkt * @var{tkt}, int @var{options}, const char * @var{data}, size_t @var{len})
+@var{ap}: structure that holds information about AP exchange
+
+@var{tkt}: ticket to set in AP.
+
+@var{options}: AP-REQ options to set in AP.
+
+@var{data}: input array with data to checksum in Authenticator.
+
+@var{len}: length of input array with data to checksum in Authenticator.
+
+Set the ticket (see @code{shishi_ap_tkt_set()}) and set the AP-REQ
+apoptions (see @code{shishi_apreq_options_set()}) and set the
+Authenticator checksum data.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_set_tktoptionsraw
+@anchor{shishi_ap_set_tktoptionsraw}
+@deftypefun {int} {shishi_ap_set_tktoptionsraw} (Shishi_ap * @var{ap}, Shishi_tkt * @var{tkt}, int @var{options}, int32_t @var{cksumtype}, const char * @var{data}, size_t @var{len})
+@var{ap}: structure that holds information about AP exchange
+
+@var{tkt}: ticket to set in AP.
+
+@var{options}: AP-REQ options to set in AP.
+
+@var{cksumtype}: authenticator checksum type to set in AP.
+
+@var{data}: input array with data to store in checksum field in Authenticator.
+
+@var{len}: length of input array with data to store in checksum field in
+Authenticator.
+
+Set the ticket (see @code{shishi_ap_tkt_set()}) and set the AP-REQ
+apoptions (see @code{shishi_apreq_options_set()}) and set the raw
+Authenticator checksum data.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_set_tktoptionsasn1usage
+@anchor{shishi_ap_set_tktoptionsasn1usage}
+@deftypefun {int} {shishi_ap_set_tktoptionsasn1usage} (Shishi_ap * @var{ap}, Shishi_tkt * @var{tkt}, int @var{options}, Shishi_asn1 @var{node}, const char * @var{field}, int @var{authenticatorcksumkeyusage}, int @var{authenticatorkeyusage})
+@var{ap}: structure that holds information about AP exchange
+
+@var{tkt}: ticket to set in AP.
+
+@var{options}: AP-REQ options to set in AP.
+
+@var{node}: input ASN.1 structure to store as authenticator checksum data.
+
+@var{field}: field in ASN.1 structure to use.
+
+@var{authenticatorcksumkeyusage}: key usage for checksum in authenticator.
+
+@var{authenticatorkeyusage}: key usage for authenticator.
+
+Set ticket, options and authenticator checksum data using
+@code{shishi_ap_set_tktoptionsdata()}.  The authenticator checksum data is
+the DER encoding of the ASN.1 field provided.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_tktoptions
+@anchor{shishi_ap_tktoptions}
+@deftypefun {int} {shishi_ap_tktoptions} (Shishi * @var{handle}, Shishi_ap ** @var{ap}, Shishi_tkt * @var{tkt}, int @var{options})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ap}: pointer to new structure that holds information about AP exchange
+
+@var{tkt}: ticket to set in newly created AP.
+
+@var{options}: AP-REQ options to set in newly created AP.
+
+Create a new AP exchange using @code{shishi_ap()}, and set the ticket and
+AP-REQ apoptions using @code{shishi_ap_set_tktoption()}.  A random session
+key is added to the authenticator, using the same keytype as the
+ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_tktoptionsdata
+@anchor{shishi_ap_tktoptionsdata}
+@deftypefun {int} {shishi_ap_tktoptionsdata} (Shishi * @var{handle}, Shishi_ap ** @var{ap}, Shishi_tkt * @var{tkt}, int @var{options}, const char * @var{data}, size_t @var{len})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ap}: pointer to new structure that holds information about AP exchange
+
+@var{tkt}: ticket to set in newly created AP.
+
+@var{options}: AP-REQ options to set in newly created AP.
+
+@var{data}: input array with data to checksum in Authenticator.
+
+@var{len}: length of input array with data to checksum in Authenticator.
+
+Create a new AP exchange using @code{shishi_ap()}, and set the ticket,
+AP-REQ apoptions and the Authenticator checksum data using
+@code{shishi_ap_set_tktoptionsdata()}. A random session key is added to
+the authenticator, using the same keytype as the ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_tktoptionsraw
+@anchor{shishi_ap_tktoptionsraw}
+@deftypefun {int} {shishi_ap_tktoptionsraw} (Shishi * @var{handle}, Shishi_ap ** @var{ap}, Shishi_tkt * @var{tkt}, int @var{options}, int32_t @var{cksumtype}, const char * @var{data}, size_t @var{len})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ap}: pointer to new structure that holds information about AP exchange
+
+@var{tkt}: ticket to set in newly created AP.
+
+@var{options}: AP-REQ options to set in newly created AP.
+
+@var{cksumtype}: authenticator checksum type to set in AP.
+
+@var{data}: input array with data to store in checksum field in Authenticator.
+
+@var{len}: length of input array with data to store in checksum field in
+Authenticator.
+
+Create a new AP exchange using @code{shishi_ap()}, and set the ticket,
+AP-REQ apoptions and the raw Authenticator checksum data field
+using @code{shishi_ap_set_tktoptionsraw()}.  A random session key is added
+to the authenticator, using the same keytype as the ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_etype_tktoptionsdata
+@anchor{shishi_ap_etype_tktoptionsdata}
+@deftypefun {int} {shishi_ap_etype_tktoptionsdata} (Shishi * @var{handle}, Shishi_ap ** @var{ap}, int32_t @var{etype}, Shishi_tkt * @var{tkt}, int @var{options}, const char * @var{data}, size_t @var{len})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ap}: pointer to new structure that holds information about AP exchange
+
+@var{etype}: encryption type of newly generated random subkey.
+
+@var{tkt}: ticket to set in newly created AP.
+
+@var{options}: AP-REQ options to set in newly created AP.
+
+@var{data}: input array with data to checksum in Authenticator.
+
+@var{len}: length of input array with data to checksum in Authenticator.
+
+Create a new AP exchange using @code{shishi_ap()}, and set the ticket,
+AP-REQ apoptions and the Authenticator checksum data using
+@code{shishi_ap_set_tktoptionsdata()}. A random session key is added to
+the authenticator, using the same keytype as the ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_tktoptionsasn1usage
+@anchor{shishi_ap_tktoptionsasn1usage}
+@deftypefun {int} {shishi_ap_tktoptionsasn1usage} (Shishi * @var{handle}, Shishi_ap ** @var{ap}, Shishi_tkt * @var{tkt}, int @var{options}, Shishi_asn1 @var{node}, const char * @var{field}, int @var{authenticatorcksumkeyusage}, int @var{authenticatorkeyusage})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{ap}: pointer to new structure that holds information about AP exchange
+
+@var{tkt}: ticket to set in newly created AP.
+
+@var{options}: AP-REQ options to set in newly created AP.
+
+@var{node}: input ASN.1 structure to store as authenticator checksum data.
+
+@var{field}: field in ASN.1 structure to use.
+
+@var{authenticatorcksumkeyusage}: key usage for checksum in authenticator.
+
+@var{authenticatorkeyusage}: key usage for authenticator.
+
+Create a new AP exchange using @code{shishi_ap()}, and set ticket, options
+and authenticator checksum data from the DER encoding of the ASN.1
+field using @code{shishi_ap_set_tktoptionsasn1usage()}.  A random session
+key is added to the authenticator, using the same keytype as the
+ticket.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_tkt
+@anchor{shishi_ap_tkt}
+@deftypefun {Shishi_tkt *} {shishi_ap_tkt} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Get Ticket from AP exchange.
+
+@strong{Return value:} Returns the ticket from the AP exchange, or NULL if
+not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_ap_tkt_set
+@anchor{shishi_ap_tkt_set}
+@deftypefun {void} {shishi_ap_tkt_set} (Shishi_ap * @var{ap}, Shishi_tkt * @var{tkt})
+@var{ap}: structure that holds information about AP exchange
+
+@var{tkt}: ticket to store in AP.
+
+Set the Ticket in the AP exchange.
+@end deftypefun
+
+@subheading shishi_ap_authenticator_cksumdata
+@anchor{shishi_ap_authenticator_cksumdata}
+@deftypefun {int} {shishi_ap_authenticator_cksumdata} (Shishi_ap * @var{ap}, char * @var{out}, size_t * @var{len})
+@var{ap}: structure that holds information about AP exchange
+
+@var{out}: output array that holds authenticator checksum data.
+
+@var{len}: on input, maximum length of output array that holds
+authenticator checksum data, on output actual length of
+output array that holds authenticator checksum data.
+
+Get checksum data from Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK if successful, or
+SHISHI_TOO_SMALL_BUFFER if buffer provided was too small.
+@end deftypefun
+
+@subheading shishi_ap_authenticator_cksumdata_set
+@anchor{shishi_ap_authenticator_cksumdata_set}
+@deftypefun {void} {shishi_ap_authenticator_cksumdata_set} (Shishi_ap * @var{ap}, const char * @var{authenticatorcksumdata}, size_t @var{authenticatorcksumdatalen})
+@var{ap}: structure that holds information about AP exchange
+
+@var{authenticatorcksumdata}: input array with data to compute checksum
+on and store in Authenticator in AP-REQ.
+
+@var{authenticatorcksumdatalen}: length of input array with data to
+compute checksum on and store in Authenticator in AP-REQ.
+
+Set the Authenticator Checksum Data in the AP exchange.  This is
+the data that will be checksumed, and the checksum placed in the
+checksum field.  It is not the actual checksum field.  See also
+shishi_ap_authenticator_cksumraw_set.
+@end deftypefun
+
+@subheading shishi_ap_authenticator_cksumraw_set
+@anchor{shishi_ap_authenticator_cksumraw_set}
+@deftypefun {void} {shishi_ap_authenticator_cksumraw_set} (Shishi_ap * @var{ap}, int32_t @var{authenticatorcksumtype}, const char * @var{authenticatorcksumraw}, size_t @var{authenticatorcksumrawlen})
+@var{ap}: structure that holds information about AP exchange
+
+@var{authenticatorcksumtype}: authenticator checksum type to set in AP.
+
+@var{authenticatorcksumraw}: input array with authenticator checksum
+field value to set in Authenticator in AP-REQ.
+
+@var{authenticatorcksumrawlen}: length of input array with
+authenticator checksum field value to set in Authenticator in AP-REQ.
+
+Set the Authenticator Checksum Data in the AP exchange.  This is
+the actual checksum field, not data to compute checksum on and then
+store in the checksum field.  See also
+shishi_ap_authenticator_cksumdata_set.
+@end deftypefun
+
+@subheading shishi_ap_authenticator_cksumtype
+@anchor{shishi_ap_authenticator_cksumtype}
+@deftypefun {int32_t} {shishi_ap_authenticator_cksumtype} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Get the Authenticator Checksum Type in the AP exchange.
+
+@strong{Return value:} Return the authenticator checksum type.
+@end deftypefun
+
+@subheading shishi_ap_authenticator_cksumtype_set
+@anchor{shishi_ap_authenticator_cksumtype_set}
+@deftypefun {void} {shishi_ap_authenticator_cksumtype_set} (Shishi_ap * @var{ap}, int32_t @var{cksumtype})
+@var{ap}: structure that holds information about AP exchange
+
+@var{cksumtype}: authenticator checksum type to set in AP.
+
+Set the Authenticator Checksum Type in the AP exchange.
+@end deftypefun
+
+@subheading shishi_ap_authenticator
+@anchor{shishi_ap_authenticator}
+@deftypefun {Shishi_asn1} {shishi_ap_authenticator} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Get ASN.1 Authenticator structure from AP exchange.
+
+@strong{Return value:} Returns the Authenticator from the AP exchange, or
+NULL if not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_ap_authenticator_set
+@anchor{shishi_ap_authenticator_set}
+@deftypefun {void} {shishi_ap_authenticator_set} (Shishi_ap * @var{ap}, Shishi_asn1 @var{authenticator})
+@var{ap}: structure that holds information about AP exchange
+
+@var{authenticator}: authenticator to store in AP.
+
+Set the Authenticator in the AP exchange.
+@end deftypefun
+
+@subheading shishi_ap_req
+@anchor{shishi_ap_req}
+@deftypefun {Shishi_asn1} {shishi_ap_req} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Get ASN.1 AP-REQ structure from AP exchange.
+
+@strong{Return value:} Returns the AP-REQ from the AP exchange, or NULL if
+not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_ap_req_set
+@anchor{shishi_ap_req_set}
+@deftypefun {void} {shishi_ap_req_set} (Shishi_ap * @var{ap}, Shishi_asn1 @var{apreq})
+@var{ap}: structure that holds information about AP exchange
+
+@var{apreq}: apreq to store in AP.
+
+Set the AP-REQ in the AP exchange.
+@end deftypefun
+
+@subheading shishi_ap_req_der
+@anchor{shishi_ap_req_der}
+@deftypefun {int} {shishi_ap_req_der} (Shishi_ap * @var{ap}, char ** @var{out}, size_t * @var{outlen})
+@var{ap}: structure that holds information about AP exchange
+
+@var{out}: pointer to output array with der encoding of AP-REQ.
+
+@var{outlen}: pointer to length of output array with der encoding of AP-REQ.
+
+Build AP-REQ using @code{shishi_ap_req_build()} and DER encode it.  @code{out}
+is allocated by this function, and it is the responsibility of
+caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_req_der_set
+@anchor{shishi_ap_req_der_set}
+@deftypefun {int} {shishi_ap_req_der_set} (Shishi_ap * @var{ap}, char * @var{der}, size_t @var{derlen})
+@var{ap}: structure that holds information about AP exchange
+
+@var{der}: input array with DER encoded AP-REQ.
+
+@var{derlen}: length of input array with DER encoded AP-REQ.
+
+DER decode AP-REQ and set it AP exchange.  If decoding fails, the
+AP-REQ in the AP exchange is lost.
+
+@strong{Return value:} Returns SHISHI_OK.
+@end deftypefun
+
+@subheading shishi_ap_req_build
+@anchor{shishi_ap_req_build}
+@deftypefun {int} {shishi_ap_req_build} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Checksum data in authenticator and add ticket and authenticator to
+AP-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_req_decode
+@anchor{shishi_ap_req_decode}
+@deftypefun {int} {shishi_ap_req_decode} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Decode ticket in AP-REQ and set the Ticket fields in the AP
+exchange.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_req_process_keyusage
+@anchor{shishi_ap_req_process_keyusage}
+@deftypefun {int} {shishi_ap_req_process_keyusage} (Shishi_ap * @var{ap}, Shishi_key * @var{key}, int32_t @var{keyusage})
+@var{ap}: structure that holds information about AP exchange
+
+@var{key}: cryptographic key used to decrypt ticket in AP-REQ.
+
+@var{keyusage}: key usage to use during decryption, for normal
+AP-REQ's this is normally SHISHI_KEYUSAGE_APREQ_AUTHENTICATOR,
+for AP-REQ's part of TGS-REQ's, this is normally
+SHISHI_KEYUSAGE_TGSREQ_APREQ_AUTHENTICATOR.
+
+Decrypt ticket in AP-REQ using supplied key and decrypt
+Authenticator in AP-REQ using key in decrypted ticket, and on
+success set the Ticket and Authenticator fields in the AP exchange.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_req_process
+@anchor{shishi_ap_req_process}
+@deftypefun {int} {shishi_ap_req_process} (Shishi_ap * @var{ap}, Shishi_key * @var{key})
+@var{ap}: structure that holds information about AP exchange
+
+@var{key}: cryptographic key used to decrypt ticket in AP-REQ.
+
+Decrypt ticket in AP-REQ using supplied key and decrypt
+Authenticator in AP-REQ using key in decrypted ticket, and on
+success set the Ticket and Authenticator fields in the AP exchange.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_req_asn1
+@anchor{shishi_ap_req_asn1}
+@deftypefun {int} {shishi_ap_req_asn1} (Shishi_ap * @var{ap}, Shishi_asn1 * @var{apreq})
+@var{ap}: structure that holds information about AP exchange
+
+@var{apreq}: output AP-REQ variable.
+
+Build AP-REQ using @code{shishi_ap_req_build()} and return it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_key
+@anchor{shishi_ap_key}
+@deftypefun {Shishi_key *} {shishi_ap_key} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Extract the application key from AP.  If subkeys are used, it is
+taken from the Authenticator, otherwise the session key is used.
+
+@strong{Return value:} Return application key from AP.
+@end deftypefun
+
+@subheading shishi_ap_rep
+@anchor{shishi_ap_rep}
+@deftypefun {Shishi_asn1} {shishi_ap_rep} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Get ASN.1 AP-REP structure from AP exchange.
+
+@strong{Return value:} Returns the AP-REP from the AP exchange, or NULL if
+not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_ap_rep_set
+@anchor{shishi_ap_rep_set}
+@deftypefun {void} {shishi_ap_rep_set} (Shishi_ap * @var{ap}, Shishi_asn1 @var{aprep})
+@var{ap}: structure that holds information about AP exchange
+
+@var{aprep}: aprep to store in AP.
+
+Set the AP-REP in the AP exchange.
+@end deftypefun
+
+@subheading shishi_ap_rep_der
+@anchor{shishi_ap_rep_der}
+@deftypefun {int} {shishi_ap_rep_der} (Shishi_ap * @var{ap}, char ** @var{out}, size_t * @var{outlen})
+@var{ap}: structure that holds information about AP exchange
+
+@var{out}: output array with newly allocated DER encoding of AP-REP.
+
+@var{outlen}: length of output array with DER encoding of AP-REP.
+
+Build AP-REP using @code{shishi_ap_rep_build()} and DER encode it.  @code{out}
+is allocated by this function, and it is the responsibility of
+caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_rep_der_set
+@anchor{shishi_ap_rep_der_set}
+@deftypefun {int} {shishi_ap_rep_der_set} (Shishi_ap * @var{ap}, char * @var{der}, size_t @var{derlen})
+@var{ap}: structure that holds information about AP exchange
+
+@var{der}: input array with DER encoded AP-REP.
+
+@var{derlen}: length of input array with DER encoded AP-REP.
+
+DER decode AP-REP and set it AP exchange.  If decoding fails, the
+AP-REP in the AP exchange remains.
+
+@strong{Return value:} Returns SHISHI_OK.
+@end deftypefun
+
+@subheading shishi_ap_rep_build
+@anchor{shishi_ap_rep_build}
+@deftypefun {int} {shishi_ap_rep_build} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Checksum data in authenticator and add ticket and authenticator to
+AP-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_rep_asn1
+@anchor{shishi_ap_rep_asn1}
+@deftypefun {int} {shishi_ap_rep_asn1} (Shishi_ap * @var{ap}, Shishi_asn1 * @var{aprep})
+@var{ap}: structure that holds information about AP exchange
+
+@var{aprep}: output AP-REP variable.
+
+Build AP-REP using @code{shishi_ap_rep_build()} and return it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_ap_rep_verify
+@anchor{shishi_ap_rep_verify}
+@deftypefun {int} {shishi_ap_rep_verify} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Verify AP-REP compared to Authenticator.
+
+@strong{Return value:} Returns SHISHI_OK, SHISHI_APREP_VERIFY_FAILED or an
+error.
+@end deftypefun
+
+@subheading shishi_ap_rep_verify_der
+@anchor{shishi_ap_rep_verify_der}
+@deftypefun {int} {shishi_ap_rep_verify_der} (Shishi_ap * @var{ap}, char * @var{der}, size_t @var{derlen})
+@var{ap}: structure that holds information about AP exchange
+
+@var{der}: input array with DER encoded AP-REP.
+
+@var{derlen}: length of input array with DER encoded AP-REP.
+
+DER decode AP-REP and set it in AP exchange using
+@code{shishi_ap_rep_der_set()} and verify it using @code{shishi_ap_rep_verify()}.
+
+@strong{Return value:} Returns SHISHI_OK, SHISHI_APREP_VERIFY_FAILED or an
+error.
+@end deftypefun
+
+@subheading shishi_ap_rep_verify_asn1
+@anchor{shishi_ap_rep_verify_asn1}
+@deftypefun {int} {shishi_ap_rep_verify_asn1} (Shishi_ap * @var{ap}, Shishi_asn1 @var{aprep})
+@var{ap}: structure that holds information about AP exchange
+
+@var{aprep}: input AP-REP.
+
+Set the AP-REP in the AP exchange using @code{shishi_ap_rep_set()} and
+verify it using @code{shishi_ap_rep_verify()}.
+
+@strong{Return value:} Returns SHISHI_OK, SHISHI_APREP_VERIFY_FAILED or an
+error.
+@end deftypefun
+
+@subheading shishi_ap_encapreppart
+@anchor{shishi_ap_encapreppart}
+@deftypefun {Shishi_asn1} {shishi_ap_encapreppart} (Shishi_ap * @var{ap})
+@var{ap}: structure that holds information about AP exchange
+
+Get ASN.1 EncAPRepPart structure from AP exchange.
+
+@strong{Return value:} Returns the EncAPREPPart from the AP exchange, or
+NULL if not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_ap_encapreppart_set
+@anchor{shishi_ap_encapreppart_set}
+@deftypefun {void} {shishi_ap_encapreppart_set} (Shishi_ap * @var{ap}, Shishi_asn1 @var{encapreppart})
+@var{ap}: structure that holds information about AP exchange
+
+@var{encapreppart}: EncAPRepPart to store in AP.
+
+Set the EncAPRepPart in the AP exchange.
+@end deftypefun
+
+@subheading shishi_ap_option2string
+@anchor{shishi_ap_option2string}
+@deftypefun {const char *} {shishi_ap_option2string} (Shishi_apoptions @var{option})
+@var{option}: enumerated AP-Option type, see Shishi_apoptions.
+
+Convert AP-Option type to AP-Option name string.  Note that @code{option}
+must be just one of the AP-Option types, it cannot be an binary
+ORed indicating several AP-Options.
+
+@strong{Return value:} Returns static string with name of AP-Option that
+must not be deallocated, or "unknown" if AP-Option was not understood.
+@end deftypefun
+
+@subheading shishi_ap_string2option
+@anchor{shishi_ap_string2option}
+@deftypefun {Shishi_apoptions} {shishi_ap_string2option} (const char * @var{str})
+@var{str}: zero terminated character array with name of AP-Option,
+e.g. "use-session-key".
+
+Convert AP-Option name to AP-Option type.
+
+@strong{Return value:} Returns enumerated type member corresponding to AP-Option,
+or 0 if string was not understood.
+@end deftypefun
+

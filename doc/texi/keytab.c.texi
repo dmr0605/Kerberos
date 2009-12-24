@@ -1,0 +1,92 @@
+@subheading shishi_keys_add_keytab_mem
+@anchor{shishi_keys_add_keytab_mem}
+@deftypefun {int} {shishi_keys_add_keytab_mem} (Shishi * @var{handle}, const char * @var{data}, size_t @var{len}, Shishi_keys * @var{keys})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{data}: constant memory buffer with keytab of @code{len} size.
+
+@var{len}: size of memory buffer with keytab data.
+
+@var{keys}: allocated key set to store keys in.
+
+Read keys from a MIT keytab data structure, and add them to the key
+set.
+
+The format of keytab's is proprietary, and this function support
+the 0x0501 and 0x0502 formats.  See the section The MIT Kerberos
+Keytab Binary File Format in the Shishi manual for a description of
+the reverse-engineered format.
+
+@strong{Returns:} Returns @code{SHISHI_KEYTAB_ERROR} if the data does not
+represent a valid keytab structure, and @code{SHISHI_OK} on success.
+@end deftypefun
+
+@subheading shishi_keys_add_keytab_file
+@anchor{shishi_keys_add_keytab_file}
+@deftypefun {int} {shishi_keys_add_keytab_file} (Shishi * @var{handle}, const char * @var{filename}, Shishi_keys * @var{keys})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{filename}: name of file to read.
+
+@var{keys}: allocated key set to store keys in.
+
+Read keys from a MIT keytab data structure from a file, and add the
+keys to the key set.
+
+The format of keytab's is proprietary, and this function support
+the 0x0501 and 0x0502 formats.  See the section The MIT Kerberos
+Keytab Binary File Format in the Shishi manual for a description of
+the reverse-engineered format.
+
+@strong{Returns:} Returns @code{SHISHI_IO_ERROR} if the file cannot be read,
+@code{SHISHI_KEYTAB_ERROR} if the data cannot be parsed as a valid keytab
+structure, and @code{SHISHI_OK} on success.
+@end deftypefun
+
+@subheading shishi_keys_from_keytab_mem
+@anchor{shishi_keys_from_keytab_mem}
+@deftypefun {int} {shishi_keys_from_keytab_mem} (Shishi * @var{handle}, const char * @var{data}, size_t @var{len}, Shishi_keys ** @var{outkeys})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{data}: constant memory buffer with keytab of @code{len} size.
+
+@var{len}: size of memory buffer with keytab data.
+
+@var{outkeys}: pointer to key set that will be allocated and populated,
+must be deallocated by caller on succes.
+
+Create a new key set populated with keys from a MIT keytab data
+structure read from a memory block.
+
+The format of keytab's is proprietary, and this function support
+the 0x0501 and 0x0502 formats.  See the section The MIT Kerberos
+Keytab Binary File Format in the Shishi manual for a description of
+the reverse-engineered format.
+
+@strong{Returns:} Returns @code{SHISHI_KEYTAB_ERROR} if the data does not
+represent a valid keytab structure, and @code{SHISHI_OK} on success.
+@end deftypefun
+
+@subheading shishi_keys_from_keytab_file
+@anchor{shishi_keys_from_keytab_file}
+@deftypefun {int} {shishi_keys_from_keytab_file} (Shishi * @var{handle}, const char * @var{filename}, Shishi_keys ** @var{outkeys})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{filename}: name of file to read.
+
+@var{outkeys}: pointer to key set that will be allocated and populated,
+must be deallocated by caller on succes.
+
+Create a new key set populated with keys from a MIT keytab data
+structure read from a file.
+
+The format of keytab's is proprietary, and this function support
+the 0x0501 and 0x0502 formats.  See the section The MIT Kerberos
+Keytab Binary File Format in the Shishi manual for a description of
+the reverse-engineered format.
+
+@strong{Returns:} Returns @code{SHISHI_IO_ERROR} if the file cannot be read,
+@code{SHISHI_KEYTAB_ERROR} if the data cannot be parsed as a valid keytab
+structure, and @code{SHISHI_OK} on success.
+@end deftypefun
+

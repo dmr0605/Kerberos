@@ -1,0 +1,27 @@
+@subheading shishi_authorization_parse
+@anchor{shishi_authorization_parse}
+@deftypefun {int} {shishi_authorization_parse} (const char * @var{authorization})
+@var{authorization}: name of authorization type, e.g. "basic".
+
+Parse authorization type name.
+
+@strong{Return value:} Return authorization type corresponding to a string.
+@end deftypefun
+
+@subheading shishi_authorized_p
+@anchor{shishi_authorized_p}
+@deftypefun {int} {shishi_authorized_p} (Shishi * @var{handle}, Shishi_tkt * @var{tkt}, const char * @var{authzname})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{tkt}: input variable with ticket info.
+
+@var{authzname}: authorization name.
+
+Simplistic authorization of @code{authzname} against encrypted client
+principal name inside ticket.  Currently this function only compare
+the principal name with @code{authzname} using @code{strcmp()}.
+
+@strong{Return value:} Returns 1 if authzname is authorized for services by
+authenticated client principal, or 0 otherwise.
+@end deftypefun
+

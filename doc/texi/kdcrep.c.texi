@@ -1,0 +1,258 @@
+@subheading shishi_asrep
+@anchor{shishi_asrep}
+@deftypefun {Shishi_asn1} {shishi_asrep} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new AS-REP, populated with some default
+values.
+
+@strong{Return value:} Returns the AS-REP or NULL on failure.
+@end deftypefun
+
+@subheading shishi_tgsrep
+@anchor{shishi_tgsrep}
+@deftypefun {Shishi_asn1} {shishi_tgsrep} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new TGS-REP, populated with some default
+values.
+
+@strong{Return value:} Returns the TGS-REP or NULL on failure.
+@end deftypefun
+
+@subheading shishi_kdcrep_print
+@anchor{shishi_kdcrep_print}
+@deftypefun {int} {shishi_kdcrep_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{kdcrep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{kdcrep}: KDC-REP to print.
+
+Print ASCII armored DER encoding of KDC-REP to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_save
+@anchor{shishi_kdcrep_save}
+@deftypefun {int} {shishi_kdcrep_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{kdcrep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{kdcrep}: KDC-REP to save.
+
+Print  DER encoding of KDC-REP to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_to_file
+@anchor{shishi_kdcrep_to_file}
+@deftypefun {int} {shishi_kdcrep_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REP to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write KDC-REP to file in specified TYPE.  The file will be truncated
+if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_parse
+@anchor{shishi_kdcrep_parse}
+@deftypefun {int} {shishi_kdcrep_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{kdcrep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{kdcrep}: output variable with newly allocated KDC-REP.
+
+Read ASCII armored DER encoded KDC-REP from file and populate given
+variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_read
+@anchor{shishi_kdcrep_read}
+@deftypefun {int} {shishi_kdcrep_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{kdcrep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{kdcrep}: output variable with newly allocated KDC-REP.
+
+Read DER encoded KDC-REP from file and populate given variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_from_file
+@anchor{shishi_kdcrep_from_file}
+@deftypefun {int} {shishi_kdcrep_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{kdcrep}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: output variable with newly allocated KDC-REP.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read KDC-REP from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_crealm_set
+@anchor{shishi_kdcrep_crealm_set}
+@deftypefun {int} {shishi_kdcrep_crealm_set} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, const char * @var{crealm})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: Kdcrep variable to set realm field in.
+
+@var{crealm}: input array with name of realm.
+
+Set the client realm field in the KDC-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_cname_set
+@anchor{shishi_kdcrep_cname_set}
+@deftypefun {int} {shishi_kdcrep_cname_set} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, Shishi_name_type @var{name_type}, const char * [] @var{cname})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: Kdcrep variable to set server name field in.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{cname}: input array with principal name.
+
+Set the server name field in the KDC-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_client_set
+@anchor{shishi_kdcrep_client_set}
+@deftypefun {int} {shishi_kdcrep_client_set} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, const char * @var{client})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: Kdcrep variable to set server name field in.
+
+@var{client}: zero-terminated string with principal name on RFC 1964 form.
+
+Set the client name field in the KDC-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_get_enc_part_etype
+@anchor{shishi_kdcrep_get_enc_part_etype}
+@deftypefun {int} {shishi_kdcrep_get_enc_part_etype} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, int32_t * @var{etype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REP variable to get value from.
+
+@var{etype}: output variable that holds the value.
+
+Extract KDC-REP.enc-part.etype.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_get_ticket
+@anchor{shishi_kdcrep_get_ticket}
+@deftypefun {int} {shishi_kdcrep_get_ticket} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, Shishi_asn1 * @var{ticket})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REP variable to get ticket from.
+
+@var{ticket}: output variable to hold extracted ticket.
+
+Extract ticket from KDC-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_set_ticket
+@anchor{shishi_kdcrep_set_ticket}
+@deftypefun {int} {shishi_kdcrep_set_ticket} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, Shishi_asn1 @var{ticket})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REP to add ticket field to.
+
+@var{ticket}: input ticket to copy into KDC-REP ticket field.
+
+Copy ticket into KDC-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_set_enc_part
+@anchor{shishi_kdcrep_set_enc_part}
+@deftypefun {int} {shishi_kdcrep_set_enc_part} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, int32_t @var{etype}, uint32_t @var{kvno}, const char * @var{buf}, size_t @var{buflen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REP to add enc-part field to.
+
+@var{etype}: encryption type used to encrypt enc-part.
+
+@var{kvno}: key version number.
+
+@var{buf}: input array with encrypted enc-part.
+
+@var{buflen}: size of input array with encrypted enc-part.
+
+Set the encrypted enc-part field in the KDC-REP.  The encrypted
+data is usually created by calling @code{shishi_encrypt()} on the DER
+encoded enc-part.  To save time, you may want to use
+@code{shishi_kdcrep_add_enc_part()} instead, which calculates the
+encrypted data and calls this function in one step.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_add_enc_part
+@anchor{shishi_kdcrep_add_enc_part}
+@deftypefun {int} {shishi_kdcrep_add_enc_part} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, Shishi_key * @var{key}, int @var{keyusage}, Shishi_asn1 @var{enckdcreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REP to add enc-part field to.
+
+@var{key}: key used to encrypt enc-part.
+
+@var{keyusage}: key usage to use, normally SHISHI_KEYUSAGE_ENCASREPPART,
+SHISHI_KEYUSAGE_ENCTGSREPPART_SESSION_KEY or
+SHISHI_KEYUSAGE_ENCTGSREPPART_AUTHENTICATOR_KEY.
+
+@var{enckdcreppart}: EncKDCRepPart to add.
+
+Encrypts DER encoded EncKDCRepPart using key and stores it in the
+KDC-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdcrep_clear_padata
+@anchor{shishi_kdcrep_clear_padata}
+@deftypefun {int} {shishi_kdcrep_clear_padata} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REP to remove PA-DATA from.
+
+Remove the padata field from KDC-REP.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

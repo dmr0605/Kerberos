@@ -1,0 +1,53 @@
+@subheading shisa
+@anchor{shisa}
+@deftypefun {Shisa *} {shisa} ( @var{void})
+
+Initializes the Shisa library.  If this function fails, it may
+print diagnostic errors to stderr.
+
+@strong{Return value:} Returns Shisa library handle, or @code{NULL} on error.
+@end deftypefun
+
+@subheading shisa_done
+@anchor{shisa_done}
+@deftypefun {void} {shisa_done} (Shisa * @var{dbh})
+Deallocates the shisa library handle.  The handle must not be used
+in any calls to shisa functions after this.
+@end deftypefun
+
+@subheading shisa_init
+@anchor{shisa_init}
+@deftypefun {int} {shisa_init} (Shisa ** @var{dbh})
+@var{dbh}: pointer to library handle to be created.
+
+Create a Shisa library handle, using @code{shisa()}, and read the system
+configuration file from their default locations.  The paths to the
+default system configuration file is decided at compile time
+($sysconfdir/shisa.conf).
+
+The handle is allocated regardless of return values, except for
+SHISA_INIT_ERROR which indicates a problem allocating the handle.
+(The other error conditions comes from reading the files.)
+
+@strong{Return value:} Returns @code{SHISA_OK} iff successful.
+@end deftypefun
+
+@subheading shisa_init_with_paths
+@anchor{shisa_init_with_paths}
+@deftypefun {int} {shisa_init_with_paths} (Shisa ** @var{dbh}, const char * @var{file})
+@var{dbh}: pointer to library handle to be created.
+
+@var{file}: Filename of system configuration, or NULL.
+
+Create a Shisa library handle, using @code{shisa()}, and read the system
+configuration file indicated location (or the default location, if
+@code{NULL}).  The paths to the default system configuration file is
+decided at compile time ($sysconfdir/shisa.conf).
+
+The handle is allocated regardless of return values, except for
+SHISA_INIT_ERROR which indicates a problem allocating the handle.
+(The other error conditions comes from reading the files.)
+
+@strong{Return value:} Returns @code{SHISA_OK} iff successful.
+@end deftypefun
+

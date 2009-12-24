@@ -1,0 +1,163 @@
+@subheading shishi_enckdcreppart_get_key
+@anchor{shishi_enckdcreppart_get_key}
+@deftypefun {int} {shishi_enckdcreppart_get_key} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, Shishi_key ** @var{key})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{key}: newly allocated encryption key handle.
+
+Extract the key to use with the ticket sent in the KDC-REP
+associated with the EncKDCRepPart input variable.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_key_set
+@anchor{shishi_enckdcreppart_key_set}
+@deftypefun {int} {shishi_enckdcreppart_key_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, Shishi_key * @var{key})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{key}: key handle with information to store in enckdcreppart.
+
+Set the EncKDCRepPart.key field to key type and value of supplied
+key.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_nonce_set
+@anchor{shishi_enckdcreppart_nonce_set}
+@deftypefun {int} {shishi_enckdcreppart_nonce_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, uint32_t @var{nonce})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{nonce}: nonce to set in EncKDCRepPart.
+
+Set the EncKDCRepPart.nonce field.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_flags_set
+@anchor{shishi_enckdcreppart_flags_set}
+@deftypefun {int} {shishi_enckdcreppart_flags_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, int @var{flags})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{flags}: flags to set in EncKDCRepPart.
+
+Set the EncKDCRepPart.flags field.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_authtime_set
+@anchor{shishi_enckdcreppart_authtime_set}
+@deftypefun {int} {shishi_enckdcreppart_authtime_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, const char * @var{authtime})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{authtime}: character buffer containing a generalized time string.
+
+Set the EncTicketPart.authtime to supplied value.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_starttime_set
+@anchor{shishi_enckdcreppart_starttime_set}
+@deftypefun {int} {shishi_enckdcreppart_starttime_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, const char * @var{starttime})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{starttime}: character buffer containing a generalized time string.
+
+Set the EncTicketPart.starttime to supplied value.  Use a NULL
+value for @code{starttime} to remove the field.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_endtime_set
+@anchor{shishi_enckdcreppart_endtime_set}
+@deftypefun {int} {shishi_enckdcreppart_endtime_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, const char * @var{endtime})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{endtime}: character buffer containing a generalized time string.
+
+Set the EncTicketPart.endtime to supplied value.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_renew_till_set
+@anchor{shishi_enckdcreppart_renew_till_set}
+@deftypefun {int} {shishi_enckdcreppart_renew_till_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, const char * @var{renew_till})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{renew_till}: character buffer containing a generalized time string.
+
+Set the EncTicketPart.renew-till to supplied value.  Use a NULL
+value for @code{renew_till} to remove the field.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_srealm_set
+@anchor{shishi_enckdcreppart_srealm_set}
+@deftypefun {int} {shishi_enckdcreppart_srealm_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, const char * @var{srealm})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: EncKDCRepPart variable to set realm field in.
+
+@var{srealm}: input array with name of realm.
+
+Set the server realm field in the EncKDCRepPart.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_sname_set
+@anchor{shishi_enckdcreppart_sname_set}
+@deftypefun {int} {shishi_enckdcreppart_sname_set} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, Shishi_name_type @var{name_type}, char * [] @var{sname})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: EncKDCRepPart variable to set server name field in.
+
+@var{name_type}: type of principial, see Shishi_name_type, usually
+SHISHI_NT_UNKNOWN.
+
+@var{sname}: input array with principal name.
+
+Set the server name field in the EncKDCRepPart.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_enckdcreppart_populate_encticketpart
+@anchor{shishi_enckdcreppart_populate_encticketpart}
+@deftypefun {int} {shishi_enckdcreppart_populate_encticketpart} (Shishi * @var{handle}, Shishi_asn1 @var{enckdcreppart}, Shishi_asn1 @var{encticketpart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{enckdcreppart}: input EncKDCRepPart variable.
+
+@var{encticketpart}: input EncTicketPart variable.
+
+Set the flags, authtime, starttime, endtime, renew-till and caddr
+fields of the EncKDCRepPart to the corresponding values in the
+EncTicketPart.
+
+@strong{Return value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+

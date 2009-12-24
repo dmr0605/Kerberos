@@ -1,0 +1,118 @@
+@subheading shishi_aprep
+@anchor{shishi_aprep}
+@deftypefun {Shishi_asn1} {shishi_aprep} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new AP-REP, populated with some default
+values.
+
+@strong{Return value:} Returns the authenticator or NULL on
+failure.
+@end deftypefun
+
+@subheading shishi_aprep_print
+@anchor{shishi_aprep_print}
+@deftypefun {int} {shishi_aprep_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{aprep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{aprep}: AP-REP to print.
+
+Print ASCII armored DER encoding of AP-REP to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_aprep_save
+@anchor{shishi_aprep_save}
+@deftypefun {int} {shishi_aprep_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{aprep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{aprep}: AP-REP to save.
+
+Save DER encoding of AP-REP to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_aprep_to_file
+@anchor{shishi_aprep_to_file}
+@deftypefun {int} {shishi_aprep_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{aprep}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{aprep}: AP-REP to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write AP-REP to file in specified TYPE.  The file will be
+truncated if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_aprep_parse
+@anchor{shishi_aprep_parse}
+@deftypefun {int} {shishi_aprep_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{aprep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{aprep}: output variable with newly allocated AP-REP.
+
+Read ASCII armored DER encoded AP-REP from file and populate given
+variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_aprep_read
+@anchor{shishi_aprep_read}
+@deftypefun {int} {shishi_aprep_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{aprep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{aprep}: output variable with newly allocated AP-REP.
+
+Read DER encoded AP-REP from file and populate given variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_aprep_from_file
+@anchor{shishi_aprep_from_file}
+@deftypefun {int} {shishi_aprep_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{aprep}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{aprep}: output variable with newly allocated AP-REP.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read AP-REP from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_aprep_get_enc_part_etype
+@anchor{shishi_aprep_get_enc_part_etype}
+@deftypefun {int} {shishi_aprep_get_enc_part_etype} (Shishi * @var{handle}, Shishi_asn1 @var{aprep}, int32_t * @var{etype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{aprep}: AP-REP variable to get value from.
+
+@var{etype}: output variable that holds the value.
+
+Extract AP-REP.enc-part.etype.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

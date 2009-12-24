@@ -1,0 +1,167 @@
+# shishi.supp -- Valgrind suppresion file for Shishi.
+
+# Copyright (C) 2006 Simon Josefsson
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.
+
+{
+   known libgcrypt mem leak
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/libgcrypt.so.11.2.1
+   obj:/usr/lib/libgcrypt.so.11.2.1
+   fun:gcry_malloc
+   obj:/usr/lib/libgcrypt.so.11.2.1
+   obj:/usr/lib/libgcrypt.so.11.2.1
+   obj:/usr/lib/libgcrypt.so.11.2.1
+   obj:/usr/lib/libgcrypt.so.11.2.1
+   fun:gcry_check_version
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+}
+
+{
+   known libgcrypt mem leak
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/libgcrypt.so.11.2.1
+   fun:gcry_malloc
+   fun:gcry_xmalloc
+   fun:gcry_xcalloc
+   obj:/usr/lib/libgcrypt.so.11.2.1
+   fun:gcry_randomize
+   fun:gc_pseudo_random
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:malloc
+   fun:_asn1_set_value
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:malloc
+   fun:_asn1_add_node_only
+   fun:_asn1_expand_object_id
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   fun:_asn1_set_name
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:malloc
+   fun:_asn1_add_node
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:malloc
+   fun:_asn1_set_value
+   fun:_asn1_change_integer_value
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:malloc
+   fun:_asn1_set_value
+   fun:_asn1_expand_object_id
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:calloc
+   fun:_asn1_add_node
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   fun:_asn1_set_name
+   fun:_asn1_expand_object_id
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:calloc
+   fun:_asn1_add_node_only
+   fun:_asn1_expand_object_id
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}
+
+{
+   known gnutls mem leak
+   Memcheck:Leak
+   fun:calloc
+   fun:_asn1_add_node
+   fun:asn1_array2tree
+   fun:gnutls_global_init
+   fun:_shishi_tls_init
+   fun:init_handle
+   fun:main
+}

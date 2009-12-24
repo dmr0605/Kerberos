@@ -1,0 +1,721 @@
+@subheading shishi_asn1_read_inline
+@anchor{shishi_asn1_read_inline}
+@deftypefun {int} {shishi_asn1_read_inline} (Shishi * @var{handle}, Shishi_asn1 @var{node}, const char * @var{field}, char * @var{data}, size_t * @var{datalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{node}: ASN.1 variable to read field from.
+
+@var{field}: name of field in @code{node} to read.
+
+@var{data}: pre-allocated output buffer that will hold ASN.1 field data.
+
+@var{datalen}: on input, maximum size of output buffer,
+on output, actual size of output buffer.
+
+Extract data stored in a ASN.1 field into a fixed size buffer
+allocated by caller.
+
+Note that since it is difficult to predict the length of the field,
+it is often better to use @code{shishi_asn1_read()} instead.
+
+@strong{Return value:} Returns SHISHI_OK if successful,
+SHISHI_ASN1_NO_ELEMENT if the element do not exist,
+SHISHI_ASN1_NO_VALUE if the field has no value, ot
+SHISHI_ASN1_ERROR otherwise.
+@end deftypefun
+
+@subheading shishi_asn1_read
+@anchor{shishi_asn1_read}
+@deftypefun {int} {shishi_asn1_read} (Shishi * @var{handle}, Shishi_asn1 @var{node}, const char * @var{field}, char ** @var{data}, size_t * @var{datalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{node}: ASN.1 variable to read field from.
+
+@var{field}: name of field in @code{node} to read.
+
+@var{data}: newly allocated output buffer that will hold ASN.1 field data.
+
+@var{datalen}: actual size of output buffer.
+
+Extract data stored in a ASN.1 field into a newly allocated buffer.
+The buffer will always be zero terminated, even though @code{datalen}
+will not include the added zero.
+
+@strong{Return value:} Returns SHISHI_OK if successful,
+SHISHI_ASN1_NO_ELEMENT if the element do not exist,
+SHISHI_ASN1_NO_VALUE if the field has no value, ot
+SHISHI_ASN1_ERROR otherwise.
+@end deftypefun
+
+@subheading shishi_asn1_read_optional
+@anchor{shishi_asn1_read_optional}
+@deftypefun {int} {shishi_asn1_read_optional} (Shishi * @var{handle}, Shishi_asn1 @var{node}, const char * @var{field}, char ** @var{data}, size_t * @var{datalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{node}: ASN.1 variable to read field from.
+
+@var{field}: name of field in @code{node} to read.
+
+@var{data}: newly allocated output buffer that will hold ASN.1 field data.
+
+@var{datalen}: actual size of output buffer.
+
+Extract data stored in a ASN.1 field into a newly allocated buffer.
+If the field does not exist (i.e., SHISHI_ASN1_NO_ELEMENT), this
+function set datalen to 0 and succeeds.  Can be useful to read
+ASN.1 fields which are marked OPTIONAL in the grammar, if you want
+to avoid special error handling in your code.
+
+@strong{Return value:} Returns SHISHI_OK if successful,
+SHISHI_ASN1_NO_VALUE if the field has no value, ot
+SHISHI_ASN1_ERROR otherwise.
+@end deftypefun
+
+@subheading shishi_asn1_done
+@anchor{shishi_asn1_done}
+@deftypefun {void} {shishi_asn1_done} (Shishi * @var{handle}, Shishi_asn1 @var{node})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{node}: ASN.1 node to dellocate.
+
+Deallocate resources associated with ASN.1 structure.  Note that
+the node must not be used after this call.
+@end deftypefun
+
+@subheading shishi_asn1_pa_enc_ts_enc
+@anchor{shishi_asn1_pa_enc_ts_enc}
+@deftypefun {Shishi_asn1} {shishi_asn1_pa_enc_ts_enc} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for PA-ENC-TS-ENC.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_encrypteddata
+@anchor{shishi_asn1_encrypteddata}
+@deftypefun {Shishi_asn1} {shishi_asn1_encrypteddata} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for EncryptedData
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_padata
+@anchor{shishi_asn1_padata}
+@deftypefun {Shishi_asn1} {shishi_asn1_padata} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for PA-DATA.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_methoddata
+@anchor{shishi_asn1_methoddata}
+@deftypefun {Shishi_asn1} {shishi_asn1_methoddata} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for METHOD-DATA.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_etype_info
+@anchor{shishi_asn1_etype_info}
+@deftypefun {Shishi_asn1} {shishi_asn1_etype_info} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for ETYPE-INFO.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_etype_info2
+@anchor{shishi_asn1_etype_info2}
+@deftypefun {Shishi_asn1} {shishi_asn1_etype_info2} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for ETYPE-INFO2.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_asreq
+@anchor{shishi_asn1_asreq}
+@deftypefun {Shishi_asn1} {shishi_asn1_asreq} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for AS-REQ.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_asrep
+@anchor{shishi_asn1_asrep}
+@deftypefun {Shishi_asn1} {shishi_asn1_asrep} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for AS-REP.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_tgsreq
+@anchor{shishi_asn1_tgsreq}
+@deftypefun {Shishi_asn1} {shishi_asn1_tgsreq} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for TGS-REQ.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_tgsrep
+@anchor{shishi_asn1_tgsrep}
+@deftypefun {Shishi_asn1} {shishi_asn1_tgsrep} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for TGS-REP.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_apreq
+@anchor{shishi_asn1_apreq}
+@deftypefun {Shishi_asn1} {shishi_asn1_apreq} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for AP-REQ.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_aprep
+@anchor{shishi_asn1_aprep}
+@deftypefun {Shishi_asn1} {shishi_asn1_aprep} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for AP-REP.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_encapreppart
+@anchor{shishi_asn1_encapreppart}
+@deftypefun {Shishi_asn1} {shishi_asn1_encapreppart} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for AP-REP.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_ticket
+@anchor{shishi_asn1_ticket}
+@deftypefun {Shishi_asn1} {shishi_asn1_ticket} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for Ticket.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_encticketpart
+@anchor{shishi_asn1_encticketpart}
+@deftypefun {Shishi_asn1} {shishi_asn1_encticketpart} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for EncTicketPart.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_authenticator
+@anchor{shishi_asn1_authenticator}
+@deftypefun {Shishi_asn1} {shishi_asn1_authenticator} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for Authenticator.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_enckdcreppart
+@anchor{shishi_asn1_enckdcreppart}
+@deftypefun {Shishi_asn1} {shishi_asn1_enckdcreppart} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for EncKDCRepPart.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_encasreppart
+@anchor{shishi_asn1_encasreppart}
+@deftypefun {Shishi_asn1} {shishi_asn1_encasreppart} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for EncASRepPart.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_krberror
+@anchor{shishi_asn1_krberror}
+@deftypefun {Shishi_asn1} {shishi_asn1_krberror} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for KRB-ERROR.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_krbsafe
+@anchor{shishi_asn1_krbsafe}
+@deftypefun {Shishi_asn1} {shishi_asn1_krbsafe} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for KRB-SAFE.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_priv
+@anchor{shishi_asn1_priv}
+@deftypefun {Shishi_asn1} {shishi_asn1_priv} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for KRB-PRIV.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_encprivpart
+@anchor{shishi_asn1_encprivpart}
+@deftypefun {Shishi_asn1} {shishi_asn1_encprivpart} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+Create new ASN.1 structure for EncKrbPrivPart.
+
+@strong{Return value:} Returns ASN.1 structure.
+@end deftypefun
+
+@subheading shishi_asn1_to_der_field
+@anchor{shishi_asn1_to_der_field}
+@deftypefun {int} {shishi_asn1_to_der_field} (Shishi * @var{handle}, Shishi_asn1 @var{node}, const char * @var{field}, char ** @var{der}, size_t * @var{len})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{node}: ASN.1 data that have field to extract.
+
+@var{field}: name of field in @code{node} to extract.
+
+@var{der}: output array that holds DER encoding of @code{field} in @code{node}.
+
+@var{len}: output variable with length of @code{der} output array.
+
+Extract newly allocated DER representation of specified ASN.1 field.
+
+@strong{Return value:} Returns SHISHI_OK if successful, or SHISHI_ASN1_ERROR
+if DER encoding fails (common reasons for this is that the ASN.1
+is missing required values).
+@end deftypefun
+
+@subheading shishi_asn1_to_der
+@anchor{shishi_asn1_to_der}
+@deftypefun {int} {shishi_asn1_to_der} (Shishi * @var{handle}, Shishi_asn1 @var{node}, char ** @var{der}, size_t * @var{len})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{node}: ASN.1 data to convert to DER.
+
+@var{der}: output array that holds DER encoding of @code{node}.
+
+@var{len}: output variable with length of @code{der} output array.
+
+Extract newly allocated DER representation of specified ASN.1 data.
+
+@strong{Return value:} Returns SHISHI_OK if successful, or SHISHI_ASN1_ERROR
+if DER encoding fails (common reasons for this is that the ASN.1
+is missing required values).
+@end deftypefun
+
+@subheading shishi_asn1_msgtype
+@anchor{shishi_asn1_msgtype}
+@deftypefun {Shishi_msgtype} {shishi_asn1_msgtype} (Shishi * @var{handle}, Shishi_asn1 @var{node})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{node}: ASN.1 type to get msg type for.
+
+Determine msg-type of ASN.1 type of a packet. Currently this uses
+the msg-type field instead of the APPLICATION tag, but this may be
+changed in the future.
+
+@strong{Return value:} Returns msg-type of ASN.1 type, 0 on failure.
+@end deftypefun
+
+@subheading shishi_der_msgtype
+@anchor{shishi_der_msgtype}
+@deftypefun {Shishi_msgtype} {shishi_der_msgtype} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Determine msg-type of DER coded data of a packet.
+
+@strong{Return value:} Returns msg-type of DER data, 0 on failure.
+@end deftypefun
+
+@subheading shishi_der2asn1
+@anchor{shishi_der2asn1}
+@deftypefun {Shishi_asn1} {shishi_der2asn1} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Convert arbitrary DER data of a packet to a ASN.1 type.
+
+@strong{Return value:} Returns newly allocate ASN.1 corresponding to DER
+data, or @code{NULL} on failure.
+@end deftypefun
+
+@subheading shishi_der2asn1_padata
+@anchor{shishi_der2asn1_padata}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_padata} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of PA-DATA and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_methoddata
+@anchor{shishi_der2asn1_methoddata}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_methoddata} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of METHOD-DATA and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_etype_info
+@anchor{shishi_der2asn1_etype_info}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_etype_info} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of ETYPE-INFO and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_etype_info2
+@anchor{shishi_der2asn1_etype_info2}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_etype_info2} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of ETYPE-INFO2 and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_ticket
+@anchor{shishi_der2asn1_ticket}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_ticket} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of Ticket and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_encticketpart
+@anchor{shishi_der2asn1_encticketpart}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_encticketpart} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of EncTicketPart and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_asreq
+@anchor{shishi_der2asn1_asreq}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_asreq} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of AS-REQ and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_tgsreq
+@anchor{shishi_der2asn1_tgsreq}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_tgsreq} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of TGS-REQ and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_asrep
+@anchor{shishi_der2asn1_asrep}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_asrep} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of AS-REP and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_tgsrep
+@anchor{shishi_der2asn1_tgsrep}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_tgsrep} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of TGS-REP and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_kdcrep
+@anchor{shishi_der2asn1_kdcrep}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_kdcrep} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of KDC-REP and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_encasreppart
+@anchor{shishi_der2asn1_encasreppart}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_encasreppart} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of EncASRepPart and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_enctgsreppart
+@anchor{shishi_der2asn1_enctgsreppart}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_enctgsreppart} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of EncTGSRepPart and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_enckdcreppart
+@anchor{shishi_der2asn1_enckdcreppart}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_enckdcreppart} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of EncKDCRepPart and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_authenticator
+@anchor{shishi_der2asn1_authenticator}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_authenticator} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of Authenticator and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_krberror
+@anchor{shishi_der2asn1_krberror}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_krberror} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of KRB-ERROR and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_krbsafe
+@anchor{shishi_der2asn1_krbsafe}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_krbsafe} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of KRB-SAFE and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_priv
+@anchor{shishi_der2asn1_priv}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_priv} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of KRB-PRIV and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_encprivpart
+@anchor{shishi_der2asn1_encprivpart}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_encprivpart} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of EncKrbPrivPart and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_apreq
+@anchor{shishi_der2asn1_apreq}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_apreq} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of AP-REQ and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_aprep
+@anchor{shishi_der2asn1_aprep}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_aprep} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of AP-REP and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_encapreppart
+@anchor{shishi_der2asn1_encapreppart}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_encapreppart} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of EncAPRepPart and create a ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_der2asn1_kdcreq
+@anchor{shishi_der2asn1_kdcreq}
+@deftypefun {Shishi_asn1} {shishi_der2asn1_kdcreq} (Shishi * @var{handle}, const char * @var{der}, size_t @var{derlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{der}: input character array with DER encoding.
+
+@var{derlen}: length of input character array with DER encoding.
+
+Decode DER encoding of AS-REQ, TGS-REQ or KDC-REQ and create a
+ASN.1 structure.
+
+@strong{Return value:} Returns ASN.1 structure corresponding to DER data.
+@end deftypefun
+
+@subheading shishi_asn1_print
+@anchor{shishi_asn1_print}
+@deftypefun {void} {shishi_asn1_print} (Shishi * @var{handle}, Shishi_asn1 @var{node}, FILE * @var{fh})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{node}: ASN.1 data that have field to extract.
+
+@var{fh}: file descriptor to print to, e.g. stdout.
+
+Print ASN.1 structure in human readable form, typically for
+debugging purposes.
+@end deftypefun
+

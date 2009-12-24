@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
+  <bookinfo>
+    <title>Shishi API Reference Manual</title>
+  </bookinfo>
+
+  <chapter>
+    <title>Shishi API Reference Manual</title>
+
+    <para>
+Shishi is an implementation of the Kerberos 5 network authentication
+system, as specified in RFC 4120.  Shishi can be used to authenticate
+users in distributed systems.
+    </para>
+
+    <para>
+Shishi contains a library ('libshishi') that can be used by
+application developers to add support for Kerberos 5.  Shishi contains
+a command line utility ('shishi') that is used by users to acquire and
+manage tickets (and more).  The server side, a Key Distribution
+Center, is implemented by 'shishid'.  Of course, a manual documenting
+usage aspects as well as the programming API is included.
+    </para>
+
+    <para>
+Shishi currently supports AS/TGS exchanges for acquiring tickets,
+pre-authentication, the AP exchange for performing client and server
+authentication, and SAFE/PRIV for integrity/privacy protected
+application data exchanges.
+    </para>
+
+    <para>
+Shishi is internationalized; error and status messages can be
+translated into the users' language; user name and passwords can be
+converted into any available character set (normally including
+ISO-8859-1 and UTF-8) and also be processed using an experimental
+Stringprep profile.
+    </para>
+
+    <para>
+Most, if not all, of the widely used encryption and checksum types are
+supported, such as 3DES, AES, ARCFOUR and HMAC-SHA1.
+    </para>
+
+    <para>
+Shishi is developed for the GNU/Linux system, but runs on over 20
+platforms including most major Unix platforms and Windows, and many
+kind of devices including iPAQ handhelds and S/390 mainframes.
+    </para>
+
+    <para>
+Shishi is free software licensed under the GNU General Public License
+version 3.0.
+    </para>
+
+    <figure id="components">
+      <title>Source code layout of Shishi</title>
+      <graphic fileref="components.png" format="PNG"></graphic>
+    </figure>
+
+    <xi:include href="xml/shishi.xml"/>
+  </chapter>
+</book>

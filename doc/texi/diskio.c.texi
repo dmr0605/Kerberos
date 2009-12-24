@@ -1,0 +1,43 @@
+@subheading shishi_key_print
+@anchor{shishi_key_print}
+@deftypefun {int} {shishi_key_print} (Shishi * @var{handle}, FILE * @var{fh}, const Shishi_key * @var{key})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle opened for writing.
+
+@var{key}: key to print.
+
+Print an ASCII representation of a key structure to file
+descriptor.  Example output:
+
+-----BEGIN SHISHI KEY-----
+
+@strong{Keytype:} 18 (aes256-cts-hmac-sha1-96)
+
+@strong{Principal:} host/latte.josefsson.org
+
+@strong{Realm:} JOSEFSSON.ORG
+Key-Version-Number: 1
+
+P1QdeW/oSiag/bTyVEBAY2msiGSTmgLXlopuCKoppDs=
+-----END SHISHI KEY-----
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_key_to_file
+@anchor{shishi_key_to_file}
+@deftypefun {int} {shishi_key_to_file} (Shishi * @var{handle}, const char * @var{filename}, Shishi_key * @var{key})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{filename}: filename to append key to.
+
+@var{key}: key to print.
+
+Print an ASCII representation of a key structure to a file.  The
+file is appended to if it exists.  See @code{shishi_key_print()} for
+format of output.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+

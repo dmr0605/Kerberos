@@ -1,0 +1,69 @@
+@item SHISHI_ASN1_ERROR
+Error in ASN.1 function (corrupt data?)
+
+@item SHISHI_FOPEN_ERROR
+Could not open file
+
+@item SHISHI_IO_ERROR
+File input/output error
+
+@item SHISHI_MALLOC_ERROR
+Memory allocation error in shishi library.
+
+@item SHISHI_BASE64_ERROR
+Base64 encoding or decoding failed. Data corrupt?
+
+@item SHISHI_REALM_MISMATCH
+Client realm value differ between request and reply.
+
+@item SHISHI_CNAME_MISMATCH
+Client name value differ between request and reply.
+
+@item SHISHI_NONCE_MISMATCH
+Replay protection value (nonce) differ between request and reply.
+
+@item SHISHI_TICKET_BAD_KEYTYPE
+Keytype used to encrypt ticket doesn't match provided key. This usually indicates an internal application error.
+
+@item SHISHI_CRYPTO_INTERNAL_ERROR
+Internal error in low-level crypto routines.
+
+@item SHISHI_CRYPTO_ERROR
+Low-level cryptographic primitive failed.  This usually indicates bad password or data corruption.
+
+@item SHISHI_KDC_TIMEOUT
+Timedout talking to KDC. This usually indicates a network or KDC address problem.
+
+@item SHISHI_KDC_NOT_KNOWN_FOR_REALM
+No KDC for realm known.
+
+@item SHISHI_SOCKET_ERROR
+The system call socket() failed.  This usually indicates that your system does not support the socket type.
+
+@item SHISHI_BIND_ERROR
+The system call bind() failed.  This usually indicates insufficient permissions.
+
+@item SHISHI_SENDTO_ERROR
+The system call sendto() failed.
+
+@item SHISHI_CLOSE_ERROR
+The system call close() failed.
+
+@item SHISHI_GOT_KRBERROR
+Server replied with an error message to request.
+
+@item SHISHI_INVALID_TKTS
+Ticketset not initialized.  This usually indicates an internal application error.
+
+@item SHISHI_APREQ_DECRYPT_FAILED
+Could not decrypt AP-REQ using provided key. This usually indicates an internal application error.
+
+@item SHISHI_TICKET_DECRYPT_FAILED
+Could not decrypt Ticket using provided key. This usually indicates an internal application error.
+
+@item SHISHI_KEYTAB_ERROR
+Failed to parse keytab file
+
+@item SHISHI_CCACHE_ERROR
+Failed to parse credential cache file
+

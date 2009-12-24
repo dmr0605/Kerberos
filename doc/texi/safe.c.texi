@@ -1,0 +1,291 @@
+@subheading shishi_safe
+@anchor{shishi_safe}
+@deftypefun {int} {shishi_safe} (Shishi * @var{handle}, Shishi_safe ** @var{safe})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{safe}: pointer to new structure that holds information about SAFE exchange
+
+Create a new SAFE exchange.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_done
+@anchor{shishi_safe_done}
+@deftypefun {void} {shishi_safe_done} (Shishi_safe * @var{safe})
+@var{safe}: structure that holds information about SAFE exchange
+
+Deallocate resources associated with SAFE exchange.  This should be
+called by the application when it no longer need to utilize the
+SAFE exchange handle.
+@end deftypefun
+
+@subheading shishi_safe_key
+@anchor{shishi_safe_key}
+@deftypefun {Shishi_key *} {shishi_safe_key} (Shishi_safe * @var{safe})
+@var{safe}: structure that holds information about SAFE exchange
+
+Get key structured from SAFE exchange.
+
+@strong{Return value:} Returns the key used in the SAFE exchange, or NULL if
+not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_safe_key_set
+@anchor{shishi_safe_key_set}
+@deftypefun {void} {shishi_safe_key_set} (Shishi_safe * @var{safe}, Shishi_key * @var{key})
+@var{safe}: structure that holds information about SAFE exchange
+
+@var{key}: key to store in SAFE.
+
+Set the Key in the SAFE exchange.
+@end deftypefun
+
+@subheading shishi_safe_safe
+@anchor{shishi_safe_safe}
+@deftypefun {Shishi_asn1} {shishi_safe_safe} (Shishi_safe * @var{safe})
+@var{safe}: structure that holds information about SAFE exchange
+
+Get ASN.1 SAFE structured from SAFE exchange.
+
+@strong{Return value:} Returns the ASN.1 safe in the SAFE exchange, or NULL if
+not yet set or an error occured.
+@end deftypefun
+
+@subheading shishi_safe_safe_set
+@anchor{shishi_safe_safe_set}
+@deftypefun {void} {shishi_safe_safe_set} (Shishi_safe * @var{safe}, Shishi_asn1 @var{asn1safe})
+@var{safe}: structure that holds information about SAFE exchange
+
+@var{asn1safe}: KRB-SAFE to store in SAFE exchange.
+
+Set the KRB-SAFE in the SAFE exchange.
+@end deftypefun
+
+@subheading shishi_safe_safe_der
+@anchor{shishi_safe_safe_der}
+@deftypefun {int} {shishi_safe_safe_der} (Shishi_safe * @var{safe}, char ** @var{out}, size_t * @var{outlen})
+@var{safe}: safe as allocated by @code{shishi_safe()}.
+
+@var{out}: output array with newly allocated DER encoding of SAFE.
+
+@var{outlen}: length of output array with DER encoding of SAFE.
+
+DER encode SAFE structure.  Typically @code{shishi_safe_build()} is used
+to build the SAFE structure first.  @code{out} is allocated by this
+function, and it is the responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_safe_der_set
+@anchor{shishi_safe_safe_der_set}
+@deftypefun {int} {shishi_safe_safe_der_set} (Shishi_safe * @var{safe}, char * @var{der}, size_t @var{derlen})
+@var{safe}: safe as allocated by @code{shishi_safe()}.
+
+@var{der}: input array with DER encoded KRB-SAFE.
+
+@var{derlen}: length of input array with DER encoded KRB-SAFE.
+
+DER decode KRB-SAFE and set it SAFE exchange.  If decoding fails, the
+KRB-SAFE in the SAFE exchange remains.
+
+@strong{Return value:} Returns SHISHI_OK.
+@end deftypefun
+
+@subheading shishi_safe_print
+@anchor{shishi_safe_print}
+@deftypefun {int} {shishi_safe_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{safe})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{safe}: SAFE to print.
+
+Print ASCII armored DER encoding of SAFE to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_save
+@anchor{shishi_safe_save}
+@deftypefun {int} {shishi_safe_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{safe})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{safe}: SAFE to save.
+
+Save DER encoding of SAFE to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_to_file
+@anchor{shishi_safe_to_file}
+@deftypefun {int} {shishi_safe_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{safe}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{safe}: SAFE to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write SAFE to file in specified TYPE.  The file will be
+truncated if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_parse
+@anchor{shishi_safe_parse}
+@deftypefun {int} {shishi_safe_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{safe})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{safe}: output variable with newly allocated SAFE.
+
+Read ASCII armored DER encoded SAFE from file and populate given
+variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_read
+@anchor{shishi_safe_read}
+@deftypefun {int} {shishi_safe_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{safe})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{safe}: output variable with newly allocated SAFE.
+
+Read DER encoded SAFE from file and populate given variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_from_file
+@anchor{shishi_safe_from_file}
+@deftypefun {int} {shishi_safe_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{safe}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{safe}: output variable with newly allocated SAFE.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read SAFE from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_cksum
+@anchor{shishi_safe_cksum}
+@deftypefun {int} {shishi_safe_cksum} (Shishi * @var{handle}, Shishi_asn1 @var{safe}, int32_t * @var{cksumtype}, char ** @var{cksum}, size_t * @var{cksumlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{safe}: safe as allocated by @code{shishi_safe()}.
+
+@var{cksumtype}: output checksum type.
+
+@var{cksum}: output array with newly allocated checksum data from SAFE.
+
+@var{cksumlen}: output size of output checksum data buffer.
+
+Read checksum value from KRB-SAFE.  @code{cksum} is allocated by this
+function, and it is the responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_set_cksum
+@anchor{shishi_safe_set_cksum}
+@deftypefun {int} {shishi_safe_set_cksum} (Shishi * @var{handle}, Shishi_asn1 @var{safe}, int32_t @var{cksumtype}, const char * @var{cksum}, size_t @var{cksumlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{safe}: safe as allocated by @code{shishi_safe()}.
+
+@var{cksumtype}: input checksum type to store in SAFE.
+
+@var{cksum}: input checksum data to store in SAFE.
+
+@var{cksumlen}: size of input checksum data to store in SAFE.
+
+Store checksum value in SAFE.  A checksum is usually created by
+calling @code{shishi_checksum()} on some application specific data using
+the key from the ticket that is being used.  To save time, you may
+want to use @code{shishi_safe_build()} instead, which calculates the
+checksum and calls this function in one step.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_user_data
+@anchor{shishi_safe_user_data}
+@deftypefun {int} {shishi_safe_user_data} (Shishi * @var{handle}, Shishi_asn1 @var{safe}, char ** @var{userdata}, size_t * @var{userdatalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{safe}: safe as allocated by @code{shishi_safe()}.
+
+@var{userdata}: output array with newly allocated user data from KRB-SAFE.
+
+@var{userdatalen}: output size of output user data buffer.
+
+Read user data value from KRB-SAFE.  @code{userdata} is allocated by this
+function, and it is the responsibility of caller to deallocate it.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_set_user_data
+@anchor{shishi_safe_set_user_data}
+@deftypefun {int} {shishi_safe_set_user_data} (Shishi * @var{handle}, Shishi_asn1 @var{safe}, const char * @var{userdata}, size_t @var{userdatalen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{safe}: safe as allocated by @code{shishi_safe()}.
+
+@var{userdata}: input user application to store in SAFE.
+
+@var{userdatalen}: size of input user application to store in SAFE.
+
+Set the application data in SAFE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_build
+@anchor{shishi_safe_build}
+@deftypefun {int} {shishi_safe_build} (Shishi_safe * @var{safe}, Shishi_key * @var{key})
+@var{safe}: safe as allocated by @code{shishi_safe()}.
+
+@var{key}: key for session, used to compute checksum.
+
+Build checksum and set it in KRB-SAFE.  Note that this follows RFC
+1510bis and is incompatible with RFC 1510, although presumably few
+implementations use the RFC1510 algorithm.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_safe_verify
+@anchor{shishi_safe_verify}
+@deftypefun {int} {shishi_safe_verify} (Shishi_safe * @var{safe}, Shishi_key * @var{key})
+@var{safe}: safe as allocated by @code{shishi_safe()}.
+
+@var{key}: key for session, used to verify checksum.
+
+Verify checksum in KRB-SAFE.  Note that this follows RFC 1510bis
+and is incompatible with RFC 1510, although presumably few
+implementations use the RFC1510 algorithm.
+
+@strong{Return value:} Returns SHISHI_OK iff successful,
+SHISHI_SAFE_BAD_KEYTYPE if an incompatible key type is used, or
+SHISHI_SAFE_VERIFY_FAILED if the actual verification failed.
+@end deftypefun
+

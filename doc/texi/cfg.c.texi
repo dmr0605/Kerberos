@@ -1,0 +1,139 @@
+@subheading shishi_cfg
+@anchor{shishi_cfg}
+@deftypefun {int} {shishi_cfg} (Shishi * @var{handle}, const char * @var{option})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{option}: string with shishi library option.
+
+Configure shishi library with given option.
+
+@strong{Return Value:} Returns SHISHI_OK if option was valid.
+@end deftypefun
+
+@subheading shishi_cfg_from_file
+@anchor{shishi_cfg_from_file}
+@deftypefun {int} {shishi_cfg_from_file} (Shishi * @var{handle}, const char * @var{cfg})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{cfg}: filename to read configuration from.
+
+Configure shishi library using configuration file.
+
+@strong{Return Value:} Returns SHISHI_OK iff succesful.
+@end deftypefun
+
+@subheading shishi_cfg_print
+@anchor{shishi_cfg_print}
+@deftypefun {int} {shishi_cfg_print} (Shishi * @var{handle}, FILE * @var{fh})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{fh}: file descriptor opened for writing.
+
+Print library configuration status, mostly for debugging purposes.
+
+@strong{Return Value:} Returns SHISHI_OK.
+@end deftypefun
+
+@subheading shishi_cfg_default_systemfile
+@anchor{shishi_cfg_default_systemfile}
+@deftypefun {const char *} {shishi_cfg_default_systemfile} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+The system configuration file name is decided at compile-time, but
+may be overridden by the environment variable SHISHI_CONFIG.
+
+@strong{Return value:} Return system configuration file name.
+@end deftypefun
+
+@subheading shishi_cfg_default_userdirectory
+@anchor{shishi_cfg_default_userdirectory}
+@deftypefun {const char *} {shishi_cfg_default_userdirectory} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+The default user directory (used for, e.g. Shishi ticket cache) is
+normally computed by appending BASE_DIR ("/.shishi") to the content
+of the environment variable $HOME, but can be overridden by
+specifying the complete path in the environment variable
+SHISHI_HOME.
+
+@strong{Return value:} Return directory with configuration files etc.
+@end deftypefun
+
+@subheading shishi_cfg_userdirectory_file
+@anchor{shishi_cfg_userdirectory_file}
+@deftypefun {char *} {shishi_cfg_userdirectory_file} (Shishi * @var{handle}, const char * @var{file})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{file}: basename of file to find in user directory.
+
+Get the full path to specified @code{file} in the users' configuration
+directory.
+
+@strong{Return value:} Return full path to given relative filename, relative
+to the user specific Shishi configuration directory as returned
+by @code{shishi_cfg_default_userdirectory()} (typically $HOME/.shishi).
+@end deftypefun
+
+@subheading shishi_cfg_default_userfile
+@anchor{shishi_cfg_default_userfile}
+@deftypefun {const char *} {shishi_cfg_default_userfile} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Get filename of default user configuration file, typically
+$HOME/shishi.conf.
+
+@strong{Return value:} Return user configuration filename.
+@end deftypefun
+
+@subheading shishi_cfg_clientkdcetype
+@anchor{shishi_cfg_clientkdcetype}
+@deftypefun {int} {shishi_cfg_clientkdcetype} (Shishi * @var{handle}, int32_t ** @var{etypes})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{etypes}: output array with encryption types.
+
+Set the etypes variable to the array of preferred client etypes.
+
+@strong{Return value:} Return the number of encryption types in the array,
+0 means none.
+@end deftypefun
+
+@subheading shishi_cfg_clientkdcetype_fast
+@anchor{shishi_cfg_clientkdcetype_fast}
+@deftypefun {int32_t} {shishi_cfg_clientkdcetype_fast} (Shishi * @var{handle})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+Extract the default etype from the list of preferred client etypes.
+
+@strong{Return value:} Return the default encryption types.
+@end deftypefun
+
+@subheading shishi_cfg_clientkdcetype_set
+@anchor{shishi_cfg_clientkdcetype_set}
+@deftypefun {int} {shishi_cfg_clientkdcetype_set} (Shishi * @var{handle}, char * @var{value})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{value}: string with encryption types.
+
+Set the "client-kdc-etypes" configuration option from given string.
+The string contains encryption types (integer or names) separated
+by comma or whitespace, e.g. "aes256-cts-hmac-sha1-96
+des3-cbc-sha1-kd des-cbc-md5".
+
+@strong{Return value:} Return SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_cfg_authorizationtype_set
+@anchor{shishi_cfg_authorizationtype_set}
+@deftypefun {int} {shishi_cfg_authorizationtype_set} (Shishi * @var{handle}, char * @var{value})
+@var{handle}: Shishi library handle create by @code{shishi_init()}.
+
+@var{value}: string with authorization types.
+
+Set the "authorization-types" configuration option from given string.
+The string contains authorization types (integer or names) separated
+by comma or whitespace, e.g. "basic k5login".
+
+@strong{Return value:} Return SHISHI_OK iff successful.
+@end deftypefun
+

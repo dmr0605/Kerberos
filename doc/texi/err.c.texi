@@ -1,0 +1,22 @@
+@subheading shisa_strerror
+@anchor{shisa_strerror}
+@deftypefun {const char *} {shisa_strerror} (int @var{err})
+@var{err}: shisa error code
+
+
+@strong{Return value:} Returns a pointer to a statically allocated string
+containing a description of the error with the error value @code{err}.
+This string can be used to output a diagnostic message to the user.
+@end deftypefun
+
+@subheading shisa_info
+@anchor{shisa_info}
+@deftypefun {void} {shisa_info} (Shisa * @var{dbh}, const char * @var{format},  @var{...})
+@var{dbh}: Shisa library handle created by @code{shisa()}.
+
+@var{format}: printf style format string.
+@...: print style arguments.
+
+Print informational message to standard error.
+@end deftypefun
+

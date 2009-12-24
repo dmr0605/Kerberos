@@ -1,0 +1,195 @@
+@subheading shishi_as_derive_salt
+@anchor{shishi_as_derive_salt}
+@deftypefun {int} {shishi_as_derive_salt} (Shishi * @var{handle}, Shishi_asn1 @var{asreq}, Shishi_asn1 @var{asrep}, char ** @var{salt}, size_t * @var{saltlen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{asreq}: input AS-REQ variable.
+
+@var{asrep}: input AS-REP variable.
+
+@var{salt}: newly allocated output array with salt.
+
+@var{saltlen}: holds actual size of output array with salt.
+
+Derive the salt that should be used when deriving a key via
+@code{shishi_string_to_key()} for an AS exchange.  Currently this searches
+for PA-DATA of type SHISHI_PA_PW_SALT in the AS-REP and returns it
+if found, otherwise the salt is derived from the client name and
+realm in AS-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_kdc_copy_crealm
+@anchor{shishi_kdc_copy_crealm}
+@deftypefun {int} {shishi_kdc_copy_crealm} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, Shishi_asn1 @var{encticketpart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REP to read crealm from.
+
+@var{encticketpart}: EncTicketPart to set crealm in.
+
+Set crealm in KDC-REP to value in EncTicketPart.
+
+@strong{Return value:} Returns SHISHI_OK if successful.
+@end deftypefun
+
+@subheading shishi_as_check_crealm
+@anchor{shishi_as_check_crealm}
+@deftypefun {int} {shishi_as_check_crealm} (Shishi * @var{handle}, Shishi_asn1 @var{asreq}, Shishi_asn1 @var{asrep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{asreq}: AS-REQ to compare realm field in.
+
+@var{asrep}: AS-REP to compare realm field in.
+
+Verify that AS-REQ.req-body.realm and AS-REP.crealm fields matches.
+This is one of the steps that has to be performed when processing a
+AS-REQ and AS-REP exchange, see @code{shishi_kdc_process()}.
+
+@strong{Return value:} Returns SHISHI_OK if successful,
+SHISHI_REALM_MISMATCH if the values differ, or an error code.
+@end deftypefun
+
+@subheading shishi_kdc_copy_cname
+@anchor{shishi_kdc_copy_cname}
+@deftypefun {int} {shishi_kdc_copy_cname} (Shishi * @var{handle}, Shishi_asn1 @var{kdcrep}, Shishi_asn1 @var{encticketpart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcrep}: KDC-REQ to read cname from.
+
+@var{encticketpart}: EncTicketPart to set cname in.
+
+Set cname in KDC-REP to value in EncTicketPart.
+
+@strong{Return value:} Returns SHISHI_OK if successful.
+@end deftypefun
+
+@subheading shishi_as_check_cname
+@anchor{shishi_as_check_cname}
+@deftypefun {int} {shishi_as_check_cname} (Shishi * @var{handle}, Shishi_asn1 @var{asreq}, Shishi_asn1 @var{asrep})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{asreq}: AS-REQ to compare client name field in.
+
+@var{asrep}: AS-REP to compare client name field in.
+
+Verify that AS-REQ.req-body.realm and AS-REP.crealm fields matches.
+This is one of the steps that has to be performed when processing a
+AS-REQ and AS-REP exchange, see @code{shishi_kdc_process()}.
+
+@strong{Return value:} Returns SHISHI_OK if successful,
+SHISHI_CNAME_MISMATCH if the values differ, or an error code.
+@end deftypefun
+
+@subheading shishi_kdc_copy_nonce
+@anchor{shishi_kdc_copy_nonce}
+@deftypefun {int} {shishi_kdc_copy_nonce} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_asn1 @var{enckdcreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to read nonce from.
+
+@var{enckdcreppart}: EncKDCRepPart to set nonce in.
+
+Set nonce in EncKDCRepPart to value in KDC-REQ.
+
+@strong{Return value:} Returns SHISHI_OK if successful.
+@end deftypefun
+
+@subheading shishi_kdc_check_nonce
+@anchor{shishi_kdc_check_nonce}
+@deftypefun {int} {shishi_kdc_check_nonce} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_asn1 @var{enckdcreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: KDC-REQ to compare nonce field in.
+
+@var{enckdcreppart}: Encrypted KDC-REP part to compare nonce field in.
+
+Verify that KDC-REQ.req-body.nonce and EncKDCRepPart.nonce fields
+matches.  This is one of the steps that has to be performed when
+processing a KDC-REQ and KDC-REP exchange.
+
+@strong{Return value:} Returns SHISHI_OK if successful,
+SHISHI_NONCE_LENGTH_MISMATCH if the nonces have different lengths
+(usually indicates that buggy server truncated nonce to 4 bytes),
+SHISHI_NONCE_MISMATCH if the values differ, or an error code.
+@end deftypefun
+
+@subheading shishi_tgs_process
+@anchor{shishi_tgs_process}
+@deftypefun {int} {shishi_tgs_process} (Shishi * @var{handle}, Shishi_asn1 @var{tgsreq}, Shishi_asn1 @var{tgsrep}, Shishi_asn1 @var{authenticator}, Shishi_asn1 @var{oldenckdcreppart}, Shishi_asn1 * @var{enckdcreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{tgsreq}: input variable that holds the sent KDC-REQ.
+
+@var{tgsrep}: input variable that holds the received KDC-REP.
+
+@var{authenticator}: input variable with Authenticator from AP-REQ in KDC-REQ.
+
+@var{oldenckdcreppart}: input variable with EncKDCRepPart used in request.
+
+@var{enckdcreppart}: output variable that holds new EncKDCRepPart.
+
+Process a TGS client exchange and output decrypted EncKDCRepPart
+which holds details for the new ticket received.  This function
+simply derives the encryption key from the ticket used to construct
+the TGS request and calls @code{shishi_kdc_process()}, which see.
+
+@strong{Return value:} Returns SHISHI_OK iff the TGS client exchange was
+successful.
+@end deftypefun
+
+@subheading shishi_as_process
+@anchor{shishi_as_process}
+@deftypefun {int} {shishi_as_process} (Shishi * @var{handle}, Shishi_asn1 @var{asreq}, Shishi_asn1 @var{asrep}, const char * @var{string}, Shishi_asn1 * @var{enckdcreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{asreq}: input variable that holds the sent KDC-REQ.
+
+@var{asrep}: input variable that holds the received KDC-REP.
+
+@var{string}: input variable with zero terminated password.
+
+@var{enckdcreppart}: output variable that holds new EncKDCRepPart.
+
+Process an AS client exchange and output decrypted EncKDCRepPart
+which holds details for the new ticket received.  This function
+simply derives the encryption key from the password and calls
+@code{shishi_kdc_process()}, which see.
+
+@strong{Return value:} Returns SHISHI_OK iff the AS client exchange was
+successful.
+@end deftypefun
+
+@subheading shishi_kdc_process
+@anchor{shishi_kdc_process}
+@deftypefun {int} {shishi_kdc_process} (Shishi * @var{handle}, Shishi_asn1 @var{kdcreq}, Shishi_asn1 @var{kdcrep}, Shishi_key * @var{key}, int @var{keyusage}, Shishi_asn1 * @var{enckdcreppart})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{kdcreq}: input variable that holds the sent KDC-REQ.
+
+@var{kdcrep}: input variable that holds the received KDC-REP.
+
+@var{key}: input array with key to decrypt encrypted part of KDC-REP with.
+
+@var{keyusage}: kereros key usage value.
+
+@var{enckdcreppart}: output variable that holds new EncKDCRepPart.
+
+Process a KDC client exchange and output decrypted EncKDCRepPart
+which holds details for the new ticket received.  Use
+@code{shishi_kdcrep_get_ticket()} to extract the ticket.  This function
+verifies the various conditions that must hold if the response is
+to be considered valid, specifically it compares nonces
+(@code{shishi_check_nonces()}) and if the exchange was a AS exchange, it
+also compares cname and crealm (@code{shishi_check_cname()} and
+@code{shishi_check_crealm()}).
+
+Usually the @code{shishi_as_process()} and @code{shishi_tgs_process()} functions
+should be used instead, since they simplify the decryption key
+computation.
+
+@strong{Return value:} Returns SHISHI_OK iff the KDC client exchange was
+successful.
+@end deftypefun
+

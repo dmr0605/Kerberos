@@ -1,0 +1,270 @@
+@subheading shishi_apreq
+@anchor{shishi_apreq}
+@deftypefun {Shishi_asn1} {shishi_apreq} (Shishi * @var{handle})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+This function creates a new AP-REQ, populated with some default
+values.
+
+@strong{Return value:} Returns the AP-REQ or NULL on failure.
+@end deftypefun
+
+@subheading shishi_apreq_print
+@anchor{shishi_apreq_print}
+@deftypefun {int} {shishi_apreq_print} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{apreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{apreq}: AP-REQ to print.
+
+Print ASCII armored DER encoding of AP-REQ to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_save
+@anchor{shishi_apreq_save}
+@deftypefun {int} {shishi_apreq_save} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 @var{apreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for writing.
+
+@var{apreq}: AP-REQ to save.
+
+Save DER encoding of AP-REQ to file.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_to_file
+@anchor{shishi_apreq_to_file}
+@deftypefun {int} {shishi_apreq_to_file} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ to save.
+
+@var{filetype}: input variable specifying type of file to be written,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to write to.
+
+Write AP-REQ to file in specified TYPE.  The file will be
+truncated if it exists.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_parse
+@anchor{shishi_apreq_parse}
+@deftypefun {int} {shishi_apreq_parse} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{apreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{apreq}: output variable with newly allocated AP-REQ.
+
+Read ASCII armored DER encoded AP-REQ from file and populate given
+variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_read
+@anchor{shishi_apreq_read}
+@deftypefun {int} {shishi_apreq_read} (Shishi * @var{handle}, FILE * @var{fh}, Shishi_asn1 * @var{apreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{fh}: file handle open for reading.
+
+@var{apreq}: output variable with newly allocated AP-REQ.
+
+Read DER encoded AP-REQ from file and populate given variable.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_from_file
+@anchor{shishi_apreq_from_file}
+@deftypefun {int} {shishi_apreq_from_file} (Shishi * @var{handle}, Shishi_asn1 * @var{apreq}, int @var{filetype}, const char * @var{filename})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: output variable with newly allocated AP-REQ.
+
+@var{filetype}: input variable specifying type of file to be read,
+see Shishi_filetype.
+
+@var{filename}: input variable with filename to read from.
+
+Read AP-REQ from file in specified TYPE.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_set_authenticator
+@anchor{shishi_apreq_set_authenticator}
+@deftypefun {int} {shishi_apreq_set_authenticator} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, int32_t @var{etype}, uint32_t @var{kvno}, const char * @var{buf}, size_t @var{buflen})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ to add authenticator field to.
+
+@var{etype}: encryption type used to encrypt authenticator.
+
+@var{kvno}: version of the key used to encrypt authenticator.
+
+@var{buf}: input array with encrypted authenticator.
+
+@var{buflen}: size of input array with encrypted authenticator.
+
+Set the encrypted authenticator field in the AP-REP.  The encrypted
+data is usually created by calling @code{shishi_encrypt()} on the DER
+encoded authenticator.  To save time, you may want to use
+@code{shishi_apreq_add_authenticator()} instead, which calculates the
+encrypted data and calls this function in one step.
+
+@strong{Return value:} Returns SHISHI_OK on success.
+@end deftypefun
+
+@subheading shishi_apreq_add_authenticator
+@anchor{shishi_apreq_add_authenticator}
+@deftypefun {int} {shishi_apreq_add_authenticator} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, Shishi_key * @var{key}, int @var{keyusage}, Shishi_asn1 @var{authenticator})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ to add authenticator field to.
+
+@var{key}: key to to use for encryption.
+
+@var{keyusage}: cryptographic key usage value to use in encryption.
+
+@var{authenticator}: authenticator as allocated by @code{shishi_authenticator()}.
+
+Encrypts DER encoded authenticator using key and store it in the
+AP-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_set_ticket
+@anchor{shishi_apreq_set_ticket}
+@deftypefun {int} {shishi_apreq_set_ticket} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, Shishi_asn1 @var{ticket})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ to add ticket field to.
+
+@var{ticket}: input ticket to copy into AP-REQ ticket field.
+
+Copy ticket into AP-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_options
+@anchor{shishi_apreq_options}
+@deftypefun {int} {shishi_apreq_options} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, uint32_t * @var{flags})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ to get options from.
+
+@var{flags}: Output integer containing options from AP-REQ.
+
+Extract the AP-Options from AP-REQ into output integer.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_use_session_key_p
+@anchor{shishi_apreq_use_session_key_p}
+@deftypefun {int} {shishi_apreq_use_session_key_p} (Shishi * @var{handle}, Shishi_asn1 @var{apreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ as allocated by @code{shishi_apreq()}.
+
+Return non-0 iff the "Use session key" option is set in the AP-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_mutual_required_p
+@anchor{shishi_apreq_mutual_required_p}
+@deftypefun {int} {shishi_apreq_mutual_required_p} (Shishi * @var{handle}, Shishi_asn1 @var{apreq})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ as allocated by @code{shishi_apreq()}.
+
+Return non-0 iff the "Mutual required" option is set in the AP-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_options_set
+@anchor{shishi_apreq_options_set}
+@deftypefun {int} {shishi_apreq_options_set} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, uint32_t @var{options})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ as allocated by @code{shishi_apreq()}.
+
+@var{options}: Options to set in AP-REQ.
+
+Set the AP-Options in AP-REQ to indicate integer.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_options_add
+@anchor{shishi_apreq_options_add}
+@deftypefun {int} {shishi_apreq_options_add} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, uint32_t @var{option})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ as allocated by @code{shishi_apreq()}.
+
+@var{option}: Options to add in AP-REQ.
+
+Add the AP-Options in AP-REQ.  Options not set in input parameter
+@code{option} are preserved in the AP-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_options_remove
+@anchor{shishi_apreq_options_remove}
+@deftypefun {int} {shishi_apreq_options_remove} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, uint32_t @var{option})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ as allocated by @code{shishi_apreq()}.
+
+@var{option}: Options to remove from AP-REQ.
+
+Remove the AP-Options from AP-REQ.  Options not set in input
+parameter @code{option} are preserved in the AP-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_get_authenticator_etype
+@anchor{shishi_apreq_get_authenticator_etype}
+@deftypefun {int} {shishi_apreq_get_authenticator_etype} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, int32_t * @var{etype})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ variable to get value from.
+
+@var{etype}: output variable that holds the value.
+
+Extract AP-REQ.authenticator.etype.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
+@subheading shishi_apreq_get_ticket
+@anchor{shishi_apreq_get_ticket}
+@deftypefun {int} {shishi_apreq_get_ticket} (Shishi * @var{handle}, Shishi_asn1 @var{apreq}, Shishi_asn1 * @var{ticket})
+@var{handle}: shishi handle as allocated by @code{shishi_init()}.
+
+@var{apreq}: AP-REQ variable to get ticket from.
+
+@var{ticket}: output variable to hold extracted ticket.
+
+Extract ticket from AP-REQ.
+
+@strong{Return value:} Returns SHISHI_OK iff successful.
+@end deftypefun
+
